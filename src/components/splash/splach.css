@@ -60,7 +60,6 @@ h1 span{
     outline: none;
     border: none;
     border-radius: 47.5px;
-    -webkit-tap-highlight-color: transparent !important;
 }
 
 .btns button:focus, button:active {
