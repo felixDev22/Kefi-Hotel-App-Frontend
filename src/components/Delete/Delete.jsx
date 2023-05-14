@@ -1,9 +1,7 @@
-// src/components/Delete.js
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { deleteHotel, setHotels } from '../../redux/hotelsSlice';
+import { deleteHotel, setHotels } from '../../redux/hotelSlice';
 import './Delete.css';
 import rightarr from '../../Assets/rightarr.png';
 import leftarr from '../../Assets/leftarr.png';
@@ -45,36 +43,39 @@ const Delete = () => {
     <div className="delete-hotels">
       <div className="info">
         <img src={rectangle} alt="rectangle" />
-        <p>Changed your mind yet? Delete some hotels</p>
+        <p>Changed your mind yet, Delete some hotels</p>
       </div>
       <div className="delete">
-        <img src={leftarr} alt="left arrow" onClick={handlePrev} />
+        <img src={leftarr} onClick={handlePrev} alt="left arrow" />
         <div className="hotelList">
-          {hotels.length > 0 &&
-            hotels.slice(currentIndex, currentIndex + 3).map((hotel) => (
-              <div key={hotel.id} className="hotelItem">
-                <img src={hotel.photo} alt={hotel.name} />
-                <div className="hotelDetails">
-                  <h2 className="hotelName">{hotel.name}</h2>
-                  <span>
-                    <img className="hr" src={dash} alt="dash" />
-                  </span>
-                  <p>{hotel.desc}</p>
-                </div>
-                <button
-                  className="deletebtn"
-                  onClick={() => handleDelete(hotel.id)}
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
+          <ul>
+            {hotels &&
+              hotels.length > 0 &&
+              hotels.slice(currentIndex, currentIndex + 3).map((hotel) => (
+                <li key={hotel.id} className="hotelItem">
+                  <img src={hotel.photo} alt={hotel.name} />
+                  <div className="hotelDetails">
+                    <h2 className="hotelName">{hotel.name}</h2>
+                    <span>
+                      <img className="hr" src={dash} alt="dash" />
+                    </span>
+                    <p>{hotel.desc}</p>
+                  </div>
+                  <button
+                    className="deletebtn"
+                    onClick={() => handleDelete(hotel.id)}
+                  >
+                    Delete
+                  </button>
+                </li>
+              ))}
+          </ul>
         </div>
         <img
           src={rightarr}
-          alt="right arrow"
           onClick={handleNext}
           className="rightarr"
+          alt="right arrow"
         />
       </div>
     </div>
