@@ -12,8 +12,7 @@ import dash from '../../Assets/dashed.png';
 
 const Delete = () => {
   const dispatch = useDispatch();
-  const hotels = useSelector((state) => state.hotels);
-
+  const hotels = useSelector((state) => state.hotel.hotels);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -50,8 +49,7 @@ const Delete = () => {
       <div className="delete">
         <img src={leftarr} alt="left arrow" onClick={handlePrev} />
         <div className="hotelList">
-          {hotels &&
-            hotels.length > 0 &&
+          {hotels.length > 0 &&
             hotels.slice(currentIndex, currentIndex + 3).map((hotel) => (
               <div key={hotel.id} className="hotelItem">
                 <img src={hotel.photo} alt={hotel.name} />
