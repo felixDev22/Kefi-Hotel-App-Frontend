@@ -2,7 +2,7 @@ import React from 'react'
 import Style from './splach.css'
 export default function Splash() {
   return (
-      <div className = 'container'>
+      <div className = 'wrapper'>
           <div className = 'splash'>
             <h1> Welcome to <br/> <span>KeFi</span></h1>
           </div>
