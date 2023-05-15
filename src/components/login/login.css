@@ -28,6 +28,17 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+}
+
+.logo {
+  color: var(--orange-clr);
+  font-family: 'Advent Pro', sans-serif;
+  font-weight: 600;
+  font-size: 6rem;
+  top: 50px;
+  left: 50px;
+  position: absolute;
 }
 
 img {

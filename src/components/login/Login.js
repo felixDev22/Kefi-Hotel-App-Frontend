@@ -21,7 +21,9 @@ export default function Login() {
   return (
     <div className="fluid">
       <div className="row">
-        <div className="col-md-6 side2-image"></div>
+        <div className="col-md-6 side2-image">
+          <h2 className="logo">KeFi</h2>
+        </div>
         <div className="col-md-6 right">
           <div className="input-box">
             <div className="intro">

@@ -21,7 +21,9 @@ export default function SignUp() {
   return (
     <div className="fluid">
       <div className="row">
-        <div className="col-md-6 side-image"></div>
+        <div className="col-md-6 side-image">
+          <h2 className="logo">KeFi</h2>
+        </div>
         <div className="col-md-6 right">
           <div className="input-box">
             <div className="intro">
