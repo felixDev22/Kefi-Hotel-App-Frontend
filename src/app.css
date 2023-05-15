@@ -29,3 +29,8 @@ body {
   margin-left: 32%;
   margin-bottom: 25px;
 }
+
+.logo {
+  color: var(--orange-clr);
+  font-family: 'Advent Pro', sans-serif;
+}
