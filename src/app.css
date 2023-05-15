@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
 
+.App {
+  text-align: center;
+  display: flex;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
 :root {
   --orange-clr: #fe6814;
   --green-clr: #72b600;
