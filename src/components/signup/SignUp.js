@@ -26,7 +26,7 @@ export default function SignUp() {
           <div className="input-box">
             <div className="intro">
               <span className="line"></span>
-              <h1>Welcome to the ultimate hotel booking site:</h1>
+              <h4>Welcome to the ultimate hotel booking site:</h4>
             </div>
             <form onSubmit={handleSubmit}>
               <div className="input-filed">
