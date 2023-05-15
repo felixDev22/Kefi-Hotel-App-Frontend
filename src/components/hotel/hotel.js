@@ -4,7 +4,7 @@ import vec from '../../Assets/vec.png';
 export default function hotel({hotel}) {
   return (
         <div class="card">
-                    <img src={Mombassa} className="card-img-top" alt="Mombassa"/>
+                    <img src={hotel.photo} className="card-img-top" alt="Mombassa"/>
                     <div class="card-body">
                     <h5 class="card-title cardtitle">{hotel.name}</h5>
                     <img src={vec} alt="Mombassa"/>
@@ -13,7 +13,7 @@ export default function hotel({hotel}) {
                             <i class="fa fa-star" aria-hidden="true"></i>
                             </li>
                             <li>
-                                9.5 Execeptional
+                                {hotel.rating} Execeptional
                             </li>
                             <li>
                                 <i class="fa fa-circle" aria-hidden="true"></i>
@@ -22,12 +22,12 @@ export default function hotel({hotel}) {
                             <i class="fa-solid fa-location-crosshairs"></i>
                             </li>
                             <li>
-                                Mombassa
+                                {hotel.location}
                             </li>
 
                     </ul>
                     <div className = 'price'>
-                        <p>Price: <span>$425</span></p>
+                        <p>Price: <span>${hotel.price}</span></p>
                     </div>
                     <p class="card-text"> {hotel.desc}</p>
                     <a href="#" class="btn btn-primary">Book Now</a>
