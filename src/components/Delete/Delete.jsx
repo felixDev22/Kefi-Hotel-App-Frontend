@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { deleteHotel, setHotels } from '../../redux/hotelSlice';
+import { deleteHotel, setHotels } from '../../features/hotelSlice';
 import './Delete.css';
 import rightarr from '../../Assets/rightarr.png';
 import leftarr from '../../Assets/leftarr.png';
@@ -12,7 +12,8 @@ import dash from '../../Assets/dashed.png';
 
 const Delete = () => {
   const dispatch = useDispatch();
-  const hotels = useSelector((state) => state.hotel.hotels);
+  const hotels = useSelector((state) => state.hotels);
+  console.log(hotels);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
