@@ -21,7 +21,7 @@ export default function Login() {
   return (
     <div className="fluid">
       <div className="row">
-        <div className="col-md-6 side-image"></div>
+        <div className="col-md-6 side2-image"></div>
         <div className="col-md-6 right">
           <div className="input-box">
             <div className="intro">
@@ -61,7 +61,7 @@ export default function Login() {
               <span
                 dangerouslySetInnerHTML={{
                   __html:
-                    "If you don't have an account. <a href='./Login'>Sign-up</a>",
+                    "If you don't have an account. <a href='./signup'>Sign-up</a>",
                 }}></span>
             </div>
           </div>
