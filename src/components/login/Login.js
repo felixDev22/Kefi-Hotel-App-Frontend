@@ -1,9 +1,65 @@
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useEffect
+} from 'react';
+import {
+  useDispatch,
+  useSelector
+} from 'react-redux';
+import {
+  loginUser,
+  selectLoginData,
+  selectLoginLoading
+} from '../../features/slices/auth/login';
+import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 import './login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorStrings, setErrorStrings] = useState([]);
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const dispatch = useDispatch();
+  const loginData = useSelector(selectLoginData);
+
+  const userToken = localStorage.getItem('token');
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+
+  const validateInputFields = () => {
+    const errors = [];
+    if (!email) {
+      errors.push('Email is required');
+    }
+    if (!password) {
+      errors.push('Password is required');
+    }
+
+    setErrorStrings(errors);
+    return errors.length === 0;
+  };
+
+  const loading = useSelector(selectLoginLoading);
+
+
+  useEffect(() => {
+    if (userToken) {
+      // token exist so navigate user to home page
+    } else {
+      // token does not exist so navigate user to login page
+      console.log('$loginData', loginData);
+    }
+  }, [userToken, loginData]);
+
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -13,9 +69,23 @@ export default function Login() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setErrorStrings('')
+
+    const user = {
+      email,
+      password
+    }
+
+    if (validateInputFields()) {
+      dispatch(loginUser({
+        user,
+      }));
+    } else {
+      console.log('errorStrings', errorStrings);
+    }
   };
 
   return (
@@ -38,32 +108,62 @@ export default function Login() {
                   id="email"
                   required
                   autoComplete="off"
-                  placeholder="email"
+                  placeholder="Email Address"
                   value={email}
                   onChange={handleEmail}
                 />
               </div>
-              <div>
+
+              <div className='input-filed'>
                 <input
-                  type="text"
+                  type = {
+                    showPassword ? 'text' : 'password'
+                  }
                   className="input"
                   id="password"
                   required
                   autoComplete="off"
-                  placeholder="password"
+                  placeholder="Password"
                   value={password}
                   onChange={handlePassword}
                 />
+                <span onClick={handleTogglePasswordVisibility} className="input-icon">
+                  {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+                </span>
               </div>
-              <button type="submit" className="submit">
-                Login
-              </button>
+
+              {
+                  errorStrings && errorStrings.length > 0 && (
+                    <div className="error">
+                      <ul>
+                        {
+                          errorStrings.map((error) => (
+                            <li key={error}>{error}</li>
+                          ))
+                        }
+                      </ul>
+                    </div>
+                  )
+                }
+
+                {
+                  loading ? (
+                    <button type="submit" className="submit" disabled>
+                          <p>Loading...</p>
+                    </button>
+                  ) : (
+                    <button type="submit" className="submit">
+                          <p>Login</p>
+                      </button>
+                    )
+                }
+
             </form>
             <div className="sign-in">
               <span
                 dangerouslySetInnerHTML={{
                   __html:
-                    "If you don't have an account. <a href='./signup'>Sign-up</a>",
+                    "Don't have an Account?. <a href='./signup'>Sign-Up</a>",
                 }}></span>
             </div>
           </div>
