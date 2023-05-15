@@ -6,23 +6,21 @@
   text-decoration: none;
   box-sizing: border-box;
 }
-.main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+
 .row {
-  width: 100%;
-  height: auto;
+  display: flex;
+  flex-direction: row;
 }
+
 .side-image {
-  background-image: url('../../Assets/Sign\ pic.jpg');
+  background-image: url('../../Assets/sign.png');
+  height: 100vh;
+  width: 100vw;
   background-position: center;
-  background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
+  background-size: cover;
 }
+
 img {
   width: 100%;
 }
@@ -33,9 +31,33 @@ img {
   align-items: center;
   position: relative;
 }
+
+.intro {
+  display: block;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.line {
+  display: block;
+  border: 2px solid var(--orange-clr);
+  width: 150px;
+  height: 2px;
+  align-items: center;
+  margin-left: 32%;
+  margin-bottom: 25px;
+}
+
 .input-box {
+  margin-top: 40px;
   width: 430px;
 }
+
+.intro h1 {
+  font-weight: 700;
+}
+
 .input-field {
   display: flex;
   flex-direction: column;
@@ -45,26 +67,28 @@ img {
 .input {
   height: 65px;
   width: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #53535333;
+  background: var(--grey-clr);
   margin-bottom: 20px;
   color: #40414a;
+  border-radius: var(--border-radius);
+  padding: 20px;
 }
 
 .submit {
-  height: 45px;
+  height: 65px;
+  width: 100%;
   background: var(--orange-clr);
+  margin-bottom: 20px;
   color: #fff;
-  border-radius: 5px;
-  transition: 0.4s;
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-top: 20px;
 }
 .submit:hover {
   background: var(--green-clr);
   color: #fff;
 }
-.signin {
+.sign-in {
   text-align: center;
   font-size: small;
   margin-top: 25px;
@@ -76,11 +100,10 @@ span a {
 }
 span a:hover {
   color: var(--orange-clr);
-  color: #fff;
 }
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
   .row {
     max-width: 420px;
     width: 100%;
   }
-}
+} */
