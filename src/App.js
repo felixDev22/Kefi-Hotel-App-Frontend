@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Splash from './components/splash/Splash';
 import Login from './components/login/Login';
 import './App.css';
+import SignUp from './components/signup/SignUp';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Splash />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<SignUp />} />
         </Routes>
       </Router>
     </div>
