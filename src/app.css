@@ -12,6 +12,9 @@
 :root {
   --orange-clr: #fe6814;
   --green-clr: #72b600;
+  --red-clr: #f91717;
+  --border-line: #979596;
+  --border-radius: 8px;
 }
 
 body {
