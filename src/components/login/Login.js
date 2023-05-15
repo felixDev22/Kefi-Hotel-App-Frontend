@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -19,50 +18,50 @@ export default function Login() {
   };
 
   return (
-    <div className="fluid">
-      <div className="row">
-        <div className="col-md-6 side-image"></div>
-        <div className="col-md-6 right">
-          <div className="input-box">
-            <div className="intro">
-              <span className="line"></span>
+    <div class="wrapper">
+      <div className="container main">
+        <div className="row">
+          <div className="col-md-6 side-image">
+            <img src="../../Assets/Sign pic.jpg" alt="hotel" />
+          </div>
+
+          <div className="col-md-6 right">
+            <div className="input-box">
               <h1>Welcome back !</h1>
-            </div>
-            <form onSubmit={handleSubmit}>
-              <div className="input-filed">
-                <input
-                  type="text"
-                  className="input"
-                  id="email"
-                  required
-                  autoComplete="off"
-                  placeholder="email"
-                  value={email}
-                  onChange={handleEmail}
-                />
+              <form onSubmit={handleSubmit}>
+                <div className="input-filed">
+                  <input
+                    type="text"
+                    class="input"
+                    id="email"
+                    required
+                    autoComplete="off"
+                    placeholder="email"
+                    value={email}
+                    onChange={handleEmail}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password">Password:</label>
+                  <input
+                    type="text"
+                    class="input"
+                    id="password"
+                    required
+                    autoComplete="off"
+                    placeholder="password"
+                    value={password}
+                    onChange={handlePassword}
+                  />
+                </div>
+                <button type="submit">Login</button>
+              </form>
+              <div className="sign-in">
+                <span>
+                  If you donU+2019t have an account.
+                  <a href="./Login">Sign-up</a>
+                </span>
               </div>
-              <div>
-                <input
-                  type="text"
-                  className="input"
-                  id="password"
-                  required
-                  autoComplete="off"
-                  placeholder="password"
-                  value={password}
-                  onChange={handlePassword}
-                />
-              </div>
-              <button type="submit" className="submit">
-                Login
-              </button>
-            </form>
-            <div className="sign-in">
-              <span
-                dangerouslySetInnerHTML={{
-                  __html:
-                    "If you don't have an account. <a href='./Login'>Sign-up</a>",
-                }}></span>
             </div>
           </div>
         </div>
