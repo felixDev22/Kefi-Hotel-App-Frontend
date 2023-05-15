@@ -1,17 +1,19 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
+// import Navigation from './components/navigation/Navigation';
+// import Main from './components/main/Main';
 import Splash from './components/splash/Splash';
 import Login from './components/login/Login';
-import './app.css';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
         <Routes>
-          <Route exact path="/" component={Splash} />
-          <Route path="/login" component={Login} />
+          <Route path="/" element={<Splash />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
