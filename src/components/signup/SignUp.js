@@ -11,7 +11,7 @@ import {
   selectRegisterData,
   selectRegisterLoading
 } from '../../features/slices/auth/register';
-
+import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 import '../login/login.css';
 
 export default function register() {
@@ -22,9 +22,16 @@ export default function register() {
   const [password_confirmation, setConfirmPassword] = useState('');
   const [errorStrings, setErrorStrings] = useState([]);
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const dispatch = useDispatch();
   const loading = useSelector(selectRegisterLoading);
   const registerData = useSelector(selectRegisterData);
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   const validateInputFields = () => {
     const errors = [];
@@ -120,17 +127,23 @@ export default function register() {
                   />
               </div>
 
-              <div>
+              <div className="input-filed">
                 <input
-                    type="text"
-                    class="input"
-                    id="password"
-                    required
-                    autoComplete="off"
-                    placeholder="Password"
-                    value={password}
+                  type={showPassword ? 'text' : 'password'}
+                  className="input"
+                  id="password"
+                  required
+                  autoComplete="off"
+                  placeholder="Password"
+                  value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  />
+                />
+                <span
+                  className="input-icon"
+                  onClick={handleTogglePasswordVisibility}
+                >
+                  {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+                </span>
               </div>
 
               <div>

@@ -19,10 +19,21 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [errorStrings, setErrorStrings] = useState([]);
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const dispatch = useDispatch();
   const loginData = useSelector(selectLoginData);
 
   const userToken = localStorage.getItem('token');
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   const validateInputFields = () => {
     const errors = [];
@@ -102,9 +113,12 @@ export default function Login() {
                   onChange={handleEmail}
                 />
               </div>
-              <div>
+
+              <div className='input-filed'>
                 <input
-                  type="text"
+                  type = {
+                    showPassword ? 'text' : 'password'
+                  }
                   className="input"
                   id="password"
                   required
@@ -113,6 +127,9 @@ export default function Login() {
                   value={password}
                   onChange={handlePassword}
                 />
+                <span onClick={handleTogglePasswordVisibility} className="input-icon">
+                  {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+                </span>
               </div>
 
               {
