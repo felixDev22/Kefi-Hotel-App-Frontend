@@ -7,6 +7,15 @@
   box-sizing: border-box;
 }
 
+:root {
+  --orange-clr: #fe6814;
+  --green-clr: #72b600;
+  --red-clr: #f91717;
+  --grey-clr: #ececec;
+  --border-radius: 8px;
+  --border-line: 1px solid #979596;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -121,9 +130,3 @@ span a {
 span a:hover {
   color: var(--orange-clr);
 }
-/* @media only screen and (max-width: 768px) {
-  .row {
-    max-width: 420px;
-    width: 100%;
-  }
-} */
