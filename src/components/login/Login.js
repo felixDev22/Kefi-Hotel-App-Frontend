@@ -26,7 +26,7 @@ export default function Login() {
           <div className="input-box">
             <div className="intro">
               <span className="line"></span>
-              <h1>Welcome back !</h1>
+              <h1>Welcome!</h1>
             </div>
             <form onSubmit={handleSubmit}>
               <div className="input-filed">
