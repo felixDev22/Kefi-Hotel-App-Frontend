@@ -7,28 +7,26 @@ import {
   useSelector
 } from 'react-redux';
 import {
-  loginUser,
-  selectLoginData,
-  selectLoginLoading
-} from '../../features/slices/auth/login';
+  registerUser,
+  selectRegisterData,
+  selectRegisterLoading
+} from '../../features/slices/auth/register';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
-import './login.css';
+import '../login/login.css';
 
-export default function Login() {
+export default function register() {
+
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [password_confirmation, setConfirmPassword] = useState('');
   const [errorStrings, setErrorStrings] = useState([]);
 
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
-  const loginData = useSelector(selectLoginData);
-
-  const userToken = localStorage.getItem('token');
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  const loading = useSelector(selectRegisterLoading);
+  const registerData = useSelector(selectRegisterData);
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -37,37 +35,37 @@ export default function Login() {
 
   const validateInputFields = () => {
     const errors = [];
+    if (!name) {
+      errors.push('Name is required');
+    }
     if (!email) {
       errors.push('Email is required');
     }
     if (!password) {
       errors.push('Password is required');
     }
+    if (!password_confirmation) {
+      errors.push('Confirm Password is required');
+    }
+    if (password !== password_confirmation) {
+      errors.push('Password and Confirm Password must be same');
+    }
 
     setErrorStrings(errors);
     return errors.length === 0;
   };
 
-  const loading = useSelector(selectLoginLoading);
-
+  const userToken = localStorage.getItem('token');
 
   useEffect(() => {
     if (userToken) {
       // token exist so navigate user to home page
     } else {
       // token does not exist so navigate user to login page
-      console.log('$loginData', loginData);
+      console.log('$registerData', registerData);
     }
-  }, [userToken, loginData]);
+  }, [userToken, registerData]);
 
-
-  const handleEmail = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,62 +73,99 @@ export default function Login() {
     setErrorStrings('')
 
     const user = {
+      name,
       email,
-      password
-    }
+      password,
+      password_confirmation
+    };
 
     if (validateInputFields()) {
-      dispatch(loginUser({
+      dispatch(registerUser({
         user,
       }));
     } else {
-      console.log('errorStrings', errorStrings);
+      console.log('error', errorStrings);
     }
-  };
+  }
+
 
   return (
     <div className="fluid">
       <div className="row">
-        <div className="col-md-6 side2-image">
+        <div className="col-md-6 side-image">
           <h2 className="logo">KeFi</h2>
         </div>
         <div className="col-md-6 right">
           <div className="input-box">
             <div className="intro">
               <span className="line"></span>
-              <h1>Welcome!</h1>
+              <h4>Welcome to the ultimate hotel booking site:</h4>
             </div>
             <form onSubmit={handleSubmit}>
+                <div className="input-filed">
+                  <input
+                    type="text"
+                    class="input"
+                    id="name"
+                    required
+                    autoComplete="off"
+                    placeholder="Full Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
               <div className="input-filed">
-                <input
-                  type="text"
-                  className="input"
-                  id="email"
-                  required
-                  autoComplete="off"
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={handleEmail}
-                />
+                  <input
+                    type="text"
+                    class="input"
+                    id="email"
+                    required
+                    autoComplete="off"
+                    placeholder="Email Address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
               </div>
 
-              <div className='input-filed'>
+              <div className="input-filed">
                 <input
-                  type = {
-                    showPassword ? 'text' : 'password'
-                  }
+                  type={showPassword ? 'text' : 'password'}
                   className="input"
                   id="password"
                   required
                   autoComplete="off"
                   placeholder="Password"
                   value={password}
-                  onChange={handlePassword}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
-                <span onClick={handleTogglePasswordVisibility} className="input-icon">
+                <span
+                  className="input-icon"
+                  onClick={handleTogglePasswordVisibility}
+                >
                   {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
                 </span>
               </div>
+
+              <div>
+                <input
+                  type="text"
+                  class="input"
+                  id="confirm-password"
+                  required
+                  autoComplete="off"
+                  placeholder="Confirm Password"
+                  value = {
+                    password_confirmation
+                  }
+                  onChange = {
+                      (e) => setConfirmPassword(e.target.value)
+                  }
+                />
+              </div>
+
+              {/* <button type="submit" className="submit">
+                Sign-Up
+              </button> */}
 
               {
                   errorStrings && errorStrings.length > 0 && (
@@ -153,19 +188,18 @@ export default function Login() {
                     </button>
                   ) : (
                     <button type="submit" className="submit">
-                          <p>Login</p>
+                          <p>Signup</p>
                       </button>
                     )
                 }
-
             </form>
             <div className="sign-in">
               <span
                 dangerouslySetInnerHTML={{
-                  __html:
-                    "Don't have an Account?. <a href='./signup'>Sign-Up</a>",
+                  __html: "Already have an Account?. <a href='./login'>Login</a>",
                 }}></span>
             </div>
+
           </div>
         </div>
       </div>
