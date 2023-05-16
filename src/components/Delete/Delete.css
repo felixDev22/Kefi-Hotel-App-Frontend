@@ -1,6 +1,6 @@
 .delete-hotels {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   width: 100%;
 }
 
@@ -53,4 +53,14 @@
 }
 .rightarr {
   float: inline-end;
+}
+
+.reservebtn {
+  width: 132.32px;
+  height: 44.51px;
+  background: #72b600;
+  border-radius: 6px;
+  float: right;
+  color: white;
+  margin-right: 40px;
 }
