@@ -9,7 +9,9 @@ import Navigation from './components/Navigation/Navigation';
 import Delete from './components/Delete/Delete';
 import Splash from './components/splash/Splash';
 import Login from './components/login/Login';
+import SignUp from './components/signup/SignUp';
 import Main from './components/main/Main';
+import './App.css';
 
 function App() {
   return (
