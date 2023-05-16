@@ -20,6 +20,10 @@ const Navigation = () => {
           <NavLink to="/delete-hotels" activeClassName="active">
             DELETE HOTEL
           </NavLink>
+
+          <NavLink to="/" activeClassName="active">
+            OUR SERVICES
+          </NavLink>
         </div>
       </div>
     </div>
