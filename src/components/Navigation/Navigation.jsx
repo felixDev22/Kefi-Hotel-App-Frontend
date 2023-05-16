@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navigation.css';
+import SocialLinks from './SocialLinks';
 
 const Navigation = () => {
   return (
@@ -24,6 +25,10 @@ const Navigation = () => {
             OUR SERVICES
           </NavLink>
         </div>
+      </div>
+      <div className="sociaals">
+        <SocialLinks />
+        <p className="copyRight">© 2023 Kefi Group</p>
       </div>
     </div>
   );
