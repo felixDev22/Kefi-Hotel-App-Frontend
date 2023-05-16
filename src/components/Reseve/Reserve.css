@@ -1,0 +1,245 @@
+.reserve-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2px auto;
+}
+
+.reserve-intro {
+  margin: 20px auto;
+}
+
+.reserve-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.reserve-subtitle {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.hotel-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.hotel-price-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hotel-price {
+  font-size: 1rem;
+}
+
+.actual-price {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.reserve-form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -15px;
+}
+
+.reserve-left {
+  width: 30rem;
+  height: 32rem;
+  margin: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.reserve-right {
+  width: 25rem;
+  height: 32rem;
+  margin: 1rem;
+  border-radius: 5px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+}
+
+.reserve-hotel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* border-radius: 5px 5px 0 0; */
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.adult-children {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.total-adult {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border: 1px solid #ccc;
+  border-radius: 10px 0 0 10px;
+  width: 50%;
+}
+
+.reserve-with-data {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
+
+.adult {
+  font-size: 16px;
+  margin: 10px;
+  color: #d3d3d3;
+}
+
+.minus {
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  color: #d3d3d3;
+  background-color: transparent;
+  border: none;
+  font-weight: bolder;
+}
+
+.number {
+  font-size: 16px;
+  margin: 10px;
+  color: #d3d3d3;
+}
+
+.plus {
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  color: #d3d3d3;
+  background-color: transparent;
+  border: none;
+  font-weight: bolder;
+}
+
+.total-children {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border: 1px solid #ccc;
+  border-radius: 0 10px 10px 0;
+  width: 50%;
+}
+
+.children {
+  font-size: 16px;
+  margin: 10px;
+  color: #d3d3d3;
+}
+
+.rooms-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 25px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.rooms {
+  font-size: 16px;
+  margin: 10px;
+  color: #d3d3d3;
+}
+
+.other-images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: self-start;
+  margin-top: 25px;
+  margin-left: -15px;
+}
+
+.image-left {
+  width: 32%;
+  height: 110px;
+  margin: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.image-right {
+  width: 32%;
+  height: 110px;
+  margin: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.reserve-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  margin-left: -85px;
+}
+
+.reserve-button {
+  background-color: #72B600;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  text-transform: uppercase;
+}
+
+.reserve-button:hover {
+  background-color: #6aa308;
+  color: white;
+}
+
+.my-reservation {
+  background-color: #FE6814;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  text-transform: uppercase;
+}
+
+.my-reservation:hover {
+  background-color: #e65a0a;
+  color: white;
+}
