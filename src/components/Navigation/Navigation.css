@@ -6,13 +6,14 @@ a {
 }
 
 .navigation {
-  width: 274px;
-  height: 905px;
-  left: -7px;
-  top: 0px;
-
+  width: 294px;
+  height: 100vh;
   background: #ffffff;
   border: 1px solid #afafaf;
+}
+
+.navi {
+  margin-top: 30px;
 }
 
 .logo {
@@ -21,7 +22,6 @@ a {
   font-weight: 700;
   font-size: 48px;
   line-height: 57px;
-
   color: #fe6814;
 }
 
@@ -34,10 +34,10 @@ a {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 24px;
   color: #000000;
-  margin-left: 60px;
+  margin-left: 30px;
 }
 
 .navbar a.active {
@@ -45,4 +45,16 @@ a {
   border-radius: 30px;
   padding: 5px 10px;
   color: #ffffff;
+}
+
+.navbar a:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+.deletebtn {
+  padding: 5px 10px;
+  color: white;
+  background-color: #fe6814;
+  border-radius: 10px;
 }

@@ -3,24 +3,30 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { deleteHotel, setHotels } from '../../redux/hotelsSlice';
+import { addHotel, deleteHotel } from '../../features/hotels';
 import './Delete.css';
-import rightarr from '../../Assets/rightarr.png';
-import leftarr from '../../Assets/leftarr.png';
 import rectangle from '../../Assets/rectangle.png';
-import dash from '../../Assets/dashed.png';
+import HotelList from '../HotelList/HotelList';
 
 const Delete = () => {
   const dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels);
-
+  console.log(hotels);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3000/api/v1/hotels')
-      .then((response) => dispatch(setHotels(response.data)))
-      .catch((error) => console.error(error));
+    dispatch(addHotel([]));
+
+    const fetchHotels = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/v1/hotels');
+        dispatch(addHotel(response.data));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchHotels();
   }, []);
 
   const handleDelete = (id) => {
@@ -47,36 +53,19 @@ const Delete = () => {
         <img src={rectangle} alt="rectangle" />
         <p>Changed your mind yet? Delete some hotels</p>
       </div>
-      <div className="delete">
-        <img src={leftarr} alt="left arrow" onClick={handlePrev} />
-        <div className="hotelList">
-          {hotels.length > 0 &&
-            hotels.slice(currentIndex, currentIndex + 3).map((hotel) => (
-              <div key={hotel.id} className="hotelItem">
-                <img src={hotel.photo} alt={hotel.name} />
-                <div className="hotelDetails">
-                  <h2 className="hotelName">{hotel.name}</h2>
-                  <span>
-                    <img className="hr" src={dash} alt="dash" />
-                  </span>
-                  <p>{hotel.desc}</p>
-                </div>
-                <button
-                  className="deletebtn"
-                  onClick={() => handleDelete(hotel.id)}
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
-        </div>
-        <img
-          src={rightarr}
-          alt="right arrow"
-          onClick={handleNext}
-          className="rightarr"
-        />
-      </div>
+      <HotelList
+        hotels={hotels}
+        currentIndex={currentIndex}
+        onNext={handleNext}
+        onPrev={handlePrev}
+        onDelete={handleDelete}
+      />
+      <button
+        onClick={() => (window.location.href = '/reserve')}
+        className="reservebtn"
+      >
+        Reserve
+      </button>
     </div>
   );
 };
