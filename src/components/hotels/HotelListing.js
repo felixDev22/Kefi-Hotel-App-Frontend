@@ -14,8 +14,10 @@ export default function HotelListing() {
     setCurrentIndex(currentIndex === 0 ? hotels.length - 1 : currentIndex - 1);
   };
 
-  const hotels = useSelector((state) => state.hotels);
-  console.log('this is the data', hotels);
+  const hotels = useSelector((state) => state.hotels.hotels);
+  const data = useSelector((state) => console.log(state));
+
+  console.log('this is the data', data);
   return (
     <div className="hotelList">
       <img src={leftarr} alt="left arrow" onClick={handlePrev} />
