@@ -1,15 +1,9 @@
-import React, {
-  useState,
-  useEffect
-} from 'react';
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   loginUser,
   selectLoginData,
-  selectLoginLoading
+  selectLoginLoading,
 } from '../../features/slices/auth/login';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 import './login.css';
@@ -34,7 +28,6 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
-
   const validateInputFields = () => {
     const errors = [];
     if (!email) {
@@ -50,7 +43,6 @@ export default function Login() {
 
   const loading = useSelector(selectLoginLoading);
 
-
   useEffect(() => {
     if (userToken) {
       // token exist so navigate user to home page
@@ -59,7 +51,6 @@ export default function Login() {
       console.log('$loginData', loginData);
     }
   }, [userToken, loginData]);
-
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -72,17 +63,19 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setErrorStrings('')
+    setErrorStrings('');
 
     const user = {
       email,
-      password
-    }
+      password,
+    };
 
     if (validateInputFields()) {
-      dispatch(loginUser({
-        user,
-      }));
+      dispatch(
+        loginUser({
+          user,
+        }),
+      );
     } else {
       console.log('errorStrings', errorStrings);
     }
@@ -114,50 +107,45 @@ export default function Login() {
                 />
               </div>
 
-              <div className='input-filed'>
-                <input
-                  type = {
-                    showPassword ? 'text' : 'password'
-                  }
-                  className="input"
-                  id="password"
-                  required
-                  autoComplete="off"
-                  placeholder="Password"
-                  value={password}
-                  onChange={handlePassword}
-                />
-                <span onClick={handleTogglePasswordVisibility} className="input-icon">
-                  {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
-                </span>
+              <div className="input-filed">
+                <div className="input-wrapper">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    className="input"
+                    id="password"
+                    required
+                    autoComplete="off"
+                    placeholder="Password"
+                    value={password}
+                    onChange={handlePassword}
+                  />
+                  <span
+                    onClick={handleTogglePasswordVisibility}
+                    className="see-password">
+                    {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+                  </span>
+                </div>
               </div>
 
-              {
-                  errorStrings && errorStrings.length > 0 && (
-                    <div className="error">
-                      <ul>
-                        {
-                          errorStrings.map((error) => (
-                            <li key={error}>{error}</li>
-                          ))
-                        }
-                      </ul>
-                    </div>
-                  )
-                }
+              {errorStrings && errorStrings.length > 0 && (
+                <div className="error">
+                  <ul>
+                    {errorStrings.map((error) => (
+                      <li key={error}>{error}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-                {
-                  loading ? (
-                    <button type="submit" className="submit" disabled>
-                          <p>Loading...</p>
-                    </button>
-                  ) : (
-                    <button type="submit" className="submit">
-                          <p>Login</p>
-                      </button>
-                    )
-                }
-
+              {loading ? (
+                <button type="submit" className="submit" disabled>
+                  <p>Loading...</p>
+                </button>
+              ) : (
+                <button type="submit" className="submit">
+                  <p>Login</p>
+                </button>
+              )}
             </form>
             <div className="sign-in">
               <span
