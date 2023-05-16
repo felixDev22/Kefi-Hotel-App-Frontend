@@ -8,7 +8,7 @@ const Navigation = () => {
       <div className="navi">
         <h1 className="logo">KeFi</h1>
         <div className="navbar">
-          <NavLink exact to="/hotel" activeClassName="active">
+          <NavLink exact to="/main" activeClassName="active">
             HOTELS
           </NavLink>
           <NavLink to="/reservation" activeClassName="active">
