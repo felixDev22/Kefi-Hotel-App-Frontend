@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {
+  createSlice
+} from '@reduxjs/toolkit';
 
 const initialState = {
   hotels: [],
@@ -9,7 +11,9 @@ const hotelsSlice = createSlice({
   name: 'hotels',
   initialState,
   reducers: {
-    addHotel: (state, { payload }) => {
+    addHotel: (state, {
+      payload
+    }) => {
       state.hotels = payload;
     },
     deleteHotel: (state, action) => {
@@ -23,6 +27,9 @@ const hotelsSlice = createSlice({
   },
 });
 
-export const { addHotel, deleteHotel } = hotelsSlice.actions;
+export const {
+  addHotel,
+  deleteHotel
+} = hotelsSlice.actions;
 // export const getAllHotel = (state) => state.hotels
 export default hotelsSlice.reducer;

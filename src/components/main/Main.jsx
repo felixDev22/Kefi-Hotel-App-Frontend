@@ -21,7 +21,7 @@ export default function Main() {
   }, []);
   return (
     <>
-       <Navigation />
+      <Navigation />
       <div className="container">
       <hr></hr>
       <p className="title">Enjoy your stay at any of our selections</p>
