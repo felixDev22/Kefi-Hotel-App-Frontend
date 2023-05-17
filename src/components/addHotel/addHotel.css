@@ -40,6 +40,13 @@
   border-radius: 10px;
 }
 
+.add-btn {
+  color: #fff;
+  padding: 0px 30px;
+  background: var(--orange-clr);
+  border-radius: 10px;
+}
+
 .add-btn p {
   margin-top: 10px;
 }
