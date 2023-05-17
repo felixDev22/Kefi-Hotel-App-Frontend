@@ -33,7 +33,9 @@ const Navigation = () => {
           <NavLink to="/our-services" activeClassName="active">
             OUR SERVICES
           </NavLink>
-          <button onClick={handleLogout}>Logout</button>
+          <button className="logoutbtn" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       </div>
       <div className="sociaals">
