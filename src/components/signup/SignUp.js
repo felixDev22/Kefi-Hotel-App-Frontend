@@ -1,17 +1,8 @@
-import React, {
-  useState,
-  useEffect
-} from 'react';
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux';
-import {
-  registerUser,
-  selectRegisterData,
-  selectRegisterLoading
-} from '../../features/slices/auth/register';
+import React, { useState} from 'react';
+import { useDispatch, useSelector} from 'react-redux';
+import {registerUser} from '../../features/slices/auth/register';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
+import { Navigate } from "react-router-dom";
 import '../login/login.css';
 
 export default function register() {
@@ -20,72 +11,28 @@ export default function register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password_confirmation, setConfirmPassword] = useState('');
-  const [errorStrings, setErrorStrings] = useState([]);
-
   const [showPassword, setShowPassword] = useState(false);
-
   const dispatch = useDispatch();
-  const loading = useSelector(selectRegisterLoading);
-  const registerData = useSelector(selectRegisterData);
 
+  const errorStrings = useSelector(state => state.register.errors)
+  const iscreated = useSelector(state => state.register.iscreated)
+  console.log(iscreated)
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-
-  const validateInputFields = () => {
-    const errors = [];
-    if (!name) {
-      errors.push('Name is required');
-    }
-    if (!email) {
-      errors.push('Email is required');
-    }
-    if (!password) {
-      errors.push('Password is required');
-    }
-    if (!password_confirmation) {
-      errors.push('Confirm Password is required');
-    }
-    if (password !== password_confirmation) {
-      errors.push('Password and Confirm Password must be same');
-    }
-
-    setErrorStrings(errors);
-    return errors.length === 0;
-  };
-
-  const userToken = localStorage.getItem('token');
-
-  useEffect(() => {
-    if (userToken) {
-      // token exist so navigate user to home page
-    } else {
-      // token does not exist so navigate user to login page
-      console.log('$registerData', registerData);
-    }
-  }, [userToken, registerData]);
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    setErrorStrings('')
-
     const user = {
       name,
       email,
       password,
       password_confirmation
     };
-
-    if (validateInputFields()) {
       dispatch(registerUser({
         user,
       }));
-    } else {
-      console.log('error', errorStrings);
-    }
+    
   }
 
 
@@ -101,6 +48,8 @@ export default function register() {
               <span className="line"></span>
               <h4>Welcome to the ultimate hotel booking site:</h4>
             </div>
+           {errorStrings && <p> {errorStrings} </p> }
+            {iscreated && <Navigate to="/login" />}
             <form onSubmit={handleSubmit}>
                 <div className="input-filed">
                   <input
@@ -162,36 +111,9 @@ export default function register() {
                   }
                 />
               </div>
-
-              {/* <button type="submit" className="submit">
-                Sign-Up
-              </button> */}
-
-              {
-                  errorStrings && errorStrings.length > 0 && (
-                    <div className="error">
-                      <ul>
-                        {
-                          errorStrings.map((error) => (
-                            <li key={error}>{error}</li>
-                          ))
-                        }
-                      </ul>
-                    </div>
-                  )
-                }
-
-                {
-                  loading ? (
-                    <button type="submit" className="submit" disabled>
-                          <p>Loading...</p>
-                    </button>
-                  ) : (
                     <button type="submit" className="submit">
                           <p>Signup</p>
                       </button>
-                    )
-                }
             </form>
             <div className="sign-in">
               <span

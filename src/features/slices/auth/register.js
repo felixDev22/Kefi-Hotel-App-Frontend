@@ -7,7 +7,7 @@ import axios from "axios";
 export const registerUser = createAsyncThunk(
   "register",
   async (data, thunkAPI) => {
-    const registerUrl = 'http://127.0.0.1:3000/api/v1/users';
+    const registerUrl = 'http://127.0.0.1:3000/signup';
 
     try {
       const response = await axios.post(registerUrl, data, {
@@ -17,7 +17,7 @@ export const registerUser = createAsyncThunk(
         },
       });
 
-      if (response.status === 201) {
+      if (response.status === 200) {
         return response.data;
       } else {
         return thunkAPI.rejectWithValue(response.data);
@@ -30,11 +30,9 @@ export const registerUser = createAsyncThunk(
 
 
 const initialState = {
-  loading: false,
-  success: false,
   data: {},
-  errorMessage: "",
-  errorStrings: [],
+  "iscreated": false,
+  "errors": ''
 };
 
 const registerSlice = createSlice({
@@ -42,32 +40,15 @@ const registerSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(
-      registerUser.pending,
-      (state) => {
-        state.loading = true;
-        state.success = false;
-        state.errorMessage = "";
-        state.errorStrings = [];
-      },
       builder.addCase(registerUser.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
         state.data = action.payload.data;
-        state.errorMessage = "";
-        state.errorStrings = [];
-        localStorage.setItem("token", action.payload.token);
+        state.iscreated = action.payload.iscreated;
+
       }),
       builder.addCase(registerUser.rejected, (state, action) => {
-        state.loading = false;
-        state.success = false;
+        state.errors = 'Email has already been taken';
         state.data = {};
-        state.errorMessage = action?.payload?.message || "Something went wrong";
-        state.errorStrings = Object.values(
-          action?.payload?.errors || {}
-        ).flat();
       })
-    );
   },
 });
 
@@ -77,8 +58,7 @@ export const SelectRegisterState = (state) => state.register;
 export const selectRegisterLoading = (state) => state.register.loading;
 export const selectRegisterSuccess = (state) => state.register.success;
 export const selectRegisterData = (state) => state.register.data;
-export const selectRegisterErrorMessage = (state) =>
-  state.register.errorMessage;
+export const selectRegisterErrorMessage = (state) => state.register.errorMessage;
 export const selectRegisterErrorStrings = (state) =>
   state.register.errorStrings;
 

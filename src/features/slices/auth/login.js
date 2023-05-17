@@ -8,7 +8,7 @@ export const loginUser = createAsyncThunk(
  "login",
  async (data, thunkAPI) => {
 
-  const loginUrl = 'http://127.0.0.1:3000/users/sign_in'
+  const loginUrl = 'http://127.0.0.1:3000/login'
 
   try {
    const response = await axios.post(loginUrl, data, {
@@ -19,6 +19,7 @@ export const loginUser = createAsyncThunk(
    });
 
    if (response.status === 200) {
+    // console.log( response.data)
     return response.data;
    } else {
     return thunkAPI.rejectWithValue(response.data);
@@ -30,11 +31,9 @@ export const loginUser = createAsyncThunk(
 );
 
 const initialState = {
- loading: false,
- success: false,
  data: {},
- error_message: '',
- errorStrings: [],
+ "islogged": false,
+ "errors": ''
 };
 
 const loginSlice = createSlice({
@@ -42,27 +41,14 @@ const loginSlice = createSlice({
  initialState,
  reducers: {},
  extraReducers: (builder) => {
-  builder.addCase(loginUser.pending, (state) => {
-    state.loading = true;
-    state.success = false;
-    state.data = null;
-    state.error_message = null;
-    state.errorStrings = [null];
-   },
    builder.addCase(loginUser.fulfilled, (state, action) => {
-    state.loading = false;
-    state.success = true;
-    state.data = action.payload.data;
-    state.error_message = '';
-    state.errorStrings = [];
-    localStorage.setItem('token', action.payload.data.token);
+    state.data = action.payload;
+    state.islogged = action.payload.logged_in;
+    if(action.payload.status == 401) state.errors = action.payload.errors[0];
    }),
    builder.addCase(loginUser.rejected, (state) => {
-    state.loading = false;
-    state.success = false;
-    state.data = {};;
+      state.data = action.payload;
    })
-  );
  },
 });
 
