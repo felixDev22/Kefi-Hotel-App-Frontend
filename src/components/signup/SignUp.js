@@ -1,12 +1,11 @@
-import React, { useState} from 'react';
-import { useDispatch, useSelector} from 'react-redux';
-import {registerUser} from '../../features/slices/auth/register';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser } from '../../features/slices/auth/register';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 import '../login/login.css';
 
-export default function register() {
-
+export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,9 +13,9 @@ export default function register() {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
-  const errorStrings = useSelector(state => state.register.errors)
-  const iscreated = useSelector(state => state.register.iscreated)
-  console.log(iscreated)
+  const errorStrings = useSelector((state) => state.register.errors);
+  const iscreated = useSelector((state) => state.register.iscreated);
+  console.log(iscreated);
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -27,14 +26,14 @@ export default function register() {
       name,
       email,
       password,
-      password_confirmation
+      password_confirmation,
     };
-      dispatch(registerUser({
+    dispatch(
+      registerUser({
         user,
-      }));
-    
-  }
-
+      })
+    );
+  };
 
   return (
     <div className="fluid">
@@ -48,32 +47,32 @@ export default function register() {
               <span className="line"></span>
               <h4>Welcome to the ultimate hotel booking site:</h4>
             </div>
-           {errorStrings && <p> {errorStrings} </p> }
+            {errorStrings && <p> {errorStrings} </p>}
             {iscreated && <Navigate to="/login" />}
             <form onSubmit={handleSubmit}>
-                <div className="input-filed">
-                  <input
-                    type="text"
-                    class="input"
-                    id="name"
-                    required
-                    autoComplete="off"
-                    placeholder="Full Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
               <div className="input-filed">
-                  <input
-                    type="text"
-                    class="input"
-                    id="email"
-                    required
-                    autoComplete="off"
-                    placeholder="Email Address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                <input
+                  type="text"
+                  class="input"
+                  id="name"
+                  required
+                  autoComplete="off"
+                  placeholder="Full Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="input-filed">
+                <input
+                  type="text"
+                  class="input"
+                  id="email"
+                  required
+                  autoComplete="off"
+                  placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
 
               <div className="input-filed">
@@ -103,25 +102,22 @@ export default function register() {
                   required
                   autoComplete="off"
                   placeholder="Confirm Password"
-                  value = {
-                    password_confirmation
-                  }
-                  onChange = {
-                      (e) => setConfirmPassword(e.target.value)
-                  }
+                  value={password_confirmation}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
-                    <button type="submit" className="submit">
-                          <p>Signup</p>
-                      </button>
+              <button type="submit" className="submit">
+                <p>Signup</p>
+              </button>
             </form>
             <div className="sign-in">
               <span
                 dangerouslySetInnerHTML={{
-                  __html: "Already have an Account?. <a href='./login'>Login</a>",
-                }}></span>
+                  __html:
+                    "Already have an Account?. <a href='./login'>Login</a>",
+                }}
+              ></span>
             </div>
-
           </div>
         </div>
       </div>

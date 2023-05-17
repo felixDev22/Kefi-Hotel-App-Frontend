@@ -127,3 +127,17 @@ a {
   font-weight: 400;
   margin-left: 30px;
 }
+
+.btnss {
+  padding: 5px 8px;
+  background-color: red;
+  color: white;
+
+  border-radius: 8px;
+  border: 1px solid red;
+}
+
+.btnss:hover {
+  color: black;
+  background-color: #ffffff;
+}
