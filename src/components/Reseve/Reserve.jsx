@@ -263,10 +263,6 @@ const Reserve = () => {
 
               <div className="reserve-buttons">
 
-                {/* <button type="submit" className={buttonClassName}>
-                  Reserve
-                </button> */}
-
                 <button
                   type="submit"
                   className={buttonClassName}
