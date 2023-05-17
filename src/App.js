@@ -11,6 +11,7 @@ import Splash from './components/splash/Splash';
 import Login from './components/login/Login';
 import SignUp from './components/signup/SignUp';
 import Main from './components/main/Main';
+import Room from './components/Rooms/Room';
 import './App.css';
 
 function App() {
@@ -38,6 +39,7 @@ function AppContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<Main />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/rooms" element={<Room />} />
       </Routes>
     </>
   );
