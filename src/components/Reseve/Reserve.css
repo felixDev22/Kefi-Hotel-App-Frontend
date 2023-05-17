@@ -200,6 +200,36 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.room-type {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.room-type-select {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 16px;;
+}
+
+.room-type-select:focus {
+  outline: none;
+  border-color: rgb(0, 0, 0, 0.5);
+
+}
+
+option {
+  color: #000;
+  background-color: #fff;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
 .reserve-buttons {
   display: flex;
   flex-direction: row;
