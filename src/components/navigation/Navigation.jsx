@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../features/slices/auth/logout';
 import './Navigation.css';
@@ -7,11 +7,10 @@ import SocialLinks from './SocialLinks';
 
 const Navigation = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    history.push('/login');
+    return <Navigate to="/login" />;
   };
 
   return (

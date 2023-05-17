@@ -26,7 +26,7 @@ export default authSlice.reducer;
 
 export const logoutUser = () => async (dispatch) => {
   try {
-    await axios.post('http:localhost:3000/logout');
+    await axios.post('http://localhost:3000/logout');
     dispatch(logoutUserSuccess());
   } catch (error) {
     dispatch(logoutUserFailure(error.message));
