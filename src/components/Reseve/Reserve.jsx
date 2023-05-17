@@ -22,8 +22,14 @@ const Reserve = () => {
     adults: 1,
     children: 0,
     rooms: 1,
-    roomType: 'single',
+    roomType: '',
   });
+
+  useEffect(() => {
+  if (reservation.roomType === '') {
+    setReservation({ ...reservation, roomType: 'Single' });
+  }
+}, [reservation]);
 
 
   const location = useLocation();
