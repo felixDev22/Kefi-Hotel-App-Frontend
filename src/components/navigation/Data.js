@@ -5,11 +5,11 @@ export const twitterLinks = [
     name: 'ELI',
     url: 'https://www.linkedin.com/in/ely-cheikh-maaloum-075a79135/',
   },
-  { name: 'KENNEDY', url: 'https://twitter.com/KeFi_Ke3' },
+  { name: 'KENNEDY', url: 'https://twitter.com/_iamkobby' },
 ];
 
 export const linkedinLinks = [
-  { name: 'KENNEDY', url: 'https://www.linkedin.com/company/kefi-ke/' },
+  { name: 'KENNEDY', url: 'www.linkedin.com/in/kennedy-owusu' },
   {
     name: 'ELI',
     url: 'https://www.linkedin.com/in/ely-cheikh-maaloum-075a79135/',
@@ -19,7 +19,7 @@ export const linkedinLinks = [
 ];
 
 export const githubLinks = [
-  { name: 'KENNEDY', url: 'https://github.com/KeFi-Ke' },
+  { name: 'KENNEDY', url: 'https://github.com/kennedyowusu' },
   { name: 'ELI', url: 'https://github.com/maaloum' },
   { name: 'FELIX', url: 'https://github.com/KeFi-Ke2' },
   { name: 'IBRAHIM', url: 'https://github.com/dmambo' },
