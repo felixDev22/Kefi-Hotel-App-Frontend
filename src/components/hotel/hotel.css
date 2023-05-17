@@ -1,16 +1,17 @@
 
 .card{
-    width: 25rem;
-    margin: 1rem;
+    width:265px;
+    height: 500px;
     border-radius: 30px;
 }
-
+.card-img-top{
+        border-radius : 22px 22px 0px 0px;
+        width:265px;
+        height: 150px;
+}
 .card .cardtitle{
     font-family: 'Inter', sans-serif;
     font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
 }
 
 .rating{
@@ -22,11 +23,12 @@
 
 .rating .fa, .fa-solid {
     color: #FE6814;
-    font-size: 15px;
+    font-size: 10px;
     padding: 3px;
 }
 .rating li{
     list-style: none;
+    font-size: 15px;
     color: #989495;
     margin: 1px;
     padding: 3px;
@@ -36,26 +38,20 @@
     color: #989495;
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 27px;
+    font-size: 25px;
 }
 
 .price span{
     color: #FE6814;
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 27px;
 }
 
 .card-text{
     color: #989495;
-    width: 100%;
     text-overflow: clip;
     overflow: hidden;
-
+    font-size: 12px;
 }
 
 .btn{
