@@ -1,10 +1,11 @@
 import React from 'react';
 import '../../components/login/login.css';
 import './addHotel.css';
+import newpic from '../../Assets/sign.png';
 
 const AddHotel = () => {
   return (
-    <div className="fluid container-add">
+    <div className="wrapper-add">
       <div className="row">
         <div className="col-md-6">
           <div className="add-title">
@@ -26,21 +27,10 @@ const AddHotel = () => {
               <input
                 type="text"
                 class="input"
-                id="Location"
+                id="photo"
                 required
                 autoComplete="off"
-                placeholder="Location:"
-                value="Location"
-              />
-            </div>
-            <div className="input-filed">
-              <input
-                type="text"
-                class="input"
-                id="Photo"
-                required
-                autoComplete="off"
-                placeholder="Photo:"
+                placeholder="Photo URL"
                 value="Photo"
               />
             </div>
@@ -48,46 +38,62 @@ const AddHotel = () => {
               <input
                 type="text"
                 class="input"
-                id="Bio"
+                id="rating"
                 required
                 autoComplete="off"
-                placeholder="Brief Intro:"
-                value="Bio"
+                placeholder="rating"
+                value="rating"
               />
             </div>
             <div className="input-filed">
               <input
                 type="text"
                 class="input"
-                id="Bio"
+                id="location"
                 required
                 autoComplete="off"
-                placeholder="Brief Intro:"
-                value="Bio"
+                placeholder="Location"
+                value="Location"
               />
             </div>
             <div className="input-filed">
               <input
                 type="text"
                 class="input"
-                id="Price"
+                id="price"
                 required
                 autoComplete="off"
                 placeholder="Price"
                 value="Price"
               />
             </div>
+
+            <div className="input-filed">
+              <input
+                type="text"
+                class="input"
+                id="desc"
+                required
+                autoComplete="off"
+                placeholder="Brief Intro:"
+                value="Bio"
+              />
+            </div>
+
+            <button type="submit" className="add-btn">
+              <p>Add</p>
+            </button>
           </form>
         </div>
         <div className="col-md-6 pic">
           <h4>New hotel:</h4>
 
-          <div className="input-box">
-            <div className="new-hotel card">
+          <div>
+            <div className="new-hotel">
               <div className="new-hotel-pic">
-                <image src="../../src/Assets/mombassa.png" />
+                <img src={newpic} alt="Hotel" />
               </div>
-              <h3>Mombasa Raha </h3>
+              <h5>{hotel.name}</h5>
             </div>
           </div>
         </div>
