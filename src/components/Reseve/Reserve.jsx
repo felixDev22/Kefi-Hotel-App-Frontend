@@ -3,6 +3,7 @@ import './Reserve.css';
 import Navigation from '../navigation/Navigation';
 import { useLocation } from "react-router-dom";
 import { FaSpinner } from 'react-icons/fa';
+import Dialog from '../Dialog/Dialog';
 
 
 const Reserve = () => {
@@ -309,17 +310,16 @@ const Reserve = () => {
                   Reserve
                 </button>
 
-                {error && (
-                    <div className="error-message">
-                      <p>{error}</p>
-                    </div>
-                  )}
+                  {error && (
+                      <div className="error-message">
+                        <p>{error}</p>
+                      </div>
+                    )}
 
-                  {dialogVisible && !error && (
-                    <div className="loading-dialog">
-                      <FaSpinner className="loading-icon" />
-                    </div>
-                  )}
+                    {dialogVisible && !error && (
+                      <Dialog message="Loading..." isLoading={isLoading} />
+                    )}
+
 
                   {/* {dialogVisible && !error && (
                     <div className="success-dialog">
