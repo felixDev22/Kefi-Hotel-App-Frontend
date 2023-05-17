@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../features/auth';
+import { logoutUser } from '../../features/slices/auth/logout';
 import './Navigation.css';
 import SocialLinks from './SocialLinks';
 
@@ -11,7 +11,7 @@ const Navigation = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    history.push('/login'); // Redirect to login page after logout
+    history.push('/login');
   };
 
   return (
