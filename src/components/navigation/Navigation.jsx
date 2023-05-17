@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../features/slices/auth/logout';
@@ -7,10 +7,11 @@ import SocialLinks from './SocialLinks';
 
 const Navigation = () => {
   const dispatch = useDispatch();
+  const [loggedOut, setLoggedOut] = useState(false);
 
-  const handleLogout = () => {
-    dispatch(logoutUser({ user }));
-    return <Navigate to="/login" />;
+  const handleLogout = async () => {
+    await dispatch(logoutUser());
+    setLoggedOut(true);
   };
 
   return (
@@ -42,6 +43,7 @@ const Navigation = () => {
         <SocialLinks />
         <p className="copyRight">© 2023 Kefi Group</p>
       </div>
+      {loggedOut && <Navigate to="/login" />}
     </div>
   );
 };
