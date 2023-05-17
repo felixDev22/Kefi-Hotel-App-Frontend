@@ -1,11 +1,5 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
-import './App.css';
-import Navigation from './components/Navigation/Navigation';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navigation from './components/navigation/Navigation';
 import Delete from './components/Delete/Delete';
 import Splash from './components/splash/Splash';
 import Login from './components/login/Login';
@@ -14,9 +8,11 @@ import Main from './components/main/Main';
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
       <Router>
+
         <AppContent />
       </Router>
     </div>
