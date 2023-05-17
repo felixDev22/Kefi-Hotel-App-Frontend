@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Reserve.css';
 import Navigation from '../navigation/Navigation';
 import { useLocation } from "react-router-dom";
-import { FaSpinner } from 'react-icons/fa';
 import Dialog from '../Dialog/Dialog';
 
 
