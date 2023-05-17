@@ -14,15 +14,19 @@ const hotelsSlice = createSlice({
     },
     deleteHotel: (state, action) => {
       const hotelIndex = state.hotels.findIndex(
-        (hotel) => hotel.id === action.payload
+        (hotel) => hotel.id === action.payload,
       );
       if (hotelIndex !== -1) {
         state.hotels.splice(hotelIndex, 1);
       }
     },
+    newHotel: (state, action) => {
+      const newHotel = action.payload;
+      state.hotels.push(newHotel);
+    },
   },
 });
 
-export const { addHotel, deleteHotel } = hotelsSlice.actions;
+export const { addHotel, deleteHotel, newHotel } = hotelsSlice.actions;
 // export const getAllHotel = (state) => state.hotels
 export default hotelsSlice.reducer;
