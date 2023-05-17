@@ -8,11 +8,12 @@ const roomsSlice = createSlice({
   name: 'rooms',
   initialState,
   reducers: {
-    addRoom: (state, { payload }) => {
-      state.rooms = payload;
+    fetchRooms: (state, action) => {
+      state.rooms = action.payload;
     },
   },
 });
 
-export const { addRoom } = roomsSlice.actions;
+export const { fetchRooms } = roomsSlice.actions;
+export const selectRooms = (state) => state.rooms.rooms;
 export default roomsSlice.reducer;
