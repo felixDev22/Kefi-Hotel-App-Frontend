@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './Reserve.css';
 import Navigation from '../navigation/Navigation';
-import { useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
 
 const Reserve = () => {
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
-  const hotels = useSelector((state) => state.hotels);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [dialogVisible, setDialogVisible] = useState(false);
+
 
   const [reservation, setReservation] = useState({
     checkInDate: '',
@@ -39,19 +41,43 @@ const Reserve = () => {
     return true
   };
 
-
-
   const handleReservationSubmit = (e) => {
     e.preventDefault();
 
     if (!validateReservation()) {
-      // return;
-      console.log("data not valid");
-    } else {
-      console.log("data valid");
-      console.log('this is the reservation data', reservation);
+      console.log("Data not valid");
+      return;
+    }
+    setIsLoading(true);
+
+    try {
+      setIsLoading(true);
+
+      // I will make the API call here
+
+      // Simulating a delay of 2 seconds using setTimeout
+      setTimeout(() => {
+        setIsLoading(false);
+        setDialogVisible(true);
+        console.log("This is the reservation data", reservation);
+      }, 2000);
+
+
+    } catch (error) {
+      setIsLoading(false);
+      console.error("An error occurred during validation:", error);
     }
   };
+
+  useEffect(() => {
+    if (isLoading) {
+      setDialogVisible(true);
+    } else {
+      setDialogVisible(false);
+    }
+  }, [isLoading]);
+
+
 
   const getCurrentDate = () => {
     const today = new Date();
@@ -235,9 +261,30 @@ const Reserve = () => {
 
               <div className="reserve-buttons">
 
-                <button type="submit" className={buttonClassName}>
+                {/* <button type="submit" className={buttonClassName}>
+                  Reserve
+                </button> */}
+
+                <button
+                  type="submit"
+                  className={buttonClassName}
+                  disabled={!validateReservation()}
+                  onClick={handleReservationSubmit}
+                >
                   Reserve
                 </button>
+
+                {dialogVisible && (
+                  <div className="loading-dialog">
+                    <p>Loading...</p>
+                  </div>
+                )}
+
+                {dialogVisible && (
+                  <div className="success-dialog">
+                    <p>Reservation successful!</p>
+                  </div>
+                )}
 
               <button type="button" className="my-reservation" to='/reservation'>
                 My Reservation
