@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './Reserve.css';
 import Navigation from '../navigation/Navigation';
 import { useLocation } from "react-router-dom";
+import { FaSpinner } from 'react-icons/fa';
+
 
 const Reserve = () => {
   const [checkInDate, setCheckInDate] = useState('');
@@ -276,7 +278,7 @@ const Reserve = () => {
 
                 {dialogVisible && (
                   <div className="loading-dialog">
-                    <p>Loading...</p>
+                    <FaSpinner className="loading-icon" />
                   </div>
                 )}
 
