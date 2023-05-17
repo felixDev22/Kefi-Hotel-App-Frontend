@@ -235,25 +235,9 @@ const Reserve = () => {
 
               <div className="reserve-buttons">
 
-                {/* <button type="submit" className="reserve-button" disabled={!validateReservation()}>
-                  Reserve
-                </button> */}
-
                 <button type="submit" className={buttonClassName}>
                   Reserve
                 </button>
-
-                {/* {
-                  validateReservation() ? (
-                    <button type="submit" className="reserve-button">
-                      Reserve
-                    </button>
-                  ) : (
-                      <button type="submit" className="invalid-button">
-                        Reserve
-                      </button>
-                    )
-                } */}
 
               <button type="button" className="my-reservation" to='/reservation'>
                 My Reservation
