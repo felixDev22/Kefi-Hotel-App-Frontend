@@ -26,18 +26,19 @@ const Reserve = () => {
   }
 
   const validateReservation = () => {
-    if (!checkInDate) {
+    if (!checkInDate || !checkOutDate) {
       return false;
-    } else if (!checkOutDate) {
+    } else if (reservation.adults < 1 || reservation.adults > 4) {
       return false;
-    } else if (reservation.adults < 1) {
-      return false;
-    } else if (reservation.children < 0) {
+    } else if (reservation.children < 0 || reservation.children > 6) {
       return false;
     } else if (reservation.rooms < 1) {
       return false;
     }
+
+    return true
   };
+
 
 
   const handleReservationSubmit = (e) => {
@@ -118,6 +119,8 @@ const Reserve = () => {
   const isAdultMaximumReached = reservation.adults >= 4;
   const isAdultMinimumReached = reservation.adults <= 1;
   const isChildrenMaximumReached = reservation.children >= 6;
+
+  const buttonClassName = validateReservation() ? 'reserve-button' : 'invalid-button';
 
   return (
     <>
@@ -232,9 +235,25 @@ const Reserve = () => {
 
               <div className="reserve-buttons">
 
-                <button type="submit" className="reserve-button" disabled={!validateReservation()}>
+                {/* <button type="submit" className="reserve-button" disabled={!validateReservation()}>
+                  Reserve
+                </button> */}
+
+                <button type="submit" className={buttonClassName}>
                   Reserve
                 </button>
+
+                {/* {
+                  validateReservation() ? (
+                    <button type="submit" className="reserve-button">
+                      Reserve
+                    </button>
+                  ) : (
+                      <button type="submit" className="invalid-button">
+                        Reserve
+                      </button>
+                    )
+                } */}
 
               <button type="button" className="my-reservation" to='/reservation'>
                 My Reservation
