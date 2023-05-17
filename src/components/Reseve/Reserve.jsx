@@ -12,6 +12,7 @@ const Reserve = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [dialogVisible, setDialogVisible] = useState(false);
 
+  const [error, setError] = useState(null);
 
   const [reservation, setReservation] = useState({
     checkInDate: '',
@@ -67,6 +68,7 @@ const Reserve = () => {
 
     } catch (error) {
       setIsLoading(false);
+      setError("An error occurred during room reservation. Please try again later.");
       console.error("An error occurred during validation:", error);
     }
   };
@@ -272,17 +274,29 @@ const Reserve = () => {
                   Reserve
                 </button>
 
-                {dialogVisible && (
+                {/* {dialogVisible && (
                   <div className="loading-dialog">
                     <FaSpinner className="loading-icon" />
                   </div>
-                )}
+                )} */}
 
-                {dialogVisible && (
-                  <div className="success-dialog">
-                    <p>Reservation successful!</p>
-                  </div>
-                )}
+                {error && (
+                    <div className="error-message">
+                      <p>{error}</p>
+                    </div>
+                  )}
+
+                  {dialogVisible && !error && (
+                    <div className="loading-dialog">
+                      <FaSpinner className="loading-icon" />
+                    </div>
+                  )}
+
+                  {/* {dialogVisible && !error && (
+                    <div className="success-dialog">
+                      <p>Reservation successful!</p>
+                    </div>
+                  )} */}
 
               <button type="button" className="my-reservation" to='/reservation'>
                 My Reservation
