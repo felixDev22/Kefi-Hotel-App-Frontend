@@ -1,0 +1,66 @@
+.delete-hotels {
+  /* display: flex;
+  flex-direction: column; */
+  width: 100%;
+}
+
+.info {
+  margin-top: 40px;
+}
+.delete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  padding: 30px;
+}
+
+.hotelList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.hotelList ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hotelItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid rgb(167, 166, 166);
+  padding-bottom: 20px;
+  border-radius: 20px;
+}
+
+.hotelDetails .hr {
+  width: 100%;
+  height: 2px;
+}
+
+.hotelDetails p {
+  color: gray;
+}
+
+.hotelItem img {
+  width: 300px;
+  height: 300px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.rightarr {
+  float: inline-end;
+}
+
+.reservebtn {
+  width: 132.32px;
+  height: 44.51px;
+  background: #72b600;
+  border-radius: 6px;
+  float: right;
+  color: white;
+  margin-right: 40px;
+}
