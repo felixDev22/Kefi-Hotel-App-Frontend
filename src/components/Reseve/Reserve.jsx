@@ -14,12 +14,15 @@ const Reserve = () => {
 
   const [error, setError] = useState(null);
 
+  const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
+
   const [reservation, setReservation] = useState({
     checkInDate: '',
     checkOutDate: '',
     adults: 1,
     children: 0,
     rooms: 1,
+    roomType: 'single',
   });
 
 
@@ -240,6 +243,32 @@ const Reserve = () => {
                     +
                   </button>
                 </div>
+              </div>
+
+              <div className='room-type'>
+                <select
+                    className={`room-type-select ${isRoomTypeValid ? '' : 'invalid'}`}
+                    value={reservation.roomType}
+                    onChange={(e) => {
+                      setReservation({ ...reservation, roomType: e.target.value });
+                      setIsRoomTypeValid(true);
+                    }}
+                  >
+                    <option value="">Select a room type</option>
+                    <option value="single">Single</option>
+                    <option value="double">Double</option>
+                    <option value="triple">Triple</option>
+                    <option value="quad">Quad</option>
+                    <option value="queen">Queen</option>
+                    <option value="king">King</option>
+                    <option value="twin">Twin</option>
+                    <option value="double-double">Double-Double</option>
+                    <option value="studio">Studio</option>
+                    <option value="master-suite">Master Suite</option>
+                  </select>
+
+                  {!isRoomTypeValid && <p className="error-message">Please select a room type</p>}
+
               </div>
 
               <div className="rooms-container">
