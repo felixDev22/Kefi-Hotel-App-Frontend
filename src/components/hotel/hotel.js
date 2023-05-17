@@ -1,7 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Mombassa from '../../Assets/mombassa.png';
 import vec from '../../Assets/vec.png';
-export default function hotel({hotel}) {
+
+
+export default function hotel({ hotel }) {
+
   return (
         <div class="card">
                     <img src={hotel.photo} className="card-img-top" alt="Mombassa"/>
@@ -29,9 +33,13 @@ export default function hotel({hotel}) {
                     <div className = 'price'>
                         <p>Price: <span>${hotel.price}</span></p>
                     </div>
+
                     <p class="card-text"> {hotel.desc}</p>
-                    <a href="#" class="btn btn-primary">Book Now</a>
+                    <button button class = "btn btn-primary" >
+                        <Link to={`/reserve/${hotel.id}`} state={{ hotel: hotel }}> Book Now</Link>
+                    </button>
+
                     </div>
         </div>
-  )
+    )
 }
