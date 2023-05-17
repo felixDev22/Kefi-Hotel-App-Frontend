@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './Reserve.css';
 import Navigation from '../navigation/Navigation';
 import image from '../../Assets/blue-sea.png';
+import { useSelector } from 'react-redux';
+import { useLocation } from "react-router-dom";
 
 const Reserve = () => {
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
-  // const [adults, setAdults] = useState(1);
-  // const [children, setChildren] = useState(0);
-  // const [rooms, setRooms] = useState(1);
+  const hotels = useSelector((state) => state.hotels);
 
   const [reservation, setReservation] = useState({
     checkInDate: '',
@@ -18,9 +18,18 @@ const Reserve = () => {
     rooms: 1,
   });
 
+
+  const location = useLocation();
+  const hotel = location.state?.hotel;
+
+  if (!hotel) {
+    return <div>No hotel data found.</div>;
+  }
+
+
   const handleReservationSubmit = (e) => {
     e.preventDefault();
-    // Handle reservation submission logic here
+    console.log('this is the reservation data', reservation);
   };
 
   return (
@@ -31,10 +40,10 @@ const Reserve = () => {
           <span className="line"></span>
           <h3 className="reserve-title">Book your Hotel Reservations</h3>
           <div className="reserve-subtitle">
-            <p className="hotel-name">Hotel Name</p>
+            <p className="hotel-name">{hotel.name}</p>
             <span className="hotel-price-container">
               <p className="hotel-price">Price:</p>
-              <p className="actual-price">$500</p>
+              <p className="actual-price">$ {hotel.price}</p>
             </span>
           </div>
         </div>
@@ -42,7 +51,7 @@ const Reserve = () => {
         <div className="reserve-form-container">
           <div className="reserve-left">
             <div className="reserve-card">
-              <img src="" alt="Hotel Image" className="reserve-hotel-image" />
+              <img src={hotel.photo} alt="Hotel Image" className="reserve-hotel-image" />
             </div>
           </div>
 
@@ -56,7 +65,6 @@ const Reserve = () => {
                   className="form-input"
                   placeholder="Check-in Date"
                   value={checkInDate}
-                  // onChange={(e) => setCheckInDate(e.target.value)}
                   onChange={(e) => { setCheckInDate(e.target.value); setReservation({ ...reservation, checkInDate: e.target.value }); }}
                 />
               </div>
@@ -69,7 +77,6 @@ const Reserve = () => {
                   className="form-input"
                   placeholder="Check-out Date"
                   value={checkOutDate}
-                  // onChange={(e) => setCheckOutDate(e.target.value)}
                   onChange={(e) => { setCheckOutDate(e.target.value); setReservation({ ...reservation, checkOutDate: e.target.value }); }}
                 />
               </div>
@@ -78,14 +85,12 @@ const Reserve = () => {
                 <div className="total-adult">
                   <p className="adult">Adults</p>
                   <button type="button" className="minus"
-                    // onClick={() => setAdults((prevAdults) => Math.max(prevAdults - 1, 0))}
                     onClick={() => setReservation({ ...reservation, adults: Math.max(reservation.adults - 1, 0) })}
                   >
                     -
                   </button>
                   <p className="number">{reservation.adults}</p>
                   <button type="button" className="plus"
-                    // onClick={() => setAdults((prevAdults) => prevAdults + 1)}
                     onClick={() => setReservation({ ...reservation, adults: reservation.adults + 1 })}
                   >
                     +
@@ -95,14 +100,12 @@ const Reserve = () => {
                 <div className="total-children">
                   <p className="children">Children</p>
                   <button type="button" className="minus"
-                    // onClick={() => setChildren((prevChildren) => Math.max(prevChildren - 1, 0))}
                     onClick={() => setReservation({ ...reservation, children: Math.max(reservation.children - 1, 0) })}
                   >
                     -
                   </button>
                   <p className="number">{reservation.children}</p>
                   <button type="button" className="plus"
-                    // onClick={() => setChildren((prevChildren) => prevChildren + 1)}
                     onClick={() => setReservation({ ...reservation, children: reservation.children + 1 })}
                   >
                     +
@@ -113,14 +116,12 @@ const Reserve = () => {
               <div className="rooms-container">
                 <p className="rooms">Rooms</p>
                 <button type="button" className="minus"
-                  // onClick={() => setRooms((prevRooms) => Math.max(prevRooms - 1, 0))}
                   onClick={() => setReservation({ ...reservation, rooms: Math.max(reservation.rooms - 1, 0) })}
                 >
 -
                 </button>
                 <p className="number">{reservation.rooms}</p>
                 <button type="button" className="plus"
-                  // onClick={() => setRooms((prevRooms) => prevRooms + 1)}
                   onClick={() => setReservation({ ...reservation, rooms: reservation.rooms + 1 })}
                 >
                 +
@@ -132,7 +133,13 @@ const Reserve = () => {
           </div>
 
           <div className="reserve-buttons">
-            <button type="submit" className="reserve-button">
+                <button type="submit" className="reserve-button"
+                  onClick={
+                    () => {
+                      console.log('this is the hotels data', hotels);
+                    }
+                  }
+                >
               Reserve
             </button>
             <button type="button" className="my-reservation" to='/reservation'>
@@ -140,9 +147,9 @@ const Reserve = () => {
             </button>
           </div>
         </form>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
     </>
 
   );
