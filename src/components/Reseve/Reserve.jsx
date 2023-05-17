@@ -274,12 +274,6 @@ const Reserve = () => {
                   Reserve
                 </button>
 
-                {/* {dialogVisible && (
-                  <div className="loading-dialog">
-                    <FaSpinner className="loading-icon" />
-                  </div>
-                )} */}
-
                 {error && (
                     <div className="error-message">
                       <p>{error}</p>
