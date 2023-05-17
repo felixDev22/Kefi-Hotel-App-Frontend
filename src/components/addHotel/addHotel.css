@@ -1,0 +1,18 @@
+.container-add {
+  margin-top: 10%;
+  padding: 0px 8%;
+}
+.new-hotel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.new-hotel-pic {
+  width: 100px;
+  height: 100px;
+}
+
+.new-hotel-pic image {
+  width: 100%;
+}
