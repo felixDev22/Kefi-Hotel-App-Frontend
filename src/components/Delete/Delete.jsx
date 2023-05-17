@@ -10,9 +10,13 @@ import HotelList from '../HotelList/HotelList';
 
 const Delete = () => {
   const dispatch = useDispatch();
-  const hotels = useSelector((state) => state.hotels);
-  console.log(hotels);
+  const hotels = useSelector((state) => state.hotels.hotels);
+  // const loading = useSelector((state) => state.hotels);
+
+  // console.log(loading);
+  // console.log(hotels);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(addHotel([]));
@@ -27,6 +31,7 @@ const Delete = () => {
     };
 
     fetchHotels();
+    setLoading(true);
   }, []);
 
   const handleDelete = (id) => {
@@ -49,6 +54,8 @@ const Delete = () => {
 
   return (
     <div className="delete-hotels">
+      {console.log('this is loading', loading)}
+
       <div className="info">
         <img src={rectangle} alt="rectangle" />
         <p>Changed your mind yet? Delete some hotels</p>
@@ -60,12 +67,14 @@ const Delete = () => {
         onPrev={handlePrev}
         onDelete={handleDelete}
       />
-      <button
-        onClick={() => (window.location.href = '/reserve')}
-        className="reservebtn"
-      >
-        Reserve
-      </button>
+      {!loading && (
+        <button
+          onClick={() => (window.location.href = '/reserve')}
+          className="reservebtn"
+        >
+          Reserve
+        </button>
+      )}
     </div>
   );
 };
