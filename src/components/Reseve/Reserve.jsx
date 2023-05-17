@@ -48,6 +48,27 @@ const Reserve = () => {
     return `${year}-${month}-${day}`;
   };
 
+  const getMinCheckOutDate = () => {
+    if (!checkInDate) {
+      return getCurrentDate();
+    }
+
+    const checkIn = new Date(checkInDate);
+    checkIn.setDate(checkIn.getDate() + 1);
+
+    const year = checkIn.getFullYear();
+    let month = checkIn.getMonth() + 1;
+    let day = checkIn.getDate();
+
+    if (month < 10) {
+      month = `0${month}`;
+    }
+    if (day < 10) {
+      day = `0${day}`;
+    }
+
+    return `${year}-${month}-${day}`;
+  };
 
   return (
     <>
@@ -95,6 +116,7 @@ const Reserve = () => {
                   className="form-input"
                   placeholder="Check-out Date"
                   value={checkOutDate}
+                  min={getMinCheckOutDate()}
                   onChange={(e) => { setCheckOutDate(e.target.value); setReservation({ ...reservation, checkOutDate: e.target.value }); }}
                 />
               </div>
