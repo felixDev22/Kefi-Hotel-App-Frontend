@@ -53,13 +53,4 @@ const registerSlice = createSlice({
 });
 
 export default registerSlice.reducer;
-
-export const SelectRegisterState = (state) => state.register;
-export const selectRegisterLoading = (state) => state.register.loading;
-export const selectRegisterSuccess = (state) => state.register.success;
-export const selectRegisterData = (state) => state.register.data;
-export const selectRegisterErrorMessage = (state) => state.register.errorMessage;
-export const selectRegisterErrorStrings = (state) =>
-  state.register.errorStrings;
-
 export const registerActions = registerSlice.actions;

@@ -53,17 +53,4 @@ const loginSlice = createSlice({
 });
 
 export default loginSlice.reducer;
-export const selectLoginLoading = (state) => state.login.loading;
-export const selectLoginSuccess = (state) => state.login.success;
-export const selectLoginData = (state) => state.login.data;
-export const selectLoginErrorMessage = (state) => state.login.error_message;
-export const selectLoginErrorStrings = (state) => state.login.errorStrings;
-
-export const selectLoginError = (state) => {
- return {
-  message: state.login.error_message,
-  errors: state.login.errorStrings,
- };
-};
-
 export const loginActions = loginSlice.actions;
