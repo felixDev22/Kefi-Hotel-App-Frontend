@@ -19,7 +19,7 @@ const initialState = {
 };
 
 const logoutSlice = createSlice({
-  name: 'login',
+  name: 'logout',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
