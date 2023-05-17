@@ -1,6 +1,7 @@
 import React from 'react';
 import Mombassa from '../../Assets/mombassa.png';
 import vec from '../../Assets/vec.png';
+import './hotel.css'
 export default function hotel({ hotel }) {
   return (
     <div class="card">
