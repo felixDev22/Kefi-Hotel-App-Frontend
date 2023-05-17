@@ -1,34 +1,38 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+export const logoutUser = createAsyncThunk('logout', async (_, thunkAPI) => {
+  const logoutUrl = 'http://127.0.0.1:3000/logout';
+
+  try {
+    await axios.post(logoutUrl);
+    return null; // Return null to indicate successful logout
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
 const initialState = {
-  user: null,
-  error: null,
+  data: {},
+  islogged: false,
+  errors: '',
 };
 
-const authSlice = createSlice({
-  name: 'auth',
+const logoutSlice = createSlice({
+  name: 'login',
   initialState,
-  reducers: {
-    logoutUserSuccess: (state) => {
-      state.user = null;
-      state.error = null;
-    },
-    logoutUserFailure: (state, action) => {
-      state.error = action.payload;
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(logoutUser.fulfilled, (state) => {
+      state.data = {};
+      state.isLogged = false;
+      state.errors = '';
+    });
+    builder.addCase(logoutUser.rejected, (state, action) => {
+      state.errors = action.payload;
+    });
   },
 });
 
-export const { logoutUserSuccess, logoutUserFailure } = authSlice.actions;
-
-export default authSlice.reducer;
-
-export const logoutUser = () => async (dispatch) => {
-  try {
-    await axios.post('http://localhost:3000/logout');
-    dispatch(logoutUserSuccess());
-  } catch (error) {
-    dispatch(logoutUserFailure(error.message));
-  }
-};
+export default logoutSlice.reducer;
+export const logoutActions = logoutSlice.actions;
