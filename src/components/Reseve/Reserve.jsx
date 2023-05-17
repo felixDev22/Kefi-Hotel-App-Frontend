@@ -25,10 +25,31 @@ const Reserve = () => {
     return <div>No hotel data found.</div>;
   }
 
+  const validateReservation = () => {
+    if (!checkInDate) {
+      return false;
+    } else if (!checkOutDate) {
+      return false;
+    } else if (reservation.adults < 1) {
+      return false;
+    } else if (reservation.children < 0) {
+      return false;
+    } else if (reservation.rooms < 1) {
+      return false;
+    }
+  };
+
 
   const handleReservationSubmit = (e) => {
     e.preventDefault();
-    console.log('this is the reservation data', reservation);
+
+    if (!validateReservation()) {
+      // return;
+      console.log("data not valid");
+    } else {
+      console.log("data valid");
+      console.log('this is the reservation data', reservation);
+    }
   };
 
   const getCurrentDate = () => {
@@ -80,19 +101,23 @@ const Reserve = () => {
 
   const getTotalPrice = () => {
     const basePrice = hotel.price;
+    const numberOfRooms = reservation.rooms;
     const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
 
-    return basePrice * numberOfDays;
+    return basePrice * numberOfDays * numberOfRooms;
   };
 
   const [totalPrice, setTotalPrice] = useState(getTotalPrice());
 
   useEffect(() => {
     setTotalPrice(getTotalPrice());
-  }, [checkInDate, checkOutDate]);
+  }, [checkInDate, checkOutDate, reservation.rooms]);
 
+  const isRoomButtonDisabled = reservation.adults >= 2 && reservation.children >= 4;
 
-  console.log()
+  const isAdultMaximumReached = reservation.adults >= 4;
+  const isAdultMinimumReached = reservation.adults <= 1;
+  const isChildrenMaximumReached = reservation.children >= 6;
 
   return (
     <>
@@ -149,13 +174,16 @@ const Reserve = () => {
                 <div className="total-adult">
                   <p className="adult">Adults</p>
                   <button type="button" className="minus"
-                    onClick={() => setReservation({ ...reservation, adults: Math.max(reservation.adults - 1, 0) })}
+                    onClick={() => setReservation({ ...reservation, adults: Math.max(reservation.adults - 1, 1) })}
+                    disabled={ isAdultMinimumReached }
                   >
                     -
                   </button>
                   <p className="number">{reservation.adults}</p>
                   <button type="button" className="plus"
-                    onClick={() => setReservation({ ...reservation, adults: reservation.adults + 1 })}
+                    onClick={() => setReservation({ ...reservation, adults: Math.min(reservation.adults + 1, 4),})
+                }
+                disabled={isAdultMaximumReached}
                   >
                     +
                   </button>
@@ -165,12 +193,16 @@ const Reserve = () => {
                   <p className="children">Children</p>
                   <button type="button" className="minus"
                     onClick={() => setReservation({ ...reservation, children: Math.max(reservation.children - 1, 0) })}
+                    disabled={isRoomButtonDisabled}
                   >
                     -
                   </button>
                   <p className="number">{reservation.children}</p>
                   <button type="button" className="plus"
-                    onClick={() => setReservation({ ...reservation, children: reservation.children + 1 })}
+                    onClick={() =>
+                  setReservation({ ...reservation, children: Math.min(reservation.children + 1, 6), })
+                }
+                disabled={isRoomButtonDisabled || isChildrenMaximumReached}
                   >
                     +
                   </button>
@@ -180,35 +212,33 @@ const Reserve = () => {
               <div className="rooms-container">
                 <p className="rooms">Rooms</p>
                 <button type="button" className="minus"
-                  onClick={() => setReservation({ ...reservation, rooms: Math.max(reservation.rooms - 1, 0) })}
+                  onClick={() => setReservation({ ...reservation, rooms: Math.max(reservation.rooms - 1, 1) })}
+                  disabled={isRoomButtonDisabled}
                 >
--
+                  -
                 </button>
                 <p className="number">{reservation.rooms}</p>
                 <button type="button" className="plus"
-                  onClick={() => setReservation({ ...reservation, rooms: reservation.rooms + 1 })}
+                  onClick={() => setReservation({ ...reservation, rooms: Math.min(reservation.rooms + 1, 6), })}
+                  disabled={isRoomButtonDisabled}
                 >
-                +
+                  +
                 </button>
               </div>
-                        <div className="other-images">
-            <div className="image-left">hello</div>
-            <div className="image-right">other image</div>
-          </div>
+                <div className="other-images">
+                  <div className="image-left">hello</div>
+                  <div className="image-right">other image</div>
+                </div>
 
-          <div className="reserve-buttons">
-                <button type="submit" className="reserve-button"
-                  onClick={
-                    () => {
-                      console.log('this is the hotels data', hotels);
-                    }
-                  }
-                >
-              Reserve
-            </button>
-            <button type="button" className="my-reservation" to='/reservation'>
-              My Reservation
-            </button>
+              <div className="reserve-buttons">
+
+                <button type="submit" className="reserve-button" disabled={!validateReservation()}>
+                  Reserve
+                </button>
+
+              <button type="button" className="my-reservation" to='/reservation'>
+                My Reservation
+              </button>
           </div>
         </form>
           </div>
