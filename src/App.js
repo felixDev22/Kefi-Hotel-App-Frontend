@@ -1,11 +1,6 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
+import { useLocation } from 'react-router-dom';
 import Delete from './components/Delete/Delete';
 import Splash from './components/splash/Splash';
 import Login from './components/login/Login';
@@ -32,11 +27,12 @@ function AppContent() {
 
   return (
     <>
-      {!isSplashPage && !isLoginPage && !isSignupPage && <Navigation />}
+      {!isSplashPage && !isSignupPage && !isLoginPage && <Navigation />}
       <Routes>
         <Route path="/" element={<Splash />} />
         <Route path="/delete-hotels" element={<Delete />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/main" element={<Main />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/rooms" element={<Room />} />

@@ -3,6 +3,7 @@ import Hotel from '../hotel/hotel';
 import { useSelector } from 'react-redux';
 import rightarr from '../../Assets/rightarr.png';
 import leftarr from '../../Assets/leftarr.png';
+import './hotellisting.css';
 
 export default function HotelListing() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,19 +16,16 @@ export default function HotelListing() {
   };
 
   const hotels = useSelector((state) => state.hotels.hotels);
-  const data = useSelector((state) => console.log(state));
-
-  console.log('this is the data', data);
   return (
     <div className="hotelList">
-      <img src={leftarr} alt="left arrow" onClick={handlePrev} />
+      <img src={leftarr} className="leftarr" alt="left arrow" onClick={handlePrev} />
       <div className="hotelList">
         {hotels.length > 0 &&
           hotels.slice(currentIndex, currentIndex + 3).map((hotel) => {
             return <Hotel hotel={hotel} key={hotel.id} />;
           })}
       </div>
-      <img src={rightarr} alt="right arrow" onClick={handleNext} />
+      <img src={rightarr} className="rightarr" alt="right arrow" onClick={handleNext} />
     </div>
   );
 }

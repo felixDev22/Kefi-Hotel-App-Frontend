@@ -9,7 +9,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logoutUser());
+    dispatch(logoutUser({ user }));
     return <Navigate to="/login" />;
   };
 
