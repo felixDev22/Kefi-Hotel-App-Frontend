@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Reserve.css';
 import Navigation from '../navigation/Navigation';
-import image from '../../Assets/blue-sea.png';
 import { useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
 
@@ -70,6 +69,31 @@ const Reserve = () => {
     return `${year}-${month}-${day}`;
   };
 
+  const calculateNumberOfDays = (checkIn, checkOut) => {
+    const startDate = new Date(checkIn);
+    const endDate = new Date(checkOut);
+    const timeDifference = endDate.getTime() - startDate.getTime();
+    const numberOfDays = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+    return numberOfDays;
+  };
+
+  const getTotalPrice = () => {
+    const basePrice = hotel.price;
+    const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
+
+    return basePrice * numberOfDays;
+  };
+
+  const [totalPrice, setTotalPrice] = useState(getTotalPrice());
+
+  useEffect(() => {
+    setTotalPrice(getTotalPrice());
+  }, [checkInDate, checkOutDate]);
+
+
+  console.log()
+
   return (
     <>
       <Navigation />
@@ -81,7 +105,7 @@ const Reserve = () => {
             <p className="hotel-name">{hotel.name}</p>
             <span className="hotel-price-container">
               <p className="hotel-price">Price:</p>
-              <p className="actual-price">$ {hotel.price}</p>
+              <p className="actual-price">$ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}</p>
             </span>
           </div>
         </div>
