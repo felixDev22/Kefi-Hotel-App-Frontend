@@ -128,15 +128,16 @@ a {
   margin-left: 30px;
 }
 
-.logoutbtn {
+.btnss {
   padding: 5px 8px;
-  color: black;
-  background-color: #ffffff;
+  background-color: red;
+  color: white;
+
   border-radius: 8px;
   border: 1px solid red;
 }
 
-.logoutbtn:hover {
-  background-color: red;
-  color: white;
+.btnss:hover {
+  color: black;
+  background-color: #ffffff;
 }

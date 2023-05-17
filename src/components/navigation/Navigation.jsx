@@ -33,7 +33,7 @@ const Navigation = () => {
           <NavLink to="/our-services" activeClassName="active">
             OUR SERVICES
           </NavLink>
-          <button className="logoutbtn" onClick={handleLogout}>
+          <button className="btnss" onClick={handleLogout}>
             Logout
           </button>
         </div>
