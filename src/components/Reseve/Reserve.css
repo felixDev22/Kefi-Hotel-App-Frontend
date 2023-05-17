@@ -266,7 +266,18 @@
   z-index: 9999;
 }
 
-.loading-dialog p {
-  color: white;
-  font-size: 20px;
+.loading-icon {
+  animation: spin 1s infinite linear;
+  font-weight: bold;
+  font-size: 50px;
+  color: #fff;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
