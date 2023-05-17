@@ -1,9 +1,19 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logoutUser } from '../../features/auth';
 import './Navigation.css';
 import SocialLinks from './SocialLinks';
 
 const Navigation = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    history.push('/login'); // Redirect to login page after logout
+  };
+
   return (
     <div className="navigation">
       <div className="navi">
@@ -24,6 +34,7 @@ const Navigation = () => {
           <NavLink to="/our-services" activeClassName="active">
             OUR SERVICES
           </NavLink>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       </div>
       <div className="sociaals">
