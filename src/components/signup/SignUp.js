@@ -1,37 +1,31 @@
-import React, {
-  useState,
-  useEffect
-} from 'react';
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   registerUser,
   selectRegisterData,
-  selectRegisterLoading
+  selectRegisterLoading,
 } from '../../features/slices/auth/register';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom'; // Updated import
 import '../login/login.css';
 
-export default function register() {
-
+export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password_confirmation, setConfirmPassword] = useState('');
   const [errorStrings, setErrorStrings] = useState([]);
-
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
   const loading = useSelector(selectRegisterLoading);
   const registerData = useSelector(selectRegisterData);
 
+  const navigate = useNavigate(); // Updated hook
+
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
 
   const validateInputFields = () => {
     const errors = [];
@@ -48,9 +42,8 @@ export default function register() {
       errors.push('Confirm Password is required');
     }
     if (password !== password_confirmation) {
-      errors.push('Password and Confirm Password must be same');
+      errors.push('Password and Confirm Password must be the same');
     }
-
     setErrorStrings(errors);
     return errors.length === 0;
   };
@@ -59,35 +52,43 @@ export default function register() {
 
   useEffect(() => {
     if (userToken) {
-      // token exist so navigate user to home page
+      navigate('/home'); // Redirect to home page if token exists
     } else {
-      // token does not exist so navigate user to login page
       console.log('$registerData', registerData);
     }
-  }, [userToken, registerData]);
+  }, [userToken, registerData, navigate]);
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    setErrorStrings('')
-
+    setErrorStrings('');
     const user = {
       name,
       email,
       password,
-      password_confirmation
+      password_confirmation,
     };
 
     if (validateInputFields()) {
-      dispatch(registerUser({
-        user,
-      }));
+      try {
+        await dispatch(registerUser({ user }));
+        navigate('/login'); // Redirect to login page after successful registration
+      } catch (error) {
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.errors
+        ) {
+          const errors = error.response.data.errors;
+          const errorStrings = Object.values(errors).flat();
+          setErrorStrings(errorStrings);
+        } else {
+          console.log('Error:', error);
+        }
+      }
     } else {
       console.log('error', errorStrings);
     }
-  }
-
+  };
 
   return (
     <div className="fluid">
@@ -102,29 +103,29 @@ export default function register() {
               <h4>Welcome to the ultimate hotel booking site:</h4>
             </div>
             <form onSubmit={handleSubmit}>
-                <div className="input-filed">
-                  <input
-                    type="text"
-                    class="input"
-                    id="name"
-                    required
-                    autoComplete="off"
-                    placeholder="Full Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
               <div className="input-filed">
-                  <input
-                    type="text"
-                    class="input"
-                    id="email"
-                    required
-                    autoComplete="off"
-                    placeholder="Email Address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                <input
+                  type="text"
+                  class="input"
+                  id="name"
+                  required
+                  autoComplete="off"
+                  placeholder="Full Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="input-filed">
+                <input
+                  type="text"
+                  class="input"
+                  id="email"
+                  required
+                  autoComplete="off"
+                  placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
 
               <div className="input-filed">
@@ -154,12 +155,8 @@ export default function register() {
                   required
                   autoComplete="off"
                   placeholder="Confirm Password"
-                  value = {
-                    password_confirmation
-                  }
-                  onChange = {
-                      (e) => setConfirmPassword(e.target.value)
-                  }
+                  value={password_confirmation}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
 
@@ -167,39 +164,34 @@ export default function register() {
                 Sign-Up
               </button> */}
 
-              {
-                  errorStrings && errorStrings.length > 0 && (
-                    <div className="error">
-                      <ul>
-                        {
-                          errorStrings.map((error) => (
-                            <li key={error}>{error}</li>
-                          ))
-                        }
-                      </ul>
-                    </div>
-                  )
-                }
+              {errorStrings && errorStrings.length > 0 && (
+                <div className="error">
+                  <ul>
+                    {errorStrings.map((error) => (
+                      <li key={error}>{error}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-                {
-                  loading ? (
-                    <button type="submit" className="submit" disabled>
-                          <p>Loading...</p>
-                    </button>
-                  ) : (
-                    <button type="submit" className="submit">
-                          <p>Signup</p>
-                      </button>
-                    )
-                }
+              {loading ? (
+                <button type="submit" className="submit" disabled>
+                  <p>Loading...</p>
+                </button>
+              ) : (
+                <button type="submit" className="submit">
+                  <p>Signup</p>
+                </button>
+              )}
             </form>
             <div className="sign-in">
               <span
                 dangerouslySetInnerHTML={{
-                  __html: "Already have an Account?. <a href='./login'>Login</a>",
-                }}></span>
+                  __html:
+                    "Already have an Account?. <a href='./login'>Login</a>",
+                }}
+              ></span>
             </div>
-
           </div>
         </div>
       </div>

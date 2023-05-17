@@ -27,15 +27,17 @@ function AppContent() {
   const location = useLocation();
   const isSplashPage = location.pathname === '/';
   const isLoginPage = location.pathname === '/login';
+  const isSignupPage = location.pathname === '/signup';
 
   return (
     <>
-      {!isSplashPage && !isLoginPage && <Navigation />}
+      {!isSplashPage && !isLoginPage && !isSignupPage && <Navigation />}
       <Routes>
         <Route path="/" element={<Splash />} />
         <Route path="/delete-hotels" element={<Delete />} />
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<Main />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </>
   );
