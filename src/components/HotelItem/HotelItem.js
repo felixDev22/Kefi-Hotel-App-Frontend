@@ -9,7 +9,7 @@ const HotelItem = ({ hotel, onDelete }) => {
       <div className="hotelDetails">
         <h2 className="hotelName">{hotel.name}</h2>
       </div>
-      <button className="deletebtn" onClick={() => onDelete(hotel.id)}>
+      <button className="btnss" onClick={() => onDelete(hotel.id)}>
         Delete
       </button>
     </div>

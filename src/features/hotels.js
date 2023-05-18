@@ -11,6 +11,7 @@ const hotelsSlice = createSlice({
   reducers: {
     addHotel: (state, { payload }) => {
       state.hotels = payload;
+      state.loading = !state.loading;
     },
     deleteHotel: (state, action) => {
       const hotelIndex = state.hotels.findIndex(
