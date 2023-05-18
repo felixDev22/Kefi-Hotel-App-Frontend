@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Reserve.css';
-import Navigation from '../navigation/Navigation';
 import { useLocation, useParams } from "react-router-dom";
 import Dialog from '../Dialog/Dialog';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,15 +29,15 @@ const Reserve = () => {
   const reserve = useSelector(selectReservation);
 
   const hotel = useSelector(selectSingleHotel);
-  // console.log(hotel);
+  console.log("Hotel data from the reserve component", hotel);
 
   const { id } = useParams();
 
   // console.log(id)
 
-  useEffect(() => {
-    console.log(dispatch(fetchHotel(id)))
-  }, [dispatch, id]);
+  // useEffect(() => {
+  //   console.log(dispatch(fetchHotel(id)))
+  // }, [dispatch, id]);
 
   const [reservation, setReservation] = useState({
     checkInDate: '',
@@ -50,26 +49,31 @@ const Reserve = () => {
   });
 
   useEffect(() => {
-  if (reservation.roomType === '') {
-    setReservation({ ...reservation, roomType: 'Single' });
-  }
-}, [reservation]);
+    dispatch(fetchHotel(id));
+    console.log(dispatch(fetchHotel(id)))
+    if (reservation.roomType === '') {
+      setReservation({
+        ...reservation,
+        roomType: 'Single'
+      });
+    }
+  }, [dispatch, id, reservation]);
 
+//   useEffect(() => {
+//   if (reservation.roomType === '') {
+//     setReservation({ ...reservation, roomType: 'Single' });
+//   }
+// }, [reservation]);
 
-  const location = useLocation();
-  // const hotel = location.state?.hotel;
-
-  // console.log(hotel);
-
-if (!hotel) {
-  return (
-    <div>
-      <Dialog message="Loading..." isLoading={true} />
-    </div>
-  );
-} else {
-  console.log("This is the hotel data coming in: ", hotel);
-}
+// if (!hotel) {
+//   return (
+//     <div>
+//       <Dialog message="Loading..." isLoading={true} />
+//     </div>
+//   );
+// } else {
+//   console.log("This is the hotel data coming in: ", hotel);
+// }
 
 
   const validateReservation = () => {
@@ -185,11 +189,11 @@ if (!hotel) {
   };
 
   const getTotalPrice = () => {
-    const basePrice = hotel.price;
+    // const basePrice = hotel.price;
     const numberOfRooms = reservation.rooms;
     const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
 
-    return basePrice * numberOfDays * numberOfRooms;
+    // return basePrice * numberOfDays * numberOfRooms;
   };
 
   const [totalPrice, setTotalPrice] = useState(getTotalPrice());
@@ -206,9 +210,10 @@ if (!hotel) {
 
   const buttonClassName = validateReservation() ? (reservationSuccessful ? 'invalid-button' : 'reserve-button') : 'invalid-button';
 
-  return (
+   if (!hotel) {
+    return <LoadingDialog />;
+  } else { return (
     <>
-      <Navigation />
       <div className="reserve-container">
         <div className="reserve-intro">
           <span className="line"></span>
@@ -385,7 +390,14 @@ if (!hotel) {
       </div>
     </>
 
-  );
+    );
+  };
 };
 
 export default Reserve;
+
+const LoadingDialog = () => (
+  <div>
+    <Dialog message="Loading..." isLoading={true} />
+  </div>
+);
