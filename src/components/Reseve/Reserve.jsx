@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './Reserve.css';
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Dialog from '../Dialog/Dialog';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectReservation, reserveActions, selectReserveError } from '../../features/slices/reserve/reserveSlice';
 import {
   fetchHotel,
   selectSingleHotel,
-  selectSingleHotelLoading,
-  selectSingleHotelError,
 } from '../../features/slices/reserve/singleReserveSlice';
 
 
@@ -23,6 +21,8 @@ const Reserve = () => {
 
   const [reservationSuccessful, setReservationSuccessful] = useState(false);
 
+  // const [hotel, setHotel] = useState(null);
+
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
 
   const dispatch = useDispatch();
@@ -31,13 +31,19 @@ const Reserve = () => {
   const hotel = useSelector(selectSingleHotel);
   console.log("Hotel data from the reserve component", hotel);
 
+  // const {
+  //   price,
+  //   name,
+  //   image
+  // } = hotel;
+
+  // console.log(price);
+  // console.log(name);
+  // console.log(image);
+
   const { id } = useParams();
 
   // console.log(id)
-
-  // useEffect(() => {
-  //   console.log(dispatch(fetchHotel(id)))
-  // }, [dispatch, id]);
 
   const [reservation, setReservation] = useState({
     checkInDate: '',
@@ -58,23 +64,6 @@ const Reserve = () => {
       });
     }
   }, [dispatch, id, reservation]);
-
-//   useEffect(() => {
-//   if (reservation.roomType === '') {
-//     setReservation({ ...reservation, roomType: 'Single' });
-//   }
-// }, [reservation]);
-
-// if (!hotel) {
-//   return (
-//     <div>
-//       <Dialog message="Loading..." isLoading={true} />
-//     </div>
-//   );
-// } else {
-//   console.log("This is the hotel data coming in: ", hotel);
-// }
-
 
   const validateReservation = () => {
     if (!checkInDate || !checkOutDate) {
@@ -118,7 +107,7 @@ const Reserve = () => {
         setDialogVisible(true);
         setReservationSuccessful(true);
         console.log("Reservation successful!");
-        // console.log(response.payload.data);
+        console.log(response.payload.data);
         console.log("Reserve Data:", reserve);
 
       } else {
@@ -210,19 +199,22 @@ const Reserve = () => {
 
   const buttonClassName = validateReservation() ? (reservationSuccessful ? 'invalid-button' : 'reserve-button') : 'invalid-button';
 
-   if (!hotel) {
-    return <LoadingDialog />;
+  if (!hotel) {
+    return (
+      <LoadingDialog />
+    );
   } else { return (
     <>
       <div className="reserve-container">
+        {/* {hotel.name} */}
         <div className="reserve-intro">
           <span className="line"></span>
           <h3 className="reserve-title">Book your Hotel Reservations</h3>
           <div className="reserve-subtitle">
-            {/* <p className="hotel-name">{hotel.name}</p> */}
+            <p className="hotel-name">{hotel.name}</p>
             <span className="hotel-price-container">
               <p className="hotel-price">Price:</p>
-              {/* <p className="actual-price">$ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}</p> */}
+              <p className="actual-price">$ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}</p>
             </span>
           </div>
         </div>
@@ -230,7 +222,7 @@ const Reserve = () => {
         <div className="reserve-form-container">
           <div className="reserve-left">
             <div className="reserve-card">
-              {/* <img src={hotel.photo} alt="Hotel Image" className="reserve-hotel-image" /> */}
+              <img src={hotel.photo} alt="Hotel Image" className="reserve-hotel-image" />
             </div>
           </div>
 
