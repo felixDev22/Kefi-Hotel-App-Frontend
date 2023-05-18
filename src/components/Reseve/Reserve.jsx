@@ -14,6 +14,8 @@ const Reserve = () => {
 
   const [error, setError] = useState(null);
 
+  const [reservationSuccessful, setReservationSuccessful] = useState(false);
+
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
 
   const [reservation, setReservation] = useState({
@@ -63,14 +65,26 @@ const Reserve = () => {
     setIsLoading(true);
 
     try {
-      setIsLoading(true);
 
-      // I will make the API call here
+     // Perform the actual reservation API call
+     // const response = await makeReservation();
+
+     // if (response.success) {
+     //   setIsLoading(false);
+     //   setDialogVisible(true);
+     //   setReservationSuccessful(true);
+     //   console.log("Reservation successful!");
+     // } else {
+     //   setIsLoading(false);
+     //   setError("An error occurred during room reservation. Please try again later.");
+     //   console.error("An error occurred during validation:", error);
+     // }
 
       // Simulating a delay of 2 seconds using setTimeout
       setTimeout(() => {
         setIsLoading(false);
         setDialogVisible(true);
+        setReservationSuccessful(true);
         console.log("This is the reservation data", reservation);
       }, 2000);
 
@@ -159,7 +173,7 @@ const Reserve = () => {
   const isAdultMinimumReached = reservation.adults <= 1;
   const isChildrenMaximumReached = reservation.children >= 6;
 
-  const buttonClassName = validateReservation() ? 'reserve-button' : 'invalid-button';
+  const buttonClassName = validateReservation() ? (reservationSuccessful ? 'invalid-button' : 'reserve-button') : 'invalid-button';
 
   return (
     <>
@@ -303,10 +317,14 @@ const Reserve = () => {
                 <button
                   type="submit"
                   className={buttonClassName}
-                  disabled={!validateReservation()}
+                  disabled = {
+                    !validateReservation() || reservationSuccessful
+                  }
                   onClick={handleReservationSubmit}
                 >
-                  Reserve
+                  {
+                    isLoading ? 'Reserving...' : (reservationSuccessful ? 'Reserved' : 'Reserve')
+                  }
                 </button>
 
                   {error && (
@@ -327,7 +345,7 @@ const Reserve = () => {
                   )} */}
 
               <button type="button" className="my-reservation" to='/reservation'>
-                My Reservation
+                Rooms
               </button>
           </div>
         </form>
