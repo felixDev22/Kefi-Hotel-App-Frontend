@@ -6,10 +6,13 @@ a {
 }
 
 .navigation {
-  width: 294px;
+  width: 264px;
   height: 100vh;
   background: #ffffff;
   border: 1px solid #afafaf;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .navi {
@@ -34,7 +37,7 @@ a {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 24px;
   color: #000000;
   margin-left: 30px;
@@ -57,4 +60,84 @@ a {
   color: white;
   background-color: #fe6814;
   border-radius: 10px;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 30px; */
+  margin: 30px;
+}
+
+.socials-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-links {
+  display: flex;
+  float: left;
+  /* gap: 10px; */
+  flex-direction: column;
+  margin-bottom: 20px;
+  align-items: flex-start;
+  color: #fe6814;
+  /* border: 1px solid black; */
+  /* padding: 8px; */
+}
+
+.social-links a {
+  text-decoration: none;
+  border: 1px solid rgb(126, 125, 125);
+  align-items: center;
+  width: 140px;
+  padding: 5px 10px;
+}
+
+.social-links a:nth-child(2) {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.social-links a:nth-child(5) {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.social-links a:hover {
+  background-color: #fe6814;
+  color: #ffffff;
+}
+
+.sociaals {
+  display: flex;
+  flex-direction: column;
+}
+
+.links p {
+  display: flex;
+  color: #000000;
+  font-weight: 400;
+  margin-left: 30px;
+}
+
+.btnss {
+  padding: 5px 8px;
+  background-color: red;
+  color: white;
+
+  border-radius: 8px;
+  border: 1px solid red;
+}
+
+.btnss:hover {
+  color: black;
+  background-color: #ffffff;
 }

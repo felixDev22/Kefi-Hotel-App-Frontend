@@ -40,7 +40,7 @@
   position: relative;
 }
 
-.logo {
+.logos {
   color: var(--orange-clr);
   font-family: 'Advent Pro', sans-serif;
   font-weight: 600;
@@ -49,10 +49,6 @@
   left: 50px;
   position: absolute;
 }
-
-/* img {
-  width: 100%;
-} */
 
 .right {
   display: flex;
@@ -90,7 +86,6 @@
 .input-field {
   display: flex;
   flex-direction: column;
-  position: relative;
   padding: 0 10px 0 10px;
 }
 .input {
@@ -101,6 +96,7 @@
   color: #40414a;
   border-radius: var(--border-radius);
   padding: 20px;
+  position: relative;
 }
 
 .submit {
@@ -129,4 +125,14 @@ span a {
 }
 span a:hover {
   color: var(--orange-clr);
+}
+.input-wrapper {
+  position: relative;
+}
+
+.see-password {
+  color: #b5b3b3;
+  position: absolute;
+  top: 25px;
+  right: 25px;
 }

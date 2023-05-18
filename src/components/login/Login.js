@@ -1,65 +1,20 @@
-import React, {
-  useState,
-  useEffect
-} from 'react';
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux';
-import {
-  loginUser,
-  selectLoginData,
-  selectLoginLoading
-} from '../../features/slices/auth/login';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../features/slices/auth/login';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
+import { Navigate } from 'react-router-dom';
 import './login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorStrings, setErrorStrings] = useState([]);
-
   const [showPassword, setShowPassword] = useState(false);
-
   const dispatch = useDispatch();
-  const loginData = useSelector(selectLoginData);
-
-  const userToken = localStorage.getItem('token');
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
+  const islogged = useSelector((state) => state.login.islogged);
+  const error = useSelector((state) => state.login.errors);
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
-
-  const validateInputFields = () => {
-    const errors = [];
-    if (!email) {
-      errors.push('Email is required');
-    }
-    if (!password) {
-      errors.push('Password is required');
-    }
-
-    setErrorStrings(errors);
-    return errors.length === 0;
-  };
-
-  const loading = useSelector(selectLoginLoading);
-
-
-  useEffect(() => {
-    if (userToken) {
-      // token exist so navigate user to home page
-    } else {
-      // token does not exist so navigate user to login page
-      console.log('$loginData', loginData);
-    }
-  }, [userToken, loginData]);
-
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -72,20 +27,15 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setErrorStrings('')
-
     const user = {
       email,
-      password
-    }
-
-    if (validateInputFields()) {
-      dispatch(loginUser({
+      password,
+    };
+    dispatch(
+      loginUser({
         user,
-      }));
-    } else {
-      console.log('errorStrings', errorStrings);
-    }
+      }),
+    );
   };
 
   return (
@@ -100,6 +50,8 @@ export default function Login() {
               <span className="line"></span>
               <h1>Welcome!</h1>
             </div>
+            {error && <p> {error} </p>}
+            {islogged && <Navigate to="/main" replace={true} />}
             <form onSubmit={handleSubmit}>
               <div className="input-filed">
                 <input
@@ -114,50 +66,31 @@ export default function Login() {
                 />
               </div>
 
-              <div className='input-filed'>
-                <input
-                  type = {
-                    showPassword ? 'text' : 'password'
-                  }
-                  className="input"
-                  id="password"
-                  required
-                  autoComplete="off"
-                  placeholder="Password"
-                  value={password}
-                  onChange={handlePassword}
-                />
-                <span onClick={handleTogglePasswordVisibility} className="input-icon">
-                  {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
-                </span>
+              <div className="input-filed">
+                <div className="input-wrapper">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    className="input"
+                    id="password"
+                    required
+                    autoComplete="off"
+                    placeholder="Password"
+                    value={password}
+                    onChange={handlePassword}
+                  />
+                  <span
+                    onClick={handleTogglePasswordVisibility}
+                    className="see-password">
+                    {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+                  </span>
+                </div>
               </div>
 
               {
-                  errorStrings && errorStrings.length > 0 && (
-                    <div className="error">
-                      <ul>
-                        {
-                          errorStrings.map((error) => (
-                            <li key={error}>{error}</li>
-                          ))
-                        }
-                      </ul>
-                    </div>
-                  )
-                }
-
-                {
-                  loading ? (
-                    <button type="submit" className="submit" disabled>
-                          <p>Loading...</p>
-                    </button>
-                  ) : (
-                    <button type="submit" className="submit">
-                          <p>Login</p>
-                      </button>
-                    )
-                }
-
+                <button type="submit" className="submit">
+                  <p>Login</p>
+                </button>
+              }
             </form>
             <div className="sign-in">
               <span

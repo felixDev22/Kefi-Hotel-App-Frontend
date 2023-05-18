@@ -64,3 +64,8 @@
   color: white;
   margin-right: 40px;
 }
+
+.reservebtn:hover {
+  background: #72b600;
+  color: white;
+}
