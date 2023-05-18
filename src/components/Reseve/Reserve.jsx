@@ -3,6 +3,8 @@ import './Reserve.css';
 import Navigation from '../navigation/Navigation';
 import { useLocation } from "react-router-dom";
 import Dialog from '../Dialog/Dialog';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectReserve, reserveActions, selectReserveError } from '../../features/slices/reserve/reserveSlice';
 
 
 const Reserve = () => {
@@ -17,6 +19,9 @@ const Reserve = () => {
   const [reservationSuccessful, setReservationSuccessful] = useState(false);
 
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
+
+  const dispatch = useDispatch();
+  const reserve = useSelector(selectReserve);
 
   const [reservation, setReservation] = useState({
     checkInDate: '',
@@ -55,7 +60,7 @@ const Reserve = () => {
     return true
   };
 
-  const handleReservationSubmit = (e) => {
+  const handleReservationSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateReservation()) {
@@ -65,36 +70,38 @@ const Reserve = () => {
     setIsLoading(true);
 
     try {
+      const formData = {
+        name: "John Doe",
+        price: 100,
+        checkInDate: "2021-08-01",
+        checkOutDate: "2021-08-02",
+        adults: 2,
+        children: 0,
+        rooms: 1,
+        roomType: "Single",
+      };
 
-     // Perform the actual reservation API call
-     // const response = await makeReservation();
+      const response = await dispatch(reserveActions.reserve(formData));
 
-     // if (response.success) {
-     //   setIsLoading(false);
-     //   setDialogVisible(true);
-     //   setReservationSuccessful(true);
-     //   console.log("Reservation successful!");
-     // } else {
-     //   setIsLoading(false);
-     //   setError("An error occurred during room reservation. Please try again later.");
-     //   console.error("An error occurred during validation:", error);
-     // }
-
-      // Simulating a delay of 2 seconds using setTimeout
-      setTimeout(() => {
+      if (response.payload) {
         setIsLoading(false);
         setDialogVisible(true);
         setReservationSuccessful(true);
-        console.log("This is the reservation data", reservation);
-      }, 2000);
+        console.log("Reservation successful!");
+        console.log(response.payload.data);
+        console.log("Reserve Data:", reserve);
 
-
+      } else {
+        setIsLoading(false);
+        setError("An error occurred during room reservation. Please try again later.");
+        console.error("An error occurred during room reservation:", selectReserveError());
+      }
     } catch (error) {
       setIsLoading(false);
       setError("An error occurred during room reservation. Please try again later.");
-      console.error("An error occurred during validation:", error);
+      console.error("An error occurred during room reservation:", error);
     }
-  };
+    };
 
   useEffect(() => {
     if (isLoading) {
