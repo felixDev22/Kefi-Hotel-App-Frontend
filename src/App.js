@@ -8,6 +8,7 @@ import SignUp from './components/signup/SignUp';
 import Main from './components/main/Main';
 import Room from './components/Rooms/Room';
 import './App.css';
+import AddHotel from './components/addHotel/AddHotel';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function AppContent() {
         <Route path="/main" element={<Main />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/rooms" element={<Room />} />
+        <Route path="/addHotel" element={<AddHotel />} />
       </Routes>
     </>
   );

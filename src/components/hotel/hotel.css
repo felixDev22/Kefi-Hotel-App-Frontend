@@ -23,8 +23,9 @@
 
 .rating .fa, .fa-solid {
     color: #FE6814;
-    font-size: 10px;
-    padding: 3px;
+    font-size: 12px;
+    padding: 5px;
+    margin: 5px;
 }
 .rating li{
     list-style: none;
@@ -32,6 +33,7 @@
     color: #989495;
     margin: 1px;
     padding: 3px;
+    text-align: center;
 }
 
 .price{

@@ -11,7 +11,7 @@ const store = configureStore({
     register: registerReducer,
     hotels: hotelsReducer,
     rooms: roomsReducer,
-    logout: logoutReducer,
+    // logout: logoutReducer,
   },
 });
 

@@ -12,15 +12,15 @@ export default function hotel({ hotel }) {
         <ul className="rating">
           <li>
             <i class="fa fa-star" aria-hidden="true"></i>
+            {hotel.rating}
           </li>
-          <li>{hotel.rating} Execeptional</li>
           <li>
             <i class="fa fa-circle" aria-hidden="true"></i>
           </li>
           <li>
             <i class="fa-solid fa-location-crosshairs"></i>
+            {hotel.location}
           </li>
-          <li>{hotel.location}</li>
         </ul>
         <div className="price">
           <p>

@@ -1,20 +1,10 @@
+// src/components/Navigation/Navigation.js
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from '../../features/slices/auth/logout';
+import { NavLink } from 'react-router-dom';
 import './Navigation.css';
 import SocialLinks from './SocialLinks';
 
 const Navigation = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const isLogged = useSelector((state) => state.logout.isLogged);
-
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    navigate('/login');
-  };
-
   return (
     <div className="navigation">
       <div className="navi">
@@ -35,15 +25,6 @@ const Navigation = () => {
           <NavLink to="/our-services" activeClassName="active">
             OUR SERVICES
           </NavLink>
-          {isLogged ? (
-            <button type="button" className="btnss" onClick={handleLogout}>
-              Logout
-            </button>
-          ) : (
-            <NavLink to="/login" className="btnss" activeClassName="active">
-              Login
-            </NavLink>
-          )}
         </div>
       </div>
       <div className="sociaals">

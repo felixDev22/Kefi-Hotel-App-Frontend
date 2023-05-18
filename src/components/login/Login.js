@@ -12,7 +12,6 @@ export default function Login() {
   const dispatch = useDispatch();
   const islogged = useSelector((state) => state.login.islogged);
   const error = useSelector((state) => state.login.errors);
-  console.log('islogged', error);
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -68,22 +67,24 @@ export default function Login() {
               </div>
 
               <div className="input-filed">
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  className="input"
-                  id="password"
-                  required
-                  autoComplete="off"
-                  placeholder="Password"
-                  value={password}
-                  onChange={handlePassword}
-                />
-                <span
-                  onClick={handleTogglePasswordVisibility}
-                  className="input-icon"
-                >
-                  {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
-                </span>
+                <div className="input-wrapper">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    className="input"
+                    id="password"
+                    required
+                    autoComplete="off"
+                    placeholder="Password"
+                    value={password}
+                    onChange={handlePassword}
+                  />
+                  <span
+                    onClick={handleTogglePasswordVisibility}
+                    className="see-password"
+                  >
+                    {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+                  </span>
+                </div>
               </div>
 
               {
