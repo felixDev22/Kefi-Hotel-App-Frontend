@@ -2,6 +2,8 @@ import React from 'react';
 import Mombassa from '../../Assets/mombassa.png';
 import vec from '../../Assets/vec.png';
 import './hotel.css'
+import { Link } from 'react-router-dom';
+
 export default function hotel({ hotel }) {
   return (
     <div class="card">
@@ -28,9 +30,17 @@ export default function hotel({ hotel }) {
           </p>
         </div>
         <p class="card-text"> {hotel.desc}</p>
-        <a href="#" class="btn btn-primary">
-          Book Now
-        </a>
+        <Link
+          to={{
+            pathname: `/hotel/${hotel.id}/reserve`,
+            state: {
+              hotel: hotel,
+              console: console.log(hotel),
+            },
+          }}
+        >
+          <button className="btn btn-primary">Book Now</button>
+        </Link>
       </div>
     </div>
   );
