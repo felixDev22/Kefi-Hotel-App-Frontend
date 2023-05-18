@@ -14,7 +14,7 @@ export const logoutUser = createAsyncThunk('logout', async (_, thunkAPI) => {
 
 const initialState = {
   data: {},
-  islogged: false,
+  isLogged: true,
   errors: '',
 };
 
@@ -35,4 +35,4 @@ const logoutSlice = createSlice({
 });
 
 export default logoutSlice.reducer;
-export const logoutActions = logoutSlice.actions;
+export const { logoutActions } = logoutSlice.actions;
