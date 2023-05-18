@@ -21,8 +21,6 @@ const Reserve = () => {
 
   const [reservationSuccessful, setReservationSuccessful] = useState(false);
 
-  // const [hotel, setHotel] = useState(null);
-
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
 
   const dispatch = useDispatch();
@@ -30,16 +28,6 @@ const Reserve = () => {
 
   const hotel = useSelector(selectSingleHotel);
   console.log("Hotel data from the reserve component", hotel);
-
-  // const {
-  //   price,
-  //   name,
-  //   image
-  // } = hotel;
-
-  // console.log(price);
-  // console.log(name);
-  // console.log(image);
 
   const { id } = useParams();
 
@@ -206,7 +194,6 @@ const Reserve = () => {
   } else { return (
     <>
       <div className="reserve-container">
-        {/* {hotel.name} */}
         <div className="reserve-intro">
           <span className="line"></span>
           <h3 className="reserve-title">Book your Hotel Reservations</h3>
@@ -364,13 +351,6 @@ const Reserve = () => {
                     {dialogVisible && !error && (
                       <Dialog message="Loading..." isLoading={isLoading} />
                     )}
-
-
-                  {/* {dialogVisible && !error && (
-                    <div className="success-dialog">
-                      <p>Reservation successful!</p>
-                    </div>
-                  )} */}
 
               <button type="button" className="my-reservation" to='/reservation'>
                 Rooms

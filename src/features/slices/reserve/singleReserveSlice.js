@@ -38,6 +38,7 @@ const singleHotelSlice = createSlice({
       })
       .addCase(fetchHotel.fulfilled, (state, action) => {
         state.loading = false;
+        console.log('fetchHotel fulfilled:', action.payload);
         state.hotel = action.payload;
       })
       .addCase(fetchHotel.rejected, (state, action) => {
