@@ -23,6 +23,7 @@ const hotelsSlice = createSlice({
     newHotel: (state, action) => {
       const newHotel = action.payload;
       state.hotels.push(newHotel);
+      state.loading = true;
     },
   },
 });
