@@ -4,22 +4,19 @@ import { registerUser } from '../../features/slices/auth/register';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 import { Navigate } from 'react-router-dom';
 import '../login/login.css';
-
-export default function Register() {
+export default function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [password_confirmation, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
-
   const errorStrings = useSelector((state) => state.register.errors);
   const iscreated = useSelector((state) => state.register.iscreated);
   console.log(iscreated);
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
@@ -31,10 +28,9 @@ export default function Register() {
     dispatch(
       registerUser({
         user,
-      })
+      }),
     );
   };
-
   return (
     <div className="fluid">
       <div className="row">
@@ -74,26 +70,25 @@ export default function Register() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-
               <div className="input-filed">
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  className="input"
-                  id="password"
-                  required
-                  autoComplete="off"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <span
-                  className="input-icon"
-                  onClick={handleTogglePasswordVisibility}
-                >
-                  {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
-                </span>
+                <div className="input-wrapper">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    className="input"
+                    id="password"
+                    required
+                    autoComplete="off"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <span
+                    className="see-password"
+                    onClick={handleTogglePasswordVisibility}>
+                    {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+                  </span>
+                </div>
               </div>
-
               <div>
                 <input
                   type="text"
@@ -115,8 +110,7 @@ export default function Register() {
                 dangerouslySetInnerHTML={{
                   __html:
                     "Already have an Account?. <a href='./login'>Login</a>",
-                }}
-              ></span>
+                }}></span>
             </div>
           </div>
         </div>

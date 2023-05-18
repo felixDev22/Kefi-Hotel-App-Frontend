@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {  loginUser} from '../../features/slices/auth/login';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../features/slices/auth/login';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
-import { Navigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 import './login.css';
 
 export default function Login() {
@@ -10,9 +10,8 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
-  const islogged = useSelector(state => state.login.islogged);
-  const error = useSelector(state => state.login.errors)
-  console.log('islogged', error);
+  const islogged = useSelector((state) => state.login.islogged);
+  const error = useSelector((state) => state.login.errors);
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -30,12 +29,13 @@ export default function Login() {
 
     const user = {
       email,
-      password
-    }
-      dispatch(loginUser({
+      password,
+    };
+    dispatch(
+      loginUser({
         user,
-      }));
-  
+      }),
+    );
   };
 
   return (
@@ -50,10 +50,8 @@ export default function Login() {
               <span className="line"></span>
               <h1>Welcome!</h1>
             </div>
-            {error && <p> {error} </p> }
-            { islogged && (
-              <Navigate to="/main" replace={true} />
-            )}
+            {error && <p> {error} </p>}
+            {islogged && <Navigate to="/main" replace={true} />}
             <form onSubmit={handleSubmit}>
               <div className="input-filed">
                 <input
@@ -68,33 +66,31 @@ export default function Login() {
                 />
               </div>
 
-              <div className='input-filed'>
-                <input
-                  type = {
-                    showPassword ? 'text' : 'password'
-                  }
-                  className="input"
-                  id="password"
-                  required
-                  autoComplete="off"
-                  placeholder="Password"
-                  value={password}
-                  onChange={handlePassword}
-                />
-                <span onClick={handleTogglePasswordVisibility} className="input-icon">
-                  {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
-                </span>
+              <div className="input-filed">
+                <div className="input-wrapper">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    className="input"
+                    id="password"
+                    required
+                    autoComplete="off"
+                    placeholder="Password"
+                    value={password}
+                    onChange={handlePassword}
+                  />
+                  <span
+                    onClick={handleTogglePasswordVisibility}
+                    className="see-password">
+                    {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+                  </span>
+                </div>
               </div>
 
-
-                {
-                   (
-                    <button type="submit" className="submit">
-                          <p>Login</p>
-                      </button>
-                    )
-                }
-
+              {
+                <button type="submit" className="submit">
+                  <p>Login</p>
+                </button>
+              }
             </form>
             <div className="sign-in">
               <span
