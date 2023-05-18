@@ -5,7 +5,7 @@ const reserve = createAsyncThunk(
  "reserve",
  async (data, thunkAPI) => {
 
-  const reserveUrl = 'http://http://127.0.0.1:3000/'
+  const reserveUrl = 'http://http://127.0.0.1:3000/api/v1/hotels'
   try {
    const response = await axios.post(reserveUrl, data, {
     headers: {
