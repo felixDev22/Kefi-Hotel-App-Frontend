@@ -34,12 +34,13 @@ const loginSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(loginUser.fulfilled, (state, action) => {
+    builder
+    .addCase(loginUser.fulfilled, (state, action) => {
       state.data = action.payload;
       state.islogged = action.payload.logged_in;
-      if (action.payload.status == 401) state.errors = action.payload.errors[0];
-    }),
-      builder.addCase(loginUser.rejected, (state) => {
+      if (action.payload.status === 401) state.errors = action.payload.errors[0];
+    })
+    .addCase(loginUser.rejected, (state, action) => {
         state.data = action.payload;
       });
   },
