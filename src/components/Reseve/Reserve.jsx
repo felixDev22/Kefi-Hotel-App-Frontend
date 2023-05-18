@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './Reserve.css';
 import Navigation from '../navigation/Navigation';
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Dialog from '../Dialog/Dialog';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectReserve, reserveActions, selectReserveError } from '../../features/slices/reserve/reserveSlice';
+import { selectReservation, reserveActions, selectReserveError } from '../../features/slices/reserve/reserveSlice';
+import {
+  fetchHotel,
+  selectSingleHotel,
+  selectSingleHotelLoading,
+  selectSingleHotelError,
+} from '../../features/slices/reserve/singleReserveSlice';
 
 
 const Reserve = () => {
@@ -21,7 +27,18 @@ const Reserve = () => {
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
 
   const dispatch = useDispatch();
-  const reserve = useSelector(selectReserve);
+  const reserve = useSelector(selectReservation);
+
+  const hotel = useSelector(selectSingleHotel);
+  // console.log(hotel);
+
+  const { id } = useParams();
+
+  // console.log(id)
+
+  useEffect(() => {
+    console.log(dispatch(fetchHotel(id)))
+  }, [dispatch, id]);
 
   const [reservation, setReservation] = useState({
     checkInDate: '',
@@ -40,11 +57,20 @@ const Reserve = () => {
 
 
   const location = useLocation();
-  const hotel = location.state?.hotel;
+  // const hotel = location.state?.hotel;
 
-  if (!hotel) {
-    return <div>No hotel data found.</div>;
-  }
+  // console.log(hotel);
+
+if (!hotel) {
+  return (
+    <div>
+      <Dialog message="Loading..." isLoading={true} />
+    </div>
+  );
+} else {
+  console.log("This is the hotel data coming in: ", hotel);
+}
+
 
   const validateReservation = () => {
     if (!checkInDate || !checkOutDate) {
@@ -88,7 +114,7 @@ const Reserve = () => {
         setDialogVisible(true);
         setReservationSuccessful(true);
         console.log("Reservation successful!");
-        console.log(response.payload.data);
+        // console.log(response.payload.data);
         console.log("Reserve Data:", reserve);
 
       } else {
@@ -110,8 +136,6 @@ const Reserve = () => {
       setDialogVisible(false);
     }
   }, [isLoading]);
-
-
 
   const getCurrentDate = () => {
     const today = new Date();
@@ -190,10 +214,10 @@ const Reserve = () => {
           <span className="line"></span>
           <h3 className="reserve-title">Book your Hotel Reservations</h3>
           <div className="reserve-subtitle">
-            <p className="hotel-name">{hotel.name}</p>
+            {/* <p className="hotel-name">{hotel.name}</p> */}
             <span className="hotel-price-container">
               <p className="hotel-price">Price:</p>
-              <p className="actual-price">$ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}</p>
+              {/* <p className="actual-price">$ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}</p> */}
             </span>
           </div>
         </div>
@@ -201,7 +225,7 @@ const Reserve = () => {
         <div className="reserve-form-container">
           <div className="reserve-left">
             <div className="reserve-card">
-              <img src={hotel.photo} alt="Hotel Image" className="reserve-hotel-image" />
+              {/* <img src={hotel.photo} alt="Hotel Image" className="reserve-hotel-image" /> */}
             </div>
           </div>
 
