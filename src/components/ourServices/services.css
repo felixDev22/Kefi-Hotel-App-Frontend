@@ -5,6 +5,12 @@
   background-repeat: none;
   background-size: cover;
 }
+
+.grid-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .pic-wrapper {
   margin-top: 15%;
   display: grid;
@@ -15,7 +21,6 @@
 .box {
   width: 200px;
   height: 200px;
-  border: 1px solid #ccc;
   object-fit: contain;
 }
 .service-pic {
