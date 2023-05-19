@@ -9,6 +9,7 @@ export default function hotel({ hotel }) {
     <div class="card">
       <img src={hotel.photo} className="card-img-top" alt="Mombassa" />
       <div class="card-body">
+
         <h5 class="card-title cardtitle">{hotel.name}</h5>
         <img src={vec} alt="Mombassa" />
         <ul className="rating">

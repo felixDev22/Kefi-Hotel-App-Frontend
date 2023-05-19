@@ -40,21 +40,19 @@ const singleHotelSlice = createSlice({
         state.loading = false;
         console.log('fetchHotel fulfilled:', action.payload);
         state.hotel = action.payload;
+
       })
-      .addCase(fetchHotel.rejected, (state, action) => {
+      .addCase(fetchHotel.rejected, (state) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = true;
       });
   },
 });
 
 export const { actions: singleHotelActions, reducer: singleHotelReducer } = singleHotelSlice;
 
-// Export the selectors
 export const selectSingleHotel = (state) => state.singleHotel.hotel;
 export const selectSingleHotelLoading = (state) => state.singleHotel.loading;
 export const selectSingleHotelError = (state) => state.singleHotel.error;
-
-// export { fetchHotel };
 
 export default singleHotelReducer;

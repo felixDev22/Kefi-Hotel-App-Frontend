@@ -31,8 +31,6 @@ const Reserve = () => {
 
   const { id } = useParams();
 
-  // console.log(id)
-
   const [reservation, setReservation] = useState({
     checkInDate: '',
     checkOutDate: '',
@@ -44,14 +42,22 @@ const Reserve = () => {
 
   useEffect(() => {
     dispatch(fetchHotel(id));
-    console.log(dispatch(fetchHotel(id)))
+    console.log(dispatch(fetchHotel(id)));
     if (reservation.roomType === '') {
       setReservation({
         ...reservation,
         roomType: 'Single'
       });
     }
-  }, [dispatch, id, reservation]);
+    if (isLoading) {
+      setDialogVisible(true);
+    } else {
+      setDialogVisible(false);
+    }
+
+    setTotalPrice(getTotalPrice());
+  }, [dispatch, id, reservation, isLoading, checkInDate, checkOutDate, reservation.rooms]);
+
 
   const validateReservation = () => {
     if (!checkInDate || !checkOutDate) {
@@ -108,15 +114,7 @@ const Reserve = () => {
       setError("An error occurred during room reservation. Please try again later.");
       console.error("An error occurred during room reservation:", error);
     }
-    };
-
-  useEffect(() => {
-    if (isLoading) {
-      setDialogVisible(true);
-    } else {
-      setDialogVisible(false);
-    }
-  }, [isLoading]);
+  };
 
   const getCurrentDate = () => {
     const today = new Date();
@@ -165,19 +163,21 @@ const Reserve = () => {
     return numberOfDays;
   };
 
-  const getTotalPrice = () => {
-    // const basePrice = hotel.price;
-    const numberOfRooms = reservation.rooms;
-    const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
+    const getTotalPrice = () => {
+      if (!hotel || !checkInDate || !checkOutDate || !reservation.rooms) {
+        return 0;
+      }
 
-    // return basePrice * numberOfDays * numberOfRooms;
-  };
+      const basePrice = hotel.price;
+      const numberOfRooms = reservation.rooms;
+      const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
 
-  const [totalPrice, setTotalPrice] = useState(getTotalPrice());
+      return basePrice * numberOfDays * numberOfRooms;
+    };
 
-  useEffect(() => {
-    setTotalPrice(getTotalPrice());
-  }, [checkInDate, checkOutDate, reservation.rooms]);
+
+    const [totalPrice, setTotalPrice] = useState(getTotalPrice());
+
 
   const isRoomButtonDisabled = reservation.adults >= 2 && reservation.children >= 4;
 
@@ -201,7 +201,8 @@ const Reserve = () => {
             <p className="hotel-name">{hotel.name}</p>
             <span className="hotel-price-container">
               <p className="hotel-price">Price:</p>
-              <p className="actual-price">$ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}</p>
+              {/* <p className="actual-price">$ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}</p> */}
+              <p className="actual-price">$ {hotel.price}</p>
             </span>
           </div>
         </div>
@@ -322,10 +323,6 @@ const Reserve = () => {
                   +
                 </button>
               </div>
-                <div className="other-images">
-                  <div className="image-left">hello</div>
-                  <div className="image-right">other image</div>
-                </div>
 
               <div className="reserve-buttons">
 
