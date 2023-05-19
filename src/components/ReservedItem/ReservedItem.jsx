@@ -9,7 +9,7 @@ const ReservedItem = ({ reservation, onDelete }) => {
         <div className="priceandtype reserves">
           {' '}
           <p>
-            <span>Price:</span> ${reservation.price}
+            <span>Price:</span> ${reservation.totalPrice}
           </p>
           <p>
             <span>Room Type:</span> {reservation.room_type}
