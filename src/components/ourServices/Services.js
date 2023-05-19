@@ -1,6 +1,7 @@
 import React from 'react';
 import conference from '../../Assets/conference.png';
 import reception from '../../Assets/reception.png';
+import play from '../../Assets/play.png';
 import './services.css';
 
 export const Services = () => {
@@ -10,8 +11,9 @@ export const Services = () => {
         <div className="box">
           <img src={conference} alt="pic1" className="service-pic" />
         </div>
-        <div className="box">
+        <div className="box2">
           <h6>Hospitality</h6>
+          <img src={play} alt="pic1" className="service-icon" />
         </div>
         <div className="box">
           <img src={reception} alt="pic1" className="service-pic" />
