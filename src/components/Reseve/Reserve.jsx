@@ -8,6 +8,9 @@ import {
   fetchHotel,
   selectSingleHotel,
 } from '../../features/slices/reserve/singleReserveSlice';
+import {
+  readRooms
+} from '../../features/slices/roomTypes/fetchRooms';
 
 
 const Reserve = () => {
@@ -43,6 +46,8 @@ const Reserve = () => {
 
   useEffect(() => {
     dispatch(fetchHotel(id));
+    dispatch(readRooms(id));
+    console.log(dispatch(readRooms(id)));
     console.log(dispatch(fetchHotel(id)));
     if (reservation.roomType === '') {
       setReservation({
@@ -308,11 +313,13 @@ const Reserve = () => {
                       setIsRoomTypeValid(true);
                     }}
                   >
-                    <option value="">Select a Room Type</option>
-                    <option value="single">Single</option>
-                    <option value="double">Double</option>
-                    <option value="king-size">King Size</option>
-                    <option value="master-suite">Master Suite</option>
+
+                  <option value="">Select a Room Type</option>
+                  {
+                    rooms.map((room) => (
+                      <option value={room.name} key={room.id}>{room.name}</option>
+                    ))
+                  }
                   </select>
 
                   {!isRoomTypeValid && <p className="error-message">Please select a room type</p>}
