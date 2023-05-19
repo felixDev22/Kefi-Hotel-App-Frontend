@@ -6,3 +6,15 @@
   background-repeat: none;
   background-size: cover;
 }
+.pic-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+}
