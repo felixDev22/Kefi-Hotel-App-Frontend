@@ -1,16 +1,20 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk
+} from "@reduxjs/toolkit";
 import axios from "axios";
 
-const reserve = createAsyncThunk(
-  "reserve",
-  async (data, thunkAPI) => {
+const RESERVE_ACTION_TYPE = "reserveHotel";
 
-    const reserveUrl = 'http://127.0.0.1:3000/api/v1/hotels';
+const reserveHotel = createAsyncThunk(
+  RESERVE_ACTION_TYPE,
+  async (data, thunkAPI) => {
+    const reserveUrl = "http://127.0.0.1:3000/api/v1/reservations";
     try {
       const response = await axios.post(reserveUrl, data, {
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
       });
 
@@ -27,26 +31,25 @@ const reserve = createAsyncThunk(
 );
 
 const initialState = {
-  reservation: {},
-  error: '',
+  reservation: null,
+  error: "",
 };
 
 const reserveSlice = createSlice({
   name: "reserve",
   initialState,
-  reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(reserve.pending, (state) => {
-      state.reservation = null;
-      state.error = null;
+    builder.addCase(reserveHotel.pending, (state) => {
+      state.reservation = initialState.reservation;
+      state.error = initialState.error;
     });
-    builder.addCase(reserve.fulfilled, (state, action) => {
+    builder.addCase(reserveHotel.fulfilled, (state, action) => {
       state.reservation = action.payload;
-      state.error = '';
+      state.error = initialState.error;
     });
-    builder.addCase(reserve.rejected, (state) => {
-      state.reservation = null;
-      state.error = 'error';
+    builder.addCase(reserveHotel.rejected, (state) => {
+      state.reservation = initialState.reservation;
+      state.error = "error";
     });
   },
 });
@@ -56,4 +59,6 @@ export default reserveSlice.reducer;
 export const selectReservation = (state) => state.reserve.reservation;
 export const selectReserveError = (state) => state.reserve.error;
 
-export const reserveActions = reserveSlice.actions;
+export const reserveActions = {
+  reserveHotel,
+};
