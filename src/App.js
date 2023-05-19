@@ -33,7 +33,6 @@ function AppContent() {
       {!isSplashPage && !isSignupPage && !isLoginPage && <Navigation />}
       <Routes>
         <Route path="/" element={<Splash />} />
-        <Route path="/delete-hotels" element={<Delete />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/main" element={<Main />} />
