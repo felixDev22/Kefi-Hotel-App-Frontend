@@ -40,7 +40,9 @@ const Navigation = () => {
             OUR SERVICES
           </NavLink>
           {isloggedOut && <Navigate to="/login" replace={true} />}
-          <button onClick={handleLogout}>Logout</button>
+          <button className="btnss" onClick={handleLogout}>
+            Logout
+          </button>
           {islogged && <Navigate to="/main" replace={false} />}
         </div>
       </div>
