@@ -9,7 +9,7 @@ import {
   selectSingleHotel,
 } from '../../features/slices/reserve/singleReserveSlice';
 import {
-  readRooms
+  readRooms, selectRooms
 } from '../../features/slices/roomTypes/fetchRooms';
 
 
@@ -31,6 +31,9 @@ const Reserve = () => {
   const dispatch = useDispatch();
 
   const hotel = useSelector(selectSingleHotel);
+  const rooms = useSelector(selectRooms);
+
+  console.log("Rooms from the reserve component", rooms);
   console.log("Hotel data from the reserve component", hotel);
 
   const { id } = useParams();
@@ -315,12 +318,10 @@ const Reserve = () => {
                   >
 
                   <option value="">Select a Room Type</option>
-                  {
-                    rooms.map((room) => (
-                      <option value={room.name} key={room.id}>{room.name}</option>
-                    ))
-                  }
-                  </select>
+                    {rooms.map((room) => (
+                      <option key={room.id} value={room.name}>{room.name}</option>
+                    ))}
+                </select>
 
                   {!isRoomTypeValid && <p className="error-message">Please select a room type</p>}
 
