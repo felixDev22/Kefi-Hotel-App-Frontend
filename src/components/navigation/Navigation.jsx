@@ -13,13 +13,8 @@ const Navigation = () => {
   const handleLogout = () => {
     try {
       dispatch(logoutUser());
-      // Set islogged to false
-      // (assuming you have an action or reducer to handle this)
-      // dispatch(setLoggedOut()); or dispatch({ type: 'SET_LOGGED_OUT' });
-      // Replace the window location with the login page
       window.location.href = '/login';
     } catch (error) {
-      // Handle any error that occurred during logout
       console.log('Logout error:', error);
     }
   };
