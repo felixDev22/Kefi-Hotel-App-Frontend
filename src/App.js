@@ -10,6 +10,7 @@ import './App.css';
 import AddHotel from './components/addHotel/AddHotel';
 import Reserve from './components/Reseve/Reserve';
 import Navigation from './components/navigation/Navigation';
+import { Services } from './components/ourServices/Services';
 
 function App() {
   return (
@@ -39,7 +40,8 @@ function AppContent() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/rooms" element={<Room />} />
         <Route path="/add-hotels" element={<AddHotel />} />
-        <Route path='/hotel/:id/reserve' element={<Reserve />} />
+        <Route path="/hotel/:id/reserve" element={<Reserve />} />
+        <Route path="/services" element={<Services />} />
       </Routes>
     </>
   );
