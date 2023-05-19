@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import rectangle from '../../Assets/rectangle.png';
 import Reserved from '../Reserved/Reserved';
+import Dialog from '../Dialog/Dialog';
 import { Link } from 'react-router-dom';
 import './ReservedHotel.css';
 
@@ -11,7 +12,7 @@ const ReservedHotel = () => {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.reservation);
   const [currentIndex, setCurrentIndex] = useState(0);
-  console.log(reservation);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     const fetchReservation = async () => {
@@ -24,6 +25,7 @@ const ReservedHotel = () => {
           totalPrice: totalPrice(reservation),
         }));
         dispatch(addReservation(reservationsWithTotalPrice));
+        setIsLoading(false); // Set loading state to false after data is fetched
       } catch (error) {
         console.error(error);
       }
@@ -53,12 +55,40 @@ const ReservedHotel = () => {
   };
 
   const totalPrice = (reservation) => {
+    let totalPrice = reservation.price;
+
+    switch (reservation.room_type) {
+      case 'single':
+        // No price adjustment for single room
+        break;
+      case 'double':
+        totalPrice += totalPrice * 0.25;
+        break;
+      case 'master-suite':
+        totalPrice += totalPrice * 0.5;
+        break;
+      case 'king-size':
+        totalPrice += totalPrice * 0.75;
+        break;
+      default:
+        // Handle unknown room type if needed
+        break;
+    }
+
     const checkInDate = new Date(reservation.check_in);
     const checkOutDate = new Date(reservation.check_out);
     const differenceInTime = checkOutDate.getTime() - checkInDate.getTime();
     const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-    return differenceInDays * reservation.price;
+    return differenceInDays * totalPrice;
   };
+
+  if (isLoading) {
+    return (
+      <div>
+        <Dialog message="Loading..." />
+      </div>
+    );
+  }
 
   return (
     <div className="delete-hotels">
