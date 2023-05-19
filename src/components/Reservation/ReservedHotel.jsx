@@ -19,7 +19,11 @@ const ReservedHotel = () => {
         const response = await axios.get(
           'http://localhost:3000/api/v1/reservations'
         );
-        dispatch(addReservation(response.data));
+        const reservationsWithTotalPrice = response.data.map((reservation) => ({
+          ...reservation,
+          totalPrice: totalPrice(reservation),
+        }));
+        dispatch(addReservation(reservationsWithTotalPrice));
       } catch (error) {
         console.error(error);
       }
@@ -46,6 +50,14 @@ const ReservedHotel = () => {
     setCurrentIndex(
       currentIndex === 0 ? reservation.length - 1 : currentIndex - 1
     );
+  };
+
+  const totalPrice = (reservation) => {
+    const checkInDate = new Date(reservation.check_in);
+    const checkOutDate = new Date(reservation.check_out);
+    const differenceInTime = checkOutDate.getTime() - checkInDate.getTime();
+    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+    return differenceInDays * reservation.price;
   };
 
   return (
