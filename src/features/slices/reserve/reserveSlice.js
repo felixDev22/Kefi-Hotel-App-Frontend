@@ -56,7 +56,6 @@ const reserveSlice = createSlice({
 
 export default reserveSlice.reducer;
 
-export const selectReservation = (state) => state.reserve.reservation;
 export const selectReserveError = (state) => state.reserve.error;
 
 export const reserveActions = {

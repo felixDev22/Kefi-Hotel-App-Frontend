@@ -3,7 +3,7 @@ import './Reserve.css';
 import { useParams } from "react-router-dom";
 import Dialog from '../Dialog/Dialog';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectReservation, reserveActions, selectReserveError } from '../../features/slices/reserve/reserveSlice';
+import { reserveActions, selectReserveError } from '../../features/slices/reserve/reserveSlice';
 import {
   fetchHotel,
   selectSingleHotel,
@@ -26,7 +26,6 @@ const Reserve = () => {
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
 
   const dispatch = useDispatch();
-  const reserve = useSelector(selectReservation);
 
   const hotel = useSelector(selectSingleHotel);
   console.log("Hotel data from the reserve component", hotel);
@@ -109,12 +108,9 @@ const Reserve = () => {
         setDialogVisible(true);
         setReservationSuccessful(true);
         console.log("Reservation successful!");
-        console.log(response.payload.data);
-        console.log("Reserve Data:", selectReservation());
 
       } else {
         setIsLoading(false);
-        // setError("An error occurred during room reservation. Please try again later.");
         console.error("An error occurred during room reservation:", selectReserveError());
       }
     } catch (error) {
