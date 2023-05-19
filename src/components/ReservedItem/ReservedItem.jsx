@@ -5,14 +5,35 @@ const ReservedItem = ({ reservation, onDelete }) => {
     <div className="hotelItem">
       <img src={reservation.photo} alt={reservation.name} />
       <div className="hotelDetails">
-        <h2 className="ReservedName">{reservation.name}</h2>
-        <p className="ReservedName">Price: ${reservation.price}</p>
-        <p className="ReservedName">Room Type: {reservation.room_type}</p>
-        <p className="ReservedName">Check in Date: {reservation.check_in}</p>
-        <p className="ReservedName">Check out date: {reservation.check_out}</p>
-        <p className="ReservedName">Adults: {reservation.adults}</p>
-        <p className="ReservedName">Children: {reservation.children}</p>
-        <p className="ReservedName">number of rooms: {reservation.rooms}</p>
+        <h2 className="reserveName">{reservation.name}</h2>
+        <div className="priceandtype reserves">
+          {' '}
+          <p>
+            <span>Price:</span> ${reservation.price}
+          </p>
+          <p>
+            <span>Room Type:</span> {reservation.room_type}
+          </p>
+        </div>
+        <div className="checks reserves">
+          <p>
+            <span>Check in Date:</span> {reservation.check_in}
+          </p>
+          <p>
+            <span>Check out date:</span> {reservation.check_out}
+          </p>
+        </div>
+        <div className="adultschil reserves">
+          <p>
+            <span>Adults:</span> {reservation.adults}
+          </p>
+          <p>
+            <span>Children:</span> {reservation.children}
+          </p>
+          <p>
+            <span>rooms:</span> {reservation.rooms}
+          </p>
+        </div>
       </div>
       <button className="btnss" onClick={() => onDelete(reservation.id)}>
         Delete
