@@ -7,14 +7,20 @@
   background-size: cover;
 }
 .pic-wrapper {
+  margin-top: 15%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-gap: 0px;
 }
 .box {
   width: 200px;
   height: 200px;
   border: 1px solid #ccc;
+  object-fit: contain;
+}
+.service-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
