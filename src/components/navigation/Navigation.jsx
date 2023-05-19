@@ -7,7 +7,6 @@ import SocialLinks from './SocialLinks';
 
 const Navigation = () => {
   const dispatch = useDispatch();
-  const islogged = useSelector((state) => state.login.islogged);
   const isloggedOut = useSelector((state) => state.login.isloggedOut);
 
   const handleLogout = () => {
@@ -43,7 +42,6 @@ const Navigation = () => {
           <button className="btnss" onClick={handleLogout}>
             Logout
           </button>
-          {islogged && <Navigate to="/main" replace={false} />}
         </div>
       </div>
       <div className="sociaals">
