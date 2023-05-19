@@ -26,7 +26,7 @@ const Navigation = () => {
           <NavLink exact to="/main" activeClassName="active">
             HOTELS
           </NavLink>
-          <NavLink to="/reserve" activeClassName="active">
+          <NavLink to="/hotel/:id/reserve" activeClassName="active">
             RESERVE
           </NavLink>
           <NavLink to="/delete-hotels" activeClassName="active">
