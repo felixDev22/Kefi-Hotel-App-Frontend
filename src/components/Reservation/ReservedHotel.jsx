@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import rectangle from '../../Assets/rectangle.png';
 import Reserved from '../Reserved/Reserved';
+import { Link } from 'react-router-dom';
 import './ReservedHotel.css';
 
 const ReservedHotel = () => {
@@ -55,12 +56,9 @@ const ReservedHotel = () => {
         <p>All your Reserved hotels in one place</p>
       </div>
       <div className="hotel-lists">
-        <button
-          onClick={() => (window.location.href = '/reserve')}
-          className="reservebtn"
-        >
-          Reserve
-        </button>
+        <Link to="/main">
+          <button className="reservebtn">Reserve</button>
+        </Link>
       </div>
       <Reserved
         reservation={reservation}
