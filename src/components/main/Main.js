@@ -19,12 +19,14 @@ export default function Main() {
     fetchData();
   }, []);
   return (
-    <div className="container">
+    <>
+      <div className="container">
       <hr></hr>
       <p className="title">Enjoy your stay at any of our selections</p>
       <div className="cards">
         <Hotels />
       </div>
     </div>
+    </>
   );
 }

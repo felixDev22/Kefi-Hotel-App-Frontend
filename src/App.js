@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navigation from './components/Navigation/Navigation';
 import { useLocation } from 'react-router-dom';
 import Delete from './components/Delete/Delete';
 import Splash from './components/splash/Splash';
@@ -9,6 +8,8 @@ import Main from './components/main/Main';
 import Room from './components/Rooms/Room';
 import './App.css';
 import AddHotel from './components/addHotel/AddHotel';
+import Reserve from './components/Reseve/Reserve';
+import Navigation from './components/navigation/Navigation';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function AppContent() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/rooms" element={<Room />} />
         <Route path="/addHotel" element={<AddHotel />} />
+        <Route path='/hotel/:id/reserve' element={<Reserve />} />
       </Routes>
     </>
   );
