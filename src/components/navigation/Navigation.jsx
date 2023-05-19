@@ -1,10 +1,29 @@
-// src/components/Navigation/Navigation.js
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../../features/slices/auth/login';
 import './Navigation.css';
 import SocialLinks from './SocialLinks';
 
 const Navigation = () => {
+  const dispatch = useDispatch();
+  const islogged = useSelector((state) => state.login.islogged);
+  const isloggedOut = useSelector((state) => state.login.isloggedOut);
+
+  const handleLogout = () => {
+    try {
+      dispatch(logoutUser());
+      // Set islogged to false
+      // (assuming you have an action or reducer to handle this)
+      // dispatch(setLoggedOut()); or dispatch({ type: 'SET_LOGGED_OUT' });
+      // Replace the window location with the login page
+      window.location.href = '/login';
+    } catch (error) {
+      // Handle any error that occurred during logout
+      console.log('Logout error:', error);
+    }
+  };
+
   return (
     <div className="navigation">
       <div className="navi">
@@ -25,6 +44,9 @@ const Navigation = () => {
           <NavLink to="/our-services" activeClassName="active">
             OUR SERVICES
           </NavLink>
+          {isloggedOut && <Navigate to="/login" replace={true} />}
+          <button onClick={handleLogout}>Logout</button>
+          {islogged && <Navigate to="/main" replace={false} />}
         </div>
       </div>
       <div className="sociaals">
