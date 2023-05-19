@@ -184,36 +184,34 @@ const Reserve = () => {
     return numberOfDays;
   };
 
-    const getTotalPrice = () => {
-      if (!hotel || !checkInDate || !checkOutDate || !reservation.rooms) {
-        return 0;
-      }
+  const getTotalPrice = () => {
+    if (!hotel || !checkInDate || !checkOutDate || !reservation.rooms) {
+      return 0;
+    }
 
-      const basePrice = hotel.price;
-      const numberOfRooms = reservation.rooms;
-      const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
+    const basePrice = hotel.price;
+    const numberOfRooms = reservation.rooms;
+    const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
 
-      let totalPrice = basePrice * numberOfDays * numberOfRooms;
-      switch (reservation.roomType) {
-        case 'double':
-          totalPrice += (totalPrice * 0.25);
-          break;
-        case 'master-suite':
-          totalPrice += (totalPrice * 0.5);
-          break;
-        case 'king-size':
-          totalPrice += (totalPrice * 0.75);
-          break;
-        default:
-          break;
-      }
+    let totalPrice = basePrice * numberOfDays * numberOfRooms;
+    switch (reservation.roomType) {
+      case 'double':
+        totalPrice += (totalPrice * 0.25);
+        break;
+      case 'master-suite':
+        totalPrice += (totalPrice * 0.5);
+        break;
+      case 'king-size':
+        totalPrice += (totalPrice * 0.75);
+        break;
+      default:
+        break;
+    }
 
-      return totalPrice;
-    };
+    return totalPrice;
+  };
 
-
-
-    const [totalPrice, setTotalPrice] = useState(getTotalPrice());
+  const [totalPrice, setTotalPrice] = useState(getTotalPrice());
 
 
   const isRoomButtonDisabled = reservation.adults >= 2 && reservation.children >= 4;
@@ -238,13 +236,9 @@ const Reserve = () => {
             <p className="hotel-name">{hotel.name}</p>
             <span className="hotel-price-container">
               <p className="hotel-price">Price:</p>
-              {/* <p className="actual-price">$ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}</p> */}
+              <p className="actual-price">$ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}</p>
 
-              {/* <p className="actual-price">$ {(!hotel || !checkInDate || !checkOutDate || !reservation.rooms)
-                ? 0
-                : (hotel.price * calculateNumberOfDays(checkInDate, checkOutDate) * reservation.rooms)
-              }</p> */}
-                      <p className="actual-price">$ {hotel.price}</p>
+              {/* <p className="actual-price">$ {hotel.price}</p> */}
             </span>
           </div>
         </div>
