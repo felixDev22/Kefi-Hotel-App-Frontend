@@ -193,8 +193,24 @@ const Reserve = () => {
       const numberOfRooms = reservation.rooms;
       const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
 
-      return basePrice * numberOfDays * numberOfRooms;
+      let totalPrice = basePrice * numberOfDays * numberOfRooms;
+      switch (reservation.roomType) {
+        case 'double':
+          totalPrice += (totalPrice * 0.25);
+          break;
+        case 'master-suite':
+          totalPrice += (totalPrice * 0.5);
+          break;
+        case 'king-size':
+          totalPrice += (totalPrice * 0.75);
+          break;
+        default:
+          break;
+      }
+
+      return totalPrice;
     };
+
 
 
     const [totalPrice, setTotalPrice] = useState(getTotalPrice());
