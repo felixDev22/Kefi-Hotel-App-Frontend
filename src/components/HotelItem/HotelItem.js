@@ -1,5 +1,3 @@
-// src/components/HotelItem.js
-
 import React from 'react';
 
 const HotelItem = ({ hotel, onDelete }) => {

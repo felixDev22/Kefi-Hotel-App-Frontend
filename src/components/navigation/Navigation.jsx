@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../features/slices/auth/logout';
+import React from 'react';
+import { NavLink, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../../features/slices/auth/login';
 import './Navigation.css';
 import SocialLinks from './SocialLinks';
 
 const Navigation = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [loggedOut, setLoggedOut] = useState(false);
+  const isloggedOut = useSelector((state) => state.login.isloggedOut);
 
-  const handleLogout = async () => {
-    await dispatch(logoutUser());
-    setLoggedOut(true);
-    navigate('/login');
+  const handleLogout = () => {
+    try {
+      dispatch(logoutUser());
+      window.location.href = '/login';
+    } catch (error) {
+      console.log('Logout error:', error);
+    }
   };
 
   return (
@@ -36,6 +38,7 @@ const Navigation = () => {
           <NavLink to="/our-services" activeClassName="active">
             OUR SERVICES
           </NavLink>
+          {isloggedOut && <Navigate to="/login" replace={true} />}
           <button className="btnss" onClick={handleLogout}>
             Logout
           </button>

@@ -34,7 +34,7 @@ export default function Login() {
     dispatch(
       loginUser({
         user,
-      }),
+      })
     );
   };
 
@@ -80,7 +80,8 @@ export default function Login() {
                   />
                   <span
                     onClick={handleTogglePasswordVisibility}
-                    className="see-password">
+                    className="see-password"
+                  >
                     {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
                   </span>
                 </div>
@@ -97,7 +98,8 @@ export default function Login() {
                 dangerouslySetInnerHTML={{
                   __html:
                     "Don't have an Account?. <a href='./signup'>Sign-Up</a>",
-                }}></span>
+                }}
+              ></span>
             </div>
           </div>
         </div>
