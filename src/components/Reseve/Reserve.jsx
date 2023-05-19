@@ -215,7 +215,12 @@ const Reserve = () => {
             <span className="hotel-price-container">
               <p className="hotel-price">Price:</p>
               {/* <p className="actual-price">$ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}</p> */}
-              <p className="actual-price">$ {hotel.price}</p>
+
+              {/* <p className="actual-price">$ {(!hotel || !checkInDate || !checkOutDate || !reservation.rooms)
+                ? 0
+                : (hotel.price * calculateNumberOfDays(checkInDate, checkOutDate) * reservation.rooms)
+              }</p> */}
+                      <p className="actual-price">$ {hotel.price}</p>
             </span>
           </div>
         </div>
@@ -303,16 +308,10 @@ const Reserve = () => {
                       setIsRoomTypeValid(true);
                     }}
                   >
-                    <option value="">Select a room type</option>
+                    <option value="">Select a Room Type</option>
                     <option value="single">Single</option>
                     <option value="double">Double</option>
-                    <option value="triple">Triple</option>
-                    <option value="quad">Quad</option>
-                    <option value="queen">Queen</option>
-                    <option value="king">King</option>
-                    <option value="twin">Twin</option>
-                    <option value="double-double">Double-Double</option>
-                    <option value="studio">Studio</option>
+                    <option value="king-size">King Size</option>
                     <option value="master-suite">Master Suite</option>
                   </select>
 
