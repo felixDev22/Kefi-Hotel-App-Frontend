@@ -6,16 +6,11 @@
   margin-top: 40px;
 }
 .deletes {
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center; */
   margin-top: 50px;
   padding: 30px;
 }
 
 .hotelLists {
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr); */
   gap: 40px;
 }
 
