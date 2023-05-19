@@ -34,5 +34,4 @@ const hotelsSlice = createSlice({
 });
 
 export const { addHotel, deleteHotel, newHotel } = hotelsSlice.actions;
-// export const getAllHotel = (state) => state.hotels
 export default hotelsSlice.reducer;
