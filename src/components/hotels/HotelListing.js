@@ -5,6 +5,8 @@ import rightarr from '../../Assets/rightarr.png';
 import leftarr from '../../Assets/leftarr.png';
 import './hotellisting.css';
 
+import '../Delete/Delete.css'
+
 export default function HotelListing() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const handleNext = () => {
