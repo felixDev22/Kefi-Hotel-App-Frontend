@@ -19,6 +19,8 @@ const Reserve = () => {
 
   const [error, setError] = useState(null);
 
+  const [user_id, setUserId] = useState(0);
+
   const [reservationSuccessful, setReservationSuccessful] = useState(false);
 
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
@@ -81,20 +83,26 @@ const Reserve = () => {
       return;
     }
     setIsLoading(true);
-
     try {
       const formData = {
-        name: "John Doe",
-        price: 100,
-        checkInDate: "2021-08-01",
-        checkOutDate: "2021-08-02",
-        adults: 2,
-        children: 0,
-        rooms: 1,
-        roomType: "Single",
+        // user_id: parseInt(user_id),
+        user_id: 1,
+        name: hotel.name,
+        price: hotel.price,
+        photo: hotel.photo,
+        check_in: reservation.checkInDate,
+        check_out: reservation.checkOutDate,
+        hotel_id: parseInt(hotel.id),
+        adults: reservation.adults,
+        children: reservation.children,
+        room_type: reservation.roomType,
+        rooms: reservation.rooms,
       };
 
-      const response = await dispatch(reserveActions.reserve(formData));
+      const response = await dispatch(
+        reserveActions.reserveHotel(formData)
+      );
+      console.log("Response from the reserve component", response);
 
       if (response.payload) {
         setIsLoading(false);
@@ -102,11 +110,11 @@ const Reserve = () => {
         setReservationSuccessful(true);
         console.log("Reservation successful!");
         console.log(response.payload.data);
-        console.log("Reserve Data:", reserve);
+        console.log("Reserve Data:", selectReservation());
 
       } else {
         setIsLoading(false);
-        setError("An error occurred during room reservation. Please try again later.");
+        // setError("An error occurred during room reservation. Please try again later.");
         console.error("An error occurred during room reservation:", selectReserveError());
       }
     } catch (error) {
