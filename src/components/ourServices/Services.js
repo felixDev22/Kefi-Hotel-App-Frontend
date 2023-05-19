@@ -28,14 +28,14 @@ export const Services = () => {
         <div className="box">
           <img src={room1} alt="pic1" className="service-pic" />
         </div>
-        <div className="box2">
+        <div className="box3">
           <h6>Hospitality</h6>
           <img src={play} alt="pic1" className="service-icon" />
         </div>
         <div className="box">
           <img src={spa} alt="pic1" className="service-pic" />
         </div>
-        <div className="box2">
+        <div className="box3">
           <h6>Hospitality</h6>
           <img src={play} alt="pic1" className="service-icon" />
         </div>

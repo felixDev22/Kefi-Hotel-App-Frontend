@@ -33,3 +33,14 @@
   justify-content: center;
   align-items: center;
 }
+
+.box3 {
+  background: var(--orange-clr);
+  width: 200px;
+  height: 200px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
