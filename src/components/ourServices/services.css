@@ -7,7 +7,7 @@
 }
 
 .grid-container {
-  max-width: 600px;
+  max-width: 660px;
   margin: 10% auto;
 }
 
@@ -19,8 +19,8 @@
   grid-gap: 0px;
 }
 .box {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   object-fit: contain;
 }
 .service-pic {
@@ -30,8 +30,8 @@
 }
 .box2 {
   background: var(--green-clr);
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -41,8 +41,8 @@
 
 .box3 {
   background: var(--orange-clr);
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   color: #fff;
   display: flex;
   flex-direction: column;
