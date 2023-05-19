@@ -23,21 +23,21 @@ export const Services = () => {
             <img src={reception} alt="pic1" className="service-pic" />
           </div>
           <div className="box2">
-            <h6>Hospitality</h6>
+            <h6>Conference</h6>
             <img src={play} alt="pic1" className="service-icon" />
           </div>
           <div className="box">
             <img src={room1} alt="pic1" className="service-pic" />
           </div>
           <div className="box3">
-            <h6>Hospitality</h6>
+            <h6>Dining</h6>
             <img src={play} alt="pic1" className="service-icon" />
           </div>
           <div className="box">
             <img src={spa} alt="pic1" className="service-pic" />
           </div>
           <div className="box3">
-            <h6>Hospitality</h6>
+            <h6>Spa</h6>
             <img src={play} alt="pic1" className="service-icon" />
           </div>
           <div className="box">
