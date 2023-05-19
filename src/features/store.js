@@ -6,7 +6,6 @@ import reserveReducer from '../features/slices/reserve/reserveSlice';
 import loginReducer from '../features/slices/auth/login';
 import registerReducer from '../features/slices/auth/register';
 import singleHotelReducer from '../features/slices/reserve/singleReserveSlice';
-// import reserveReducer from '../features/reserve';
 
 const store = configureStore({
   reducer: {
@@ -17,7 +16,6 @@ const store = configureStore({
     logout: logoutReducer,
     reserve: reserveReducer,
     singleHotel: singleHotelReducer,
-    // reserved: reserveReducer,
   },
 });
 
