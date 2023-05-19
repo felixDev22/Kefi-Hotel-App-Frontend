@@ -109,6 +109,15 @@ const Reserve = () => {
         setReservationSuccessful(true);
         console.log("Reservation successful!");
 
+        setReservation({
+          checkInDate: "",
+          checkOutDate: "",
+          adults: 0,
+          children: 0,
+          roomType: "",
+          rooms: 0,
+        });
+
       } else {
         setIsLoading(false);
         console.error("An error occurred during room reservation:", selectReserveError());
