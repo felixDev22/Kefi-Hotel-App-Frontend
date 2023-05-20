@@ -31,7 +31,7 @@ const ReservedItem = ({ reservation, onDelete }) => {
             <span>Children:</span> {reservation.children}
           </p>
           <p>
-            <span>rooms:</span> {reservation.rooms}
+            <span>Rooms:</span> {reservation.rooms}
           </p>
         </div>
       </div>
