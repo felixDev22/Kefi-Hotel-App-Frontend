@@ -4,6 +4,7 @@ import { registerUser } from '../../features/slices/auth/register';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 import { Navigate } from 'react-router-dom';
 import '../login/login.css';
+import axios from 'axios';
 export default function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -18,16 +19,39 @@ export default function SignUp() {
     setShowPassword(!showPassword);
   };
   const handleSubmit = (e) => {
-    e.preventDefault();
     const user = {
-      name,
       email,
       password,
-      password_confirmation,
+      password_confirmation
     };
+    axios
+      .post(
+        "http://127.0.0.1:3000/signup",
+        {
+          user: {
+            email: email,
+            password: password,
+            password_confirmation: password_confirmation
+          }
+        },
+        { withCredentials: true }
+      )
+      .then(response => {
+        if (response.data.status === "created") {
+          console.log("Registration data", response.data)
+        }
+      })
+      .catch(error => {
+        console.log("registration error", error);
+      });
+
+    e.preventDefault();
     dispatch(
       registerUser({
-        user,
+        user: {
+          email: email,
+          password: password
+        }
       }),
     );
   };
