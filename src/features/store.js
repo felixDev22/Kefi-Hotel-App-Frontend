@@ -1,4 +1,4 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { configureStore} from '@reduxjs/toolkit';
 import hotelsReducer from './hotels';
 import roomsReducer from './room';
 import logoutReducer from '../features/slices/auth/logout';
