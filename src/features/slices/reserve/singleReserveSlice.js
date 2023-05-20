@@ -11,8 +11,9 @@ export const fetchHotel = createAsyncThunk(
   'hotels/fetchHotel',
   async (hotelId, thunkAPI) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:3000/api/v1/hotels/${hotelId}`);
-      console.log(response.data);
+      const response = await axios.get(
+        `http://127.0.0.1:3000/api/v1/hotels/${hotelId}`
+      );
 
       if (response.data) {
         return response.data;
@@ -38,9 +39,7 @@ const singleHotelSlice = createSlice({
       })
       .addCase(fetchHotel.fulfilled, (state, action) => {
         state.loading = false;
-        console.log('fetchHotel fulfilled:', action.payload);
         state.hotel = action.payload;
-
       })
       .addCase(fetchHotel.rejected, (state) => {
         state.loading = false;
@@ -49,7 +48,8 @@ const singleHotelSlice = createSlice({
   },
 });
 
-export const { actions: singleHotelActions, reducer: singleHotelReducer } = singleHotelSlice;
+export const { actions: singleHotelActions, reducer: singleHotelReducer } =
+  singleHotelSlice;
 
 export const selectSingleHotel = (state) => state.singleHotel.hotel;
 export const selectSingleHotelLoading = (state) => state.singleHotel.loading;

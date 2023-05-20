@@ -36,9 +36,6 @@ const Reserve = () => {
   const hotel = useSelector(selectSingleHotel);
   const rooms = useSelector(selectRooms);
 
-  console.log('Rooms from the reserve component', rooms);
-  console.log('Hotel data from the reserve component', hotel);
-
   const { id } = useParams();
 
   const [reservation, setReservation] = useState({
