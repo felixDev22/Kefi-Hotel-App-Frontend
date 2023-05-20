@@ -212,13 +212,12 @@
   background-color: #fff;
   border-radius: 10px;
   width: 100%;
-  font-size: 16px;;
+  font-size: 16px;
 }
 
 .room-type-select:focus {
   outline: none;
   border-color: rgb(0, 0, 0, 0.5);
-
 }
 
 option {
@@ -240,7 +239,7 @@ option {
 }
 
 .reserve-button {
-  background-color: #72B600;
+  background-color: #72b600;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -267,14 +266,13 @@ option {
 }
 
 .my-reservation {
-  background-color: #FE6814;
+  background-color: #fe6814;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
   margin-right: 10px;
-  width: 40%;
 }
 
 .my-reservation:hover {
@@ -298,4 +296,3 @@ option {
   border-radius: 5px;
   margin-bottom: 10px;
 }
-
