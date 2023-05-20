@@ -19,6 +19,7 @@ export const loginUser = createAsyncThunk('login', async (data, thunkAPI) => {
       },
       withCredentials: true,
     });
+    localStorage.setItem('userData', JSON.stringify(response.data.user))
     if (response.status === 200) {
       return response.data;
     } else {
