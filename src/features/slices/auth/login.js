@@ -1,13 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage/session';
 
 // Define a persist config for the login slice
-const loginPersistConfig = {
-  key: 'login',
-  storage,
-};
 
 export const loginUser = createAsyncThunk('login', async (data, thunkAPI) => {
   const loginUrl = 'http://127.0.0.1:3000/login';
@@ -62,8 +56,6 @@ const loginSlice = createSlice({
   },
 });
 
-// Wrap the loginSlice.reducer with persistReducer
-const persistedLoginReducer = persistReducer(loginPersistConfig, loginSlice.reducer);
 
-export default persistedLoginReducer;
+export default loginSlice.reducer;
 export const loginActions = loginSlice.actions;
