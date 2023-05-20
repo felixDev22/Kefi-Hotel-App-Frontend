@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './Reserve.css';
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import Dialog from '../Dialog/Dialog';
 import { useDispatch, useSelector } from 'react-redux';
-import { reserveActions, selectReserveError } from '../../features/slices/reserve/reserveSlice';
+import {
+  reserveActions,
+  selectReserveError,
+} from '../../features/slices/reserve/reserveSlice';
 import {
   fetchHotel,
   selectSingleHotel,
 } from '../../features/slices/reserve/singleReserveSlice';
 import {
-  readRooms, selectRooms
+  readRooms,
+  selectRooms,
 } from '../../features/slices/roomTypes/fetchRooms';
-
 
 const Reserve = () => {
   const [checkInDate, setCheckInDate] = useState('');
@@ -33,8 +36,8 @@ const Reserve = () => {
   const hotel = useSelector(selectSingleHotel);
   const rooms = useSelector(selectRooms);
 
-  console.log("Rooms from the reserve component", rooms);
-  console.log("Hotel data from the reserve component", hotel);
+  console.log('Rooms from the reserve component', rooms);
+  console.log('Hotel data from the reserve component', hotel);
 
   const { id } = useParams();
 
@@ -55,7 +58,7 @@ const Reserve = () => {
     if (reservation.roomType === '') {
       setReservation({
         ...reservation,
-        roomType: 'Single'
+        roomType: 'Single',
       });
     }
     if (isLoading) {
@@ -65,8 +68,15 @@ const Reserve = () => {
     }
 
     setTotalPrice(getTotalPrice());
-  }, [dispatch, id, reservation, isLoading, checkInDate, checkOutDate, reservation.rooms]);
-
+  }, [
+    dispatch,
+    id,
+    reservation,
+    isLoading,
+    checkInDate,
+    checkOutDate,
+    reservation.rooms,
+  ]);
 
   const validateReservation = () => {
     if (!checkInDate || !checkOutDate) {
@@ -79,14 +89,14 @@ const Reserve = () => {
       return false;
     }
 
-    return true
+    return true;
   };
 
   const handleReservationSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateReservation()) {
-      console.log("Data not valid");
+      console.log('Data not valid');
       return;
     }
     setIsLoading(true);
@@ -106,34 +116,36 @@ const Reserve = () => {
         rooms: reservation.rooms,
       };
 
-      const response = await dispatch(
-        reserveActions.reserveHotel(formData)
-      );
-      console.log("Response from the reserve component", response);
+      const response = await dispatch(reserveActions.reserveHotel(formData));
+      console.log('Response from the reserve component', response);
 
       if (response.payload) {
         setIsLoading(false);
         setDialogVisible(true);
         setReservationSuccessful(true);
-        console.log("Reservation successful!");
+        console.log('Reservation successful!');
 
         setReservation({
-          checkInDate: "",
-          checkOutDate: "",
+          checkInDate: '',
+          checkOutDate: '',
           adults: 0,
           children: 0,
-          roomType: "",
+          roomType: '',
           rooms: 0,
         });
-
       } else {
         setIsLoading(false);
-        console.error("An error occurred during room reservation:", selectReserveError());
+        console.error(
+          'An error occurred during room reservation:',
+          selectReserveError()
+        );
       }
     } catch (error) {
       setIsLoading(false);
-      setError("An error occurred during room reservation. Please try again later.");
-      console.error("An error occurred during room reservation:", error);
+      setError(
+        'An error occurred during room reservation. Please try again later.'
+      );
+      console.error('An error occurred during room reservation:', error);
     }
   };
 
@@ -196,13 +208,13 @@ const Reserve = () => {
     let totalPrice = basePrice * numberOfDays * numberOfRooms;
     switch (reservation.roomType) {
       case 'double':
-        totalPrice += (totalPrice * 0.25);
+        totalPrice += totalPrice * 0.25;
         break;
       case 'master-suite':
-        totalPrice += (totalPrice * 0.5);
+        totalPrice += totalPrice * 0.5;
         break;
       case 'king-size':
-        totalPrice += (totalPrice * 0.75);
+        totalPrice += totalPrice * 0.75;
         break;
       default:
         break;
@@ -213,184 +225,255 @@ const Reserve = () => {
 
   const [totalPrice, setTotalPrice] = useState(getTotalPrice());
 
-
-  const isRoomButtonDisabled = reservation.adults >= 2 && reservation.children >= 4;
+  const isRoomButtonDisabled =
+    reservation.adults >= 2 && reservation.children >= 4;
 
   const isAdultMaximumReached = reservation.adults >= 4;
   const isAdultMinimumReached = reservation.adults <= 1;
   const isChildrenMaximumReached = reservation.children >= 6;
 
-  const buttonClassName = validateReservation() ? (reservationSuccessful ? 'invalid-button' : 'reserve-button') : 'invalid-button';
+  const buttonClassName = validateReservation()
+    ? reservationSuccessful
+      ? 'invalid-button'
+      : 'reserve-button'
+    : 'invalid-button';
 
   if (!hotel) {
+    return <LoadingDialog />;
+  } else {
     return (
-      <LoadingDialog />
-    );
-  } else { return (
-    <>
-      <div className="reserve-container">
-        <div className="reserve-intro">
-          <span className="line"></span>
-          <h3 className="reserve-title">Book your Hotel Reservations</h3>
-          <div className="reserve-subtitle">
-            <p className="hotel-name">{hotel.name}</p>
-            <span className="hotel-price-container">
-              <p className="hotel-price">Price:</p>
-              <p className="actual-price">$ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}</p>
+      <>
+        <div className="reserve-container">
+          <div className="reserve-intro">
+            <span className="line"></span>
+            <h3 className="reserve-title">Book your Hotel Reservations</h3>
+            <div className="reserve-subtitle">
+              <p className="hotel-name">{hotel.name}</p>
+              <span className="hotel-price-container">
+                <p className="hotel-price">Price:</p>
+                <p className="actual-price">
+                  $ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}
+                </p>
 
-              {/* <p className="actual-price">$ {hotel.price}</p> */}
-            </span>
-          </div>
-        </div>
-
-        <div className="reserve-form-container">
-          <div className="reserve-left">
-            <div className="reserve-card">
-              <img src={hotel.photo} alt="Hotel Image" className="reserve-hotel-image" />
+                {/* <p className="actual-price">$ {hotel.price}</p> */}
+              </span>
             </div>
           </div>
 
-          <div className="reserve-right">
-            <form onSubmit={handleReservationSubmit}>
-              <div>
-                <input
-                  type="date"
-                  id="check-in-date"
-                  name="check-in-date"
-                  className="form-input"
-                  placeholder="Check-in Date"
-                  value={checkInDate}
-                  min={getCurrentDate()}
-                  onChange={(e) => { setCheckInDate(e.target.value); setReservation({ ...reservation, checkInDate: e.target.value }); }}
+          <div className="reserve-form-container">
+            <div className="reserve-left">
+              <div className="reserve-card">
+                <img
+                  src={hotel.photo}
+                  alt="Hotel Image"
+                  className="reserve-hotel-image"
                 />
               </div>
+            </div>
 
-              <div>
-                <input
-                  type="date"
-                  id="check-out-date"
-                  name="check-out-date"
-                  className="form-input"
-                  placeholder="Check-out Date"
-                  value={checkOutDate}
-                  min={getMinCheckOutDate()}
-                  onChange={(e) => { setCheckOutDate(e.target.value); setReservation({ ...reservation, checkOutDate: e.target.value }); }}
-                />
-              </div>
-
-              <div className="adult-children">
-                <div className="total-adult">
-                  <p className="adult">Adults</p>
-                  <button type="button" className="minus"
-                    onClick={() => setReservation({ ...reservation, adults: Math.max(reservation.adults - 1, 1) })}
-                    disabled={ isAdultMinimumReached }
-                  >
-                    -
-                  </button>
-                  <p className="number">{reservation.adults}</p>
-                  <button type="button" className="plus"
-                    onClick={() => setReservation({ ...reservation, adults: Math.min(reservation.adults + 1, 4),})
-                }
-                disabled={isAdultMaximumReached}
-                  >
-                    +
-                  </button>
+            <div className="reserve-right">
+              <form onSubmit={handleReservationSubmit}>
+                <div>
+                  <input
+                    type="date"
+                    id="check-in-date"
+                    name="check-in-date"
+                    className="form-input"
+                    placeholder="Check-in Date"
+                    value={checkInDate}
+                    min={getCurrentDate()}
+                    onChange={(e) => {
+                      setCheckInDate(e.target.value);
+                      setReservation({
+                        ...reservation,
+                        checkInDate: e.target.value,
+                      });
+                    }}
+                  />
                 </div>
 
-                <div className="total-children">
-                  <p className="children">Children</p>
-                  <button type="button" className="minus"
-                    onClick={() => setReservation({ ...reservation, children: Math.max(reservation.children - 1, 0) })}
+                <div>
+                  <input
+                    type="date"
+                    id="check-out-date"
+                    name="check-out-date"
+                    className="form-input"
+                    placeholder="Check-out Date"
+                    value={checkOutDate}
+                    min={getMinCheckOutDate()}
+                    onChange={(e) => {
+                      setCheckOutDate(e.target.value);
+                      setReservation({
+                        ...reservation,
+                        checkOutDate: e.target.value,
+                      });
+                    }}
+                  />
+                </div>
+
+                <div className="adult-children">
+                  <div className="total-adult">
+                    <p className="adult">Adults</p>
+                    <button
+                      type="button"
+                      className="minus"
+                      onClick={() =>
+                        setReservation({
+                          ...reservation,
+                          adults: Math.max(reservation.adults - 1, 1),
+                        })
+                      }
+                      disabled={isAdultMinimumReached}
+                    >
+                      -
+                    </button>
+                    <p className="number">{reservation.adults}</p>
+                    <button
+                      type="button"
+                      className="plus"
+                      onClick={() =>
+                        setReservation({
+                          ...reservation,
+                          adults: Math.min(reservation.adults + 1, 4),
+                        })
+                      }
+                      disabled={isAdultMaximumReached}
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <div className="total-children">
+                    <p className="children">Children</p>
+                    <button
+                      type="button"
+                      className="minus"
+                      onClick={() =>
+                        setReservation({
+                          ...reservation,
+                          children: Math.max(reservation.children - 1, 0),
+                        })
+                      }
+                      disabled={isRoomButtonDisabled}
+                    >
+                      -
+                    </button>
+                    <p className="number">{reservation.children}</p>
+                    <button
+                      type="button"
+                      className="plus"
+                      onClick={() =>
+                        setReservation({
+                          ...reservation,
+                          children: Math.min(reservation.children + 1, 6),
+                        })
+                      }
+                      disabled={
+                        isRoomButtonDisabled || isChildrenMaximumReached
+                      }
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <div className="room-type">
+                  <select
+                    className={`room-type-select ${
+                      isRoomTypeValid ? '' : 'invalid'
+                    }`}
+                    value={reservation.roomType}
+                    onChange={(e) => {
+                      setReservation({
+                        ...reservation,
+                        roomType: e.target.value,
+                      });
+                      setIsRoomTypeValid(true);
+                    }}
+                  >
+                    <option value="">Select a Room Type</option>
+                    {rooms.map((room) => (
+                      <option key={room.id} value={room.name}>
+                        {room.name}
+                      </option>
+                    ))}
+                  </select>
+
+                  {!isRoomTypeValid && (
+                    <p className="error-message">Please select a room type</p>
+                  )}
+                </div>
+
+                <div className="rooms-container">
+                  <p className="rooms">Rooms</p>
+                  <button
+                    type="button"
+                    className="minus"
+                    onClick={() =>
+                      setReservation({
+                        ...reservation,
+                        rooms: Math.max(reservation.rooms - 1, 1),
+                      })
+                    }
                     disabled={isRoomButtonDisabled}
                   >
                     -
                   </button>
-                  <p className="number">{reservation.children}</p>
-                  <button type="button" className="plus"
+                  <p className="number">{reservation.rooms}</p>
+                  <button
+                    type="button"
+                    className="plus"
                     onClick={() =>
-                  setReservation({ ...reservation, children: Math.min(reservation.children + 1, 6), })
-                }
-                disabled={isRoomButtonDisabled || isChildrenMaximumReached}
+                      setReservation({
+                        ...reservation,
+                        rooms: Math.min(reservation.rooms + 1, 6),
+                      })
+                    }
+                    disabled={isRoomButtonDisabled}
                   >
                     +
                   </button>
                 </div>
-              </div>
 
-              <div className='room-type'>
-                <select
-                    className={`room-type-select ${isRoomTypeValid ? '' : 'invalid'}`}
-                    value={reservation.roomType}
-                    onChange={(e) => {
-                      setReservation({ ...reservation, roomType: e.target.value });
-                      setIsRoomTypeValid(true);
-                    }}
+                <div className="reserve-buttons">
+                  <button
+                    type="submit"
+                    className={buttonClassName}
+                    disabled={!validateReservation() || reservationSuccessful}
+                    onClick={handleReservationSubmit}
                   >
-
-                  <option value="">Select a Room Type</option>
-                    {rooms.map((room) => (
-                      <option key={room.id} value={room.name}>{room.name}</option>
-                    ))}
-                </select>
-
-                  {!isRoomTypeValid && <p className="error-message">Please select a room type</p>}
-
-              </div>
-
-              <div className="rooms-container">
-                <p className="rooms">Rooms</p>
-                <button type="button" className="minus"
-                  onClick={() => setReservation({ ...reservation, rooms: Math.max(reservation.rooms - 1, 1) })}
-                  disabled={isRoomButtonDisabled}
-                >
-                  -
-                </button>
-                <p className="number">{reservation.rooms}</p>
-                <button type="button" className="plus"
-                  onClick={() => setReservation({ ...reservation, rooms: Math.min(reservation.rooms + 1, 6), })}
-                  disabled={isRoomButtonDisabled}
-                >
-                  +
-                </button>
-              </div>
-
-              <div className="reserve-buttons">
-
-                <button
-                  type="submit"
-                  className={buttonClassName}
-                  disabled = {
-                    !validateReservation() || reservationSuccessful
-                  }
-                  onClick={handleReservationSubmit}
-                >
-                  {
-                    isLoading ? 'Reserving...' : (reservationSuccessful ? 'Reserved' : 'Reserve')
-                  }
-                </button>
+                    {isLoading
+                      ? 'Reserving...'
+                      : reservationSuccessful
+                      ? 'Reserved'
+                      : 'Reserve'}
+                  </button>
 
                   {error && (
-                      <div className="error-message">
-                        <p>{error}</p>
-                      </div>
-                    )}
+                    <div className="error-message">
+                      <p>{error}</p>
+                    </div>
+                  )}
 
-                    {dialogVisible && !error && (
-                      <Dialog message="Loading..." isLoading={isLoading} />
-                    )}
+                  {dialogVisible && !error && (
+                    <Dialog message="Loading..." isLoading={isLoading} />
+                  )}
 
-              <button type="button" className="my-reservation" to='/reservation'>
-                Rooms
-              </button>
-          </div>
-        </form>
+                  <button
+                    type="button"
+                    className="my-reservation"
+                    to="/reservation"
+                  >
+                    Rooms
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-
+      </>
     );
-  };
+  }
 };
 
 export default Reserve;

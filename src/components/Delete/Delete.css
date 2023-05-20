@@ -1,23 +1,16 @@
 .delete-hotels {
-  /* display: flex;
-  flex-direction: column; */
   width: 100%;
 }
 
 .info {
   margin-top: 40px;
 }
-.delete {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.deletes {
   margin-top: 50px;
   padding: 30px;
 }
 
-.hotelList {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.hotelLists {
   gap: 40px;
 }
 
@@ -27,13 +20,13 @@
   margin: 0;
 }
 
-.hotelItem {
+.hotelItems {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  border: 2px solid rgb(167, 166, 166);
-  padding-bottom: 20px;
-  border-radius: 20px;
+  margin: 8px 0;
+  border: 1px solid gray;
+  border-radius: 8px;
 }
 
 .hotelDetails .hr {
@@ -45,11 +38,10 @@
   color: gray;
 }
 
-.hotelItem img {
-  width: 300px;
-  height: 300px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+.hotelItems img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
 }
 .rightarr {
   float: inline-end;
@@ -68,4 +60,14 @@
 .reservebtn:hover {
   background: #72b600;
   color: white;
+}
+
+.btnssz {
+  padding: 5px 8px;
+  background-color: red;
+  color: white;
+  border-radius: 8px;
+  border: 1px solid red;
+  width: 100px;
+  margin: 30px;
 }

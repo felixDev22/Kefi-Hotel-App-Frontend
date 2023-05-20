@@ -35,34 +35,13 @@ const Delete = () => {
       })
       .catch((error) => console.error(error));
   };
-
-  const handleNext = () => {
-    setCurrentIndex((currentIndex + 1) % hotels.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex(currentIndex === 0 ? hotels.length - 1 : currentIndex - 1);
-  };
-
   return (
     <div className="delete-hotels">
       <div className="info">
         <img src={rectangle} alt="rectangle" />
         <p>Changed your mind yet? Delete some hotels</p>
       </div>
-      <HotelList
-        hotels={hotels}
-        currentIndex={currentIndex}
-        onNext={handleNext}
-        onPrev={handlePrev}
-        onDelete={handleDelete}
-      />
-      <button
-        onClick={() => (window.location.href = '/reserve')}
-        className="reservebtn"
-      >
-        Reserve
-      </button>
+      <HotelList hotels={hotels} onDelete={handleDelete} />
     </div>
   );
 };
