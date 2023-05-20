@@ -48,7 +48,6 @@ const initialState = {
 const loginSlice = createSlice({
   name: 'login',
   initialState,
-  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.fulfilled, (state, action) => {
