@@ -1,5 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage/session';
+
+// Define a persist config for the login slice
+const loginPersistConfig = {
+  key: 'login',
+  storage,
+};
 
 export const loginUser = createAsyncThunk('login', async (data, thunkAPI) => {
   const loginUrl = 'http://127.0.0.1:3000/login';
@@ -10,10 +18,10 @@ export const loginUser = createAsyncThunk('login', async (data, thunkAPI) => {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
+      withCredentials: true,
     });
 
     if (response.status === 200) {
-      // console.log( response.data)
       return response.data;
     } else {
       return thunkAPI.rejectWithValue(response.data);
@@ -34,16 +42,20 @@ const loginSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(loginUser.fulfilled, (state, action) => {
-      state.data = action.payload;
-      state.islogged = action.payload.logged_in;
-      if (action.payload.status == 401) state.errors = action.payload.errors[0];
-    }),
-      builder.addCase(loginUser.rejected, (state) => {
+    builder
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.islogged = action.payload.logged_in;
+        if (action.payload.status === 401) state.errors = action.payload.errors[0];
+      })
+      .addCase(loginUser.rejected, (state, action) => {
         state.data = action.payload;
       });
   },
 });
 
-export default loginSlice.reducer;
+// Wrap the loginSlice.reducer with persistReducer
+const persistedLoginReducer = persistReducer(loginPersistConfig, loginSlice.reducer);
+
+export default persistedLoginReducer;
 export const loginActions = loginSlice.actions;
