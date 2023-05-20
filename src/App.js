@@ -9,8 +9,10 @@ import Room from './components/Rooms/Room';
 import AddHotel from './components/addHotel/AddHotel';
 import Reserve from './components/Reseve/Reserve';
 import Navigation from './components/navigation/Navigation';
+import { Services } from './components/ourServices/Services';
 import ReservedHotel from './components/Reservation/ReservedHotel';
 import './App.css';
+
 
 function App() {
   return (
@@ -42,7 +44,8 @@ function AppContent() {
         <Route path="/hotel/:id/reserve" element={<Reserve />} />
         <Route path="/reserved-hotel" element={<ReservedHotel />} />
         <Route path="/add-hotels" element={<AddHotel />} />
-
+        <Route path="/hotel/:id/reserve" element={<Reserve />} />
+        <Route path="/our-services" element={<Services />} />
       </Routes>
     </>
   );
