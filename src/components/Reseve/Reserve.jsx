@@ -25,11 +25,12 @@ const Reserve = () => {
 
   const [error, setError] = useState(null);
 
-  const [user_id, setUserId] = useState(0);
+  // const [user_id, setUserId] = useState(0);
 
   const [reservationSuccessful, setReservationSuccessful] = useState(false);
 
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
+  const user_id = useSelector(state => state.login.data.user.id)
 
   const dispatch = useDispatch();
 
@@ -99,8 +100,7 @@ const Reserve = () => {
     setIsLoading(true);
     try {
       const formData = {
-        // user_id: parseInt(user_id),
-        user_id: 1,
+        user_id: user_id,
         name: hotel.name,
         price: hotel.price,
         photo: hotel.photo,

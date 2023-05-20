@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { addHotel, newHotel } from '../../features/hotels';
+import { newHotel } from '../../features/hotels';
 import { Navigate } from 'react-router-dom';
 import '../../components/login/login.css';
 import './addHotel.css';
@@ -14,22 +14,12 @@ const AddHotel = () => {
   const [price, setPrice] = useState('');
   const [desc, setDesc] = useState('');
   const [isSent, setSent] = useState(false);
+  const user_id = useSelector(state => state.login.data.user.id)
 
-  useEffect(() => {
-    const fetchHotels = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/api/v1/hotels');
-        dispatch(addHotel(response.data));
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchHotels();
-  }, [dispatch]);
   const handleNewHotel = (e) => {
     e.preventDefault();
     const data = {
-      user_id: 1,
+      user_id: user_id,
       name: hotelName,
       photo: photoURL,
       rating: parseInt(rating),
@@ -41,18 +31,9 @@ const AddHotel = () => {
       .post('http://localhost:3000/api/v1/hotels', data)
       .then((response) => {
         dispatch(newHotel(response.data));
-        resetForm();
         setSent(true);
       })
       .catch((error) => console.error(error));
-  };
-  const resetForm = () => {
-    setHotelName('');
-    setPhotoURL('');
-    setRating('');
-    setLocation('');
-    setPrice('');
-    setDesc('');
   };
   return (
     <div className="wrapper-add">
