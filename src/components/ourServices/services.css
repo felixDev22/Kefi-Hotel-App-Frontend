@@ -49,3 +49,11 @@
   justify-content: center;
   align-items: center;
 }
+
+.box2:hover {
+  background: var(--orange-clr);
+}
+
+.box3:hover {
+  background: var(--green-clr);
+}
