@@ -1,15 +1,11 @@
 .roomsz {
-  /* Set the container height and width */
   height: 98vh;
   width: 100%;
-
-  /* Add styles for the slideshow effect */
   position: relative;
   overflow: hidden;
 }
 
 .roomsz h1 {
-  /* Style the heading */
   text-align: center;
   color: #000000;
   margin-bottom: 30px;
@@ -17,7 +13,6 @@
 }
 
 .room {
-  /* Set the position and transition for the slideshow items */
   position: absolute;
   top: 30;
   left: 0;
@@ -31,30 +26,25 @@
 }
 
 .room.active {
-  /* Show the active slideshow item */
   opacity: 1;
   transform: translateX(0);
 }
 
 .room.previous {
-  /* Slide the previous item to the left */
   transform: translateX(-100%);
 }
 
 .room.next {
-  /* Slide the next item to the right */
   transform: translateX(100%);
 }
 
 .roomPrice {
-  /* Style the room price */
   color: #333;
   float: left;
   margin-left: 22px;
 }
 
 .image img {
-  /* Style the room image */
   max-width: 100%;
   height: 600px;
   border-radius: 20px;
