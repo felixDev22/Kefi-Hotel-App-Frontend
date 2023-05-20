@@ -36,7 +36,6 @@ export default function hotel({ hotel }) {
             pathname: `/hotel/${hotel.id}/reserve`,
             state: {
               hotel: hotel,
-              console: console.log(hotel.id),
             },
           }}
         >
