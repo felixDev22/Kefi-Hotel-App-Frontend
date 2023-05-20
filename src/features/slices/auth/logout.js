@@ -23,9 +23,8 @@ const initialState = {
 const logoutSlice = createSlice({
   name: 'logout',
   initialState,
-  reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(logoutUser.fulfilled, (state) => {
+    builder.addCase(logoutUser.fulfilled, (state, action) => {
       state.data = {};
       state.isLogged = false;
       state.errors = '';
