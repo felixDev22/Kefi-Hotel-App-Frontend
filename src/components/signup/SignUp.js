@@ -116,7 +116,7 @@ export default function SignUp() {
               <div className="input-filed">
               <div className="input-wrapper">
               <input
-                  type="text"
+                type={showPassword ? 'text' : 'password'}
                   class="input"
                   id="confirm-password"
                   required
