@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Reserve.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Dialog from '../Dialog/Dialog';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -35,9 +35,6 @@ const Reserve = () => {
 
   const hotel = useSelector(selectSingleHotel);
   const rooms = useSelector(selectRooms);
-
-  console.log('Rooms from the reserve component', rooms);
-  console.log('Hotel data from the reserve component', hotel);
 
   const { id } = useParams();
 
@@ -459,13 +456,16 @@ const Reserve = () => {
                     <Dialog message="Loading..." isLoading={isLoading} />
                   )}
 
-                  <button
-                    type="button"
-                    className="my-reservation"
-                    to="/reservation"
+                  <Link
+                    to={`/hotels/${hotel.id}/room_types/${
+                      rooms.find((room) => room.name === reservation.roomType)
+                        ?.id
+                    }/rooms`}
                   >
-                    Rooms
-                  </button>
+                    <button type="button" className="my-reservation">
+                      Rooms
+                    </button>
+                  </Link>
                 </div>
               </form>
             </div>

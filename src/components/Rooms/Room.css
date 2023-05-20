@@ -1,0 +1,78 @@
+.roomsz {
+  height: 98vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.roomsz h1 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.room {
+  position: absolute;
+  top: 30;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+.roomsz_container {
+  margin-top: 30px;
+}
+
+.room.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.room.previous {
+  transform: translateX(-100%);
+}
+
+.room.next {
+  transform: translateX(100%);
+}
+
+.roomPrice {
+  color: #333;
+  float: left;
+  margin-left: 22px;
+}
+
+.image img {
+  max-width: 100%;
+  height: 600px;
+  border-radius: 20px;
+  margin-top: 50px;
+}
+
+.info p {
+  color: #000000;
+  text-decoration: wavy;
+}
+
+.dots-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 80px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.dot {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #fe6814;
+}
