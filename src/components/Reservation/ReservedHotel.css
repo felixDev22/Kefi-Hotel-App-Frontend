@@ -93,6 +93,7 @@
 .reserves p {
   color: #fe6814;
 }
+
 .reserveName {
   display: flex;
   justify-content: center;
@@ -101,7 +102,7 @@
 }
 
 span {
-  color: black;
+  color: gray;
   font-weight: 500;
 }
 
