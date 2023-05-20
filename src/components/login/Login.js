@@ -105,7 +105,8 @@ export default function Login() {
                 dangerouslySetInnerHTML={{
                   __html:
                     "Don't have an Account?. <a href='./signup'>Sign-Up</a>",
-                }}></span>
+                }}
+              ></span>
             </div>
           </div>
         </div>

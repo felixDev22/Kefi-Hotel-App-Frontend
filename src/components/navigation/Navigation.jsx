@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../features/slices/auth/logout';
+import React from 'react';
+import { NavLink, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../../features/slices/auth/login';
 import './Navigation.css';
 import SocialLinks from './SocialLinks';
 
 const Navigation = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [loggedOut, setLoggedOut] = useState(false);
+  const isloggedOut = useSelector((state) => state.login.isloggedOut);
 
-  const handleLogout = async () => {
-    await dispatch(logoutUser());
-    setLoggedOut(true);
-    navigate('/login');
+  const handleLogout = () => {
+    try {
+      dispatch(logoutUser());
+      window.location.href = '/login';
+    } catch (error) {
+      console.log('Logout error:', error);
+    }
   };
 
   return (
@@ -24,18 +26,19 @@ const Navigation = () => {
           <NavLink exact to="/main" activeClassName="active">
             HOTELS
           </NavLink>
-          <NavLink to="/reserve" activeClassName="active">
-            RESERVE
-          </NavLink>
-          <NavLink to="/delete-hotels" activeClassName="active">
-            MY RESERVATION
-          </NavLink>
           <NavLink to="/add-hotels" activeClassName="active">
             ADD HOTELS
+          </NavLink>
+          <NavLink to="/delete-hotels" activeClassName="active">
+            DELETE HOTEL
+          </NavLink>
+          <NavLink to="/reserved-hotel" activeClassName="active">
+            MY RESERVATION
           </NavLink>
           <NavLink to="/our-services" activeClassName="active">
             OUR SERVICES
           </NavLink>
+          {isloggedOut && <Navigate to="/login" replace={true} />}
           <button className="btnss" onClick={handleLogout}>
             Logout
           </button>

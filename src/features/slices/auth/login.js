@@ -11,7 +11,6 @@ const loginPersistConfig = {
 
 export const loginUser = createAsyncThunk('login', async (data, thunkAPI) => {
   const loginUrl = 'http://127.0.0.1:3000/login';
-
   try {
     const response = await axios.post(loginUrl, data, {
       headers: {
@@ -20,7 +19,6 @@ export const loginUser = createAsyncThunk('login', async (data, thunkAPI) => {
       },
       withCredentials: true,
     });
-
     if (response.status === 200) {
       return response.data;
     } else {
@@ -31,12 +29,22 @@ export const loginUser = createAsyncThunk('login', async (data, thunkAPI) => {
   }
 });
 
+// add for logoutUser
+export const logoutUser = createAsyncThunk('logout', async (_, thunkAPI) => {
+  try {
+    await axios.post('http://localhost:3000/logout');
+    return { logged_out: true };
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
 const initialState = {
   data: {},
   islogged: false,
+  isloggedOut: false,
   errors: '',
 };
-
 const loginSlice = createSlice({
   name: 'login',
   initialState,
