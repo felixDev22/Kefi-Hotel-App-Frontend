@@ -15,6 +15,7 @@ export const registerUser = createAsyncThunk(
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
+        withCredentials: true,
       });
 
       if (response.status === 200) {
@@ -38,14 +39,14 @@ const initialState = {
 const registerSlice = createSlice({
   name: "register",
   initialState,
-  reducers: {},
   extraReducers: (builder) => {
-      builder.addCase(registerUser.fulfilled, (state, action) => {
+      builder
+      .addCase(registerUser.fulfilled, (state, action) => {
         state.data = action.payload.data;
         state.iscreated = action.payload.iscreated;
 
-      }),
-      builder.addCase(registerUser.rejected, (state, action) => {
+      })
+      .addCase(registerUser.rejected, (state, action) => {
         state.errors = 'Email has already been taken';
         state.data = {};
       })
