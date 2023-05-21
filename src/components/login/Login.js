@@ -4,6 +4,7 @@ import { loginUser } from '../../features/slices/auth/login';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 import { Navigate } from 'react-router-dom';
 import './login.css';
+import logo from '../../Assets/KefI-logo-green.png';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -46,7 +47,7 @@ export default function Login() {
     <div className="fluid">
       <div className="row">
         <div className="col-md-6 side2-image">
-          <h2 className="logo">KeFi</h2>
+          <img src={logo} className="klogo" alt="logo"></img>
         </div>
         <div className="col-md-6 right">
           <div className="input-box">

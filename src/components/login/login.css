@@ -40,13 +40,9 @@
   position: relative;
 }
 
-.logos {
-  color: var(--orange-clr);
-  font-family: 'Advent Pro', sans-serif;
-  font-weight: 600;
-  font-size: 6rem;
-  top: 50px;
-  left: 50px;
+.klogo {
+  top: 4%;
+  left: 8%;
   position: absolute;
 }
 
