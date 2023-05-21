@@ -13,7 +13,6 @@ import { Services } from './components/ourServices/Services';
 import ReservedHotel from './components/Reservation/ReservedHotel';
 import './App.css';
 
-
 function App() {
   return (
     <div className="App">
@@ -48,7 +47,6 @@ function AppContent() {
         <Route path="/reserved-hotel" element={<ReservedHotel />} />
         <Route path="/add-hotels" element={<AddHotel />} />
         <Route path="/our-services" element={<Services />} />
-
       </Routes>
     </>
   );
