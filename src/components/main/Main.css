@@ -9,9 +9,20 @@
 .container hr{
     width: 10%;
     margin-right: 75px;
+    margin-top: rem;
     border: 1px solid #FE6814;
 }
-.title{
+
+.no-hotels-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    margin: 0 auto;
+}
+
+.title {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -22,7 +33,7 @@
     margin: 4rem auto;
     margin-bottom: 20px;
 }
-.cards{
+.cards {
     display: flex;
     flex-direction: row;
     margin-left: 75px;
