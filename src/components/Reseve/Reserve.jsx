@@ -30,7 +30,7 @@ const Reserve = () => {
   const [reservationSuccessful, setReservationSuccessful] = useState(false);
 
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
-  const user_id = useSelector(state => state.login.data.user.id)
+  const user_id = useSelector((state) => state.login.data.user.id);
 
   const dispatch = useDispatch();
 
@@ -134,13 +134,13 @@ const Reserve = () => {
         setIsLoading(false);
         console.error(
           'An error occurred during room reservation:',
-          selectReserveError()
+          selectReserveError(),
         );
       }
     } catch (error) {
       setIsLoading(false);
       setError(
-        'An error occurred during room reservation. Please try again later.'
+        'An error occurred during room reservation. Please try again later.',
       );
       console.error('An error occurred during room reservation:', error);
     }
@@ -240,7 +240,7 @@ const Reserve = () => {
   } else {
     return (
       <>
-        <div className="reserve-container">
+        <div className="container">
           <div className="reserve-intro">
             <span className="line"></span>
             <h3 className="reserve-title">Book your Hotel Reservations</h3>
@@ -320,8 +320,7 @@ const Reserve = () => {
                           adults: Math.max(reservation.adults - 1, 1),
                         })
                       }
-                      disabled={isAdultMinimumReached}
-                    >
+                      disabled={isAdultMinimumReached}>
                       -
                     </button>
                     <p className="number">{reservation.adults}</p>
@@ -334,8 +333,7 @@ const Reserve = () => {
                           adults: Math.min(reservation.adults + 1, 4),
                         })
                       }
-                      disabled={isAdultMaximumReached}
-                    >
+                      disabled={isAdultMaximumReached}>
                       +
                     </button>
                   </div>
@@ -351,8 +349,7 @@ const Reserve = () => {
                           children: Math.max(reservation.children - 1, 0),
                         })
                       }
-                      disabled={isRoomButtonDisabled}
-                    >
+                      disabled={isRoomButtonDisabled}>
                       -
                     </button>
                     <p className="number">{reservation.children}</p>
@@ -367,8 +364,7 @@ const Reserve = () => {
                       }
                       disabled={
                         isRoomButtonDisabled || isChildrenMaximumReached
-                      }
-                    >
+                      }>
                       +
                     </button>
                   </div>
@@ -386,8 +382,7 @@ const Reserve = () => {
                         roomType: e.target.value,
                       });
                       setIsRoomTypeValid(true);
-                    }}
-                  >
+                    }}>
                     <option value="">Select a Room Type</option>
                     {rooms.map((room) => (
                       <option key={room.id} value={room.name}>
@@ -412,8 +407,7 @@ const Reserve = () => {
                         rooms: Math.max(reservation.rooms - 1, 1),
                       })
                     }
-                    disabled={isRoomButtonDisabled}
-                  >
+                    disabled={isRoomButtonDisabled}>
                     -
                   </button>
                   <p className="number">{reservation.rooms}</p>
@@ -426,8 +420,7 @@ const Reserve = () => {
                         rooms: Math.min(reservation.rooms + 1, 6),
                       })
                     }
-                    disabled={isRoomButtonDisabled}
-                  >
+                    disabled={isRoomButtonDisabled}>
                     +
                   </button>
                 </div>
@@ -437,8 +430,7 @@ const Reserve = () => {
                     type="submit"
                     className={buttonClassName}
                     disabled={!validateReservation() || reservationSuccessful}
-                    onClick={handleReservationSubmit}
-                  >
+                    onClick={handleReservationSubmit}>
                     {isLoading
                       ? 'Reserving...'
                       : reservationSuccessful
@@ -460,10 +452,9 @@ const Reserve = () => {
                     to={`/hotels/${hotel.id}/room_types/${
                       rooms.find((room) => room.name === reservation.roomType)
                         ?.id
-                    }/rooms`}
-                  >
+                    }/rooms`}>
                     <button type="button" className="my-reservation">
-                      Rooms
+                      View Rooms
                     </button>
                   </Link>
                 </div>
