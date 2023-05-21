@@ -8,7 +8,7 @@
 
 .container hr {
   width: 10%;
-  border: 1px solid #fe6814;
+  border: 1px solid var(--green-clr);
 }
 .title {
   font-family: 'Inter', sans-serif;

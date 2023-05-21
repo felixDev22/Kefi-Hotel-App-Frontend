@@ -1,65 +1,69 @@
-
-.card{
-    width:265px;
-    height: 500px;
-    border-radius: 30px;
+.card {
+  width: 265px;
+  height: 500px;
+  border-radius: 30px;
 }
-.card-img-top{
-        border-radius : 22px 22px 0px 0px;
-        width:265px;
-        height: 150px;
+.card-img-top {
+  border-radius: 22px 22px 0px 0px;
+  width: 265px;
+  height: 150px;
 }
-.card .cardtitle{
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-}
-
-.rating{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
+.card .cardtitle {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
 }
 
-.rating .fa, .fa-solid {
-    color: #FE6814;
-    font-size: 12px;
-    padding: 5px;
-    margin: 5px;
-}
-.rating li{
-    list-style: none;
-    font-size: 15px;
-    color: #989495;
-    margin: 1px;
-    padding: 3px;
-    text-align: center;
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
 }
 
-.price{
-    color: #989495;
-    font-family: 'Inter';
-    font-style: normal;
-    font-size: 25px;
+.rating .fa,
+.fa-solid {
+  color: var(--green-clr);
+  font-size: 12px;
+  padding: 5px;
+  margin: 5px;
+}
+.rating li {
+  list-style: none;
+  font-size: 15px;
+  color: #989495;
+  margin: 1px;
+  padding: 3px;
+  text-align: center;
 }
 
-.price span{
-    color: #FE6814;
-    font-family: 'Inter';
-    font-style: normal;
+.price {
+  color: #989495;
+  font-family: 'Inter';
+  font-style: normal;
+  font-size: 25px;
 }
 
-.card-text{
-    color: #989495;
-    text-overflow: clip;
-    overflow: hidden;
-    font-size: 12px;
+.price span {
+  color: var(--green-clr);
+  font-family: 'Inter';
+  font-style: normal;
 }
 
-.btn{
-    background-color: #FE6814;
-    border-radius: 12px;
-    outline: none;
-    border: none;
-    width: 150px;
+.card-text {
+  color: #989495;
+  text-overflow: clip;
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.btn {
+  background-color: var(--green-clr);
+  border-radius: 12px;
+  outline: none;
+  border: none;
+  width: 150px;
+}
+
+.btn:hover {
+  background-color: var(--orange-clr);
 }
