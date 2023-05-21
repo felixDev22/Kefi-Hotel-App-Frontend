@@ -216,6 +216,14 @@ main {
   margin-top: 20px;
 }
 
+.copyRight .copyRight-year {
+  width: 40px;
+  overflow: hidden;
+  text-align: center;
+  margin-right: 5px;
+  color: #d3d3d3;
+}
+
 @media screen and (min-width: 768px) {
   main {
     margin-top: calc(var(--header-height) + 1rem);

@@ -70,10 +70,11 @@ const Navigation = () => {
 
             </div>
           </div>
-
           <div className={`sociaals ${!show ? 'hide' : ''}`}>
             {show && <SocialLinks />}
-            <p className="copyRight">© 2023 Kefi Group</p>
+            {show && (
+              <p className="copyRight">© 2023 Kefi Group </p>
+            )}
           </div>
         </nav>
       </aside>
