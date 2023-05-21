@@ -4,6 +4,7 @@
   height: 100vh;
   background-repeat: none;
   background-size: cover;
+  background-position: center;
 }
 
 .grid-container {
