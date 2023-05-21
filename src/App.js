@@ -39,7 +39,6 @@ function AppContent() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/main" element={<Main />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/rooms" element={<Room />} />
         <Route path="/hotel/:id/reserve" element={<Reserve />} />
         <Route path="/reserved-hotel" element={<ReservedHotel />} />
         <Route path="/add-hotels" element={<AddHotel />} />
