@@ -48,7 +48,8 @@ const Navigation = () => {
         <nav className='nav'>
           <div>
             <Link to='/main' className='nav-logo'>
-              <span className='nav-logo-title'>KeFi</span>
+              <i className='fas fa-home-alt nav-logo-image'></i>
+              {show && <span className='nav-logo-title'>KeFi</span>}
             </Link>
 
             <div className='nav-list'>

@@ -96,6 +96,7 @@ main {
 
 .nav-logo {
   margin-bottom: 2rem;
+  text-decoration: none;
 }
 
 .nav-logo-icon {
@@ -104,12 +105,21 @@ main {
   cursor: pointer;
 }
 
+.nav-logo-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  color: #fe6814;
+}
+
 .nav-logo-title {
   font-weight: 700;
   text-decoration: none;
-  text-align: center;
   font-size: 24px;
   color: #fe6814;
+  margin: -8px auto;
 }
 
 .nav-link {
