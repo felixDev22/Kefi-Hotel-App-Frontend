@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { addHotel, deleteHotel } from '../../features/hotels';
@@ -10,14 +10,6 @@ const Delete = () => {
   const dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels.hotels);
   const hotelLength = useSelector((state) => state.hotels.hotels.length);
-  const [user, setUser] = useState([]);
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('userData'));
-    if (user) {
-      setUser(user);
-    }
-  }, []);
 
   useEffect(() => {
     dispatch(addHotel([]));
@@ -47,15 +39,17 @@ const Delete = () => {
     <>
       {hotelLength < 1 && (
         <div className="container">
-          <h1>Hi {user.name} </h1>
           <p className="text-dark"> There are no hotels yet in the system</p>
-          <div className="delete-hotels">
-            <div className="info">
-              <img src={rectangle} alt="rectangle" />
-              <p>Changed your mind yet? Delete some hotels</p>
-            </div>
-            <HotelList hotels={hotels} onDelete={handleDelete} />
+        </div>
+      )}
+
+      {hotelLength > 0 && (
+        <div className="delete-hotels">
+          <div className="info">
+            <img src={rectangle} alt="rectangle" />
+            <p>Changed your mind yet? Delete some hotels</p>
           </div>
+          <HotelList hotels={hotels} onDelete={handleDelete} />
         </div>
       )}
     </>
