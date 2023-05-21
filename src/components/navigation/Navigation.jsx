@@ -49,7 +49,6 @@ const Navigation = () => {
         <nav className="nav">
           <div>
             <Link to="/main" className="nav-logo">
-              <i className="fas fa-home-alt nav-logo-image"></i>
               {show && <img src={logo} className="klogo" alt="logo"></img>}
             </Link>
             <div className="nav-wrapper">

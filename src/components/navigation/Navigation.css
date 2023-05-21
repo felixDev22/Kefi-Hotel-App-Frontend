@@ -77,11 +77,13 @@ main {
 }
 
 .nav-logo img {
-  margin-bottom: 20%;
+  margin-bottom: 20px;
+  width: 50%;
+  margin-left: 5%;
 }
 
 .nav-wrapper {
-  margin-top: 80%;
+  margin-top: 90%;
 }
 
 .nav-link {
