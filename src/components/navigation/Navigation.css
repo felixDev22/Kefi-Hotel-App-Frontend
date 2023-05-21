@@ -137,6 +137,7 @@ main {
 .active {
   background-color: var(--white-color);
   color: #fff;
+  margin-top: -40px
 }
 
 .active::before {
