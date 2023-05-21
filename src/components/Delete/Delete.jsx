@@ -10,7 +10,7 @@ const Delete = () => {
   const dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels.hotels);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const hotelLength = useSelector(state => state.hotels.hotels.length)
+  const hotelLength = useSelector((state) => state.hotels.hotels.length);
   const name = useSelector((state) => state.login.data.user.name);
 
   useEffect(() => {
@@ -39,25 +39,23 @@ const Delete = () => {
   };
   return (
     <>
-    {
-      hotelLength < 1 && <div className='container'> 
-         <h1>Hi {name} </h1> 
-         <p className="text-dark"> There are no hotels yet in the system</p>
-          
-      </div>
+      {hotelLength < 1 && (
+        <div className="container">
+          <h1>Hi {name} </h1>
+          <p className="text-dark"> There are no hotels yet in the system</p>
+        </div>
+      )}
 
-    }
-
-    {
-          hotelLength > 0 && <div className="delete-hotels">
-      <div className="info">
-        <img src={rectangle} alt="rectangle" />
-        <p>Changed your mind yet? Delete some hotels</p>
-      </div>
-      <HotelList hotels={hotels} onDelete={handleDelete} />
-    </div>
-  }
-  </>
+      {hotelLength > 0 && (
+        <div className="delete-hotels">
+          <div className="info">
+            <img src={rectangle} alt="rectangle" />
+            <p>Changed your mind yet? Delete some hotels</p>
+          </div>
+          <HotelList hotels={hotels} onDelete={handleDelete} />
+        </div>
+      )}
+    </>
   );
 };
 

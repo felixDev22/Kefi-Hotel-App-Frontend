@@ -1,9 +1,10 @@
 .delete-hotels {
+  margin: 8% 8%;
   width: 100%;
 }
 
 .info {
-  margin-top: 40px;
+  margin-top: 60px;
 }
 .deletes {
   margin-top: 50px;
