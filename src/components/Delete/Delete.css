@@ -25,8 +25,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 8px 0;
-  border: 1px solid gray;
+  margin-bottom: 25px;
+  border: 1px solid rgb(184, 184, 184);
   border-radius: 8px;
 }
 
@@ -35,7 +35,7 @@
   height: 2px;
 }
 
-.hotelDetails p {
+.hotelDetails h3 {
   color: gray;
 }
 
@@ -69,7 +69,10 @@
   background-color: red;
   color: white;
   border-radius: 8px;
-  border: 1px solid red;
   width: 100px;
   margin: 30px;
+}
+
+.btnssz:hover {
+  background: var(--green-clr);
 }
