@@ -44,6 +44,8 @@ const Reserve = () => {
 
   const hotel = useSelector(selectSingleHotel);
   const rooms = useSelector(selectRooms);
+
+
   const isLoadingHotel = useSelector(selectSingleHotelLoading);
 
   const { id } = useParams();

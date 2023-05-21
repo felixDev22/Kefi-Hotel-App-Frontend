@@ -13,7 +13,6 @@ import { Services } from './components/ourServices/Services';
 import ReservedHotel from './components/Reservation/ReservedHotel';
 import './App.css';
 
-
 function App() {
   return (
     <div className="App">
@@ -40,15 +39,15 @@ function AppContent() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/main" element={<Main />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/hotel/:id/reserve" element={<Reserve />} />
+        <Route path="/reserved-hotel" element={<ReservedHotel />} />
+        <Route path="/add-hotels" element={<AddHotel />} />
+        <Route path="/hotel/:id/reserve" element={<Reserve />} />
+        <Route path="/our-services" element={<Services />} />
         <Route
           path="/hotels/:hotel_id/room_types/:room_type_id/rooms"
           element={<Room />}
         />
-        <Route path="/hotel/:id/reserve" element={<Reserve />} />
-        <Route path="/reserved-hotel" element={<ReservedHotel />} />
-        <Route path="/add-hotels" element={<AddHotel />} />
-        <Route path="/our-services" element={<Services />} />
-
       </Routes>
     </>
   );

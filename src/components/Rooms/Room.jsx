@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addRooms } from '../../features/room';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import rectangle from '../../Assets/rectangle.png';
 import axios from 'axios';
 import './Room.css';
+import back from '../../Assets/back.png';
+
 
 const Room = () => {
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.rooms.rooms);
 
-  console.log('rooms:', rooms);
-
   const { hotel_id, room_type_id } = useParams();
-  console.log(hotel_id, room_type_id);
+
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -25,7 +25,6 @@ const Room = () => {
         const response = await axios.get(
           `http://localhost:3000/api/v1/hotels/${hotel_id}/room_types/${room_type_id}/rooms`
         );
-        console.log(response.data);
         dispatch(addRooms(response.data));
       } catch (error) {
         console.error(error);
@@ -56,6 +55,13 @@ const Room = () => {
         <img src={rectangle} alt="rectangle" />
         <p>Get a Glimpse of the Rooms</p>
       </div>
+
+      <div className="arrow-container">
+        <Link to={`/hotel/${hotel_id}/reserve`}>
+          <img src={back} alt="left arrow" />
+        </Link>
+      </div>
+
       <div className="slideshow-container">
         {rooms.map((room, index) => {
           const slideClass =

@@ -76,3 +76,10 @@
 .dot.active {
   background-color: #fe6814;
 }
+
+.arrow-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 30px;
+}
+
