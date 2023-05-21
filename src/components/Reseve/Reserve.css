@@ -266,7 +266,7 @@ option {
 }
 
 .my-reservation {
-  background-color: #fe6814;
+  background-color: var(--green-clr);
   color: white;
   padding: 10px 20px;
   border: none;

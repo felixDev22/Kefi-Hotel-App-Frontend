@@ -11,7 +11,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-top: 50px; */
   padding: 30px;
 }
 
@@ -62,17 +61,17 @@
 }
 
 .reservebtn {
-  width: 132.32px;
-  height: 44.51px;
+  width: 132px;
+  height: 40px;
   background: #72b600;
-  border-radius: 6px;
+  border-radius: 20px;
   float: right;
   color: white;
   margin-right: 40px;
 }
 
 .reservebtn:hover {
-  background: #72b600;
+  background: var(--orange-clr);
   color: white;
 }
 
@@ -84,14 +83,14 @@
 
 .reserves {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   padding: 8px;
 }
 
 .reserves p {
-  color: #fe6814;
+  color: var(--green-clr);
 }
 
 .reserveName {
@@ -109,4 +108,14 @@ span {
 .checks {
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.checks p {
+  margin-left: 20px;
+}
+
+.out span {
+  margin-right: 35px;
 }
