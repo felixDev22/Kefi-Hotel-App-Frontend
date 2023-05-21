@@ -71,7 +71,6 @@ const Reserve = () => {
 
 
   }, [
-    dispatch,
     id,
   ]);
 
