@@ -45,7 +45,7 @@ main {
 .header-toggle {
   font-size: 1.25rem;
   cursor: pointer;
-  color: #fe6814;
+  color: var(--green-color);
 }
 
 .sidebar {
