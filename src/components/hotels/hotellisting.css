@@ -1,43 +1,52 @@
-.hotelList .leftarr{
-    position: absolute;
-    top: 60%;
-    left:22%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-
+.hotelList .leftarr {
+  position: absolute;
+  top: 60%;
+  left: 22%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
 
-
-
-.hotelList .rightarr{
-    position: absolute;
-    top: 60%;
-    right:8%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-
+.hotelList .rightarr {
+  position: absolute;
+  top: 60%;
+  right: 8%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
 
-.search{
-    padding: 10px;
-    margin-left: 300px;
-    width: 30%;
+.search {
+  padding: 10px;
+  width: 30%;
+}
+
+.my-3 {
+  border-radius: 15px;
+  margin-left: -50px;
+}
+
+.btn-primary {
+  margin-bottom: 40px;
+}
+
+.btn-primary:hover {
+  background-color: var(--green-clr);
+  color: #fff;
 }
