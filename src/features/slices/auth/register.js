@@ -40,8 +40,7 @@ const registerSlice = createSlice({
   name: "register",
   initialState,
   extraReducers: (builder) => {
-      builder
-      .addCase(registerUser.fulfilled, (state, action) => {
+      builder.addCase(registerUser.fulfilled, (state, action) => {
         state.data = action.payload.data;
         state.iscreated = action.payload.iscreated;
 

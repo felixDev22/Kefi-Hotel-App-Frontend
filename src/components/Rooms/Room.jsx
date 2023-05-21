@@ -7,11 +7,13 @@ import axios from 'axios';
 import './Room.css';
 import back from '../../Assets/back.png';
 
+
 const Room = () => {
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.rooms.rooms);
 
   const { hotel_id, room_type_id } = useParams();
+
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -53,11 +55,13 @@ const Room = () => {
         <img src={rectangle} alt="rectangle" />
         <p>Get a Glimpse of the Rooms</p>
       </div>
+
       <div className="arrow-container">
         <Link to={`/hotel/${hotel_id}/reserve`}>
           <img src={back} alt="left arrow" />
         </Link>
       </div>
+
       <div className="slideshow-container">
         {rooms.map((room, index) => {
           const slideClass =
