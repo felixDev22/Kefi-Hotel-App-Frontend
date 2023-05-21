@@ -7,9 +7,15 @@
 }
 
 .container hr {
+  margin-top: 8%;
   width: 10%;
   border: 1px solid var(--green-clr);
 }
+
+.container p {
+  margin-bottom: 8%;
+}
+
 .title {
   font-family: 'Inter', sans-serif;
   font-style: normal;
