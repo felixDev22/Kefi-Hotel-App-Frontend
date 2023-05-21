@@ -62,7 +62,7 @@
 
 .line {
   display: block;
-  border: 2px solid var(--orange-clr);
+  border: 2px solid var(--green-clr);
   width: 150px;
   height: 2px;
   align-items: center;
@@ -98,7 +98,7 @@
 .submit {
   height: 65px;
   width: 100%;
-  background: var(--orange-clr);
+  background: var(--green-clr);
   margin-bottom: 20px;
   color: #fff;
   border-radius: var(--border-radius);
@@ -106,7 +106,7 @@
   margin-top: 20px;
 }
 .submit:hover {
-  background: var(--green-clr);
+  background: var(--orange-clr);
   color: #fff;
 }
 .sign-in {
