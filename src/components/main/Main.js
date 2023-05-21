@@ -31,11 +31,11 @@ console.log(user)
   return (
     <>
         {
-          hotelLength < 1 && <div className='container'> 
-             <h1>Welcome  {user.name}</h1> 
+          hotelLength < 1 && <div className='no-hotels-container'>
+             <h1>Welcome  {user.name}</h1>
              <p className="text-dark"> There are no hotels yet</p>
              <a href="/add-hotel" className=" btn btn-primary">Add Hotel</a>
-              
+
           </div>
 
         }
