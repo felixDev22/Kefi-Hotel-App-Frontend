@@ -4,7 +4,7 @@
   --header-height: 3rem;
   --nav-width: 68px;
   --nav-bg-color: #d3d3d3;
-  --white-color: #fe6814;
+  --green-color: #72b600;
 }
 
 * {
@@ -14,7 +14,7 @@
 }
 
 .fa-xmark {
-  color: #fe6814;
+  color: var(--green-color);
   font-size: 1.2rem;
   padding: 0.25rem;
 }
@@ -101,7 +101,7 @@ main {
 
 .nav-link:hover .nav-link-title,
 .nav-link:hover .nav-logo-icon {
-  color: #fe6814;
+  color: var(--green-color);
 }
 
 .nav-logo {
@@ -111,7 +111,7 @@ main {
 
 .nav-logo-icon {
   font-size: 1.25rem;
-  color: var(--white-color);
+  color: var(--green-color);
   cursor: pointer;
 }
 
@@ -140,12 +140,12 @@ main {
 }
 
 .nav-link:hover {
-  color: var(--white-color);
+  color: var(--green-color);
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 .active {
-  background-color: var(--white-color);
+  background-color: var(--green-color);
   color: #fff;
   margin-top: -40px;
 }
@@ -157,7 +157,7 @@ main {
   top: 0;
   height: 38px;
   width: 3px;
-  background-color: var(--white-color);
+  background-color: var(--green-color);
   transition: 0.5s;
 }
 
@@ -202,6 +202,7 @@ main {
 
 .social-links a {
   text-decoration: none;
+  color: #fe6814;
   border: 1px solid rgb(126, 125, 125);
   align-items: center;
   width: 140px;
@@ -220,7 +221,7 @@ main {
 }
 
 .social-links a:hover {
-  background-color: #fe6814;
+  background-color: var(--green-clr);
   color: #ffffff;
 }
 
@@ -263,6 +264,10 @@ main {
 .search-input:focus {
   outline: none;
   box-shadow: none;
+}
+
+.links a:hover {
+  color: #fe6814;
 }
 
 @media screen and (min-width: 768px) {
