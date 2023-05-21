@@ -115,9 +115,10 @@ export default function SignUp() {
                   </span>
                 </div>
               </div>
-              <div>
-                <input
-                  type="text"
+              <div className="input-filed">
+              <div className="input-wrapper">
+              <input
+                type={showPassword ? 'text' : 'password'}
                   class="input"
                   id="confirm-password"
                   required
@@ -126,6 +127,12 @@ export default function SignUp() {
                   value={password_confirmation}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
+                  <span
+                    className="see-password"
+                    onClick={handleTogglePasswordVisibility}>
+                  {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
+                </span>
+              </div>
               </div>
               <button type="submit" className="submit">
                 <p>Signup</p>

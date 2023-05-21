@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { newHotel } from '../../features/hotels';
 import { Navigate } from 'react-router-dom';
@@ -15,11 +15,20 @@ const AddHotel = () => {
   const [desc, setDesc] = useState('');
   const [isSent, setSent] = useState(false);
   const user_id = useSelector((state) => state.login.data.user.id);
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('userData'));
+    if (user) {
+      setUser(user);
+    }
+  }, []);
+
 
   const handleNewHotel = (e) => {
     e.preventDefault();
     const data = {
-      user_id: user_id,
+      user_id: user.id,
       name: hotelName,
       photo: photoURL,
       rating: parseInt(rating),

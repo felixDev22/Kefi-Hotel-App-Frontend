@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { addHotel, deleteHotel } from '../../features/hotels';
@@ -12,6 +12,7 @@ const Delete = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const hotelLength = useSelector((state) => state.hotels.hotels.length);
   const name = useSelector((state) => state.login.data.user.name);
+
 
   useEffect(() => {
     dispatch(addHotel([]));

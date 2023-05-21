@@ -27,6 +27,7 @@
   margin-top: 10px;
   margin-bottom: 20px;
 }
+
 .cards {
   display: flex;
   flex-direction: row;
@@ -34,4 +35,25 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.no-hotels-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    margin: 0 auto;
+}
+
+.title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+    color: #000000;
+    margin: 4rem auto;
+    margin-bottom: 20px;
 }

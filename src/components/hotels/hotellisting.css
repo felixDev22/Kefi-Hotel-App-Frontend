@@ -46,7 +46,9 @@
   margin-bottom: 40px;
 }
 
+
 .btn-primary:hover {
   background-color: var(--green-clr);
   color: #fff;
 }
+

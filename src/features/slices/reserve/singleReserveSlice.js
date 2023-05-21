@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-  hotel: null,
+  hotel: [],
   loading: false,
   error: null,
 };
@@ -40,6 +40,7 @@ const singleHotelSlice = createSlice({
       .addCase(fetchHotel.fulfilled, (state, action) => {
         state.loading = false;
         state.hotel = action.payload;
+        console.log(action.payload);
       })
       .addCase(fetchHotel.rejected, (state) => {
         state.loading = false;

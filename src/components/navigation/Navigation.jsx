@@ -96,6 +96,8 @@ const Navigation = () => {
                   <span className="nav-link-title">Logout</span>
                 </Link>
               </div>
+      </header>
+      
             </div>
           </div>
           <div className={`sociaals ${!show ? 'hide' : ''}`}>
@@ -109,3 +111,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+

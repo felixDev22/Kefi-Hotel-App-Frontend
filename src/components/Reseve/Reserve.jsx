@@ -10,6 +10,7 @@ import {
 import {
   fetchHotel,
   selectSingleHotel,
+  selectSingleHotelLoading,
 } from '../../features/slices/reserve/singleReserveSlice';
 import {
   readRooms,
@@ -28,14 +29,24 @@ const Reserve = () => {
   // const [user_id, setUserId] = useState(0);
 
   const [reservationSuccessful, setReservationSuccessful] = useState(false);
-
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
   const user_id = useSelector((state) => state.login.data.user.id);
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('userData'));
+    if (user) {
+      setUser(user);
+    }
+  }, []);
 
   const dispatch = useDispatch();
 
   const hotel = useSelector(selectSingleHotel);
   const rooms = useSelector(selectRooms);
+
+
+  const isLoadingHotel = useSelector(selectSingleHotelLoading);
 
   const { id } = useParams();
 
@@ -53,27 +64,16 @@ const Reserve = () => {
     dispatch(readRooms(id));
     console.log(dispatch(readRooms(id)));
     console.log(dispatch(fetchHotel(id)));
-    if (reservation.roomType === '') {
-      setReservation({
-        ...reservation,
-        roomType: 'Single',
-      });
-    }
+
     if (isLoading) {
       setDialogVisible(true);
     } else {
       setDialogVisible(false);
     }
 
-    setTotalPrice(getTotalPrice());
+
   }, [
-    dispatch,
     id,
-    reservation,
-    isLoading,
-    checkInDate,
-    checkOutDate,
-    reservation.rooms,
   ]);
 
   const validateReservation = () => {
@@ -100,7 +100,7 @@ const Reserve = () => {
     setIsLoading(true);
     try {
       const formData = {
-        user_id: user_id,
+        user_id: user.id,
         name: hotel.name,
         price: hotel.price,
         photo: hotel.photo,
@@ -193,34 +193,9 @@ const Reserve = () => {
     return numberOfDays;
   };
 
-  const getTotalPrice = () => {
-    if (!hotel || !checkInDate || !checkOutDate || !reservation.rooms) {
-      return 0;
-    }
 
-    const basePrice = hotel.price;
-    const numberOfRooms = reservation.rooms;
-    const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
 
-    let totalPrice = basePrice * numberOfDays * numberOfRooms;
-    switch (reservation.roomType) {
-      case 'double':
-        totalPrice += totalPrice * 0.25;
-        break;
-      case 'master-suite':
-        totalPrice += totalPrice * 0.5;
-        break;
-      case 'king-size':
-        totalPrice += totalPrice * 0.75;
-        break;
-      default:
-        break;
-    }
-
-    return totalPrice;
-  };
-
-  const [totalPrice, setTotalPrice] = useState(getTotalPrice());
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const isRoomButtonDisabled =
     reservation.adults >= 2 && reservation.children >= 4;
@@ -235,7 +210,38 @@ const Reserve = () => {
       : 'reserve-button'
     : 'invalid-button';
 
-  if (!hotel) {
+  useEffect(() => {
+
+      if (!checkInDate || !checkOutDate || !reservation.rooms) {
+        setTotalPrice(hotel.price);
+        return;
+      }
+
+
+      const basePrice = hotel.price;
+      const numberOfRooms = reservation.rooms;
+      const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
+
+    let tPrice = basePrice * numberOfDays * numberOfRooms;
+    console.log(reservation.roomType);
+      switch (reservation.roomType) {
+        case 'Double':
+          tPrice += tPrice * 0.25;
+          break;
+        case 'Master Suite':
+          tPrice += tPrice * 0.5;
+          break;
+        case 'King Size':
+          tPrice += tPrice * 0.75;
+          break;
+        default:
+          break;
+      }
+
+      setTotalPrice(tPrice);
+  }, [hotel.price, checkInDate, checkOutDate, reservation.rooms, reservation.roomType]);
+
+  if (isLoadingHotel) {
     return <LoadingDialog />;
   } else {
     return (
@@ -249,7 +255,7 @@ const Reserve = () => {
               <span className="hotel-price-container">
                 <p className="hotel-price">Price:</p>
                 <p className="actual-price">
-                  $ {isNaN(totalPrice) ? hotel.price : totalPrice.toFixed(2)}
+                  $ {totalPrice}
                 </p>
 
                 {/* <p className="actual-price">$ {hotel.price}</p> */}
