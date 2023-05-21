@@ -19,14 +19,13 @@
     line-height: 36px;
     text-align: center;
     color: #000000;
-    margin-top: 10px;
+    margin: 4rem auto;
     margin-bottom: 20px;
 }
 .cards{
     display: flex;
     flex-direction: row;
     margin-left: 75px;
-    /* margin-bottom: 45px; */
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
