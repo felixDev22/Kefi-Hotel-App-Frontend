@@ -5,9 +5,11 @@ import { logoutUser } from '../../features/slices/auth/login';
 import './Navigation.css';
 import SocialLinks from './SocialLinks';
 import { Link } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
 
 const Navigation = () => {
   const [show, setShow] = useState(false);
+  const [search, setSearch] = React.useState('')
 
   const dispatch = useDispatch();
   const isloggedOut = useSelector((state) => state.login.isloggedOut);
@@ -27,6 +29,19 @@ const Navigation = () => {
         <div className='header-toggle' onClick={() => setShow(!show)}>
           <i className={`fas fa-bars ${show ? 'fa-solid fa-xmark' : null}`}></i>
         </div>
+
+        <div className="search">
+          <Form>
+            <Form.Group className="my-3">
+              <Form.Control
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search a hotel"
+                className="search-input"
+              />
+            </Form.Group>
+          </Form>
+        </div>
+
       </header>
 
       <aside className={`sidebar ${show ? 'show' : null}`}>
@@ -78,8 +93,6 @@ const Navigation = () => {
           </div>
         </nav>
       </aside>
-
-      <h1>Content</h1>
     </main>
   );
 };
