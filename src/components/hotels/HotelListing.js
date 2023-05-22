@@ -19,27 +19,29 @@ export default function HotelListing() {
   const hotels = useSelector((state) => state.hotels.hotels);
 
   return (
-    <>
-      <div className="hotelList">
-        <img
-          src={leftarr}
-          className="leftarr"
-          alt="left arrow"
-          onClick={handlePrev}
-        />
-        <div className="hotelList">
-          {hotels.length > 0 &&
-            hotels.slice(currentIndex, currentIndex + 3).map((hotel) => {
-              return <Hotel hotel={hotel} key={hotel.id} />;
-            })}
-        </div>
-        <img
-          src={rightarr}
-          className="rightarr"
-          alt="right arrow"
-          onClick={handleNext}
-        />
+    <div className="hotelList">
+      <img
+        src={leftarr}
+        className="leftarr"
+        alt="left arrow"
+        onClick={handlePrev}
+      />
+      <div className="d-flex justify-content-center align-items-center">
+        {hotels.length > 0 &&
+          hotels.slice(currentIndex, currentIndex + 3).map((hotel) => {
+            return (
+              <div className="col-lg-4 px-2" key={hotel.id}>
+                <Hotel hotel={hotel} />
+              </div>
+            );
+          })}
       </div>
-    </>
+      <img
+        src={rightarr}
+        className="rightarr"
+        alt="right arrow"
+        onClick={handleNext}
+      />
+    </div>
   );
 }
