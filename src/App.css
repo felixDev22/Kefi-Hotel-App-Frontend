@@ -29,8 +29,8 @@ body {
 
 .container {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 15%;
+  left: 15%;
   right: 0;
   bottom: 0;
   margin: auto;
@@ -48,7 +48,7 @@ body {
   display: block;
   align-items: center;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .line {
