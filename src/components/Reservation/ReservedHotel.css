@@ -3,6 +3,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 30px;
+  margin-top: -5%;
+}
+
+.intro-reserve {
+  display: block;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .hotelItem {

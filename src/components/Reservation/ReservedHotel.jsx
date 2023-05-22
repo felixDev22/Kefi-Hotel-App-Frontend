@@ -92,7 +92,7 @@ const ReservedHotel = () => {
 
   return (
     <div className="container">
-      <div className="intro">
+      <div className="intro-reserve">
         <h1>Reserved Hotel</h1>
         <img src={rectangle} alt="rectangle" />
         <p>All your Reserved hotels in one place</p>
