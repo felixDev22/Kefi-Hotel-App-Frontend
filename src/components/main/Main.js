@@ -10,7 +10,6 @@ export default function Main() {
   const dispatch = useDispatch();
 
   const hotelLength = useSelector((state) => state.hotels.hotels.length);
-  const name = useSelector((state) => state.login.data.user.name);
 
   useEffect(() => {
     const fetchData = async () => {
