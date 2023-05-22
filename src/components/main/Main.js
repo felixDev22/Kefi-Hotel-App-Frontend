@@ -18,7 +18,7 @@ export default function Main() {
       dispatch(addHotel(resonse.data));
     };
     fetchData();
-  }, []);
+  }, [dispatch]);
   const [user, setUser] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,6 @@ export default function Main() {
     }
   }, []);
 
-  console.log(user);
   return (
     <>
       {hotelLength < 1 && (

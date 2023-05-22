@@ -11,8 +11,7 @@ import logo from '../../Assets/KefI-logo-green.png';
 
 const Navigation = () => {
   const [show, setShow] = useState(false);
-  const [search, setSearch] = React.useState('');
-
+  // const [search, setSearch] = React.useState('');
   const dispatch = useDispatch();
   const isloggedOut = useSelector((state) => state.login.isloggedOut);
 
@@ -36,7 +35,7 @@ const Navigation = () => {
           <Form>
             <Form.Group className="my-3">
               <Form.Control
-                onChange={(e) => setSearch(e.target.value)}
+                // onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search a hotel"
                 className="search-input"
               />

@@ -26,11 +26,8 @@ const Reserve = () => {
 
   const [error, setError] = useState(null);
 
-  // const [user_id, setUserId] = useState(0);
-
   const [reservationSuccessful, setReservationSuccessful] = useState(false);
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
-  const user_id = useSelector((state) => state.login.data.user.id);
   const [user, setUser] = useState([]);
 
   useEffect(() => {
@@ -62,8 +59,6 @@ const Reserve = () => {
   useEffect(() => {
     dispatch(fetchHotel(id));
     dispatch(readRooms(id));
-    console.log(dispatch(readRooms(id)));
-    console.log(dispatch(fetchHotel(id)));
 
     if (isLoading) {
       setDialogVisible(true);
@@ -72,9 +67,7 @@ const Reserve = () => {
     }
 
 
-  }, [
-    id,
-  ]);
+  }, [id, dispatch, isLoading]);
 
   const validateReservation = () => {
     if (!checkInDate || !checkOutDate) {
@@ -94,7 +87,6 @@ const Reserve = () => {
     e.preventDefault();
 
     if (!validateReservation()) {
-      console.log('Data not valid');
       return;
     }
     setIsLoading(true);
@@ -112,15 +104,12 @@ const Reserve = () => {
         room_type: reservation.roomType,
         rooms: reservation.rooms,
       };
-
       const response = await dispatch(reserveActions.reserveHotel(formData));
-      console.log('Response from the reserve component', response);
 
       if (response.payload) {
         setIsLoading(false);
         setDialogVisible(true);
         setReservationSuccessful(true);
-        console.log('Reservation successful!');
 
         setReservation({
           checkInDate: '',
@@ -223,7 +212,6 @@ const Reserve = () => {
       const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
 
     let tPrice = basePrice * numberOfDays * numberOfRooms;
-    console.log(reservation.roomType);
       switch (reservation.roomType) {
         case 'Double':
           tPrice += tPrice * 0.25;
@@ -268,7 +256,7 @@ const Reserve = () => {
               <div className="reserve-card">
                 <img
                   src={hotel.photo}
-                  alt="Hotel Image"
+                  alt={hotel.name}
                   className="reserve-hotel-image"
                 />
               </div>

@@ -32,7 +32,7 @@ const ReservedHotel = () => {
     };
 
     fetchReservation();
-  }, []); // Add an empty dependency array
+  }, [dispatch]); // Add an empty dependency array
 
   const handleDelete = (id) => {
     axios
