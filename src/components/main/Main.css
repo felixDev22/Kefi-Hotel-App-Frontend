@@ -1,59 +1,34 @@
-.container {
+.cards {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-.container hr {
-  margin-top: 8%;
-  width: 10%;
+.intro {
+  position: relative;
+  margin-top: 10%;
+  text-align: center;
+}
+
+.intro hr {
   border: 1px solid var(--green-clr);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  width: 10%;
+  margin: 0 auto;
+  margin-top: -30px;
 }
 
-.container p {
-  margin-bottom: 8%;
-}
-
-.title {
+.intro h3 {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
-  line-height: 36px;
+  font-size: 20px;
   text-align: center;
   color: #000000;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.cards {
-  display: flex;
-  flex-direction: row;
-  margin-left: 75px;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.no-hotels-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-    margin: 0 auto;
-}
-
-.title {
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 36px;
-    text-align: center;
-    color: #000000;
-    margin: 4rem auto;
-    margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }

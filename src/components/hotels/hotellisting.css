@@ -1,35 +1,31 @@
-.hotelList .leftarr {
-  position: absolute;
-  top: 60%;
-  left: 14%;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
+.hotelList {
+  display: grid;
   align-items: center;
-  z-index: 1;
+  justify-content: space-between;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
 }
 
-.hotelList .rightarr {
-  position: absolute;
-  top: 60%;
-  right: 12%;
+.hotelList ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leftarr,
+.rightarr {
+  width: 50px;
+  position: fixed;
+  top: 50%;
   transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
+}
+
+.leftarr {
+  left: 15%;
+}
+
+.rightarr {
+  right: 18%;
 }
 
 .search {

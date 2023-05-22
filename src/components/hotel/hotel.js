@@ -1,15 +1,13 @@
 import React from 'react';
-import Mombassa from '../../Assets/mombassa.png';
 import vec from '../../Assets/vec.png';
-import './hotel.css'
+import './hotel.css';
 import { Link } from 'react-router-dom';
 
 export default function hotel({ hotel }) {
   return (
     <div class="card">
-      <img src={hotel.photo} className="card-img-top" alt="Mombassa" />
+      <img src={hotel.photo} className="card-img-top" alt={hotel.name} />
       <div class="card-body">
-
         <h5 class="card-title cardtitle">{hotel.name}</h5>
         <img src={vec} alt="Mombassa" />
         <ul className="rating">
@@ -21,7 +19,7 @@ export default function hotel({ hotel }) {
             <i class="fa fa-circle" aria-hidden="true"></i>
           </li>
           <li>
-            <i class="fa-solid fa-location-crosshairs"></i>
+            <i class="fas fa-map-marker-alt"></i>
             {hotel.location}
           </li>
         </ul>
@@ -37,8 +35,7 @@ export default function hotel({ hotel }) {
             state: {
               hotel: hotel,
             },
-          }}
-        >
+          }}>
           <button className="btn btn-primary">Book Now</button>
         </Link>
       </div>
