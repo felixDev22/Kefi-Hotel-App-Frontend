@@ -286,4 +286,8 @@ main {
   .space-toggle {
     padding-left: calc(var(--nav-width) + 160px);
   }
+
+  .sociaals {
+    display: none;
+  }
 }
