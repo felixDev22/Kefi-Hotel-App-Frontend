@@ -5,14 +5,12 @@
   --nav-width: 68px;
   --nav-bg-color: #d3d3d3;
   --green-color: #72b600;
-
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
 
 .fa-xmark {
@@ -48,8 +46,6 @@ main {
   font-size: 1.25rem;
   cursor: pointer;
   color: var(--green-color);
-  color: #fe6814;
-
 }
 
 .sidebar {
@@ -78,7 +74,6 @@ main {
   overflow: hidden;
   height: 100%;
   background-color: #f5f5f5;
-
 }
 
 .nav-logo img {
@@ -215,7 +210,7 @@ main {
 .active {
   background-color: var(--white-color);
   color: #fff;
-  margin-top: -40px
+  margin-top: -40px;
 }
 .active::before {
   content: '';
@@ -311,7 +306,6 @@ main {
   text-align: center;
   margin-right: 5px;
   color: #d3d3d3;
-
 }
 
 .search {
@@ -337,7 +331,6 @@ main {
 .links a:hover {
   color: #fe6814;
 }
-
 
 @media screen and (min-width: 768px) {
   main {

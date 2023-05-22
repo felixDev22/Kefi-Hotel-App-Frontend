@@ -8,8 +8,6 @@ import '../Delete/Delete.css';
 
 export default function HotelListing() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [search, setSearch] = React.useState('');
-  console.log(search);
   const handleNext = () => {
     setCurrentIndex((currentIndex + 1) % hotels.length);
   };
@@ -31,16 +29,9 @@ export default function HotelListing() {
         />
         <div className="hotelList">
           {hotels.length > 0 &&
-            hotels
-              .slice(currentIndex, currentIndex + 3)
-              .filter((item) =>
-                search.toLowerCase() === ''
-                  ? item
-                  : item.name.toLowerCase().includes(search.toLowerCase()),
-              )
-              .map((hotel) => {
-                return <Hotel hotel={hotel} key={hotel.id} />;
-              })}
+            hotels.slice(currentIndex, currentIndex + 3).map((hotel) => {
+              return <Hotel hotel={hotel} key={hotel.id} />;
+            })}
         </div>
         <img
           src={rightarr}
@@ -48,27 +39,6 @@ export default function HotelListing() {
           alt="right arrow"
           onClick={handleNext}
         />
-      </div>
-      <div className="hotelList">
-        <img
-          src={leftarr}
-          className="leftarr"
-          alt="left arrow"
-          onClick={handlePrev}
-        />
-        <div className="hotelList">
-          {hotels.length > 0 &&
-            hotels
-              .slice(currentIndex, currentIndex + 3)
-              .filter((item) =>
-                search.toLowerCase() === ''
-                  ? item
-                  : item.name.toLowerCase().includes(search.toLowerCase()),
-              )
-              .map((hotel) => {
-                return <Hotel hotel={hotel} key={hotel.id} />;
-              })}
-        </div>
       </div>
     </>
   );
