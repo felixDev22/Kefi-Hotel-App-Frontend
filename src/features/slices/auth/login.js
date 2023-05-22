@@ -11,6 +11,7 @@ export const loginUser = createAsyncThunk('login', async (data, thunkAPI) => {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
+      credentials: 'includ',
       withCredentials: true,
     });
     localStorage.setItem('userData', JSON.stringify(response.data.user))
