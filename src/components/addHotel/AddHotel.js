@@ -14,7 +14,6 @@ const AddHotel = () => {
   const [price, setPrice] = useState('');
   const [desc, setDesc] = useState('');
   const [isSent, setSent] = useState(false);
-  const user_id = useSelector((state) => state.login.data.user.id);
   const [user, setUser] = useState([]);
 
   useEffect(() => {
@@ -23,7 +22,6 @@ const AddHotel = () => {
       setUser(user);
     }
   }, []);
-
 
   const handleNewHotel = (e) => {
     e.preventDefault();

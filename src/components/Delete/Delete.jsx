@@ -9,10 +9,8 @@ import HotelList from '../HotelList/HotelList';
 const Delete = () => {
   const dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels.hotels);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const hotelLength = useSelector((state) => state.hotels.hotels.length);
   const name = useSelector((state) => state.login.data.user.name);
-
 
   useEffect(() => {
     dispatch(addHotel([]));
