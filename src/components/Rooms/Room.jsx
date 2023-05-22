@@ -54,12 +54,6 @@ const Room = () => {
         <p>Get a Glimpse of the Rooms</p>
       </div>
 
-      {/* <div className="arrowz">
-        <Link to={`/hotel/${hotel_id}/reserve`}>
-          <img src={back} alt="left arrow" />
-        </Link>
-      </div> */}
-
       <div className="slideshowz">
         {rooms.map((room, index) => {
           const slideClass =
