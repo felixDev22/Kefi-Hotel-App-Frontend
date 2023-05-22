@@ -15,6 +15,12 @@
   z-index: 1;
 }
 
+.deleted {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .hotelList .rightarr {
   position: absolute;
   top: 60%;
@@ -46,9 +52,7 @@
   margin-bottom: 40px;
 }
 
-
 .btn-primary:hover {
   background-color: var(--green-clr);
   color: #fff;
 }
-
