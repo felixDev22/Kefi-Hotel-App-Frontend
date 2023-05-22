@@ -47,7 +47,7 @@ const Delete = () => {
   return (
     <>
       {hotelLength < 1 && (
-        <div className="container">
+        <div className="no-hotels-container">
           <h1>Hi {user.name} </h1>
           <p className="text-dark"> There are no hotels yet in the system</p>
         </div>
