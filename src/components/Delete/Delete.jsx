@@ -10,7 +10,7 @@ const Delete = () => {
   const dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels.hotels);
   const hotelLength = useSelector((state) => state.hotels.hotels.length);
-  const name = useSelector((state) => state.login.data.user.name);
+  // const name = useSelector((state) => state.login.data.user.name);
 
   useEffect(() => {
     dispatch(addHotel([]));
@@ -40,7 +40,7 @@ const Delete = () => {
     <>
       {hotelLength < 1 && (
         <div className="container">
-          <h1>Hi {name} </h1>
+          {/* <h1>Hi {name} </h1> */}
           <p className="text-dark"> There are no hotels yet in the system</p>
         </div>
       )}
