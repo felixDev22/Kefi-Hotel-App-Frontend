@@ -94,6 +94,11 @@ main {
   padding: 0.5rem 0 0.5rem 1.5rem;
 }
 
+.nav-link-icon {
+  color: #000;
+  font-size: 1rem;
+}
+
 .nav-link:hover {
   color: #fff;
   background-color: var(--green-color);
@@ -145,15 +150,9 @@ main {
   margin-bottom: 1.5rem;
 }
 
-/* .nav-link:hover {
-  color: #fff;
-  background-color: var(--green-color);
-} */
-
 .active {
   background: var(--green-color);
   color: #fff;
-  margin-top: -40px;
 }
 
 .nav-logo {
@@ -236,6 +235,7 @@ main {
 
 .social-links a {
   text-decoration: none;
+
   border: 1px solid rgb(126, 125, 125);
   align-items: center;
   width: 140px;
