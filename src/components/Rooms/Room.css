@@ -21,13 +21,15 @@
   transition: transform 0.5s ease-in-out;
 }
 
-.roomsz_container {
+.roomszz {
   margin-top: 30px;
 }
 
-.room.active {
+.room.aactive {
   opacity: 1;
   transform: translateX(0);
+  width: 1250px;
+  margin-left: 60px;
 }
 
 .room.previous {
@@ -44,19 +46,19 @@
   margin-left: 22px;
 }
 
-.image img {
+.imaage img {
   max-width: 100%;
   height: 600px;
   border-radius: 20px;
   margin-top: 50px;
 }
 
-.info p {
+.infozz p {
   color: #000000;
   text-decoration: wavy;
 }
 
-.dots-container {
+.dotsz {
   display: flex;
   justify-content: flex-end;
   margin-right: 80px;
@@ -69,17 +71,22 @@
   width: 24px;
   border-radius: 50%;
   background-color: #d9d9d9;
-  margin: 0 5px;
+  margin: 10px 5px;
   cursor: pointer;
 }
 
-.dot.active {
+.dot.aactive {
   background-color: #fe6814;
 }
 
-.arrow-container {
+.arrowz {
   display: flex;
-  justify-content: flex-start;
   margin-left: 30px;
 }
 
+.ddot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
