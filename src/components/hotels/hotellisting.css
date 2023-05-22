@@ -1,7 +1,7 @@
 .hotelList .leftarr {
   position: absolute;
   top: 60%;
-  left: 22%;
+  left: 14%;
   transform: translateY(-50%);
   width: 30px;
   height: 30px;
@@ -18,7 +18,7 @@
 .hotelList .rightarr {
   position: absolute;
   top: 60%;
-  right: 15%;
+  right: 12%;
   transform: translateY(-50%);
   width: 30px;
   height: 30px;
@@ -46,9 +46,7 @@
   margin-bottom: 40px;
 }
 
-
 .btn-primary:hover {
   background-color: var(--green-clr);
   color: #fff;
 }
-
