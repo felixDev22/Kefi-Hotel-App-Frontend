@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { addHotel, deleteHotel } from '../../features/hotels';
@@ -10,7 +10,6 @@ const Delete = () => {
   const dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels.hotels);
   const hotelLength = useSelector((state) => state.hotels.hotels.length);
-  const name = useSelector((state) => state.login.data.user.name);
 
   useEffect(() => {
     dispatch(addHotel([]));
@@ -36,11 +35,20 @@ const Delete = () => {
       })
       .catch((error) => console.error(error));
   };
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('userData'));
+    if (user) {
+      setUser(user);
+    }
+  }, []);
+
   return (
     <>
       {hotelLength < 1 && (
         <div className="container">
-          <h1>Hi {name} </h1>
+          <h1>Hi {user.name} </h1>
           <p className="text-dark"> There are no hotels yet in the system</p>
         </div>
       )}
