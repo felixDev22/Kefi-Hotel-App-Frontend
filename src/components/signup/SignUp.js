@@ -21,16 +21,12 @@ export default function SignUp() {
     setShowPassword(!showPassword);
   };
   const handleSubmit = (e) => {
-    const user = {
-      email,
-      password,
-      password_confirmation,
-    };
     axios
       .post(
         'http://127.0.0.1:3000/signup',
         {
           user: {
+            name: name,
             email: email,
             password: password,
             password_confirmation: password_confirmation,
