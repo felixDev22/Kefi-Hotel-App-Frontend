@@ -9,8 +9,6 @@ import { addHotel } from '../../features/hotels';
 export default function Main() {
   const dispatch = useDispatch();
   const hotelLength = useSelector(state => state.hotels.hotels.length)
-  const name = useSelector((state) => state.login.data.user.name);
-  const[ email , setEmail] = useState('');
   useEffect(() => {
     const fetchData = async () => {
       const resonse = await hotelsApi.get().catch((err) => {
@@ -18,18 +16,26 @@ export default function Main() {
       });
       dispatch(addHotel(resonse.data));
     };
-    setEmail(name)
     fetchData();
   }, []);
-  console.log(email)
+  const [user, setUser] = useState([]);
+
+useEffect(() => {
+  const user = JSON.parse(localStorage.getItem('userData'));
+  if (user) {
+    setUser(user);
+  }
+}, []);
+
+console.log(user)
   return (
     <>
         {
-          hotelLength < 1 && <div className='container'> 
-             <h1>Welcome  {email}</h1> 
+          hotelLength < 1 && <div className='no-hotels-container'>
+             <h1>Welcome  {user.name}</h1>
              <p className="text-dark"> There are no hotels yet</p>
              <a href="/add-hotel" className=" btn btn-primary">Add Hotel</a>
-              
+
           </div>
 
         }
