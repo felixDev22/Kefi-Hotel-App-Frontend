@@ -7,13 +7,11 @@ import axios from 'axios';
 import './Room.css';
 import back from '../../Assets/back.png';
 
-
 const Room = () => {
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.rooms.rooms);
 
   const { hotel_id, room_type_id } = useParams();
-
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -51,22 +49,22 @@ const Room = () => {
 
   return (
     <div className="roomsz">
-      <div className="info">
+      <div className="infozz">
         <img src={rectangle} alt="rectangle" />
         <p>Get a Glimpse of the Rooms</p>
       </div>
 
-      <div className="arrow-container">
+      {/* <div className="arrowz">
         <Link to={`/hotel/${hotel_id}/reserve`}>
           <img src={back} alt="left arrow" />
         </Link>
-      </div>
+      </div> */}
 
-      <div className="slideshow-container">
+      <div className="slideshowz">
         {rooms.map((room, index) => {
           const slideClass =
             index === currentSlide
-              ? 'room active'
+              ? 'room aactive'
               : index === currentSlide - 1 ||
                 (currentSlide === 0 && index === rooms.length - 1)
               ? 'room previous'
@@ -74,21 +72,28 @@ const Room = () => {
 
           return (
             <div className={slideClass} key={room.id}>
-              <div className="image">
+              <div className="imaage">
                 <img src={room.photo} alt="Room" />
               </div>
             </div>
           );
         })}
       </div>
-      <div className="dots-container">
-        {rooms.map((_, index) => (
-          <span
-            key={index}
-            className={`dot ${index === currentSlide ? 'active' : ''}`}
-            onClick={() => handleSlideChange(index)}
-          ></span>
-        ))}
+      <div className="ddot">
+        <div className="arrowz">
+          <Link to={`/hotel/${hotel_id}/reserve`}>
+            <img src={back} alt="left arrow" />
+          </Link>
+        </div>
+        <div className="dotsz">
+          {rooms.map((_, index) => (
+            <span
+              key={index}
+              className={`dot ${index === currentSlide ? 'aactive' : ''}`}
+              onClick={() => handleSlideChange(index)}
+            ></span>
+          ))}
+        </div>
       </div>
     </div>
   );
