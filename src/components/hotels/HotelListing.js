@@ -5,7 +5,6 @@ import rightarr from '../../Assets/rightarr.png';
 import leftarr from '../../Assets/leftarr.png';
 import './hotellisting.css';
 import '../Delete/Delete.css';
-// import Form from 'react-bootstrap/Form';
 
 export default function HotelListing() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,9 +19,9 @@ export default function HotelListing() {
   };
 
   const hotels = useSelector((state) => state.hotels.hotels);
+
   return (
     <>
-
       <div className="hotelList">
         <img
           src={leftarr}
@@ -49,16 +48,27 @@ export default function HotelListing() {
           alt="right arrow"
           onClick={handleNext}
         />
-   
-    <div className="hotelList">
-      <img src={leftarr} className="leftarr" alt="left arrow" onClick={handlePrev} />
+      </div>
       <div className="hotelList">
-        {hotels.length > 0 &&
-          hotels.slice(currentIndex, currentIndex + 3).filter(item =>
-            search.toLowerCase() === '' ? item : item.name.toLowerCase().includes(search.toLowerCase()))
-            .map((hotel) => {
-            return <Hotel hotel={hotel} key={hotel.id} />;
-          })}
+        <img
+          src={leftarr}
+          className="leftarr"
+          alt="left arrow"
+          onClick={handlePrev}
+        />
+        <div className="hotelList">
+          {hotels.length > 0 &&
+            hotels
+              .slice(currentIndex, currentIndex + 3)
+              .filter((item) =>
+                search.toLowerCase() === ''
+                  ? item
+                  : item.name.toLowerCase().includes(search.toLowerCase()),
+              )
+              .map((hotel) => {
+                return <Hotel hotel={hotel} key={hotel.id} />;
+              })}
+        </div>
       </div>
     </>
   );
