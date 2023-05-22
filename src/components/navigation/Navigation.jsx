@@ -18,7 +18,7 @@ const Navigation = () => {
   const handleLogout = () => {
     try {
       dispatch(logoutUser());
-      window.location.href = '/login';
+      window.location.href = '/';
     } catch (error) {
       console.log('Logout error:', error);
     }
