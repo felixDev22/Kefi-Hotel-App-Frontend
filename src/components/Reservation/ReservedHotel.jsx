@@ -18,7 +18,7 @@ const ReservedHotel = () => {
     const fetchReservation = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/v1/reservations'
+          'http://localhost:3000/api/v1/reservations',
         );
         const reservationsWithTotalPrice = response.data.map((reservation) => ({
           ...reservation,
@@ -50,7 +50,7 @@ const ReservedHotel = () => {
 
   const handlePrev = () => {
     setCurrentIndex(
-      currentIndex === 0 ? reservation.length - 1 : currentIndex - 1
+      currentIndex === 0 ? reservation.length - 1 : currentIndex - 1,
     );
   };
 
@@ -91,8 +91,8 @@ const ReservedHotel = () => {
   }
 
   return (
-    <div className="delete-hotels">
-      <div className="info">
+    <div className="container">
+      <div className="intro">
         <h1>Reserved Hotel</h1>
         <img src={rectangle} alt="rectangle" />
         <p>All your Reserved hotels in one place</p>

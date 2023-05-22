@@ -6,7 +6,12 @@ import leftarr from '../../Assets/leftarr.png';
 const Reserved = ({ reservation, currentIndex, onNext, onPrev, onDelete }) => {
   return (
     <div className="delete">
-      <img src={leftarr} alt="left arrow" onClick={onPrev} />
+      <img
+        src={leftarr}
+        alt="left arrow"
+        className="leftarr"
+        onClick={onPrev}
+      />
       <div className="hotelList">
         {reservation.length > 0 &&
           reservation
@@ -19,7 +24,12 @@ const Reserved = ({ reservation, currentIndex, onNext, onPrev, onDelete }) => {
               />
             ))}
       </div>
-      <img src={rightarr} alt="right arrow" onClick={onNext} />
+      <img
+        src={rightarr}
+        alt="right arrow"
+        className="rightarr"
+        onClick={onNext}
+      />
     </div>
   );
 };
