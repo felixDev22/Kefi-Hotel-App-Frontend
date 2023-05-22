@@ -1,3 +1,4 @@
+/* Common Styles */
 .delete-hotels {
   width: 100%;
 }
@@ -5,6 +6,7 @@
 .info {
   margin-top: 40px;
 }
+
 .deletes {
   margin-top: 50px;
   padding: 30px;
@@ -44,6 +46,7 @@
   border-radius: 20px;
   padding: 8px;
 }
+
 .rightarr {
   float: inline-end;
 }
@@ -71,4 +74,39 @@
   border: 1px solid red;
   width: 100px;
   margin: 30px;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 767px) {
+  .hotelItems {
+    flex-direction: column;
+    margin: 16px 0;
+  }
+
+  .hotelItems img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    padding: 0;
+  }
+
+  .rightarr {
+    float: none;
+    margin-top: 8px;
+  }
+
+  .reservebtn {
+    float: none;
+    margin-top: 16px;
+    margin-right: 0;
+  }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .hotelLists {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 }
