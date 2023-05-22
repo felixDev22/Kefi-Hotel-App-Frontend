@@ -24,7 +24,7 @@ const Delete = () => {
     };
 
     fetchHotels();
-  }, []);
+  }, [dispatch]);
 
   const handleDelete = (id) => {
     axios
