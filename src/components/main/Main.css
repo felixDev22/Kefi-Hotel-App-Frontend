@@ -32,3 +32,12 @@
   margin-top: 30px;
   margin-bottom: 50px;
 }
+
+
+.no-hotels-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20% auto;
+}
