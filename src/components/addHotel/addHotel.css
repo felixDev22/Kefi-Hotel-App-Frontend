@@ -1,9 +1,8 @@
 .wrapper-add {
   height: 100vh;
   width: 100%;
-  margin: 3% auto;
+  margin: 8% auto;
   padding: 0px 8%;
-  flex-wrap: wrap;
 }
 
 .add-title h4 {

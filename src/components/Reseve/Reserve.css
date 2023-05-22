@@ -53,27 +53,27 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin-top: -15px;
+  gap: 150px;
 }
 
 .reserve-left {
   width: 30rem;
-  height: 32rem;
-  margin: 1rem;
-  border-radius: 5px;
+  margin-top: -25px;
+  height: auto;
+  border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .reserve-right {
+  margin-top: 25px;
   width: 25rem;
   height: 32rem;
-  margin: 1rem;
   border-radius: 5px;
 }
 
 .reserve-hotel-image {
   width: 100%;
-  height: 57.8vh;
+  height: 40vh;
   object-fit: cover;
 }
 
@@ -266,7 +266,7 @@ option {
 }
 
 .my-reservation {
-  background-color: #fe6814;
+  background-color: var(--green-clr);
   color: white;
   padding: 10px 20px;
   border: none;

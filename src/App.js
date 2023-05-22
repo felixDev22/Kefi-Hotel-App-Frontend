@@ -48,6 +48,7 @@ function AppContent() {
           path="/hotels/:hotel_id/room_types/:room_type_id/rooms"
           element={<Room />}
         />
+
       </Routes>
     </>
   );

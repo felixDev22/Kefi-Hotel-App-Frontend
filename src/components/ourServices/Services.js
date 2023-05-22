@@ -13,7 +13,7 @@ export const Services = () => {
     <div className="service-wrapper">
       <div className="grid-container">
         <NavLink to="/main">
-          <div className="pic-wrapper container">
+          <div className="pic-wrapper">
             <div className="box">
               <img src={conference} alt="pic1" className="service-pic" />
             </div>

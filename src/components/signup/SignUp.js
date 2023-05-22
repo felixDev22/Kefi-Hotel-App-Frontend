@@ -5,6 +5,8 @@ import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 import { Navigate } from 'react-router-dom';
 import '../login/login.css';
 import axios from 'axios';
+import logo from '../../Assets/KefI-logo-white.png';
+
 export default function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -22,27 +24,27 @@ export default function SignUp() {
     const user = {
       email,
       password,
-      password_confirmation
+      password_confirmation,
     };
     axios
       .post(
-        "http://127.0.0.1:3000/signup",
+        'http://127.0.0.1:3000/signup',
         {
           user: {
             email: email,
             password: password,
-            password_confirmation: password_confirmation
-          }
+            password_confirmation: password_confirmation,
+          },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
-      .then(response => {
-        if (response.data.status === "created") {
-          console.log("Registration data", response.data)
+      .then((response) => {
+        if (response.data.status === 'created') {
+          console.log('Registration data', response.data);
         }
       })
-      .catch(error => {
-        console.log("registration error", error);
+      .catch((error) => {
+        console.log('registration error', error);
       });
 
     e.preventDefault();
@@ -50,8 +52,8 @@ export default function SignUp() {
       registerUser({
         user: {
           email: email,
-          password: password
-        }
+          password: password,
+        },
       }),
     );
   };
@@ -59,7 +61,7 @@ export default function SignUp() {
     <div className="fluid">
       <div className="row">
         <div className="col-md-6 side-image">
-          <h2 className="logo">KeFi</h2>
+          <img src={logo} className="klogo" alt="logo"></img>
         </div>
         <div className="col-md-6 right">
           <div className="input-box">

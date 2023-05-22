@@ -27,6 +27,10 @@ body {
   overflow: hidden;
 }
 
+.app-wrapper {
+  margin: 15% auto;
+}
+
 .intro {
   display: block;
   align-items: center;
@@ -47,4 +51,14 @@ body {
 .logo {
   color: var(--orange-clr);
   font-family: 'Advent Pro', sans-serif;
+}
+
+.btn-primary {
+  background-color: var(--green-clr);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--orange-clr);
+  color: #fff;
 }

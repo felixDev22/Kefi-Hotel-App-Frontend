@@ -5,7 +5,7 @@ const HotelItem = ({ hotel, onDelete }) => {
     <div className="hotelItems">
       <img src={hotel.photo} alt={hotel.name} />
       <div className="hotelDetails">
-        <h2 className="hotelName">{hotel.name}</h2>
+        <h3 className="hotelName">{hotel.name}</h3>
       </div>
       <button className="btnssz" onClick={() => onDelete(hotel.id)}>
         Delete
