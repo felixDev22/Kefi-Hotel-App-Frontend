@@ -46,3 +46,13 @@
   background-color: var(--green-clr);
   color: #fff;
 }
+
+/* @media screen and (max-width: 768px) {
+  .hotelList {
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+} */
