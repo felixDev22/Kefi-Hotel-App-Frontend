@@ -10,7 +10,6 @@ export default function Main() {
   const dispatch = useDispatch();
 
   const hotelLength = useSelector((state) => state.hotels.hotels.length);
-  const name = useSelector((state) => state.login.data.user.name);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,25 +22,25 @@ export default function Main() {
   }, []);
   const [user, setUser] = useState([]);
 
-useEffect(() => {
-  const user = JSON.parse(localStorage.getItem('userData'));
-  if (user) {
-    setUser(user);
-  }
-}, []);
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('userData'));
+    if (user) {
+      setUser(user);
+    }
+  }, []);
 
-console.log(user)
+  console.log(user);
   return (
     <>
-        {
-          hotelLength < 1 && <div className='no-hotels-container'>
-             <h1>Welcome  {user.name}</h1>
-             <p className="text-dark"> There are no hotels yet</p>
-             <a href="/add-hotel" className=" btn btn-primary">Add Hotel</a>
-
-          </div>
-
-        }
+      {hotelLength < 1 && (
+        <div className="no-hotels-container">
+          <h1>Welcome {user.name}</h1>
+          <p className="text-dark"> There are no hotels yet</p>
+          <a href="/add-hotel" className=" btn btn-primary">
+            Add Hotel
+          </a>
+        </div>
+      )}
 
       {hotelLength > 0 && (
         <div className="container">
