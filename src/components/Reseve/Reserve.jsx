@@ -399,7 +399,7 @@ const Reserve = () => {
                   )}
                 </div>
 
-                <div className="rooms-container">
+                <div className="rooms-containerz">
                   <p className="rooms">Rooms</p>
                   <button
                     type="button"
