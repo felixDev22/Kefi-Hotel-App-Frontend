@@ -26,16 +26,16 @@ export default function HotelListing() {
         alt="left arrow"
         onClick={handlePrev}
       />
-      <div className="d-flex justify-content-center align-items-center">
-        {hotels.length > 0 &&
-          hotels.slice(currentIndex, currentIndex + 3).map((hotel) => {
-            return (
-              <div className="col-lg-4 px-2" key={hotel.id}>
-                <Hotel hotel={hotel} />
-              </div>
-            );
-          })}
-      </div>
+
+      {hotels.length > 0 &&
+        hotels.slice(currentIndex, currentIndex + 3).map((hotel) => {
+          return (
+            <div key={hotel.id}>
+              <Hotel hotel={hotel} />
+            </div>
+          );
+        })}
+
       <img
         src={rightarr}
         className="rightarr"
