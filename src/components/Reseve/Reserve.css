@@ -303,36 +303,97 @@ option {
 /* Media Queries */
 
 /* Adjust layout for small screens */
-/* @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
   .reserve-container {
-    width: 100vw;
+    width: 100%;
     display: flex;
-    background: teal;
+    flex-direction: column;
+    margin: 0 auto;
   }
 
-  .reserve-intro {
-    margin: 5rem auto;
+  .reserve-title {
+    font-size: 1.2rem;
     text-align: center;
+    margin-top: -3.5rem;
   }
 
-  .reserve-left {
-    max-width: 58%;
-    max-height: 100%;
-    margin-top: -10px;
+  .reserve-subtitle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -3rem;
   }
 
   .reserve-right {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   .reserve-form-container {
-    margin-top: -3rem;
+    width: 100%;
+    margin-top: -5rem;
+  }
+
+  .reserve-hotel-image {
+    border-radius: 10px;
+  }
+
+  .reserve-left {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .date-input {
+    width: 100%;
+    margin-top: -4.5rem;
+  }
+
+  .adult-children {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .total-adult {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .total-children {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  .form-input {
+    font-size: 14px;
+  }
+
+  .room-label {
+    font-size: 14px;
   }
 
   .reserve-button {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    padding: 8px 16px;
   }
-} */
+}
 
 /* Adjust layout for extra small screens */
 @media screen and (max-width: 480px) {
@@ -358,8 +419,16 @@ option {
     margin-bottom: -3rem;
   }
 
+  .reserve-left {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
   .reserve-right {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
