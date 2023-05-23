@@ -26,7 +26,7 @@
 .fas,
 .fa-solid {
   color: var(--green-clr);
-  font-size: 12px;
+  font-size: 22px;
   padding: 5px;
   margin: 5px;
 }
@@ -71,7 +71,6 @@
 .btn:hover {
   background-color: var(--orange-clr);
 }
-
 
 /* Adjust layout for small screens */
 @media screen and (max-width: 768px) {
