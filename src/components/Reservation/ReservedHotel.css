@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 30px;
-  margin-top: -5%;
+  margin-top: -2%;
 }
 
 .intro-reserve {
@@ -17,12 +17,15 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  padding-right: 20px;
 }
 
 .hotelListss {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin-left: -180px;
   margin-top: -25px;
+  padding-right: 20px;
 }
 
 .hotelList ul {
@@ -66,6 +69,11 @@
   position: relative;
 }
 
+.leftarr2 {
+  left: -24%;
+  position: relative;
+}
+
 .reservebtn {
   position: absolute;
   top: -100px;
@@ -93,6 +101,7 @@
 }
 
 .reserves p {
+  font-size: 15px;
   color: var(--green-clr);
 }
 

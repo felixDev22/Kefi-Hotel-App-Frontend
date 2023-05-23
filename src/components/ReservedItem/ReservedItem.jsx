@@ -9,7 +9,7 @@ const ReservedItem = ({ reservation, onDelete }) => {
         alt={reservation.name}
       />
       <div className="hotelDetails">
-        <h2 className="reserveName">{reservation.name}</h2>
+        <h5 className="reserveName">{reservation.name}</h5>
         <div className="priceandtype reserves">
           <p>
             <span>Price:</span> ${reservation.totalPrice}

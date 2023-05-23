@@ -6,12 +6,10 @@ import './Navigation.css';
 import '../login/login.css';
 import SocialLinks from './SocialLinks';
 import { Link } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
 import logo from '../../Assets/KefI-logo-green.png';
 
 const Navigation = () => {
   const [show, setShow] = useState(false);
-  // const [search, setSearch] = React.useState('');
   const dispatch = useDispatch();
   const isloggedOut = useSelector((state) => state.login.isloggedOut);
 
@@ -29,18 +27,6 @@ const Navigation = () => {
       <header className={`header ${show ? 'space-toggle' : null}`}>
         <div className="header-toggle" onClick={() => setShow(!show)}>
           <i className={`fas fa-bars ${show ? 'fa-solid fa-xmark' : null}`}></i>
-        </div>
-
-        <div className="search">
-          <Form>
-            <Form.Group className="my-3">
-              <Form.Control
-                // onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search a hotel"
-                className="search-input"
-              />
-            </Form.Group>
-          </Form>
         </div>
       </header>
 
@@ -60,8 +46,7 @@ const Navigation = () => {
                 <NavLink
                   to="/reserved-hotel"
                   activeClassName="active"
-                  className="nav-link"
-                >
+                  className="nav-link">
                   <i className="fas fa-bed nav-link-icon"></i>
                   <span className="nav-link-title">Reservation</span>
                 </NavLink>
@@ -69,8 +54,7 @@ const Navigation = () => {
                 <NavLink
                   to="/add-hotels"
                   activeClassName="active"
-                  className="nav-link"
-                >
+                  className="nav-link">
                   <i className="fas fa-plus nav-link-icon"></i>
                   <span className="nav-link-title">Add Hotels</span>
                 </NavLink>
@@ -78,8 +62,7 @@ const Navigation = () => {
                 <NavLink
                   to="/delete-hotels"
                   activeClassName="active"
-                  className="nav-link"
-                >
+                  className="nav-link">
                   <i className="far fa-trash-alt nav-link-icon"></i>
                   <span className="nav-link-title">Delete Hotels</span>
                 </NavLink>
@@ -87,8 +70,7 @@ const Navigation = () => {
                 <NavLink
                   to="/our-services"
                   activeClassName="active"
-                  className="nav-link"
-                >
+                  className="nav-link">
                   <i className="fas fa-cogs nav-link-icon"></i>
                   <span className="nav-link-title">Services</span>
                 </NavLink>

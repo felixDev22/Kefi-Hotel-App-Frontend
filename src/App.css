@@ -35,10 +35,6 @@ body {
 
 .container {
   padding: 1rem 8%;
-  top: 15%;
-  left: 15%;
-  right: 0;
-  bottom: 0;
   margin: auto;
   height: 100vh;
 }
