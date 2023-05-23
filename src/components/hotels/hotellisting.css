@@ -12,11 +12,22 @@
   margin: 0;
 }
 
-.leftarr,
+/* .leftarr,
 .rightarr {
   width: 50px;
   position: fixed;
   top: 50%;
+} */
+.deleted {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hotelList .rightarr {
+  position: absolute;
+  top: 60%;
+  right: 15%;
   transform: translateY(-50%);
 }
 
@@ -25,7 +36,7 @@
 }
 
 .rightarr {
-  right: 2%;
+  right: 10%;
 }
 
 .search {
@@ -46,13 +57,3 @@
   background-color: var(--green-clr);
   color: #fff;
 }
-
-/* @media screen and (max-width: 768px) {
-  .hotelList {
-    display: grid;
-    align-items: center;
-    justify-content: space-between;
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-} */

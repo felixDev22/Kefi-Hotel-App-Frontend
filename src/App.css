@@ -34,7 +34,6 @@ body {
 }
 
 .container {
-  position: fixed;
   padding: 1rem 8%;
   top: 15%;
   left: 15%;
@@ -42,8 +41,6 @@ body {
   bottom: 0;
   margin: auto;
   height: 100vh;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .app-wrapper {
