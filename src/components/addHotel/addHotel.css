@@ -25,3 +25,17 @@
 .add-btn p {
   margin-top: 10px;
 }
+
+
+@media (max-width: 576px) {
+  .wrapper-add {
+    margin: 20% auto;
+    padding: 0 5%;
+  }
+
+  .input{
+    width: 80vw;
+  }
+
+
+}
