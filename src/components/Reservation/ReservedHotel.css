@@ -142,15 +142,14 @@ span {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    background: teal;
   }
 
-.hotelListss {
-  grid-template-columns: repeat(3, 1fr);
-  margin-left: -26px;
-  margin-top: -25px;
-  padding-right: 60px;
-}
+  .hotelListss {
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: -26px;
+    margin-top: -25px;
+    padding-right: 60px;
+  }
 
 .leftarr2 {
   left: -20%;
@@ -179,6 +178,7 @@ span {
     transform: none;
     margin-top: 10px;
     margin-right: 0;
+    display: none;
   }
 }
 
