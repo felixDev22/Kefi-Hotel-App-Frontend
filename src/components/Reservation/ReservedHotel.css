@@ -164,7 +164,7 @@ span {
 .reserved-hotel-para {
   font-size: 1.2rem;
   margin-bottom: -2.5rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
   .hotelList {
@@ -189,9 +189,17 @@ span {
   }
 
   .hotelListss {
-    margin-left: 0;
-    margin-top: 0;
     padding-right: 0;
+  }
+
+  .reserved-hotel {
+    font-size: 1.5rem;
+    margin-top: 10rem;
+  }
+
+  .leftarr2 {
+    left: -2%;
+    position: relative;
   }
 }
 
