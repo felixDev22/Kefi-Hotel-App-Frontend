@@ -71,7 +71,7 @@ main {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: #f5f5f5;
+  background-color: #e8e8e9;
 }
 
 .nav-logo img {
@@ -178,7 +178,7 @@ main {
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .active::before {
@@ -191,6 +191,13 @@ main {
   background-color: var(--green-color);
   transition: 0.5s;
 }
+
+/* .nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+} */
 
 .active .nav-link-title {
   color: #0e0e0e;
@@ -269,10 +276,6 @@ main {
   color: #000000;
   font-weight: 400;
   margin-bottom: 0;
-}
-
-.nav {
-  background-color: #e8e8e9;
 }
 
 .nav-wrapper {
