@@ -1,7 +1,6 @@
-/* Common Styles */
 .delete-hotels {
   width: 100%;
-  margin: 8% 8%;
+  margin: 2% 8%;
 }
 
 .info {
@@ -9,7 +8,7 @@
 }
 
 .deletes {
-  margin-top: 50px;
+  margin-top: 25px;
   padding: 30px;
 }
 
