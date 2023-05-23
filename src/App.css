@@ -73,7 +73,21 @@ body {
   color: #fff;
 }
 
+@media (min-width: 1200px) {
+  body {
+    overflow-y: auto;
+  }
+  .container {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 768px) {
+  body {
+    overflow-y: scroll;
+  }
   .container {
     padding: 1rem 10%;
   }
