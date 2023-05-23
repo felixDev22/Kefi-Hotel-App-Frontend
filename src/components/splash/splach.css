@@ -82,3 +82,31 @@ button:active {
   font-size: 20px;
   font-weight: bold;
 }
+
+@media (max-width: 576px) {
+  .wrapper{
+    justify-content: space-around;
+  }
+  .wrapper .splash h1 {
+    font-size: 30px;
+    letter-spacing: 10px;
+  }
+  h1 span {
+    font-size: 50px;
+    line-height: 100px;
+  }
+  .btns{
+    flex-direction: column;
+  }
+  .btns button {
+    padding: 5px 15px;
+    border-radius: 47.5px;
+  }
+  .btns .login {
+    font-size: 15px;
+  }
+  .btns .signup {
+    font-size: 15px;
+  }
+
+}
