@@ -22,6 +22,10 @@ const Navigation = () => {
     }
   };
 
+  const handleNavLinkClick = () => {
+    setShow(false);
+  };
+
   return (
     <main className={show ? 'space-toggle' : null}>
       <header className={`header ${show ? 'space-toggle' : null}`}>
@@ -38,7 +42,12 @@ const Navigation = () => {
             </Link>
             <div className="nav-wrapper">
               <div className="nav-list">
-                <NavLink exact to="/main" className="nav-link">
+                <NavLink
+                  exact
+                  to="/main"
+                  className="nav-link"
+                  onClick={handleNavLinkClick}
+                >
                   <i className="fas fa-home-alt nav-link-icon"></i>
                   <span className="nav-link-title">Hotels</span>
                 </NavLink>
@@ -46,7 +55,9 @@ const Navigation = () => {
                 <NavLink
                   to="/reserved-hotel"
                   activeClassName="active"
-                  className="nav-link">
+                  className="nav-link"
+                  onClick={handleNavLinkClick}
+                >
                   <i className="fas fa-bed nav-link-icon"></i>
                   <span className="nav-link-title">Reservation</span>
                 </NavLink>
@@ -54,7 +65,9 @@ const Navigation = () => {
                 <NavLink
                   to="/add-hotels"
                   activeClassName="active"
-                  className="nav-link">
+                  className="nav-link"
+                  onClick={handleNavLinkClick}
+                >
                   <i className="fas fa-plus nav-link-icon"></i>
                   <span className="nav-link-title">Add Hotels</span>
                 </NavLink>
@@ -62,7 +75,9 @@ const Navigation = () => {
                 <NavLink
                   to="/delete-hotels"
                   activeClassName="active"
-                  className="nav-link">
+                  className="nav-link"
+                  onClick={handleNavLinkClick}
+                >
                   <i className="far fa-trash-alt nav-link-icon"></i>
                   <span className="nav-link-title">Delete Hotels</span>
                 </NavLink>
@@ -70,13 +85,22 @@ const Navigation = () => {
                 <NavLink
                   to="/our-services"
                   activeClassName="active"
-                  className="nav-link">
+                  className="nav-link"
+                  onClick={handleNavLinkClick}
+                >
                   <i className="fas fa-cogs nav-link-icon"></i>
                   <span className="nav-link-title">Services</span>
                 </NavLink>
 
                 {isloggedOut && <Navigate to="/login" replace={true} />}
-                <Link to="/logout" className="nav-link" onClick={handleLogout}>
+                <Link
+                  to="/logout"
+                  className="nav-link"
+                  onClick={() => {
+                    handleNavLinkClick();
+                    handleLogout();
+                  }}
+                >
                   <i className="fas fa-sign-out nav-link-icon"></i>
                   <span className="nav-link-title">Logout</span>
                 </Link>
