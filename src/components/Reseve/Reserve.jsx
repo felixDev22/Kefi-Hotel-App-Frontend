@@ -45,7 +45,6 @@ const Reserve = () => {
   const hotel = useSelector(selectSingleHotel);
   const rooms = useSelector(selectRooms);
 
-
   const isLoadingHotel = useSelector(selectSingleHotelLoading);
 
   const { id } = useParams();
@@ -70,11 +69,7 @@ const Reserve = () => {
     } else {
       setDialogVisible(false);
     }
-
-
-  }, [
-    id,
-  ]);
+  }, [id]);
 
   const validateReservation = () => {
     if (!checkInDate || !checkOutDate) {
@@ -134,13 +129,13 @@ const Reserve = () => {
         setIsLoading(false);
         console.error(
           'An error occurred during room reservation:',
-          selectReserveError()
+          selectReserveError(),
         );
       }
     } catch (error) {
       setIsLoading(false);
       setError(
-        'An error occurred during room reservation. Please try again later.'
+        'An error occurred during room reservation. Please try again later.',
       );
       console.error('An error occurred during room reservation:', error);
     }
@@ -193,8 +188,6 @@ const Reserve = () => {
     return numberOfDays;
   };
 
-
-
   const [totalPrice, setTotalPrice] = useState(0);
 
   const isRoomButtonDisabled =
@@ -211,35 +204,39 @@ const Reserve = () => {
     : 'invalid-button';
 
   useEffect(() => {
+    if (!checkInDate || !checkOutDate || !reservation.rooms) {
+      setTotalPrice(hotel.price);
+      return;
+    }
 
-      if (!checkInDate || !checkOutDate || !reservation.rooms) {
-        setTotalPrice(hotel.price);
-        return;
-      }
-
-
-      const basePrice = hotel.price;
-      const numberOfRooms = reservation.rooms;
-      const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
+    const basePrice = hotel.price;
+    const numberOfRooms = reservation.rooms;
+    const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
 
     let tPrice = basePrice * numberOfDays * numberOfRooms;
     console.log(reservation.roomType);
-      switch (reservation.roomType) {
-        case 'Double':
-          tPrice += tPrice * 0.25;
-          break;
-        case 'Master Suite':
-          tPrice += tPrice * 0.5;
-          break;
-        case 'King Size':
-          tPrice += tPrice * 0.75;
-          break;
-        default:
-          break;
-      }
+    switch (reservation.roomType) {
+      case 'Double':
+        tPrice += tPrice * 0.25;
+        break;
+      case 'Master Suite':
+        tPrice += tPrice * 0.5;
+        break;
+      case 'King Size':
+        tPrice += tPrice * 0.75;
+        break;
+      default:
+        break;
+    }
 
-      setTotalPrice(tPrice);
-  }, [hotel.price, checkInDate, checkOutDate, reservation.rooms, reservation.roomType]);
+    setTotalPrice(tPrice);
+  }, [
+    hotel.price,
+    checkInDate,
+    checkOutDate,
+    reservation.rooms,
+    reservation.roomType,
+  ]);
 
   if (isLoadingHotel) {
     return <LoadingDialog />;
@@ -254,9 +251,7 @@ const Reserve = () => {
               <p className="hotel-name">{hotel.name}</p>
               <span className="hotel-price-container">
                 <p className="hotel-price">Price:</p>
-                <p className="actual-price">
-                  $ {totalPrice}
-                </p>
+                <p className="actual-price">$ {totalPrice}</p>
 
                 {/* <p className="actual-price">$ {hotel.price}</p> */}
               </span>
@@ -268,7 +263,7 @@ const Reserve = () => {
               <div className="reserve-card">
                 <img
                   src={hotel.photo}
-                  alt="Hotel Image"
+                  alt="Hotel"
                   className="reserve-hotel-image"
                 />
               </div>
@@ -326,8 +321,7 @@ const Reserve = () => {
                           adults: Math.max(reservation.adults - 1, 1),
                         })
                       }
-                      disabled={isAdultMinimumReached}
-                    >
+                      disabled={isAdultMinimumReached}>
                       -
                     </button>
                     <p className="number">{reservation.adults}</p>
@@ -340,8 +334,7 @@ const Reserve = () => {
                           adults: Math.min(reservation.adults + 1, 4),
                         })
                       }
-                      disabled={isAdultMaximumReached}
-                    >
+                      disabled={isAdultMaximumReached}>
                       +
                     </button>
                   </div>
@@ -357,8 +350,7 @@ const Reserve = () => {
                           children: Math.max(reservation.children - 1, 0),
                         })
                       }
-                      disabled={isRoomButtonDisabled}
-                    >
+                      disabled={isRoomButtonDisabled}>
                       -
                     </button>
                     <p className="number">{reservation.children}</p>
@@ -373,8 +365,7 @@ const Reserve = () => {
                       }
                       disabled={
                         isRoomButtonDisabled || isChildrenMaximumReached
-                      }
-                    >
+                      }>
                       +
                     </button>
                   </div>
@@ -392,8 +383,7 @@ const Reserve = () => {
                         roomType: e.target.value,
                       });
                       setIsRoomTypeValid(true);
-                    }}
-                  >
+                    }}>
                     <option value="">Select a Room Type</option>
                     {rooms.map((room) => (
                       <option key={room.id} value={room.name}>
@@ -418,8 +408,7 @@ const Reserve = () => {
                         rooms: Math.max(reservation.rooms - 1, 1),
                       })
                     }
-                    disabled={isRoomButtonDisabled}
-                  >
+                    disabled={isRoomButtonDisabled}>
                     -
                   </button>
                   <p className="number">{reservation.rooms}</p>
@@ -432,8 +421,7 @@ const Reserve = () => {
                         rooms: Math.min(reservation.rooms + 1, 6),
                       })
                     }
-                    disabled={isRoomButtonDisabled}
-                  >
+                    disabled={isRoomButtonDisabled}>
                     +
                   </button>
                 </div>
@@ -443,8 +431,7 @@ const Reserve = () => {
                     type="submit"
                     className={buttonClassName}
                     disabled={!validateReservation() || reservationSuccessful}
-                    onClick={handleReservationSubmit}
-                  >
+                    onClick={handleReservationSubmit}>
                     {isLoading
                       ? 'Reserving...'
                       : reservationSuccessful
@@ -466,10 +453,9 @@ const Reserve = () => {
                     to={`/hotels/${hotel.id}/room_types/${
                       rooms.find((room) => room.name === reservation.roomType)
                         ?.id
-                    }/rooms`}
-                  >
+                    }/rooms`}>
                     <button type="button" className="my-reservation">
-                      Rooms
+                      View Rooms
                     </button>
                   </Link>
                 </div>

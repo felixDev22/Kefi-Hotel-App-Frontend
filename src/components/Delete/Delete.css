@@ -1,12 +1,14 @@
 .delete-hotels {
   width: 100%;
+  margin: 2% 8%;
 }
 
 .info {
-  margin-top: 40px;
+  margin-top: 60px;
 }
+
 .deletes {
-  margin-top: 50px;
+  margin-top: 25px;
   padding: 30px;
 }
 
@@ -24,8 +26,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 8px 0;
-  border: 1px solid gray;
+  margin-bottom: 25px;
+  border: 1px solid rgb(184, 184, 184);
   border-radius: 8px;
 }
 
@@ -34,7 +36,7 @@
   height: 2px;
 }
 
-.hotelDetails p {
+.hotelDetails h3 {
   color: gray;
 }
 
@@ -44,6 +46,7 @@
   border-radius: 20px;
   padding: 8px;
 }
+
 .rightarr {
   float: inline-end;
 }
@@ -68,7 +71,55 @@
   background-color: red;
   color: white;
   border-radius: 8px;
-  border: 1px solid red;
   width: 100px;
   margin: 30px;
+}
+
+.btnssz:hover {
+  background: var(--green-clr);
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 767px) {
+  .delete-hotels {
+    margin: 5% 5%;
+  }
+
+  .info {
+    margin-top: 40px;
+  }
+
+  .hotelItems {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .hotelItems img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+    padding: 0;
+  }
+
+  .rightarr {
+    float: none;
+  }
+
+  .reservebtn {
+    float: none;
+    margin-top: 10px;
+    margin-right: 0;
+  }
+
+  .hotelDetails {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .hotelLists {
+    gap: 30px;
+  }
 }

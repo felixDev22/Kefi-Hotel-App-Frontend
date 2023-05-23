@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './splach.css';
+import logo from '../../Assets/KefI-logo-green.png';
 
 export default function Splash() {
   return (
     <div className="wrapper">
       <div className="splash">
-        <h1>
-          Welcome to <br /> <span>KeFi</span>
-        </h1>
+        <img src={logo} alt="logo"></img>
+        <h1>WELCOME</h1>
       </div>
       <div className="btns">
         <NavLink

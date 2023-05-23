@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { addHotel, deleteHotel } from '../../features/hotels';
@@ -35,6 +35,15 @@ const Delete = () => {
       })
       .catch((error) => console.error(error));
   };
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('userData'));
+    if (user) {
+      setUser(user);
+    }
+  }, []);
+
   return (
     <>
       {hotelLength < 1 && (

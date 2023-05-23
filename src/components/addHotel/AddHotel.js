@@ -46,7 +46,7 @@ const AddHotel = () => {
     <div className="wrapper-add">
       <div>
         <div className="add-title">
-          <h4>Add hotel:</h4>
+          <h4>Add New hotel</h4>
         </div>
         {isSent && <Navigate to="/main" replace={true} />}
         <form onSubmit={handleNewHotel}>

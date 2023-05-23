@@ -1,24 +1,28 @@
-.delete-hotels {
-  /* display: flex;
-    flex-direction: column; */
-  width: 100%;
-}
-
-.info {
-  margin-top: 8px;
-}
 .delete {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-top: 50px; */
   padding: 30px;
+  margin-top: -5%;
+}
+
+.intro-reserve {
+  display: block;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .hotelList {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  gap: 10px;
+}
+
+.hotelListss {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: -25px;
 }
 
 .hotelList ul {
@@ -36,6 +40,7 @@
   border-radius: 20px;
   height: 500px;
   width: 350px;
+  margin-right: 20px;
 }
 
 .hotelDetails {
@@ -51,47 +56,44 @@
   color: gray;
 }
 
-.hotelItem img {
-  width: 350px;
-  height: 200px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+.card-img-top {
+  border-radius: 22px 22px 0px 0px;
+  width: 300px;
+  height: 250px;
 }
-.rightarr {
-  float: inline-end;
+
+.hotel-lists {
+  position: relative;
 }
 
 .reservebtn {
-  width: 132.32px;
-  height: 44.51px;
+  position: absolute;
+  top: -100px;
+  right: 0;
+  width: 132px;
+  height: 40px;
   background: #72b600;
-  border-radius: 6px;
+  border-radius: 20px;
   float: right;
   color: white;
   margin-right: 40px;
 }
 
 .reservebtn:hover {
-  background: #72b600;
+  background: var(--orange-clr);
   color: white;
-}
-
-.hotel-lists {
-  margin-bottom: 10px;
-  justify-content: flex-end;
-  display: flex;
 }
 
 .reserves {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   padding: 8px;
 }
 
 .reserves p {
-  color: #fe6814;
+  color: var(--green-clr);
 }
 
 .reserveName {
@@ -107,6 +109,44 @@ span {
 }
 
 .checks {
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
+  border-top: var(--border-line);
+  border-bottom: var(--border-line);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.checks p {
+  margin-left: 10px;
+}
+
+.out span {
+  margin-right: 35px;
+}
+
+@media screen and (max-width: 767px) {
+  .hotelList,
+  .hotelListss {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .hotelItem {
+    width: 100%;
+    height: auto;
+  }
+
+  .hotelItem img {
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .reserveName {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rightarr {
+    display: none;
+  }
 }

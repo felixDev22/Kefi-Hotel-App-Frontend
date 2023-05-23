@@ -2,12 +2,15 @@ import React from 'react';
 
 const ReservedItem = ({ reservation, onDelete }) => {
   return (
-    <div className="hotelItem">
-      <img src={reservation.photo} alt={reservation.name} />
+    <div className="card">
+      <img
+        src={reservation.photo}
+        className="card-img-top"
+        alt={reservation.name}
+      />
       <div className="hotelDetails">
         <h2 className="reserveName">{reservation.name}</h2>
         <div className="priceandtype reserves">
-          {' '}
           <p>
             <span>Price:</span> ${reservation.totalPrice}
           </p>
@@ -17,10 +20,10 @@ const ReservedItem = ({ reservation, onDelete }) => {
         </div>
         <div className="checks reserves">
           <p>
-            <span>Check in Date:</span> {reservation.check_in}
+            <span>Check in:</span> {reservation.check_in}
           </p>
-          <p>
-            <span>Check out date:</span> {reservation.check_out}
+          <p className="out">
+            <span>Check out:</span> {reservation.check_out}
           </p>
         </div>
         <div className="adultschil reserves">
@@ -35,9 +38,13 @@ const ReservedItem = ({ reservation, onDelete }) => {
           </p>
         </div>
       </div>
-      <button className="btnss" onClick={() => onDelete(reservation.id)}>
-        Delete
-      </button>
+      <div className="card-body">
+        <button
+          className="btn btn-primary"
+          onClick={() => onDelete(reservation.id)}>
+          Delete
+        </button>
+      </div>
     </div>
   );
 };

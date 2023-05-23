@@ -8,7 +8,7 @@
 }
 
 .reserve-intro {
-  margin: 20px auto;
+  margin: 100px auto;
 }
 
 .reserve-title {
@@ -53,12 +53,13 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin-top: -15px;
+  margin-top: -45px;
+  gap: 90px;
 }
 
 .reserve-left {
   width: 30rem;
-  height: 32rem;
+  height: auto;
   margin: 1rem;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -67,13 +68,13 @@
 .reserve-right {
   width: 25rem;
   height: 32rem;
-  margin: 1rem;
+  margin-top: 90px;
   border-radius: 5px;
 }
 
 .reserve-hotel-image {
   width: 100%;
-  height: 57.8vh;
+  height: 400px;
   object-fit: cover;
 }
 

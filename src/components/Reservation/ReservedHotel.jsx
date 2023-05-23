@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import rectangle from '../../Assets/rectangle.png';
 import Reserved from '../Reserved/Reserved';
-import Dialog from '../Dialog/Dialog';
 import { Link } from 'react-router-dom';
 import './ReservedHotel.css';
 
@@ -12,27 +11,25 @@ const ReservedHotel = () => {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.reservation);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     const fetchReservation = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/v1/reservations'
+          'http://localhost:3000/api/v1/reservations',
         );
         const reservationsWithTotalPrice = response.data.map((reservation) => ({
           ...reservation,
           totalPrice: totalPrice(reservation),
         }));
         dispatch(addReservation(reservationsWithTotalPrice));
-        setIsLoading(false); // Set loading state to false after data is fetched
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchReservation();
-  }, []); // Add an empty dependency array
+  }, []);
 
   const handleDelete = (id) => {
     axios
@@ -50,7 +47,7 @@ const ReservedHotel = () => {
 
   const handlePrev = () => {
     setCurrentIndex(
-      currentIndex === 0 ? reservation.length - 1 : currentIndex - 1
+      currentIndex === 0 ? reservation.length - 1 : currentIndex - 1,
     );
   };
 
@@ -71,7 +68,6 @@ const ReservedHotel = () => {
         totalPrice += totalPrice * 0.75;
         break;
       default:
-        // Handle unknown room type if needed
         break;
     }
 
@@ -82,17 +78,9 @@ const ReservedHotel = () => {
     return differenceInDays * totalPrice;
   };
 
-  if (isLoading) {
-    return (
-      <div>
-        <Dialog message="Loading..." />
-      </div>
-    );
-  }
-
   return (
-    <div className="delete-hotels">
-      <div className="info">
+    <div className="container">
+      <div className="intro-reserve">
         <h1>Reserved Hotel</h1>
         <img src={rectangle} alt="rectangle" />
         <p>All your Reserved hotels in one place</p>

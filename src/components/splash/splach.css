@@ -25,14 +25,15 @@
   align-items: center;
   flex-direction: column;
   padding: 22px;
+  margin-top: -13%;
 }
 
-.wrapper .splach h1 {
+.wrapper .splash h1 {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
-  line-height: 58px;
+  letter-spacing: 20px;
   color: #000000;
   text-align: center;
 }
@@ -58,6 +59,7 @@ h1 span {
 .btns button {
   outline: none;
   border: none;
+  padding: 10px 25px;
   border-radius: 47.5px;
 }
 
@@ -67,10 +69,16 @@ button:active {
   outline: none;
 }
 .btns .login {
-  background-color: #fe6814;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+  background-color: var(--green-clr);
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .btns .signup {
-  color: #fe6814;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+  color: var(--green-clr);
   background-color: #fff;
+  font-size: 20px;
+  font-weight: bold;
 }
