@@ -103,6 +103,12 @@ REACT and Redux
 - [Twitter](https://twitter.com/kingibro345)
 - [LinkedIn](https://www.linkedin.com/in/dmambo/)
 
+👤 **KENNEDY OWUSU**
+
+- [GitHub](https://github.com/kennedyowusu)
+- [Twitter](https://twitter.com/_iamkobby)
+- [LinkedIn](www.linkedin.com/in/kennedy-owusu)
+
 <p align="right"><a href="#readme-top">front to top</a></p>
 
 <!-- FUTURE FEATURES -->
