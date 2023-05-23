@@ -72,3 +72,26 @@
 .box3:hover {
   background: var(--green-clr);
 }
+
+@media (max-width: 576px) {
+  .grid-container {
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .pic-wrapper {
+    margin-top: 2% auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0px;
+    overflow-y: scroll;
+  }
+  .box,
+  .box3,
+  .box2 {
+    width: 280px;
+    height: 280px;
+  }
+}
