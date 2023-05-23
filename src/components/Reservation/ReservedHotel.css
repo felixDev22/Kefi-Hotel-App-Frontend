@@ -76,11 +76,11 @@
 
 .reservebtn {
   position: absolute;
-  top: -100px;
-  right: 0;
-  width: 132px;
+  top: -70px;
+  right: -90px;
+  width: 100px;
   height: 40px;
-  background: #72b600;
+  background: #cecece;
   border-radius: 20px;
   float: right;
   color: white;

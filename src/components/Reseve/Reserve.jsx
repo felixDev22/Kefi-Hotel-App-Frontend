@@ -3,6 +3,7 @@ import './Reserve.css';
 import { Link, useParams } from 'react-router-dom';
 import Dialog from '../Dialog/Dialog';
 import { useDispatch, useSelector } from 'react-redux';
+import rectangle from '../../Assets/rectangle.png';
 import {
   reserveActions,
   selectReserveError,
@@ -42,7 +43,7 @@ const Reserve = () => {
 
   const hotel = useSelector(selectSingleHotel);
   const rooms = useSelector(selectRooms);
-  console.log(rooms)
+  console.log(rooms);
 
   const isLoadingHotel = useSelector(selectSingleHotelLoading);
 
@@ -66,9 +67,7 @@ const Reserve = () => {
     } else {
       setDialogVisible(false);
     }
-
   }, [id, dispatch, isLoading]);
-
 
   const validateReservation = () => {
     if (!checkInDate || !checkOutDate) {
@@ -239,8 +238,8 @@ const Reserve = () => {
       <>
         <div className="reserve-container">
           <div className="reserve-intro">
-            <span className="line"></span>
-            <h3 className="reserve-title">Book your Hotel Reservations</h3>
+            <h2 className="reserve-title">Reservations Details</h2>
+            <img src={rectangle} alt="rectangle" />
             <div className="reserve-subtitle">
               <p className="hotel-name">{hotel.name}</p>
               <span className="hotel-price-container">
@@ -442,17 +441,16 @@ const Reserve = () => {
                   )}
 
                   <Link
-                  to={`/hotels/${hotel.id}/room_types/${
-                    rooms.find((room) => room.name === reservation.roomType)
-                      ?.id
-                  }/rooms`}
-                >
-                  <button type="button" className="my-reservation">
-                    View Rooms
-                  </button>
-                </Link>
-              </div>
-            </form>
+                    to={`/hotels/${hotel.id}/room_types/${
+                      rooms.find((room) => room.name === reservation.roomType)
+                        ?.id
+                    }/rooms`}>
+                    <button type="button" className="my-reservation">
+                      View Rooms
+                    </button>
+                  </Link>
+                </div>
+              </form>
             </div>
           </div>
         </div>
