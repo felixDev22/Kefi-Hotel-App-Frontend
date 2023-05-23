@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import rectangle from '../../Assets/rectangle.png';
 import Reserved from '../Reserved/Reserved';
-import Dialog from '../Dialog/Dialog';
 import { Link } from 'react-router-dom';
 import './ReservedHotel.css';
 
@@ -12,6 +11,7 @@ const ReservedHotel = () => {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.reservation);
   const [currentIndex, setCurrentIndex] = useState(0);
+
   const [isLoading, setIsLoading] = useState(true); // Add loading state
   const hotelLength = useSelector((state) => state.hotels.hotels.length);
   const [user, setUser] = useState([]);
@@ -26,7 +26,6 @@ const ReservedHotel = () => {
           totalPrice: totalPrice(reservation),
         }));
         dispatch(addReservation(reservationsWithTotalPrice));
-        setIsLoading(false); // Set loading state to false after data is fetched
       } catch (error) {
         console.error(error);
       }
@@ -40,6 +39,7 @@ const ReservedHotel = () => {
       setUser(user);
     }
   }, []);
+
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:3000/api/v1/reservations/${id}`)
@@ -77,7 +77,6 @@ const ReservedHotel = () => {
         totalPrice += totalPrice * 0.75;
         break;
       default:
-        // Handle unknown room type if needed
         break;
     }
 
@@ -88,6 +87,7 @@ const ReservedHotel = () => {
     return differenceInDays * totalPrice;
   };
 
+
   if (isLoading) {
     return (
       <div>
@@ -97,7 +97,7 @@ const ReservedHotel = () => {
   }
  
 
-  return (
+  return   return (
     <>
     {hotelLength < 1 && (
       <div className="no-hotels-container">

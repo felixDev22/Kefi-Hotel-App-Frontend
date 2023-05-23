@@ -5,10 +5,11 @@
   background-repeat: none;
   background-size: cover;
   background-position: center;
+  margin-left: -48px;
 }
 
 .grid-container {
-  max-width: 660px;
+  max-width: 540px;
   margin: 10% auto;
 }
 
@@ -20,15 +21,15 @@
 }
 
 .pic-wrapper {
-  margin-top: 5% auto;
+  margin-top: 2% auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 0px;
 }
 .box {
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   object-fit: contain;
 }
 
@@ -39,8 +40,8 @@
 }
 .box2 {
   background: var(--green-clr);
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -50,8 +51,8 @@
 
 .box3 {
   background: var(--orange-clr);
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   color: #fff;
   display: flex;
   flex-direction: column;

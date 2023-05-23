@@ -46,10 +46,16 @@ const Delete = () => {
 
   return (
     <>
-      {hotelLength < 1 && (
-        <div className="no-hotels-container">
-          <h1>Hi {user.name} </h1>
-          <p className="text-dark"> There are no hotels yet in the system</p>
+      {hotelLength > 0 && (
+        <div className="container">
+          <div className="intro">
+            <hr className="line"></hr>
+            <h3 className="title">Enjoy your stay at any of our selections</h3>
+          </div>
+
+          <div className="cards">
+            <Hotels />
+          </div>
         </div>
       )}
 

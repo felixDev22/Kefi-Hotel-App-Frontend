@@ -11,6 +11,7 @@ import Reserve from './components/Reseve/Reserve';
 import Navigation from './components/navigation/Navigation';
 import { Services } from './components/ourServices/Services';
 import ReservedHotel from './components/Reservation/ReservedHotel';
+import NotFound from './components/Not Found/NotFound'
 import './App.css';
 
 function App() {
@@ -48,6 +49,7 @@ function AppContent() {
           path="/hotels/:hotel_id/room_types/:room_type_id/rooms"
           element={<Room />}
         />
+        <Route path='*' exact element={<NotFound />}/>
 
       </Routes>
     </>

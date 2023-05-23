@@ -70,9 +70,7 @@ main {
 .nav {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
-  height: 100%;
   background-color: #f5f5f5;
 }
 
@@ -83,11 +81,10 @@ main {
 }
 
 .nav-wrapper {
-  margin-top: 90%;
+  margin-top: 60%;
 }
 
 .nav-link {
-  margin-top: 20%;
   display: grid;
   grid-template-columns: max-content max-content;
   column-gap: 2rem;
@@ -140,7 +137,6 @@ main {
   display: grid;
   grid-template-columns: max-content max-content;
   column-gap: 2rem;
-  padding: 0.5rem 0 0.5rem 1.5rem;
 }
 
 .nav-link {
@@ -228,9 +224,10 @@ main {
   display: flex;
   float: left;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-top: 15px;
   align-items: flex-start;
   color: #fe6814;
+  margin-bottom: 8px;
 }
 
 .social-links a {
@@ -239,7 +236,8 @@ main {
   border: 1px solid rgb(126, 125, 125);
   align-items: center;
   width: 140px;
-  padding: 5px 10px;
+  padding: 2px 4px;
+  display: flex;
 }
 
 .social-links a:nth-child(2) {
@@ -253,20 +251,22 @@ main {
 }
 
 .social-links a:hover {
-  background-color: #fe6814;
+  background-color: var(--green-color);
   color: #ffffff;
 }
 
 .sociaals {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  bottom: 0;
 }
 
 .links p {
   display: flex;
   color: #000000;
   font-weight: 400;
-  margin-left: 30px;
+  margin-bottom: 0;
 }
 
 @media screen and (min-width: 768px) {

@@ -1,7 +1,10 @@
 .cards {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  /* max-width: 800px;
+  padding: 0 20px; */
 }
 
 .intro {
@@ -29,8 +32,74 @@
   font-size: 20px;
   text-align: center;
   color: #000000;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* margin: 0 auto; */
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.no-hotels-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  color: #000000;
+  margin: 4rem auto;
+  margin-bottom: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container hr {
+    margin-top: 16px;
+    width: 20%;
+  }
+
+  .cards {
+    flex-direction: column;
+    margin-left: 0;
+    padding: 0 10px;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container hr {
+    margin-top: 24px;
+    width: 30%;
+  }
+
+  .title {
+    font-size: 20px;
+    line-height: 26px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+  }
 }
 
 

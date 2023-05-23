@@ -27,6 +27,7 @@ const Reserve = () => {
   const [error, setError] = useState(null);
 
   const [reservationSuccessful, setReservationSuccessful] = useState(false);
+
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
   const [user, setUser] = useState([]);
 
@@ -41,7 +42,6 @@ const Reserve = () => {
 
   const hotel = useSelector(selectSingleHotel);
   const rooms = useSelector(selectRooms);
-
 
   const isLoadingHotel = useSelector(selectSingleHotelLoading);
 
@@ -66,8 +66,8 @@ const Reserve = () => {
       setDialogVisible(false);
     }
 
-
   }, [id, dispatch, isLoading]);
+
 
   const validateReservation = () => {
     if (!checkInDate || !checkOutDate) {
@@ -182,8 +182,6 @@ const Reserve = () => {
     return numberOfDays;
   };
 
-
-
   const [totalPrice, setTotalPrice] = useState(0);
 
   const isRoomButtonDisabled =
@@ -200,41 +198,46 @@ const Reserve = () => {
     : 'invalid-button';
 
   useEffect(() => {
+    if (!checkInDate || !checkOutDate || !reservation.rooms) {
+      setTotalPrice(hotel.price);
+      return;
+    }
 
-      if (!checkInDate || !checkOutDate || !reservation.rooms) {
-        setTotalPrice(hotel.price);
-        return;
-      }
-
-
-      const basePrice = hotel.price;
-      const numberOfRooms = reservation.rooms;
-      const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
+    const basePrice = hotel.price;
+    const numberOfRooms = reservation.rooms;
+    const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
 
     let tPrice = basePrice * numberOfDays * numberOfRooms;
-      switch (reservation.roomType) {
-        case 'Double':
-          tPrice += tPrice * 0.25;
-          break;
-        case 'Master Suite':
-          tPrice += tPrice * 0.5;
-          break;
-        case 'King Size':
-          tPrice += tPrice * 0.75;
-          break;
-        default:
-          break;
-      }
+    console.log(reservation.roomType);
+    switch (reservation.roomType) {
+      case 'Double':
+        tPrice += tPrice * 0.25;
+        break;
+      case 'Master Suite':
+        tPrice += tPrice * 0.5;
+        break;
+      case 'King Size':
+        tPrice += tPrice * 0.75;
+        break;
+      default:
+        break;
+    }
 
-      setTotalPrice(tPrice);
-  }, [hotel.price, checkInDate, checkOutDate, reservation.rooms, reservation.roomType]);
+    setTotalPrice(tPrice);
+  }, [
+    hotel.price,
+    checkInDate,
+    checkOutDate,
+    reservation.rooms,
+    reservation.roomType,
+  ]);
 
   if (isLoadingHotel) {
     return <LoadingDialog />;
   } else {
     return (
       <>
-        <div className="container">
+        <div className="reserve-container">
           <div className="reserve-intro">
             <span className="line"></span>
             <h3 className="reserve-title">Book your Hotel Reservations</h3>
@@ -242,9 +245,7 @@ const Reserve = () => {
               <p className="hotel-name">{hotel.name}</p>
               <span className="hotel-price-container">
                 <p className="hotel-price">Price:</p>
-                <p className="actual-price">
-                  $ {totalPrice}
-                </p>
+                <p className="actual-price">$ {totalPrice}</p>
 
                 {/* <p className="actual-price">$ {hotel.price}</p> */}
               </span>

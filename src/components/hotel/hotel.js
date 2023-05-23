@@ -3,7 +3,7 @@ import vec from '../../Assets/vec.png';
 import './hotel.css';
 import { Link } from 'react-router-dom';
 
-export default function hotel({ hotel }) {
+export default function Hotel({ hotel }) {
   return (
     <div className="card">
       <img src={hotel.photo} className="card-img-top" alt={hotel.name} />
@@ -35,8 +35,9 @@ export default function hotel({ hotel }) {
             state: {
               hotel: hotel,
             },
-          }}>
-          <button className="btn btn-primary">Book Now</button>
+          }}
+          className="btn btn-primary">
+          Book Now
         </Link>
       </div>
     </div>
