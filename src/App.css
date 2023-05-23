@@ -35,6 +35,7 @@ body {
 
 .container {
   padding: 1rem 8%;
+  height: 100vh;
 }
 
 .app-wrapper {
