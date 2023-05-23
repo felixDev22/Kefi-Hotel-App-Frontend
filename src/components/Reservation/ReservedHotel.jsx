@@ -5,6 +5,7 @@ import axios from 'axios';
 import rectangle from '../../Assets/rectangle.png';
 import Reserved from '../Reserved/Reserved';
 import { Link } from 'react-router-dom';
+import Dialog from '../Dialog/Dialog'
 import './ReservedHotel.css';
 
 const ReservedHotel = () => {
@@ -97,7 +98,7 @@ const ReservedHotel = () => {
   }
  
 
-  return   return (
+  return (
     <>
     {hotelLength < 1 && (
       <div className="no-hotels-container">
