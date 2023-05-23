@@ -262,7 +262,7 @@ const Reserve = () => {
 
             <div className="reserve-right">
               <form onSubmit={handleReservationSubmit}>
-                <div>
+                <div className="date-input">
                   <input
                     type="date"
                     id="check-in-date"
