@@ -11,7 +11,7 @@ const ReservedHotel = () => {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.reservation);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const hotelLength = useSelector((state) => state.hotels.hotels.length);
+  const hotelLength = useSelector((state) => state.reservation.reservation.length);
   const [user, setUser] = useState([]);
   useEffect(() => {
     const fetchReservation = async () => {
