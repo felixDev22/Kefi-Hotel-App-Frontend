@@ -109,6 +109,12 @@ REACT and Redux
 - [Twitter](https://twitter.com/_iamkobby)
 - [LinkedIn](www.linkedin.com/in/kennedy-owusu)
 
+👤 **Felix Nzomo Nyamai**
+
+- [GitHub](https://github.com/felixDev22)
+- [Twitter](https://twitter.com/monzo200)
+- [LinkedIn](https://www.linkedin.com/in/felixnyamai/)
+
 <p align="right"><a href="#readme-top">front to top</a></p>
 
 <!-- FUTURE FEATURES -->
