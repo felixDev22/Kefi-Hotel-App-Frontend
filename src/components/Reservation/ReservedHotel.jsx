@@ -11,7 +11,7 @@ const ReservedHotel = () => {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.reservation);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const hotelLength = useSelector((state) => state.hotels.hotels.length);
+  const hotelLength = useSelector((state) => state.reservation.reservation.length);
   const [user, setUser] = useState([]);
   useEffect(() => {
     const fetchReservation = async () => {
@@ -98,9 +98,9 @@ const ReservedHotel = () => {
       {hotelLength > 0 && (
         <div className="container">
           <div className="intro">
-            <h2>Reserved Hotel</h2>
+            <h2 className="reserved-hotel">Reserved Hotels</h2>
             <img src={rectangle} alt="rectangle" />
-            <p>All your Reserved hotels in one place</p>
+            <p className='reserved-hotel-para'>All your Reserved hotels in one place</p>
           </div>
           <div className="hotel-lists">
             <Link to="/main">
