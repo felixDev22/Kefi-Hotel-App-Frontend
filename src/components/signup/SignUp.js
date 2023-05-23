@@ -47,6 +47,7 @@ export default function SignUp() {
     dispatch(
       registerUser({
         user: {
+          name: name,
           email: email,
           password: password,
         },
