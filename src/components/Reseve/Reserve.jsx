@@ -26,8 +26,6 @@ const Reserve = () => {
 
   const [error, setError] = useState(null);
 
-  // const [user_id, setUserId] = useState(0);
-
   const [reservationSuccessful, setReservationSuccessful] = useState(false);
 
   const [isRoomTypeValid, setIsRoomTypeValid] = useState(true);
@@ -61,15 +59,15 @@ const Reserve = () => {
   useEffect(() => {
     dispatch(fetchHotel(id));
     dispatch(readRooms(id));
-    console.log(dispatch(readRooms(id)));
-    console.log(dispatch(fetchHotel(id)));
 
     if (isLoading) {
       setDialogVisible(true);
     } else {
       setDialogVisible(false);
     }
-  }, [id]);
+
+  }, [id, dispatch, isLoading]);
+
 
   const validateReservation = () => {
     if (!checkInDate || !checkOutDate) {
@@ -89,7 +87,6 @@ const Reserve = () => {
     e.preventDefault();
 
     if (!validateReservation()) {
-      console.log('Data not valid');
       return;
     }
     setIsLoading(true);
@@ -107,15 +104,12 @@ const Reserve = () => {
         room_type: reservation.roomType,
         rooms: reservation.rooms,
       };
-
       const response = await dispatch(reserveActions.reserveHotel(formData));
-      console.log('Response from the reserve component', response);
 
       if (response.payload) {
         setIsLoading(false);
         setDialogVisible(true);
         setReservationSuccessful(true);
-        console.log('Reservation successful!');
 
         setReservation({
           checkInDate: '',
@@ -263,7 +257,7 @@ const Reserve = () => {
               <div className="reserve-card">
                 <img
                   src={hotel.photo}
-                  alt="Hotel"
+                  alt={hotel.name}
                   className="reserve-hotel-image"
                 />
               </div>

@@ -12,7 +12,6 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const islogged = useSelector((state) => state.login.islogged);
-  const [userData, userDataSet] = useState([]);
   const error = useSelector((state) => state.login.errors);
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -22,10 +21,6 @@ export default function Login() {
     setEmail(event.target.value);
   };
 
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -33,7 +28,6 @@ export default function Login() {
       email,
       password,
     };
-    userDataSet(user);
     dispatch(
       loginUser({
         user,
@@ -41,7 +35,6 @@ export default function Login() {
     );
   };
 
-  console.log(userData);
 
   return (
     <div className="fluid">

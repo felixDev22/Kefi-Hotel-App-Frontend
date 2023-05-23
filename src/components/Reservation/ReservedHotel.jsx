@@ -12,6 +12,9 @@ const ReservedHotel = () => {
   const reservation = useSelector((state) => state.reservation.reservation);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
+  const hotelLength = useSelector((state) => state.hotels.hotels.length);
+  const [user, setUser] = useState([]);
   useEffect(() => {
     const fetchReservation = async () => {
       try {
@@ -29,6 +32,12 @@ const ReservedHotel = () => {
     };
 
     fetchReservation();
+  }, [dispatch]); // Add an empty dependency array
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('userData'));
+    if (user) {
+      setUser(user);
+    }
   }, []);
 
   const handleDelete = (id) => {
@@ -78,9 +87,26 @@ const ReservedHotel = () => {
     return differenceInDays * totalPrice;
   };
 
-  return (
-    <div className="container">
-      <div className="intro-reserve">
+
+  if (isLoading) {
+    return (
+      <div>
+        <Dialog message="Loading..." />
+      </div>
+    );
+  }
+ 
+
+  return   return (
+    <>
+    {hotelLength < 1 && (
+      <div className="no-hotels-container">
+        <h1>Hi {user.name} </h1>
+        <p className="text-dark"> You can not reserve. <br/> There are no hotels yet in the system</p>
+      </div>
+    )}
+    {hotelLength > 0 && ( <div className="container">
+        <div className="intro">
         <h1>Reserved Hotel</h1>
         <img src={rectangle} alt="rectangle" />
         <p>All your Reserved hotels in one place</p>
@@ -97,7 +123,8 @@ const ReservedHotel = () => {
         onPrev={handlePrev}
         onDelete={handleDelete}
       />
-    </div>
+    </div>)}
+    </>
   );
 };
 

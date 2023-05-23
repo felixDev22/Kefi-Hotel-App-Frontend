@@ -24,7 +24,7 @@ const Delete = () => {
     };
 
     fetchHotels();
-  }, []);
+  }, [dispatch]);
 
   const handleDelete = (id) => {
     axios
@@ -46,9 +46,16 @@ const Delete = () => {
 
   return (
     <>
-      {hotelLength < 1 && (
+      {hotelLength > 0 && (
         <div className="container">
-          <p className="text-dark"> There are no hotels yet in the system</p>
+          <div className="intro">
+            <hr className="line"></hr>
+            <h3 className="title">Enjoy your stay at any of our selections</h3>
+          </div>
+
+          <div className="cards">
+            <Hotels />
+          </div>
         </div>
       )}
 

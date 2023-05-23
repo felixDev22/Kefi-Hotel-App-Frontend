@@ -101,3 +101,12 @@
     margin-bottom: 12px;
   }
 }
+
+
+.no-hotels-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20% auto;
+}
