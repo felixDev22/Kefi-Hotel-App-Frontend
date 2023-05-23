@@ -9,6 +9,7 @@
 
 .reserve-intro {
   margin: 130px auto;
+  text-align: center;
 }
 
 .reserve-title {
@@ -298,3 +299,125 @@ option {
   border-radius: 5px;
   margin-bottom: 10px;
 }
+
+/* Media Queries */
+
+/* Adjust layout for small screens */
+/* @media screen and (max-width: 768px) {
+
+  .reserve-container {
+    width: 100vw;
+    display: flex;
+    background: teal;
+  }
+
+  .reserve-intro {
+    margin: 5rem auto;
+    text-align: center;
+  }
+
+  .reserve-left {
+    max-width: 58%;
+    max-height: 100%;
+    margin-top: -10px;
+  }
+
+  .reserve-right {
+  }
+
+  .reserve-form-container {
+    margin-top: -3rem;
+  }
+
+  .reserve-button {
+    font-size: 0.9rem;
+  }
+} */
+
+/* Adjust layout for extra small screens */
+@media screen and (max-width: 480px) {
+
+  .reserve-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .reserve-title {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: -3.5rem;
+  }
+
+  .reserve-subtitle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -3rem;
+  }
+
+  .reserve-right {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .reserve-form-container {
+    width: 100%;
+    margin-top: -5rem;
+  }
+
+  .reserve-hotel-image {
+    border-radius: 10px;
+  }
+
+  .date-input {
+    width: 100%;
+    margin-top: -4.5rem;
+  }
+
+  .adult-children {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .total-adult {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .total-children {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  .form-input {
+    font-size: 14px;
+  }
+
+  .room-label {
+    font-size: 14px;
+  }
+
+  .reserve-button {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+}
+
