@@ -5,7 +5,6 @@
   background-repeat: none;
   background-size: cover;
   background-position: center;
-  margin-left: -48px;
 }
 
 .grid-container {
@@ -74,6 +73,10 @@
 }
 
 @media (max-width: 576px) {
+  .service-wrapper {
+    width: 100%;
+    height: auto;
+  }
   .grid-container {
     margin-top: 20%;
     display: flex;
