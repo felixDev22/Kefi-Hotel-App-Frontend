@@ -83,7 +83,7 @@ const ReservedHotel = () => {
     const differenceInDays = differenceInTime / (1000 * 3600 * 24);
     return differenceInDays * totalPrice;
   };
-
+ 
 
   return (
     <>

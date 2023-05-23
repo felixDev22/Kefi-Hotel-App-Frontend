@@ -41,13 +41,11 @@ const Reserve = () => {
   const dispatch = useDispatch();
 
   const hotel = useSelector(selectSingleHotel);
-  const rooms = useSelector(selectRooms);
+  const rooms = ['single', 'Double', 'king', 'queen']
   console.log(rooms)
-
   const isLoadingHotel = useSelector(selectSingleHotelLoading);
-
   const { id } = useParams();
-
+  const [totalPrice, setTotalPrice] = useState(0);
   const [reservation, setReservation] = useState({
     checkInDate: '',
     checkOutDate: '',
@@ -183,7 +181,6 @@ const Reserve = () => {
     return numberOfDays;
   };
 
-  const [totalPrice, setTotalPrice] = useState(0);
 
   const isRoomButtonDisabled =
     reservation.adults >= 2 && reservation.children >= 4;
@@ -378,8 +375,8 @@ const Reserve = () => {
                     }}>
                     <option value="">Select a Room Type</option>
                     {rooms.map((room) => (
-                      <option key={room.id} value={room.name}>
-                        {room.name}
+                      <option key={room.id} value={room}>
+                        {room}
                       </option>
                     ))}
                   </select>
@@ -442,10 +439,7 @@ const Reserve = () => {
                   )}
 
                   <Link
-                  to={`/hotels/${hotel.id}/room_types/${
-                    rooms.find((room) => room.name === reservation.roomType)
-                      ?.id
-                  }/rooms`}
+                  to={`/hotels/${hotel.id}/rooms`}
                 >
                   <button type="button" className="my-reservation">
                     View Rooms

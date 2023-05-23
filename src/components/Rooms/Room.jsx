@@ -11,7 +11,7 @@ const Room = () => {
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.rooms.rooms);
 
-  const { hotel_id, room_type_id } = useParams();
+  const { hotel_id} = useParams();
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -21,7 +21,7 @@ const Room = () => {
     const fetchRooms = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/v1/hotels/${hotel_id}/room_types/${room_type_id}/rooms`
+          `http://localhost:3000/api/v1/hotels/${hotel_id}/rooms`
         );
         dispatch(addRooms(response.data));
       } catch (error) {
