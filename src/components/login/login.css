@@ -136,7 +136,7 @@ span a:hover {
 
 @media (max-width: 576px) {
   .side-image {
-    height: 200px;
+    height: 400px;
     width: 100%;
   }
   .side2-image {
@@ -145,17 +145,13 @@ span a:hover {
   }
   .right {
     width: 100vw;
-  }
-  .input-box {
-    width: 100vw;
     padding: 10px;
   }
-  .input {
-    width: 80vw;
-  }
-  .submit {
-    width: 100vw;
-    text-align: center;
+  .input-box {
+    width: 90vw;
+    border-radius: 20%;
+    background-color: transparent;
+    padding: 10px;
   }
   .sign-in {
     width: 100vw;
@@ -163,6 +159,7 @@ span a:hover {
   }
   .input-wrapper {
     width: 90vw;
+    padding-right: 35px;
   }
   .see-password {
     padding-bottom: 20px;
@@ -183,21 +180,16 @@ span a:hover {
     padding: 0 0px 0 0px;
   }
   .input {
-    height: 50px;
-    width: 90vw;
-    background: var(--grey-clr);
-    margin-bottom: 20px;
-    color: #3c3d4b;
-    border-radius: var(--border-radius);
-    padding: 20px;
+    height: 59px;
+    width: 92vw;
+    color: #fff;
+    margin-top: 20px;
     margin-left: 20px;
-    position: relative;
   }
   .submit {
     height: 59px;
-    width: 92vw;
+    width: 80vw;
     background: var(--green-clr);
-    /* margin-bottom: 20px; */
     color: #fff;
     border-radius: var(--border-radius);
     margin-top: 20px;
