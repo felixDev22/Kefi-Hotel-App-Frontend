@@ -6,6 +6,7 @@ import './Delete.css';
 import rectangle from '../../Assets/rectangle.png';
 import HotelList from '../HotelList/HotelList';
 
+
 const Delete = () => {
   const dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels.hotels);

@@ -42,6 +42,7 @@ const Reserve = () => {
 
   const hotel = useSelector(selectSingleHotel);
   const rooms = useSelector(selectRooms);
+  console.log(rooms)
 
   const isLoadingHotel = useSelector(selectSingleHotelLoading);
 
@@ -208,7 +209,6 @@ const Reserve = () => {
     const numberOfDays = calculateNumberOfDays(checkInDate, checkOutDate);
 
     let tPrice = basePrice * numberOfDays * numberOfRooms;
-    console.log(reservation.roomType);
     switch (reservation.roomType) {
       case 'Double':
         tPrice += tPrice * 0.25;
@@ -246,8 +246,6 @@ const Reserve = () => {
               <span className="hotel-price-container">
                 <p className="hotel-price">Price:</p>
                 <p className="actual-price">$ {totalPrice}</p>
-
-                {/* <p className="actual-price">$ {hotel.price}</p> */}
               </span>
             </div>
           </div>
@@ -444,16 +442,17 @@ const Reserve = () => {
                   )}
 
                   <Link
-                    to={`/hotels/${hotel.id}/room_types/${
-                      rooms.find((room) => room.name === reservation.roomType)
-                        ?.id
-                    }/rooms`}>
-                    <button type="button" className="my-reservation">
-                      View Rooms
-                    </button>
-                  </Link>
-                </div>
-              </form>
+                  to={`/hotels/${hotel.id}/room_types/${
+                    rooms.find((room) => room.name === reservation.roomType)
+                      ?.id
+                  }/rooms`}
+                >
+                  <button type="button" className="my-reservation">
+                    View Rooms
+                  </button>
+                </Link>
+              </div>
+            </form>
             </div>
           </div>
         </div>
