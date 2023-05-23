@@ -444,15 +444,17 @@ const Reserve = () => {
                   )}
 
                   <Link
-                    to={`/hotels/${hotel.id}/room_types/${
-                      rooms.find((room) => room.name === reservation.roomType)
-                        ?.id`}}>
-                    <button type="button" className="my-reservation">
-                      View Rooms
-                    </button>
-                  </Link>
-                </div>
-              </form>
+                  to={`/hotels/${hotel.id}/room_types/${
+                    rooms.find((room) => room.name === reservation.roomType)
+                      ?.id
+                  }/rooms`}
+                >
+                  <button type="button" className="my-reservation">
+                    Rooms
+                  </button>
+                </Link>
+              </div>
+            </form>
             </div>
           </div>
         </div>
