@@ -6,7 +6,7 @@ const RESERVE_ACTION_TYPE = 'fetchRooms';
 export const readRooms = createAsyncThunk(
   RESERVE_ACTION_TYPE,
   async (hotelId, thunkAPI) => {
-    const roomUrl = `http://localhost:3000/api/v1/hotels/${hotelId}/room_types/`;
+    const roomUrl = `http://localhost:3000/api/v1/hotels/${hotelId}`;
     try {
       const response = await axios.get(roomUrl, {
         headers: {
