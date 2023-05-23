@@ -196,6 +196,8 @@ main {
 
 .show {
   left: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .space-toggle {
@@ -256,10 +258,7 @@ main {
 }
 
 .sociaals {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  bottom: 0;
+  display: none;
 }
 
 .links p {
@@ -291,5 +290,11 @@ main {
 
   .space-toggle {
     padding-left: calc(var(--nav-width) + 160px);
+  }
+  .sociaals {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
   }
 }
