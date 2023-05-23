@@ -81,7 +81,7 @@ const AddHotel = () => {
               id="rating"
               required
               autoComplete="off"
-              placeholder="Rating"
+              placeholder="Rating (1 ... 5)"
               value={rating}
               onChange={(e) => setRating(e.target.value)}
             />

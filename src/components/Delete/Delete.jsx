@@ -6,6 +6,7 @@ import './Delete.css';
 import rectangle from '../../Assets/rectangle.png';
 import HotelList from '../HotelList/HotelList';
 
+
 const Delete = () => {
   const dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels.hotels);
@@ -46,18 +47,15 @@ const Delete = () => {
 
   return (
     <>
-      {hotelLength > 0 && (
-        <div className="container">
-          <div className="intro">
-            <hr className="line"></hr>
-            <h3 className="title">Enjoy your stay at any of our selections</h3>
-          </div>
-
-          <div className="cards">
-            <Hotels />
-          </div>
-        </div>
-      )}
+    {hotelLength < 1 && (
+      <div className="no-hotels-container">
+        <h1>Welcome {user.name}</h1>
+        <p className="text-dark"> There are no hotels yet</p>
+        <a href="/add-hotels" className=" btn btn-primary">
+          Add Hotel
+        </a>
+      </div>
+    )}
 
       {hotelLength > 0 && (
         <div className="delete-hotels">
