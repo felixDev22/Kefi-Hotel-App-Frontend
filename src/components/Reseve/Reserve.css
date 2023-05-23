@@ -271,7 +271,7 @@ option {
 .my-reservation {
   background-color: #fe6814;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -279,7 +279,7 @@ option {
 }
 
 .my-reservation:hover {
-  background-color: #e65a0a;
+  border: 1px solid #fe6814;
   color: white;
 }
 
