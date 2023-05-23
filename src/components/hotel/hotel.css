@@ -71,3 +71,11 @@
 .btn:hover {
   background-color: var(--orange-clr);
 }
+
+@media (max-width: 576px) {
+  .card {
+    margin-top: 10px;
+    width: 285px;
+    height: 465px;
+  }
+}
