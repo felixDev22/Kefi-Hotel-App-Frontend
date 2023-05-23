@@ -6,14 +6,11 @@ import rectangle from '../../Assets/rectangle.png';
 import Reserved from '../Reserved/Reserved';
 import { Link } from 'react-router-dom';
 import './ReservedHotel.css';
-import Dialog from '../Dialog/Dialog'
 
 const ReservedHotel = () => {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.reservation);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const [isLoading, setIsLoading] = useState(true); // Add loading state
   const hotelLength = useSelector((state) => state.hotels.hotels.length);
   const [user, setUser] = useState([]);
   useEffect(() => {
@@ -33,7 +30,7 @@ const ReservedHotel = () => {
     };
 
     fetchReservation();
-  }, [dispatch]); // Add an empty dependency array
+  }, [dispatch]); 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('userData'));
     if (user) {
@@ -66,7 +63,6 @@ const ReservedHotel = () => {
 
     switch (reservation.room_type) {
       case 'single':
-        // No price adjustment for single room
         break;
       case 'double':
         totalPrice += totalPrice * 0.25;
@@ -88,15 +84,6 @@ const ReservedHotel = () => {
     return differenceInDays * totalPrice;
   };
 
-
-  if (isLoading) {
-    return (
-      <div>
-        <Dialog message="Loading..." />
-      </div>
-    );
-  }
- 
 
   return (
     <>
