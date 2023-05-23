@@ -154,8 +154,14 @@ span {
     flex-direction: column;
     align-items: flex-start;
   }
+}
 
-  .rightarr {
-    display: none;
+@media (max-width: 576px) {
+  .card-img-top {
+    width: 285px;
+    height: 230px;
+  }
+  .card-body h5 {
+    margin-bottom: -10px;
   }
 }
