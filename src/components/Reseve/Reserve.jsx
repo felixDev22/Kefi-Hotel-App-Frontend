@@ -446,8 +446,7 @@ const Reserve = () => {
                   <Link
                     to={`/hotels/${hotel.id}/room_types/${
                       rooms.find((room) => room.name === reservation.roomType)
-                        ?.id
-                    }/rooms`}>
+                        ?.id`}}>
                     <button type="button" className="my-reservation">
                       View Rooms
                     </button>

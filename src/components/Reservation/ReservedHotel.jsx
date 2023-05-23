@@ -6,6 +6,7 @@ import rectangle from '../../Assets/rectangle.png';
 import Reserved from '../Reserved/Reserved';
 import { Link } from 'react-router-dom';
 import './ReservedHotel.css';
+import Dialog from '../Dialog/Dialog'
 
 const ReservedHotel = () => {
   const dispatch = useDispatch();
@@ -97,7 +98,7 @@ const ReservedHotel = () => {
   }
  
 
-  return   return (
+  return (
     <>
     {hotelLength < 1 && (
       <div className="no-hotels-container">
