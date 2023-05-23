@@ -88,7 +88,7 @@ main {
   display: grid;
   grid-template-columns: max-content max-content;
   column-gap: 2rem;
-  padding: 0.5rem 0 0.5rem 1.5rem;
+  /* padding: 0.5rem 0 0.5rem 1.5rem; */
 }
 
 .nav-link-icon {
@@ -178,6 +178,7 @@ main {
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .active::before {
@@ -310,5 +311,18 @@ main {
 
   .nav-wrapper {
     margin-top: 60%;
+  }
+
+  .nav-link {
+    position: relative;
+    color: #000;
+    transition: 0.5s;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0 0.5rem 1.5rem;
   }
 }
