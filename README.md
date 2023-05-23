@@ -115,6 +115,12 @@ REACT and Redux
 - [Twitter](https://twitter.com/monzo200)
 - [LinkedIn](https://www.linkedin.com/in/felixnyamai/)
 
+👤 **Maaloum Ely Cheikh**
+
+- [GitHub](https://github.com/maaloum)
+- [Twitter](https://www.linkedin.com/in/ely-cheikh-maaloum-075a79135/)
+- [LinkedIn](https://www.linkedin.com/in/ely-cheikh-maaloum-075a79135/)
+
 <p align="right"><a href="#readme-top">front to top</a></p>
 
 <!-- FUTURE FEATURES -->
