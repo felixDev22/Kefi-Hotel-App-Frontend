@@ -4,6 +4,7 @@
   justify-content: space-between;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
+  margin-top: -25px;
 }
 
 .hotelList ul {
