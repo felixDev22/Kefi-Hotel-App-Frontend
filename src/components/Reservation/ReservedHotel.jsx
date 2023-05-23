@@ -98,9 +98,9 @@ const ReservedHotel = () => {
       {hotelLength > 0 && (
         <div className="container">
           <div className="intro">
-            <h2>Reserved Hotel</h2>
+            <h2 className="reserved-hotel">Reserved Hotels</h2>
             <img src={rectangle} alt="rectangle" />
-            <p>All your Reserved hotels in one place</p>
+            <p className='reserved-hotel-para'>All your Reserved hotels in one place</p>
           </div>
           <div className="hotel-lists">
             <Link to="/main">
