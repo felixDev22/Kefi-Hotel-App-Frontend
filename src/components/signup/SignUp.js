@@ -21,12 +21,13 @@ export default function SignUp() {
     setShowPassword(!showPassword);
   };
   const handleSubmit = (e) => {
+    e.preventDefault();
     axios
       .post(
         'http://127.0.0.1:3000/signup',
         {
           user: {
-            name: name,
+            name :name,
             email: email,
             password: password,
             password_confirmation: password_confirmation,
@@ -42,17 +43,16 @@ export default function SignUp() {
       .catch((error) => {
         console.log('registration error', error);
       });
+      dispatch(
+        registerUser({
+          user: {
+            name: name,
+            email: email,
+            password: password,
+          },
+        }),
+      );
 
-    e.preventDefault();
-    dispatch(
-      registerUser({
-        user: {
-          name: name,
-          email: email,
-          password: password,
-        },
-      }),
-    );
   };
   return (
     <div className="fluid">
@@ -134,6 +134,7 @@ export default function SignUp() {
               <button type="submit" className="submit">
                 <p>Signup</p>
               </button>
+              {iscreated && <Navigate to="/login" replace={true} />}
             </form>
             <div className="sign-in">
               <span
