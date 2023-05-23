@@ -22,7 +22,7 @@
 main {
   position: relative;
   margin-top: var(--header-height);
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
   font-size: 1rem;
   font-family: 'Nunito Sans', sans-serif;
   transition: 0.5s;
