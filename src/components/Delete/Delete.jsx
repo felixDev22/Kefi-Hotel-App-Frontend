@@ -30,6 +30,7 @@ function Delete() {
     axios
       .delete(`http://localhost:3000/api/v1/hotels/${id}`)
       .then((response) => {
+        // eslint-disable-next-line no-console
         console.log(response);
         dispatch(deleteHotel(id));
       })
