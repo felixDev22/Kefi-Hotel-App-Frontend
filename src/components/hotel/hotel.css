@@ -5,11 +5,13 @@
   border-radius: 30px;
   margin-left: 20px;
 }
+
 .card-img-top {
-  border-radius: 22px 22px 0px 0px;
+  border-radius: 22px 22px 0 0;
   width: 270px;
   height: 250px;
 }
+
 .card .cardtitle {
   font-family: 'Inter', sans-serif;
   font-style: normal;
@@ -42,14 +44,14 @@
 
 .price {
   color: #989495;
-  font-family: 'Inter';
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-size: 25px;
 }
 
 .price span {
   color: var(--green-clr);
-  font-family: 'Inter';
+  font-family: 'Inter', sans-serif;
   font-style: normal;
 }
 
@@ -90,7 +92,7 @@
   }
 
   .card {
-    margin-left: 5rem;
+    /* margin-left: 5rem; */
     width: 300px;
     border-radius: 30px;
     margin-left: 20px;
