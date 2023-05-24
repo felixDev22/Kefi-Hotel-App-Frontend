@@ -147,8 +147,7 @@ span {
 
 @media (max-width: 576px) {
   .card-img-top {
-    width: 285px;
-    height: 230px;
+    height: 220px;
   }
   .card-body h5 {
     margin-bottom: -10px;
@@ -195,6 +194,11 @@ span {
 @media screen and (max-width: 480px) {
   .hotelList {
     grid-template-columns: repeat(1, 1fr);
+    margin-right: -10px;
+  }
+
+  .delete {
+    margin-top: 5%;
   }
 
   .hotelListss {
@@ -203,7 +207,6 @@ span {
 
   .reserved-hotel {
     font-size: 1.5rem;
-    margin-top: 10rem;
   }
 
   .leftarr2 {
