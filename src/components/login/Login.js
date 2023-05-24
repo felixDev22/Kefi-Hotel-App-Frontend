@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../features/slices/auth/login';
 import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 import { Navigate } from 'react-router-dom';
+import { loginUser } from '../../features/slices/auth/login';
 import './login.css';
 import logo from '../../Assets/KefI-logo-green.png';
 
@@ -35,21 +36,26 @@ export default function Login() {
     );
   };
 
-
   return (
     <div className="fluid">
       <div className="row">
         <div className="col-md-6 side2-image">
-          <img src={logo} className="klogo" alt="logo"></img>
+          <img src={logo} className="klogo" alt="logo" />
         </div>
         <div className="col-md-6 right">
           <div className="input-box">
             <div className="intro">
-              <span className="line"></span>
+              <span className="line" />
               <h1>Welcome!</h1>
             </div>
-            {error && <p> {error} </p>}
-            {islogged && <Navigate to="/main" replace={true} />}
+            {error && (
+            <p>
+              {' '}
+              {error}
+              {' '}
+            </p>
+            )}
+            {islogged && <Navigate to="/main" replace />}
             <form onSubmit={handleSubmit}>
               <div className="input-filed">
                 <input
@@ -78,24 +84,25 @@ export default function Login() {
                   />
                   <span
                     className="see-password"
-                    onClick={handleTogglePasswordVisibility}>
+                    onClick={handleTogglePasswordVisibility}
+                  >
                     {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
                   </span>
                 </div>
               </div>
 
-              {
-                <button type="submit" className="submit">
-                  <p>Login</p>
-                </button>
-              }
+              <button type="submit" className="submit">
+                <p>Login</p>
+              </button>
             </form>
             <div className="sign-in">
               <span
+                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   __html:
                     "Don't have an Account?. <a href='./signup'>Sign-Up</a>",
-                }}></span>
+                }}
+              />
             </div>
           </div>
         </div>

@@ -84,6 +84,7 @@
   flex-direction: column;
   padding: 0 10px 0 10px;
 }
+
 .input {
   height: 65px;
   width: 100%;
@@ -105,23 +106,28 @@
   padding: 20px;
   margin-top: 20px;
 }
+
 .submit:hover {
   background: var(--orange-clr);
   color: #fff;
 }
+
 .sign-in {
   text-align: center;
   font-size: small;
   margin-top: 25px;
 }
+
 span a {
   font-weight: 700;
   color: #000;
   transition: 0.5s;
 }
+
 span a:hover {
   color: var(--orange-clr);
 }
+
 .input-wrapper {
   position: relative;
 }
@@ -138,52 +144,61 @@ span a:hover {
     height: 400px;
     width: 100%;
   }
+
   .side2-image {
     height: 200px;
     width: 100%;
   }
+
   .right {
     width: 100vw;
     padding: 10px;
   }
+
   .input-box {
     width: 90vw;
     border-radius: 20%;
     background-color: transparent;
     padding: 10px;
   }
-  .sign-in {
+
+  /* .sign-in {
     width: 100vw;
     text-align: center;
-  }
+  } */
+
   .input-wrapper {
     width: 90vw;
     padding-right: 35px;
   }
-  .see-password {
+
+  /* .see-password {
     padding-bottom: 20px;
-  }
+  } */
+
   .klogo {
     display: none;
   }
+
   .line {
     display: none;
   }
+
   .intro {
     display: none;
   }
-  .input-box {
-    margin-top: 0px;
-  }
+
   .input-field {
-    padding: 0 0px 0 0px;
+    padding: 0 0 0 0;
   }
+
   .input {
     height: 59px;
     width: 92vw;
     color: #fff;
     margin-left: 20px;
   }
+
   .submit {
     height: 59px;
     width: 80vw;
@@ -199,24 +214,28 @@ span a:hover {
     font-size: 20px;
     margin-bottom: 10px;
     color: white;
-    /* border: 1px solid red; */
   }
+
   .sign-in {
     text-align: center;
     font-size: small;
     margin-top: 25px;
   }
+
   span a {
     font-weight: 600;
     color: #000;
     transition: 0.5s;
   }
+
   span a:hover {
     color: var(--orange-clr);
   }
-  .input-wrapper {
+
+  /* .input-wrapper {
     position: relative;
-  }
+  } */
+
   .see-password {
     color: #b5b3b3;
     position: absolute;
