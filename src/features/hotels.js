@@ -1,5 +1,5 @@
 import {
-  createSlice
+  createSlice,
 } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -12,9 +12,11 @@ const hotelsSlice = createSlice({
   initialState,
   reducers: {
     addHotel: (state, {
-      payload
+      payload,
     }) => {
+      // eslint-disable-next-line no-param-reassign
       state.hotels = payload;
+      // eslint-disable-next-line no-param-reassign
       state.loading = !state.loading;
     },
     deleteHotel: (state, action) => {
@@ -28,6 +30,7 @@ const hotelsSlice = createSlice({
     newHotel: (state, action) => {
       const newHotel = action.payload;
       state.hotels.push(newHotel);
+      // eslint-disable-next-line no-param-reassign
       state.loading = true;
     },
   },
