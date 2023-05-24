@@ -37,13 +37,18 @@
 ## ScreenShots of the APP
 ![Splash](./src/Assets/b.png)
 
-![Splash](./src/Assets/a.png)
-
-
 ![Splash](./src/Assets/c.png)
 
 
-![Splash](./src/Assets/d.png)
+![Splash](./src/Assets/r.png)
+
+
+![Splash](./src/Assets/t.png)
+
+
+##  Design <a name="built-with">
+
+- [Figma design](https://www.figma.com/file/2XW31wy6dXFS6vEbCpEWuo/Hotel-booking-app?type=design&node-id=0-1&t=NgA8zpxRbINmxtoE-0)
 
 ## 🛠 Built With <a name="built-with">
   <ul>
