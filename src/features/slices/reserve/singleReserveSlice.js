@@ -21,7 +21,7 @@ export const fetchHotel = createAsyncThunk(
         return null;
       }
     } catch (error) {
-      console.log(error.response.data);
+      // console.log(error.response.data);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -40,7 +40,7 @@ const singleHotelSlice = createSlice({
       .addCase(fetchHotel.fulfilled, (state, action) => {
         state.loading = false;
         state.hotel = action.payload;
-        console.log(action.payload);
+        // console.log(action.payload);
       })
       .addCase(fetchHotel.rejected, (state) => {
         state.loading = false;

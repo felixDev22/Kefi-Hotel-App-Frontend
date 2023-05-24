@@ -46,7 +46,7 @@ function AppContent() {
         <Route path="/hotel/:id/reserve" element={<Reserve />} />
         <Route path="/our-services" element={<Services />} />
         <Route
-          path="/hotels/:hotel_id/room_types/:room_type_id/rooms"
+          path="/hotels/:hotel_id/rooms"
           element={<Room />}
         />
         <Route path='*' exact element={<NotFound />}/>

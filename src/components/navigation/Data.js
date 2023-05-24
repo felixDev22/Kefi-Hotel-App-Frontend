@@ -21,7 +21,7 @@ export const linkedinLinks = [
 export const githubLinks = [
   { name: 'KENNEDY', url: 'https://github.com/kennedyowusu' },
   { name: 'ELI', url: 'https://github.com/maaloum' },
-  { name: 'FELIX', url: 'https://github.com/KeFi-Ke2' },
+  { name: 'FELIX', url: 'https://github.com/felixDev22' },
   { name: 'IBRAHIM', url: 'https://github.com/dmambo' },
 ];
 
