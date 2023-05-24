@@ -4,7 +4,7 @@ import './hotel.css';
 import { Link } from 'react-router-dom';
 
 export default function Hotel({ hotel }) {
-  const maxDescLength = 150;
+  const maxDescLength = 115;
   const truncatedDesc =
     hotel.desc.length > maxDescLength
       ? hotel.desc.slice(0, maxDescLength) + '...'
