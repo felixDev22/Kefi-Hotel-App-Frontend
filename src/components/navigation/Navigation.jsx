@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink, Navigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../features/slices/auth/login';
 import './Navigation.css';
 import '../login/login.css';
 import SocialLinks from './SocialLinks';
-import { Link } from 'react-router-dom';
 import logo from '../../Assets/KefI-logo-green.png';
 
-const Navigation = () => {
+function Navigation() {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const isloggedOut = useSelector((state) => state.login.isloggedOut);
@@ -18,6 +17,7 @@ const Navigation = () => {
       dispatch(logoutUser());
       window.location.href = '/';
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('Logout error:', error);
     }
   };
@@ -30,7 +30,7 @@ const Navigation = () => {
     <main className={show ? 'space-toggle' : null}>
       <header className={`header ${show ? 'space-toggle' : null}`}>
         <div className="header-toggle" onClick={() => setShow(!show)}>
-          <i className={`fas fa-bars ${show ? 'fa-solid fa-xmark' : null}`}></i>
+          <i className={`fas fa-bars ${show ? 'fa-solid fa-xmark' : null}`} />
         </div>
       </header>
 
@@ -38,7 +38,7 @@ const Navigation = () => {
         <nav className="nav">
           <div>
             <Link to="/main" className="nav-logo">
-              {show && <img src={logo} className="klogo" alt="logo"></img>}
+              {show && <img src={logo} className="klogo" alt="logo" />}
             </Link>
             <div className="nav-wrapper">
               <div className="nav-list">
@@ -48,7 +48,7 @@ const Navigation = () => {
                   className="nav-link"
                   onClick={handleNavLinkClick}
                 >
-                  <i className="fas fa-home-alt nav-link-icon"></i>
+                  <i className="fas fa-home-alt nav-link-icon" />
                   <span className="nav-link-title">Hotels</span>
                 </NavLink>
 
@@ -58,7 +58,7 @@ const Navigation = () => {
                   className="nav-link"
                   onClick={handleNavLinkClick}
                 >
-                  <i className="fas fa-bed nav-link-icon"></i>
+                  <i className="fas fa-bed nav-link-icon" />
                   <span className="nav-link-title">Reservation</span>
                 </NavLink>
 
@@ -68,7 +68,7 @@ const Navigation = () => {
                   className="nav-link"
                   onClick={handleNavLinkClick}
                 >
-                  <i className="fas fa-plus nav-link-icon"></i>
+                  <i className="fas fa-plus nav-link-icon" />
                   <span className="nav-link-title">Add Hotels</span>
                 </NavLink>
 
@@ -78,7 +78,7 @@ const Navigation = () => {
                   className="nav-link"
                   onClick={handleNavLinkClick}
                 >
-                  <i className="far fa-trash-alt nav-link-icon"></i>
+                  <i className="far fa-trash-alt nav-link-icon" />
                   <span className="nav-link-title">Delete Hotels</span>
                 </NavLink>
 
@@ -88,11 +88,11 @@ const Navigation = () => {
                   className="nav-link"
                   onClick={handleNavLinkClick}
                 >
-                  <i className="fas fa-cogs nav-link-icon"></i>
+                  <i className="fas fa-cogs nav-link-icon" />
                   <span className="nav-link-title">Services</span>
                 </NavLink>
 
-                {isloggedOut && <Navigate to="/login" replace={true} />}
+                {isloggedOut && <Navigate to="/login" replace />}
                 <Link
                   to="/logout"
                   className="nav-link"
@@ -101,7 +101,7 @@ const Navigation = () => {
                     handleLogout();
                   }}
                 >
-                  <i className="fas fa-sign-out nav-link-icon"></i>
+                  <i className="fas fa-sign-out nav-link-icon" />
                   <span className="nav-link-title">Logout</span>
                 </Link>
               </div>
@@ -115,6 +115,6 @@ const Navigation = () => {
       </aside>
     </main>
   );
-};
+}
 
 export default Navigation;
