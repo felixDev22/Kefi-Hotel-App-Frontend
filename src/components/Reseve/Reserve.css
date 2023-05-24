@@ -214,7 +214,6 @@
   border: 1px solid #ccc;
   background-color: #fff;
   border-radius: 10px;
-  width: 100%;
   font-size: 16px;
 }
 
@@ -287,14 +286,15 @@ option {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 
 .error-message {
-  background-color: #ffcccc;
-  color: #cc0000;
+  background-color: #fcc;
+  color: #c00;
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -304,7 +304,6 @@ option {
 
 /* Adjust layout for small screens */
 @media screen and (max-width: 768px) {
-
   .reserve-container {
     width: 100%;
     display: flex;
@@ -397,7 +396,6 @@ option {
 
 /* Adjust layout for extra small screens */
 @media screen and (max-width: 480px) {
-
   .reserve-container {
     width: 100%;
     display: flex;
@@ -489,4 +487,3 @@ option {
     padding: 8px 16px;
   }
 }
-
