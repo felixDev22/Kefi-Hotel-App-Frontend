@@ -1,9 +1,8 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <h3><b>FINAL-CAPSTONE-FRONTEND</b></h3>
+  <h3><b>Final-Capstone-back-end</b></h3>
 </div>
-
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
@@ -24,16 +23,35 @@
   - [⭐️ Show your support ](#️-show-your-support-)
   - [🙏 Acknowledgments ](#-acknowledgments-)
   - [📝 License ](#-license-)
+<div align="center">
+  <h3><b>FINAL-CAPSTONE-FRONTEND</b></h3>
+</div>
 
 <!-- PROJECT DESCRIPTION -->
 
-# HOTEL BOOKING - <a name="about-project"></a>
+# HOTEL BOOKING APP <a name="about-project"></a>
 
 **HOTEL BOOKING** is the final capstone project done by a group of four, this is the frontend that takes data from the backend created with ruby on rails by getting the data through api.It consist of a splash page and login, registration, main, delete, add hotel, delete hotel and reserve hotels.
 
-## 🛠 Built With <a name="built-with">
 
-REACT and Redux
+## ScreenShots of the APP
+![Splash](./src/Assets/b.png)
+
+![Splash](./src/Assets/a.png)
+
+
+![Splash](./src/Assets/c.png)
+
+
+![Splash](./src/Assets/d.png)
+
+## 🛠 Built With <a name="built-with">
+  <ul>
+      <li>REACT </li>
+      <li>JavaScript</li>
+      <li>Redux Toolkits</li>
+      <li>Bootstrap</li>
+  </ul>
 </a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -45,7 +63,6 @@ REACT and Redux
     <li><a href="https://rubyonrails.org/">Rails</a></li>
     <li><a href="https://www.postgresql.org/">Postgresql</a></li>
     <li><a href="https://github.com/felixDev22/Final-capstone-backend.git">BACKEND[Ruby on Rails]</a><li>
-
   </ul>
   <summary>Client</summary>
     <li><a href="https://github.com/felixDev22/Final-Capstone-Frontend.git">FRONTEND</a><li>
@@ -93,15 +110,14 @@ REACT and Redux
 
 <p align="right"><a href="#readme-top">front to top</a></p>
 
-<!-- AUTHORS -->
-
 ## 👥 Authors <a name="authors"></a>
+
 
 👤 **DIABY MOHAMMED IBRAHIM**
 
-- [GitHub](https://github.com/dmambo)
+- [GitHub](https://github.com/elixDev22)
 - [Twitter](https://twitter.com/kingibro345)
-- [LinkedIn](https://www.linkedin.com/in/dmambo/)
+- [LinkedIn](https://www.linkedin.com/in/elixDev22/)
 
 👤 **KENNEDY OWUSU**
 
@@ -121,7 +137,7 @@ REACT and Redux
 - [Twitter](https://www.linkedin.com/in/ely-cheikh-maaloum-075a79135/)
 - [LinkedIn](https://www.linkedin.com/in/ely-cheikh-maaloum-075a79135/)
 
-<p align="right"><a href="#readme-top">front to top</a></p>
+<p align="right"><a href="#readme-top">back to top</a></p>
 
 <!-- FUTURE FEATURES -->
 
@@ -129,15 +145,16 @@ REACT and Redux
 
 - [ ] **Better user interface**
 
+
 <!-- CONTRIBUTING -->
 
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Dmambo/FINAL-CAPSTONE-FRONTEND.git/issues)
+Feel free to check the [issues page](https://github.com/felixDev22/Final-Capstone-back-end.git/issues)
 
-<p align="right"><a href="#readme-top">front to top</a></p>
+<p align="right"><a href="#readme-top">back to top</a></p>
 
 <!-- SUPPORT -->
 
@@ -145,17 +162,17 @@ Feel free to check the [issues page](https://github.com/Dmambo/FINAL-CAPSTONE-FR
 
 Give a ⭐️ if you like this project!
 
-<p align="right"><a href="#readme-top">front to top</a></p>
+<p align="right"><a href="#readme-top">back to top</a></p>
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 - I would like to thank all code reviewers and coding partners for making this project better.
 
-<p align="right">(<a href="#readme-top">front to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- LICENSE -->
 
 ## 📝 License <a name="license"></a>
 
 This project is [MIT](./LICENSE) licensed.
 
-<p align="right"><a href="#readme-top">front to top</a></p>
+<p align="right"><a href="#readme-top">back to top</a></p>
