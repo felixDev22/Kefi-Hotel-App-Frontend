@@ -133,7 +133,6 @@ span a:hover {
   right: 25px;
 }
 
-
 @media (max-width: 576px) {
   .side-image {
     height: 400px;
@@ -183,7 +182,6 @@ span a:hover {
     height: 59px;
     width: 92vw;
     color: #fff;
-    margin-top: 20px;
     margin-left: 20px;
   }
   .submit {
@@ -194,10 +192,9 @@ span a:hover {
     border-radius: var(--border-radius);
     margin-top: 20px;
     margin-left: 20px;
-    
   }
 
-  .submit p{
+  .submit p {
     text-align: center;
     font-size: 20px;
     margin-bottom: 10px;
