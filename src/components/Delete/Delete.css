@@ -102,10 +102,6 @@
     padding: 0;
   }
 
-  .rightarr {
-    float: none;
-  }
-
   .reservebtn {
     float: none;
     margin-top: 10px;
@@ -121,5 +117,8 @@
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .hotelLists {
     gap: 30px;
+  }
+  input p {
+    color: #979596;
   }
 }

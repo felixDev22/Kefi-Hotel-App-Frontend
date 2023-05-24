@@ -26,16 +26,14 @@
   margin-top: 10px;
 }
 
-
 @media (max-width: 576px) {
   .wrapper-add {
-    margin: 20% auto;
-    padding: 0 5%;
+    margin-top: 60px;
+    padding: 20px 5%;
   }
 
-  .input{
+  .input {
     width: 80vw;
+    color: #585858;
   }
-
-
 }
