@@ -35,11 +35,6 @@ body {
 
 .container {
   padding: 1rem 8%;
-  top: 15%;
-  left: 15%;
-  right: 0;
-  bottom: 0;
-  margin: auto;
   height: 100vh;
 }
 
@@ -79,7 +74,21 @@ body {
   color: #fff;
 }
 
+@media (min-width: 1200px) {
+  body {
+    overflow-y: auto;
+  }
+  .container {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 768px) {
+  body {
+    overflow-y: scroll;
+  }
   .container {
     padding: 1rem 10%;
   }

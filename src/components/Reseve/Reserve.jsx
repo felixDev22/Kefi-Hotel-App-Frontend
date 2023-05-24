@@ -3,6 +3,7 @@ import './Reserve.css';
 import { Link, useParams } from 'react-router-dom';
 import Dialog from '../Dialog/Dialog';
 import { useDispatch, useSelector } from 'react-redux';
+import rectangle from '../../Assets/rectangle.png';
 import {
   reserveActions,
   selectReserveError,
@@ -39,10 +40,8 @@ const Reserve = () => {
   }, []);
 
   const dispatch = useDispatch();
-
   const hotel = useSelector(selectSingleHotel);
   const rooms = ['single', 'Double', 'king', 'queen']
-  console.log(rooms)
   const isLoadingHotel = useSelector(selectSingleHotelLoading);
   const { id } = useParams();
   const [totalPrice, setTotalPrice] = useState(0);
@@ -64,9 +63,7 @@ const Reserve = () => {
     } else {
       setDialogVisible(false);
     }
-
   }, [id, dispatch, isLoading]);
-
 
   const validateReservation = () => {
     if (!checkInDate || !checkOutDate) {
@@ -236,8 +233,8 @@ const Reserve = () => {
       <>
         <div className="reserve-container">
           <div className="reserve-intro">
-            <span className="line"></span>
-            <h3 className="reserve-title">Book your Hotel Reservations</h3>
+            <h2 className="reserve-title">Reservations Details</h2>
+            <img src={rectangle} alt="rectangle" />
             <div className="reserve-subtitle">
               <p className="hotel-name">{hotel.name}</p>
               <span className="hotel-price-container">
@@ -260,7 +257,7 @@ const Reserve = () => {
 
             <div className="reserve-right">
               <form onSubmit={handleReservationSubmit}>
-                <div>
+                <div className="date-input">
                   <input
                     type="date"
                     id="check-in-date"

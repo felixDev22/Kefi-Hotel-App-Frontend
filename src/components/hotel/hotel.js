@@ -4,6 +4,12 @@ import './hotel.css';
 import { Link } from 'react-router-dom';
 
 export default function Hotel({ hotel }) {
+  const maxDescLength = 115;
+  const truncatedDesc =
+    hotel.desc.length > maxDescLength
+      ? hotel.desc.slice(0, maxDescLength) + '...'
+      : hotel.desc;
+
   return (
     <div className="card">
       <img src={hotel.photo} className="card-img-top" alt={hotel.name} />
@@ -28,7 +34,7 @@ export default function Hotel({ hotel }) {
             Price: <span>${hotel.price}</span>
           </p>
         </div>
-        <p className="card-text"> {hotel.desc}</p>
+        <p className="card-text"> {truncatedDesc}</p>
         <Link
           to={{
             pathname: `/hotel/${hotel.id}/reserve`,
@@ -36,7 +42,8 @@ export default function Hotel({ hotel }) {
               hotel: hotel,
             },
           }}
-          className="btn btn-primary">
+          className="btn btn-primary"
+        >
           Book Now
         </Link>
       </div>

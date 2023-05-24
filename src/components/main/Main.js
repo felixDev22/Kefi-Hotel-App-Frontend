@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import hotelsApi from '../../common/apis/hotels';
 import './Main.css';
+import rectangle from '../../Assets/rectangle.png';
 import Hotels from '../hotels/HotelListing';
 import { addHotel } from '../../features/hotels';
 
@@ -43,7 +44,8 @@ export default function Main() {
       {hotelLength > 0 && (
         <div className="container">
           <div className="intro">
-            <hr className="line"></hr>
+            <h2>Hotels</h2>
+            <img src={rectangle} alt="rectangle" />
             <h3 className="title">Enjoy your stay at any of our selections</h3>
           </div>
 

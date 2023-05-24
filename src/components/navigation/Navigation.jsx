@@ -6,12 +6,10 @@ import './Navigation.css';
 import '../login/login.css';
 import SocialLinks from './SocialLinks';
 import { Link } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
 import logo from '../../Assets/KefI-logo-green.png';
 
 const Navigation = () => {
   const [show, setShow] = useState(false);
-  // const [search, setSearch] = React.useState('');
   const dispatch = useDispatch();
   const isloggedOut = useSelector((state) => state.login.isloggedOut);
 
@@ -24,23 +22,15 @@ const Navigation = () => {
     }
   };
 
+  const handleNavLinkClick = () => {
+    setShow(false);
+  };
+
   return (
     <main className={show ? 'space-toggle' : null}>
       <header className={`header ${show ? 'space-toggle' : null}`}>
         <div className="header-toggle" onClick={() => setShow(!show)}>
           <i className={`fas fa-bars ${show ? 'fa-solid fa-xmark' : null}`}></i>
-        </div>
-
-        <div className="search">
-          <Form>
-            <Form.Group className="my-3">
-              <Form.Control
-                // onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search a hotel"
-                className="search-input"
-              />
-            </Form.Group>
-          </Form>
         </div>
       </header>
 
@@ -52,7 +42,12 @@ const Navigation = () => {
             </Link>
             <div className="nav-wrapper">
               <div className="nav-list">
-                <NavLink exact to="/main" className="nav-link">
+                <NavLink
+                  exact
+                  to="/main"
+                  className="nav-link"
+                  onClick={handleNavLinkClick}
+                >
                   <i className="fas fa-home-alt nav-link-icon"></i>
                   <span className="nav-link-title">Hotels</span>
                 </NavLink>
@@ -61,6 +56,7 @@ const Navigation = () => {
                   to="/reserved-hotel"
                   activeClassName="active"
                   className="nav-link"
+                  onClick={handleNavLinkClick}
                 >
                   <i className="fas fa-bed nav-link-icon"></i>
                   <span className="nav-link-title">Reservation</span>
@@ -70,6 +66,7 @@ const Navigation = () => {
                   to="/add-hotels"
                   activeClassName="active"
                   className="nav-link"
+                  onClick={handleNavLinkClick}
                 >
                   <i className="fas fa-plus nav-link-icon"></i>
                   <span className="nav-link-title">Add Hotels</span>
@@ -79,6 +76,7 @@ const Navigation = () => {
                   to="/delete-hotels"
                   activeClassName="active"
                   className="nav-link"
+                  onClick={handleNavLinkClick}
                 >
                   <i className="far fa-trash-alt nav-link-icon"></i>
                   <span className="nav-link-title">Delete Hotels</span>
@@ -88,13 +86,21 @@ const Navigation = () => {
                   to="/our-services"
                   activeClassName="active"
                   className="nav-link"
+                  onClick={handleNavLinkClick}
                 >
                   <i className="fas fa-cogs nav-link-icon"></i>
                   <span className="nav-link-title">Services</span>
                 </NavLink>
 
                 {isloggedOut && <Navigate to="/login" replace={true} />}
-                <Link to="/logout" className="nav-link" onClick={handleLogout}>
+                <Link
+                  to="/logout"
+                  className="nav-link"
+                  onClick={() => {
+                    handleNavLinkClick();
+                    handleLogout();
+                  }}
+                >
                   <i className="fas fa-sign-out nav-link-icon"></i>
                   <span className="nav-link-title">Logout</span>
                 </Link>

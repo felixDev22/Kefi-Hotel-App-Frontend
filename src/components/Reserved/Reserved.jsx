@@ -7,7 +7,12 @@ const Reserved = ({ reservation, currentIndex, onNext, onPrev, onDelete }) => {
   const numVisibleHotels = window.innerWidth < 768 ? 1 : 3;
   return (
     <div className="delete">
-      <img src={leftarr} alt="left arrow" onClick={onPrev} />
+      <img
+        src={leftarr}
+        alt="left arrow"
+        className="leftarr2"
+        onClick={onPrev}
+      />
       <div className="hotelListss">
         {reservation.length > 0 &&
           reservation

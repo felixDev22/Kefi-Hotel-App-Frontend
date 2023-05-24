@@ -25,3 +25,15 @@
 .add-btn p {
   margin-top: 10px;
 }
+
+@media (max-width: 576px) {
+  .wrapper-add {
+    margin-top: 60px;
+    padding: 20px 5%;
+  }
+
+  .input {
+    width: 80vw;
+    color: #585858;
+  }
+}

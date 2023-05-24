@@ -3,13 +3,11 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  /* max-width: 800px;
-  padding: 0 20px; */
 }
 
 .intro {
   position: relative;
-  margin-top: 10%;
+  margin-top: 6%;
   text-align: center;
 }
 
@@ -41,7 +39,6 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  /* margin: 0 auto; */
   max-width: 800px;
   padding: 0 20px;
 }
@@ -89,24 +86,17 @@
 }
 
 @media (max-width: 576px) {
-  .container hr {
-    margin-top: 24px;
-    width: 30%;
+  .cards {
+    margin-left: -50px;
+  }
+  .rightarr {
+    margin-right: 100px;
+  }
+  .intro h2 {
+    font-size: 30px;
   }
 
-  .title {
-    font-size: 20px;
-    line-height: 26px;
-    margin-top: 20px;
-    margin-bottom: 12px;
+  .intro h3 {
+    font-size: 15px;
   }
-}
-
-
-.no-hotels-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20% auto;
 }

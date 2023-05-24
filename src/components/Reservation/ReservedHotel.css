@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 30px;
-  margin-top: -5%;
+  margin-top: -2%;
 }
 
 .intro-reserve {
@@ -17,12 +17,15 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  padding-right: 20px;
 }
 
 .hotelListss {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin-left: -180px;
   margin-top: -25px;
+  padding-right: 20px;
 }
 
 .hotelList ul {
@@ -66,13 +69,18 @@
   position: relative;
 }
 
+.leftarr2 {
+  left: -24%;
+  position: relative;
+}
+
 .reservebtn {
   position: absolute;
-  top: -100px;
-  right: 0;
-  width: 132px;
+  top: -70px;
+  right: -90px;
+  width: 100px;
   height: 40px;
-  background: #72b600;
+  background: #cecece;
   border-radius: 20px;
   float: right;
   color: white;
@@ -93,6 +101,7 @@
 }
 
 .reserves p {
+  font-size: 15px;
   color: var(--green-clr);
 }
 
@@ -124,29 +133,83 @@ span {
   margin-right: 35px;
 }
 
-@media screen and (max-width: 767px) {
-  .hotelList,
-  .hotelListss {
-    grid-template-columns: repeat(1, 1fr);
-  }
+/* Media Queries */
 
-  .hotelItem {
+/* Adjust layout for small screens */
+@media screen and (max-width: 768px) {
+  .container {
     width: 100%;
-    height: auto;
-  }
-
-  .hotelItem img {
-    width: 100%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
-
-  .reserveName {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-img-top {
+    height: 220px;
+  }
+  .card-body h5 {
+    margin-bottom: -10px;
+  }
+  .hotelListss {
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: -76px;
+    margin-top: -25px;
+    padding-right: 60px;
   }
 
-  .rightarr {
+  .leftarr2 {
+    left: -20%;
+    position: relative;
+  }
+
+  .reserved-hotel {
+    font-size: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .reserved-hotel-para {
+    font-size: 1.2rem;
+    margin-bottom: -2.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .hotelList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reservebtn {
+    position: relative;
+    top: 0;
+    right: 0;
+    transform: none;
+    margin-top: 10px;
+    margin-right: 0;
     display: none;
+  }
+}
+
+/* Adjust layout for extra small screens */
+@media screen and (max-width: 480px) {
+  .hotelList {
+    grid-template-columns: repeat(1, 1fr);
+    margin-right: -10px;
+  }
+
+  .delete {
+    margin-top: 5%;
+  }
+
+  .hotelListss {
+    padding-right: 0;
+  }
+
+  .reserved-hotel {
+    font-size: 1.5rem;
+  }
+
+  .leftarr2 {
+    position: relative;
   }
 }

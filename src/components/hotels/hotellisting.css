@@ -50,11 +50,19 @@
   margin-left: -50px;
 }
 
-.btn-primary {
-  margin-bottom: 40px;
-}
-
 .btn-primary:hover {
   background-color: var(--green-clr);
   color: #fff;
+}
+
+/* Adjust layout for extra small screens */
+@media screen and (max-width: 480px) {
+  .btn-primary {
+    margin-bottom: -40px;
+    margin-top: -3rem;
+  }
+  .leftarr {
+    left: 3%;
+    position: relative;
+  }
 }

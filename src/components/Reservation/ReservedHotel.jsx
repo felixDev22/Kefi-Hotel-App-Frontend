@@ -11,7 +11,7 @@ const ReservedHotel = () => {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.reservation);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const hotelLength = useSelector((state) => state.hotels.hotels.length);
+  const hotelLength = useSelector((state) => state.reservation.reservation.length);
   const [user, setUser] = useState([]);
   useEffect(() => {
     const fetchReservation = async () => {
@@ -30,7 +30,7 @@ const ReservedHotel = () => {
     };
 
     fetchReservation();
-  }, [dispatch]); 
+  }, [dispatch]);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('userData'));
     if (user) {
@@ -83,35 +83,39 @@ const ReservedHotel = () => {
     const differenceInDays = differenceInTime / (1000 * 3600 * 24);
     return differenceInDays * totalPrice;
   };
- 
 
   return (
     <>
-    {hotelLength < 1 && (
-      <div className="no-hotels-container">
-        <h1>Hi {user.name} </h1>
-        <p className="text-dark"> You can not reserve. <br/> There are no hotels yet in the system</p>
-      </div>
-    )}
-    {hotelLength > 0 && ( <div className="container">
-        <div className="intro">
-        <h1>Reserved Hotel</h1>
-        <img src={rectangle} alt="rectangle" />
-        <p>All your Reserved hotels in one place</p>
-      </div>
-      <div className="hotel-lists">
-        <Link to="/main">
-          <button className="reservebtn">Reserve</button>
-        </Link>
-      </div>
-      <Reserved
-        reservation={reservation}
-        currentIndex={currentIndex}
-        onNext={handleNext}
-        onPrev={handlePrev}
-        onDelete={handleDelete}
-      />
-    </div>)}
+      {hotelLength < 1 && (
+        <div className="no-hotels-container">
+          <h1>Hi {user.name} </h1>
+          <p className="text-dark">
+            {' '}
+            You can not reserve. <br /> There are no hotels yet in the system
+          </p>
+        </div>
+      )}
+      {hotelLength > 0 && (
+        <div className="container">
+          <div className="intro">
+            <h2 className="reserved-hotel">Reserved Hotels</h2>
+            <img src={rectangle} alt="rectangle" />
+            <p className='reserved-hotel-para'>All your Reserved hotels in one place</p>
+          </div>
+          <div className="hotel-lists">
+            <Link to="/main">
+              <button className="reservebtn">Reserve</button>
+            </Link>
+          </div>
+          <Reserved
+            reservation={reservation}
+            currentIndex={currentIndex}
+            onNext={handleNext}
+            onPrev={handlePrev}
+            onDelete={handleDelete}
+          />
+        </div>
+      )}
     </>
   );
 };
