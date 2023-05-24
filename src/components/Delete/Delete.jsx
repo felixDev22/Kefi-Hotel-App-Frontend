@@ -6,12 +6,10 @@ import './Delete.css';
 import rectangle from '../../Assets/rectangle.png';
 import HotelList from '../HotelList/HotelList';
 
-
-const Delete = () => {
+function Delete() {
   const dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels.hotels);
   const hotelLength = useSelector((state) => state.hotels.hotels.length);
-
   useEffect(() => {
     dispatch(addHotel([]));
 
@@ -20,6 +18,7 @@ const Delete = () => {
         const response = await axios.get('http://localhost:3000/api/v1/hotels');
         dispatch(addHotel(response.data));
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
       }
     };
@@ -34,7 +33,10 @@ const Delete = () => {
         console.log(response);
         dispatch(deleteHotel(id));
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      });
   };
   const [user, setUser] = useState([]);
 
@@ -47,15 +49,19 @@ const Delete = () => {
 
   return (
     <>
-    {hotelLength < 1 && (
+      {hotelLength < 1 && (
       <div className="no-hotels-container">
-        <h1>Welcome {user.name}</h1>
+        <h1>
+          Welcome
+          {' '}
+          {user.name}
+        </h1>
         <p className="text-dark"> There are no hotels yet</p>
         <a href="/add-hotels" className=" btn btn-primary">
           Add Hotel
         </a>
       </div>
-    )}
+      )}
 
       {hotelLength > 0 && (
         <div className="delete-hotels">
@@ -68,6 +74,6 @@ const Delete = () => {
       )}
     </>
   );
-};
+}
 
 export default Delete;
