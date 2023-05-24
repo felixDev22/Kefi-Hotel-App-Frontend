@@ -62,7 +62,11 @@
 /* Adjust layout for extra small screens */
 @media screen and (max-width: 480px) {
   .btn-primary {
-  margin-bottom: -40px;
-  margin-top: -3rem;
-}
+    margin-bottom: -40px;
+    margin-top: -3rem;
+  }
+  .leftarr {
+    left: 3%;
+    position: relative;
+  }
 }
