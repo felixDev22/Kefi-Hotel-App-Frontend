@@ -1,55 +1,59 @@
 import {
   createSlice,
-  createAsyncThunk
-} from "@reduxjs/toolkit";
-import axios from "axios";
+  createAsyncThunk,
+} from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const RESERVE_ACTION_TYPE = "reserveHotel";
+const RESERVE_ACTION_TYPE = 'reserveHotel';
 
 const reserveHotel = createAsyncThunk(
   RESERVE_ACTION_TYPE,
   async (data, thunkAPI) => {
-    const reserveUrl = "http://127.0.0.1:3000/api/v1/reservations";
+    const reserveUrl = 'http://127.0.0.1:3000/api/v1/reservations';
     try {
       const response = await axios.post(reserveUrl, data, {
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
       });
 
       if (response.status === 200) {
-        console.log(response.data);
         return response.data;
-      } else {
-        return thunkAPI.rejectWithValue(response.data);
       }
+      return thunkAPI.rejectWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 const initialState = {
   reservation: null,
-  error: "",
+  error: '',
 };
 
 const reserveSlice = createSlice({
-  name: "reserve",
+  name: 'reserve',
   initialState,
   extraReducers: (builder) => {
     builder.addCase(reserveHotel.pending, (state) => {
+      // eslint-disable-next-line no-param-reassign
       state.reservation = initialState.reservation;
+      // eslint-disable-next-line no-param-reassign
       state.error = initialState.error;
     });
     builder.addCase(reserveHotel.fulfilled, (state, action) => {
+      // eslint-disable-next-line no-param-reassign
       state.reservation = action.payload;
+      // eslint-disable-next-line no-param-reassign
       state.error = initialState.error;
     });
     builder.addCase(reserveHotel.rejected, (state) => {
+      // eslint-disable-next-line no-param-reassign
       state.reservation = initialState.reservation;
-      state.error = "error";
+      // eslint-disable-next-line no-param-reassign
+      state.error = 'error';
     });
   },
 });

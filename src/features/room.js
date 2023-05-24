@@ -9,6 +9,7 @@ const roomsSlice = createSlice({
   initialState,
   reducers: {
     addRooms: (state, { payload }) => {
+      // eslint-disable-next-line no-param-reassign
       state.rooms = payload;
     },
   },

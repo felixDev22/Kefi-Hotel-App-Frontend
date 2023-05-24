@@ -1,10 +1,10 @@
-import { configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import hotelsReducer from './hotels';
-import reserveReducer from '../features/slices/reserve/reserveSlice';
-import loginReducer from '../features/slices/auth/login';
-import registerReducer from '../features/slices/auth/register';
-import singleHotelReducer from '../features/slices/reserve/singleReserveSlice';
-import { roomTypeReducer } from '../features/slices/roomTypes/fetchRooms';
+import reserveReducer from './slices/reserve/reserveSlice';
+import loginReducer from './slices/auth/login';
+import registerReducer from './slices/auth/register';
+import { singleHotelReducer } from './slices/reserve/singleReserveSlice';
+import { roomTypeReducer } from './slices/roomTypes/fetchRooms';
 import reservationReducer from './reservation';
 import roomsReducer from './room';
 

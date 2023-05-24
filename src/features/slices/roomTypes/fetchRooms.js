@@ -17,13 +17,12 @@ export const readRooms = createAsyncThunk(
 
       if (response.status === 200) {
         return response.data;
-      } else {
-        return thunkAPI.rejectWithValue(response.data);
       }
+      return thunkAPI.rejectWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 const initialState = {
@@ -37,22 +36,27 @@ const roomTypeSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(readRooms.pending, (state) => {
+      // eslint-disable-next-line no-param-reassign
       state.rooms = initialState.rooms;
+      // eslint-disable-next-line no-param-reassign
       state.error = initialState.error;
     });
     builder.addCase(readRooms.fulfilled, (state, action) => {
+      // eslint-disable-next-line no-param-reassign
       state.rooms = action.payload;
+      // eslint-disable-next-line no-param-reassign
       state.error = initialState.error;
     });
     builder.addCase(readRooms.rejected, (state) => {
+      // eslint-disable-next-line no-param-reassign
       state.rooms = initialState.rooms;
+      // eslint-disable-next-line no-param-reassign
       state.error = 'error';
     });
   },
 });
 
-export const { actions: roomTypeActions, reducer: roomTypeReducer } =
-  roomTypeSlice;
+export const { actions: roomTypeActions, reducer: roomTypeReducer } = roomTypeSlice;
 
 export const selectRooms = (state) => state.roomType.rooms;
 export const selectRoomError = (state) => state.roomType.error;

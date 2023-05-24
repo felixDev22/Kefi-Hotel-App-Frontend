@@ -14,12 +14,11 @@ export const loginUser = createAsyncThunk('login', async (data, thunkAPI) => {
       credentials: 'includ',
       withCredentials: true,
     });
-    localStorage.setItem('userData', JSON.stringify(response.data.user))
+    localStorage.setItem('userData', JSON.stringify(response.data.user));
     if (response.status === 200) {
       return response.data;
-    } else {
-      return thunkAPI.rejectWithValue(response.data);
     }
+    return thunkAPI.rejectWithValue(response.data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data);
   }
@@ -47,16 +46,22 @@ const loginSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.fulfilled, (state, action) => {
+        // eslint-disable-next-line no-param-reassign
         state.data = action.payload;
+        // eslint-disable-next-line no-param-reassign
         state.islogged = action.payload.logged_in;
-        if (action.payload.status === 401) state.errors = action.payload.errors[0];
+        const { status, errors } = action.payload;
+        if (status === 401) {
+          // eslint-disable-next-line no-param-reassign
+          [state.errors] = errors;
+        }
       })
       .addCase(loginUser.rejected, (state, action) => {
+        // eslint-disable-next-line no-param-reassign
         state.data = action.payload;
       });
   },
 });
-
 
 export default loginSlice.reducer;
 export const loginActions = loginSlice.actions;
