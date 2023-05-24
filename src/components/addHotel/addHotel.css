@@ -2,7 +2,7 @@
   height: 100vh;
   width: 100%;
   margin: 8% auto;
-  padding: 0px 8%;
+  padding: 0 8%;
 }
 
 .add-title h4 {
@@ -12,7 +12,7 @@
 
 .add-btn {
   color: #fff;
-  padding: 0px 30px;
+  padding: 0 30px;
   background: var(--green-clr);
   border-radius: 10px;
 }
