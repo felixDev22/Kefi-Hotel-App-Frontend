@@ -52,7 +52,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   text-align: left;
-  padding: auto 5px;
+  padding: 5px;
 }
 
 .hotelDetails p {
@@ -60,7 +60,7 @@
 }
 
 .card-img-top {
-  border-radius: 22px 22px 0px 0px;
+  border-radius: 22px 22px 0 0;
   width: 300px;
   height: 250px;
 }
@@ -149,9 +149,11 @@ span {
   .card-img-top {
     height: 220px;
   }
+
   .card-body h5 {
     margin-bottom: -10px;
   }
+
   .hotelListss {
     grid-template-columns: repeat(3, 1fr);
     margin-left: -76px;
@@ -170,7 +172,7 @@ span {
   }
 
   .reserved-hotel-para {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: -2.5rem;
     margin-top: 0.5rem;
   }
