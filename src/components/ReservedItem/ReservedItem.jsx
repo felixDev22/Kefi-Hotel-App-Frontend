@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ReservedItem = ({ reservation, onDelete }) => {
+function ReservedItem({ reservation, onDelete }) {
   return (
     <div className="card">
       <img
@@ -12,41 +13,74 @@ const ReservedItem = ({ reservation, onDelete }) => {
         <h5 className="reserveName">{reservation.name}</h5>
         <div className="priceandtype reserves">
           <p>
-            <span>Price:</span> ${reservation.totalPrice}
+            <span>Price:</span>
+            {' '}
+            $
+            {reservation.totalPrice}
           </p>
           <p>
-            <span>Room Type:</span> {reservation.room_type}
+            <span>Room Type:</span>
+            {' '}
+            {reservation.room_type}
           </p>
         </div>
         <div className="checks reserves">
           <p>
-            <span>Check in:</span> {reservation.check_in}
+            <span>Check in:</span>
+            {' '}
+            {reservation.check_in}
           </p>
           <p className="out">
-            <span>Check out:</span> {reservation.check_out}
+            <span>Check out:</span>
+            {' '}
+            {reservation.check_out}
           </p>
         </div>
         <div className="adultschil reserves">
           <p>
-            <span>Adults:</span> {reservation.adults}
+            <span>Adults:</span>
+            {' '}
+            {reservation.adults}
           </p>
           <p>
-            <span>Children:</span> {reservation.children}
+            <span>Children:</span>
+            {' '}
+            {reservation.children}
           </p>
           <p>
-            <span>Rooms:</span> {reservation.rooms}
+            <span>Rooms:</span>
+            {' '}
+            {reservation.rooms}
           </p>
         </div>
       </div>
       <div className="card-body">
         <button
           className="btn btn-primary"
-          onClick={() => onDelete(reservation.id)}>
+          type="button"
+          onClick={() => onDelete(reservation.id)}
+        >
           Delete
         </button>
       </div>
     </div>
   );
+}
+
+ReservedItem.propTypes = {
+  reservation: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    photo: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    totalPrice: PropTypes.number.isRequired,
+    room_type: PropTypes.string.isRequired,
+    check_in: PropTypes.string.isRequired,
+    check_out: PropTypes.string.isRequired,
+    adults: PropTypes.number.isRequired,
+    children: PropTypes.number.isRequired,
+    rooms: PropTypes.number.isRequired,
+  }).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default ReservedItem;

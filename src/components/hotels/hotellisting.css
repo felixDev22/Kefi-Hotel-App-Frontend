@@ -13,16 +13,14 @@
   margin: 0;
 }
 
-/* .leftarr,
-.rightarr {
-  width: 50px;
-  position: fixed;
-  top: 50%;
-} */
 .deleted {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.rightarr {
+  right: 10%;
 }
 
 .hotelList .rightarr {
@@ -34,10 +32,6 @@
 
 .leftarr {
   left: 15%;
-}
-
-.rightarr {
-  right: 10%;
 }
 
 .search {
@@ -61,6 +55,7 @@
     margin-bottom: -40px;
     margin-top: -3rem;
   }
+
   .leftarr {
     left: 3%;
     position: relative;

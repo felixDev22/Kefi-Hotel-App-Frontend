@@ -6,13 +6,11 @@ export const logoutUser = createAsyncThunk('logout', async (_, thunkAPI) => {
 
   try {
     await axios.post(logoutUrl);
-    return null; 
-  } 
-  catch (error) {
+    return null;
+  } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
-  });
-
+});
 
 const initialState = {
   data: {},
@@ -24,12 +22,16 @@ const logoutSlice = createSlice({
   name: 'logout',
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(logoutUser.fulfilled, (state, action) => {
+    builder.addCase(logoutUser.fulfilled, (state) => {
+      // eslint-disable-next-line no-param-reassign
       state.data = {};
+      // eslint-disable-next-line no-param-reassign
       state.isLogged = false;
+      // eslint-disable-next-line no-param-reassign
       state.errors = '';
     });
     builder.addCase(logoutUser.rejected, (state, action) => {
+      // eslint-disable-next-line no-param-reassign
       state.errors = action.payload;
     });
   },

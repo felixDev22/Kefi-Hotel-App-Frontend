@@ -7,20 +7,22 @@ export default function Splash() {
   return (
     <div className="wrapper">
       <div className="splash">
-        <img src={logo} alt="logo"></img>
+        <img src={logo} alt="logo" />
         <h1>WELCOME</h1>
       </div>
       <div className="btns">
         <NavLink
           to="/login"
           className="btn login btn-primary btn-rounded mx-5 px-5"
-          activeClassName="active">
+          activeClassName="active"
+        >
           Login
         </NavLink>
         <NavLink
           to="/signup"
           className="btn signup btn-primary btn-rounded mx-5 px-5"
-          activeClassName="active">
+          activeClassName="active"
+        >
           Sign Up
         </NavLink>
       </div>

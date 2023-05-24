@@ -3,9 +3,11 @@ import twitter from '../../Assets/twitter.png';
 import linkedin from '../../Assets/linkedin.png';
 import github from '../../Assets/github.png';
 import web from '../../Assets/web.png';
-import { twitterLinks, linkedinLinks, githubLinks, webLinks } from './Data';
+import {
+  twitterLinks, linkedinLinks, githubLinks, webLinks,
+} from './Data';
 
-const SocialLinks = () => {
+function SocialLinks() {
   const [showTwitterLinks, setShowTwitterLinks] = useState(false);
   const [showLinkedinLinks, setShowLinkedinLinks] = useState(false);
   const [showGithubLinks, setShowGithubLinks] = useState(false);
@@ -127,6 +129,6 @@ const SocialLinks = () => {
       </div>
     </div>
   );
-};
+}
 
 export default SocialLinks;

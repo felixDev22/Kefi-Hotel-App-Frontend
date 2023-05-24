@@ -9,11 +9,12 @@ const reservationSlice = createSlice({
   initialState,
   reducers: {
     addReservation: (state, { payload }) => {
+      // eslint-disable-next-line no-param-reassign
       state.reservation = payload;
     },
     deleteReservation: (state, { payload }) => {
       const reservationIndex = state.reservation.findIndex(
-        (reservation) => reservation.id === payload
+        (reservation) => reservation.id === payload,
       );
       if (reservationIndex !== -1) {
         state.reservation.splice(reservationIndex, 1);

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { newHotel } from '../../features/hotels';
 import { Navigate } from 'react-router-dom';
-import '../../components/login/login.css';
+import { newHotel } from '../../features/hotels';
+import '../login/login.css';
 import './addHotel.css';
-const AddHotel = () => {
+
+function AddHotel() {
   const dispatch = useDispatch();
   const [hotelName, setHotelName] = useState('');
   const [photoURL, setPhotoURL] = useState('');
@@ -29,10 +30,10 @@ const AddHotel = () => {
       user_id: user.id,
       name: hotelName,
       photo: photoURL,
-      rating: parseInt(rating),
-      location: location,
-      price: parseInt(price),
-      desc: desc,
+      rating: parseInt(rating, 10),
+      location,
+      price: parseInt(price, 10),
+      desc,
     };
     axios
       .post('http://localhost:3000/api/v1/hotels', data)
@@ -40,6 +41,7 @@ const AddHotel = () => {
         dispatch(newHotel(response.data));
         setSent(true);
       })
+      // eslint-disable-next-line no-console
       .catch((error) => console.error(error));
   };
   return (
@@ -48,7 +50,7 @@ const AddHotel = () => {
         <div className="add-title">
           <h4>Add New hotel</h4>
         </div>
-        {isSent && <Navigate to="/main" replace={true} />}
+        {isSent && <Navigate to="/main" replace />}
         <form onSubmit={handleNewHotel}>
           <div className="input-field">
             <input
@@ -129,5 +131,5 @@ const AddHotel = () => {
       </div>
     </div>
   );
-};
+}
 export default AddHotel;

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import hotelsApi from '../../common/apis/hotels';
 import './Main.css';
@@ -14,6 +14,7 @@ export default function Main() {
   useEffect(() => {
     const fetchData = async () => {
       const resonse = await hotelsApi.get().catch((err) => {
+        // eslint-disable-next-line no-console
         console.log('Err: ', err);
       });
       dispatch(addHotel(resonse.data));
@@ -33,7 +34,10 @@ export default function Main() {
     <>
       {hotelLength < 1 && (
         <div className="no-hotels-container">
-          <h1>Welcome {user.name}</h1>
+          <h1>
+            Welcome
+            {user.name}
+          </h1>
           <p className="text-dark"> There are no hotels yet</p>
           <a href="/add-hotels" className=" btn btn-primary">
             Add Hotel
