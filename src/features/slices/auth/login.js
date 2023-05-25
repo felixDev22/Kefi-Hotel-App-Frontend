@@ -4,7 +4,7 @@ import axios from 'axios';
 // Define a persist config for the login slice
 
 export const loginUser = createAsyncThunk('login', async (data, thunkAPI) => {
-  const loginUrl = 'http://127.0.0.1:3000/login';
+  const loginUrl = 'https://kefi-hotel-booking-app.onrender.com/login';
   try {
     const response = await axios.post(loginUrl, data, {
       headers: {
@@ -27,7 +27,7 @@ export const loginUser = createAsyncThunk('login', async (data, thunkAPI) => {
 // add for logoutUser
 export const logoutUser = createAsyncThunk('logout', async (_, thunkAPI) => {
   try {
-    await axios.post('http://localhost:3000/logout');
+    await axios.post('https://kefi-hotel-booking-app.onrender.com/logout');
     return { logged_out: true };
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

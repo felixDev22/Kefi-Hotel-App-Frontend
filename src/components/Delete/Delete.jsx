@@ -15,7 +15,9 @@ function Delete() {
 
     const fetchHotels = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/hotels');
+        const response = await axios.get(
+          'https://kefi-hotel-booking-app.onrender.com/api/v1/hotels',
+        );
         dispatch(addHotel(response.data));
       } catch (error) {
         // eslint-disable-next-line no-console
@@ -28,7 +30,7 @@ function Delete() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3000/api/v1/hotels/${id}`)
+      .delete(`https://kefi-hotel-booking-app.onrender.com/api/v1/hotels/${id}`)
       .then((response) => {
         console.log(response);
         dispatch(deleteHotel(id));
@@ -50,17 +52,13 @@ function Delete() {
   return (
     <>
       {hotelLength < 1 && (
-      <div className="no-hotels-container">
-        <h1>
-          Welcome
-          {' '}
-          {user.name}
-        </h1>
-        <p className="text-dark"> There are no hotels yet</p>
-        <a href="/add-hotels" className=" btn btn-primary">
-          Add Hotel
-        </a>
-      </div>
+        <div className="no-hotels-container">
+          <h1>Welcome {user.name}</h1>
+          <p className="text-dark"> There are no hotels yet</p>
+          <a href="/add-hotels" className=" btn btn-primary">
+            Add Hotel
+          </a>
+        </div>
       )}
 
       {hotelLength > 0 && (

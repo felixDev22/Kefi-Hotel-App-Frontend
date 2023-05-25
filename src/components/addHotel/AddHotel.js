@@ -36,7 +36,7 @@ function AddHotel() {
       desc,
     };
     axios
-      .post('http://localhost:3000/api/v1/hotels', data)
+      .post('https://kefi-hotel-booking-app.onrender.com/api/v1/hotels', data)
       .then((response) => {
         dispatch(newHotel(response.data));
         setSent(true);

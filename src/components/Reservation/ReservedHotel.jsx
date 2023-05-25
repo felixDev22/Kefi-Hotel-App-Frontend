@@ -11,7 +11,9 @@ function ReservedHotel() {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.reservation);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const hotelLength = useSelector((state) => state.reservation.reservation.length);
+  const hotelLength = useSelector(
+    (state) => state.reservation.reservation.length,
+  );
   const [user, setUser] = useState([]);
   const totalPrice = (reservation) => {
     let totalPrice = reservation.price;
@@ -42,7 +44,7 @@ function ReservedHotel() {
     const fetchReservation = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/v1/reservations',
+          'https://kefi-hotel-booking-app.onrender.com/api/v1/reservations',
         );
         const reservationsWithTotalPrice = response.data.map((reservation) => ({
           ...reservation,
@@ -66,7 +68,9 @@ function ReservedHotel() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:3000/api/v1/reservations/${id}`)
+      .delete(
+        `https://kefi-hotel-booking-app.onrender.com/v1/reservations/${id}`,
+      )
       .then((response) => {
         // eslint-disable-next-line no-console
         console.log(response);
@@ -98,11 +102,7 @@ function ReservedHotel() {
           </h1>
           <p className="text-dark">
             {' '}
-            You can not reserve.
-            {' '}
-            <br />
-            {' '}
-            There are no hotels yet in the system
+            You can not reserve. <br /> There are no hotels yet in the system
           </p>
         </div>
       )}
@@ -111,11 +111,15 @@ function ReservedHotel() {
           <div className="intro">
             <h2 className="reserved-hotel">Reserved Hotels</h2>
             <img src={rectangle} alt="rectangle" />
-            <p className="reserved-hotel-para">All your Reserved hotels in one place</p>
+            <p className="reserved-hotel-para">
+              All your Reserved hotels in one place
+            </p>
           </div>
           <div className="hotel-lists">
             <Link to="/main">
-              <button type="button" className="reservebtn">Reserve</button>
+              <button type="button" className="reservebtn">
+                Reserve
+              </button>
             </Link>
           </div>
           <Reserved

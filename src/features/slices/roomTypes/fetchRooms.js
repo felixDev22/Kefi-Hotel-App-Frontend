@@ -6,7 +6,7 @@ const RESERVE_ACTION_TYPE = 'fetchRooms';
 export const readRooms = createAsyncThunk(
   RESERVE_ACTION_TYPE,
   async (hotelId, thunkAPI) => {
-    const roomUrl = `http://localhost:3000/api/v1/hotels/${hotelId}`;
+    const roomUrl = `https://kefi-hotel-booking-app.onrender.com/api/v1/hotels/${hotelId}`;
     try {
       const response = await axios.get(roomUrl, {
         headers: {
@@ -56,7 +56,8 @@ const roomTypeSlice = createSlice({
   },
 });
 
-export const { actions: roomTypeActions, reducer: roomTypeReducer } = roomTypeSlice;
+export const { actions: roomTypeActions, reducer: roomTypeReducer } =
+  roomTypeSlice;
 
 export const selectRooms = (state) => state.roomType.rooms;
 export const selectRoomError = (state) => state.roomType.error;
