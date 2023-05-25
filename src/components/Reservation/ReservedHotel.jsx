@@ -94,15 +94,14 @@ function ReservedHotel() {
         <div className="no-hotels-container">
           <h1>
             Hi
+            {' '}
             {user.name}
           </h1>
           <p className="text-dark">
             {' '}
-            You can not reserve.
-            {' '}
             <br />
             {' '}
-            There are no hotels yet in the system
+            You have no reservations yet
           </p>
         </div>
       )}

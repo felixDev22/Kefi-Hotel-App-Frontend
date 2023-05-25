@@ -111,7 +111,7 @@
 
 - Run npm install
 - Run npm start
-- In your browser, go to `http://localhost:3000`.
+- In your browser, go to `http://localhost:3001`.
 
 <p align="right"><a href="#readme-top">front to top</a></p>
 

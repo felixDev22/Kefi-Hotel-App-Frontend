@@ -16,15 +16,14 @@ import ReservedHotel from './components/Reservation/ReservedHotel';
 import NotFound from './components/Not Found/NotFound';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <AppContent />
-      </Router>
-    </div>
-  );
-}
+// eslint-disable-next-line react/function-component-definition
+const App = () => (
+  <div className="App">
+    <Router>
+      <AppContent />
+    </Router>
+  </div>
+);
 
 function AppContent() {
   const location = useLocation();
