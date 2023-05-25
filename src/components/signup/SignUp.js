@@ -24,7 +24,7 @@ export default function SignUp() {
     e.preventDefault();
     axios
       .post(
-        'http://127.0.0.1:3000/signup',
+        'https://kefi-hotel-booking-app.onrender.com/signup',
         {
           user: {
             name,
@@ -33,7 +33,7 @@ export default function SignUp() {
             passwordConfirmation,
           },
         },
-        { withCredentials: true },
+        { withCredentials: true }
       )
       .then((response) => {
         if (response.data.status === 'created') {
@@ -52,7 +52,7 @@ export default function SignUp() {
           email,
           password,
         },
-      }),
+      })
     );
   };
   return (
@@ -67,13 +67,7 @@ export default function SignUp() {
               <span className="line" />
               <h4>Welcome to the ultimate hotel booking site:</h4>
             </div>
-            {errorStrings && (
-            <p>
-              {' '}
-              {errorStrings}
-              {' '}
-            </p>
-            )}
+            {errorStrings && <p> {errorStrings} </p>}
             {iscreated && <Navigate to="/login" />}
             <form onSubmit={handleSubmit}>
               <div className="input-filed">
@@ -118,9 +112,7 @@ export default function SignUp() {
                   >
                     {showPassword ? <RiEyeOffFill /> : <RiEyeFill />}
                   </span>
-
                 </div>
-
               </div>
               <div className="input-filed">
                 <div className="input-wrapper">
