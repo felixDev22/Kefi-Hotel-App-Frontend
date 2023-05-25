@@ -19,13 +19,14 @@
     - [Run](#run)
   - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
+  - [🖼 Kanban Board ](#-Kanban-Board-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
   - [🙏 Acknowledgments ](#-acknowledgments-)
   - [📝 License ](#-license-)
-<div align="center">
-  <h3><b>FINAL-CAPSTONE-FRONTEND</b></h3>
-</div>
+  <div align="center">
+    <h3><b>FINAL-CAPSTONE-FRONTEND</b></h3>
+  </div>
 
 <!-- PROJECT DESCRIPTION -->
 
@@ -33,24 +34,22 @@
 
 **HOTEL BOOKING** is the final capstone project done by a group of four, this is the frontend that takes data from the backend created with ruby on rails by getting the data through api.It consist of a splash page and login, registration, main, delete, add hotel, delete hotel and reserve hotels.
 
-
 ## ScreenShots of the APP
+
 ![Splash](./src/Assets/b.png)
 
 ![Splash](./src/Assets/c.png)
 
-
 ![Splash](./src/Assets/r.png)
-
 
 ![Splash](./src/Assets/t.png)
 
-
-##  Design <a name="built-with">
+## Design <a name="built-with">
 
 - [Figma design](https://www.figma.com/file/2XW31wy6dXFS6vEbCpEWuo/Hotel-booking-app?type=design&node-id=0-1&t=NgA8zpxRbINmxtoE-0)
 
 ## 🛠 Built With <a name="built-with">
+
   <ul>
       <li>REACT </li>
       <li>JavaScript</li>
@@ -117,7 +116,6 @@
 
 ## 👥 Authors <a name="authors"></a>
 
-
 👤 **DIABY MOHAMMED IBRAHIM**
 
 - [GitHub](https://github.com/elixDev22)
@@ -150,6 +148,33 @@
 
 - [ ] **Better user interface**
 
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+<!-- Kanban board -->
+
+## 🖼 Kanban Board <a name="kanban-board"></a>
+
+Here is the link to the [KANBAN-BOARD](https://github.com/users/felixDev22/projects/2/views/1)
+The before:
+![image (1)](https://github.com/felixDev22/Final-Capstone-Frontend/assets/50062179/0cc9366a-499f-4ab3-b20c-618e0a774c54)
+
+The after:
+![image (2)](./src/Assets/kanban.JPG)
+
+<p align="right"><a href="#readme-top">back to top</a></p>
+
+<!-- NUMBER OF TEAM -->
+
+## Number of Team <a name="number-of-team"></a>
+
+**There are four collaborators in this team**
+
+- [IBRAHIM](https://github.com/dmambo)
+- [MAALOUM](https://github.com/maaloum)
+- [FELIX](https://github.com/felixDev22)
+- [KENNEDY](https://github.com/kennedyowusu)
+
+<p align="right"><a href="#readme-top">back to top</a></p>
 
 <!-- CONTRIBUTING -->
 
