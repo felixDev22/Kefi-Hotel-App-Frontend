@@ -1,0 +1,63 @@
+.hotelList {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: -25px;
+}
+
+.hotelList ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.deleted {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rightarr {
+  right: 10%;
+}
+
+.hotelList .rightarr {
+  position: absolute;
+  top: 60%;
+  right: 15%;
+  transform: translateY(-50%);
+}
+
+.leftarr {
+  left: 15%;
+}
+
+.search {
+  padding: 10px;
+  width: 30%;
+}
+
+.my-3 {
+  border-radius: 15px;
+  margin-left: -50px;
+}
+
+.btn-primary:hover {
+  background-color: var(--green-clr);
+  color: #fff;
+}
+
+/* Adjust layout for extra small screens */
+@media screen and (max-width: 480px) {
+  .btn-primary {
+    margin-bottom: -40px;
+    margin-top: -3rem;
+  }
+
+  .leftarr {
+    left: 3%;
+    position: relative;
+  }
+}

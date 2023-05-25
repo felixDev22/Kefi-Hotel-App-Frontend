@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: 'Advent Pro', sans-serif;
+  background-image: url('../../../public/splash.png');
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.wrapper .splash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 22px;
+  margin-top: -13%;
+}
+
+.wrapper .splash h1 {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  letter-spacing: 20px;
+  color: #000;
+  text-align: center;
+}
+
+h1 span {
+  font-family: 'Advent Pro', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 153px;
+  color: #fe6814;
+  padding: 15px;
+}
+
+.wrapper .btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.btns button {
+  outline: none;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 47.5px;
+}
+
+.btns button:active button:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.btns .login {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+  background-color: var(--green-clr);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btns .signup {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+  color: var(--green-clr);
+  background-color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .wrapper {
+    justify-content: space-around;
+  }
+
+  .wrapper .splash h1 {
+    font-size: 30px;
+    letter-spacing: 10px;
+  }
+
+  h1 span {
+    font-size: 50px;
+    line-height: 100px;
+  }
+
+  .btns {
+    flex-direction: column;
+  }
+
+  .btns button {
+    padding: 5px 15px;
+    border-radius: 47.5px;
+  }
+
+  .btns .login {
+    font-size: 15px;
+  }
+
+  .btns .signup {
+    font-size: 15px;
+  }
+}

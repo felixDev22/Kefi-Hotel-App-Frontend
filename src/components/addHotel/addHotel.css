@@ -1,0 +1,39 @@
+.wrapper-add {
+  height: 100vh;
+  width: 100%;
+  margin: 8% auto;
+  padding: 0 8%;
+}
+
+.add-title h4 {
+  margin-left: 20px;
+  margin-bottom: 40px;
+}
+
+.add-btn {
+  color: #fff;
+  padding: 0 30px;
+  background: var(--green-clr);
+  border-radius: 10px;
+}
+
+.add-btn:hover {
+  color: #fff;
+  background: var(--orange-clr);
+}
+
+.add-btn p {
+  margin-top: 10px;
+}
+
+@media (max-width: 576px) {
+  .wrapper-add {
+    margin-top: 60px;
+    padding: 20px 5%;
+  }
+
+  .input {
+    width: 80vw;
+    color: #585858;
+  }
+}
