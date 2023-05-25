@@ -6,8 +6,7 @@ const RESERVE_ACTION_TYPE = 'reserveHotel';
 const reserveHotel = createAsyncThunk(
   RESERVE_ACTION_TYPE,
   async (data, thunkAPI) => {
-    const reserveUrl =
-      'https://kefi-hotel-booking-app.onrender.com/api/v1/reservations';
+    const reserveUrl = 'https://kefi-hotel-booking-app.onrender.com/api/v1/reservations';
     try {
       const response = await axios.post(reserveUrl, data, {
         headers: {

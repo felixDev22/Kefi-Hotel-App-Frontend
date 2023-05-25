@@ -51,6 +51,13 @@ export default function Main() {
             <h2>Hotels</h2>
             <img src={rectangle} alt="rectangle" />
             <h3 className="title">Enjoy your stay at any of our selections</h3>
+            <p>
+              {' '}
+              We have more than
+              {hotelLength}
+              {' '}
+              in the system
+            </p>
           </div>
 
           <div className="cards">

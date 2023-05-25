@@ -54,8 +54,7 @@ const singleHotelSlice = createSlice({
   },
 });
 
-export const { actions: singleHotelActions, reducer: singleHotelReducer } =
-  singleHotelSlice;
+export const { actions: singleHotelActions, reducer: singleHotelReducer } = singleHotelSlice;
 
 export const selectSingleHotel = (state) => state.singleHotel.hotel;
 export const selectSingleHotelLoading = (state) => state.singleHotel.loading;

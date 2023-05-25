@@ -439,6 +439,7 @@ function Reserve() {
               >
                 <button type="button" className="my-reservation">
                   View Rooms
+                  { console.log('id', id)}
                 </button>
               </Link>
             </div>

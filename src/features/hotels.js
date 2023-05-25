@@ -33,8 +33,14 @@ const hotelsSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.loading = true;
     },
+    clearAll: (state) => {
+      // eslint-disable-next-line no-param-reassign
+      state.hotels = [];
+    },
   },
 });
 
-export const { addHotel, deleteHotel, newHotel } = hotelsSlice.actions;
+export const {
+  addHotel, deleteHotel, newHotel, clearAll,
+} = hotelsSlice.actions;
 export default hotelsSlice.reducer;

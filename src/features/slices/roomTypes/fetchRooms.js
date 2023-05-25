@@ -56,8 +56,7 @@ const roomTypeSlice = createSlice({
   },
 });
 
-export const { actions: roomTypeActions, reducer: roomTypeReducer } =
-  roomTypeSlice;
+export const { actions: roomTypeActions, reducer: roomTypeReducer } = roomTypeSlice;
 
 export const selectRooms = (state) => state.roomType.rooms;
 export const selectRoomError = (state) => state.roomType.error;
