@@ -33,7 +33,7 @@ export default function SignUp() {
             passwordConfirmation,
           },
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
       .then((response) => {
         if (response.data.status === 'created') {
@@ -52,7 +52,7 @@ export default function SignUp() {
           email,
           password,
         },
-      })
+      }),
     );
   };
   return (
@@ -67,7 +67,13 @@ export default function SignUp() {
               <span className="line" />
               <h4>Welcome to the ultimate hotel booking site:</h4>
             </div>
-            {errorStrings && <p> {errorStrings} </p>}
+            {errorStrings && (
+            <p>
+              {' '}
+              {errorStrings}
+              {' '}
+            </p>
+            )}
             {iscreated && <Navigate to="/login" />}
             <form onSubmit={handleSubmit}>
               <div className="input-filed">

@@ -22,7 +22,7 @@ function Room() {
     const fetchRooms = async () => {
       try {
         const response = await axios.get(
-          `https://kefi-hotel-booking-app.onrender.com/api/v1/hotels/${hotelId}/rooms`
+          `https://kefi-hotel-booking-app.onrender.com/api/v1/hotels/${hotelId}/rooms`,
         );
         dispatch(addRooms(response.data));
       } catch (error) {
