@@ -32,6 +32,7 @@ function Delete() {
     axios
       .delete(`https://kefi-hotel-booking-app.onrender.com/api/v1/hotels/${id}`)
       .then((response) => {
+        // eslint-disable-next-line no-console
         console.log(response);
         dispatch(deleteHotel(id));
       })
