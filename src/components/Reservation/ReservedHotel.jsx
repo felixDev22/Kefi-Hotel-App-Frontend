@@ -100,7 +100,7 @@ function ReservedHotel() {
           <h1>
             Hi
             {' '}
-            {user.name}
+            {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
           </h1>
           <p className="text-dark">
             {' '}

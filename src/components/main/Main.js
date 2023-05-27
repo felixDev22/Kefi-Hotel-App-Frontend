@@ -41,7 +41,8 @@ export default function Main() {
         <div className="no-hotels-container">
           <h1>
             Welcome
-            {user.name}
+            {' '}
+            {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
           </h1>
           <p className="text-dark"> There are no hotels yet</p>
           <a href="/add-hotels" className=" btn btn-primary">
