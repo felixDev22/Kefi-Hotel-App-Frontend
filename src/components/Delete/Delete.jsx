@@ -5,14 +5,14 @@ import { addHotel, deleteHotel } from '../../features/hotels';
 import './Delete.css';
 import rectangle from '../../Assets/rectangle.png';
 import HotelList from '../HotelList/HotelList';
+import Dialog from '../Dialog/Dialog';
 
 function Delete() {
   const dispatch = useDispatch();
   const hotels = useSelector((state) => state.hotels.hotels);
-  const hotelLength = useSelector((state) => state.hotels.hotels.length);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     dispatch(addHotel([]));
-
     const fetchHotels = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/v1/hotels');
@@ -21,6 +21,7 @@ function Delete() {
         // eslint-disable-next-line no-console
         console.error(error);
       }
+      setLoading(false);
     };
 
     fetchHotels();
@@ -49,22 +50,23 @@ function Delete() {
   }, []);
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
-      {hotelLength < 1 && (
-      <div className="no-hotels-container">
-        <h1>
-          Welcome
-          {' '}
-          {user.name}
-        </h1>
-        <p className="text-dark"> There are no hotels yet</p>
-        <a href="/add-hotels" className=" btn btn-primary">
-          Add Hotel
-        </a>
-      </div>
-      )}
-
-      {hotelLength > 0 && (
+      {loading ? (
+        <Dialog message="Loading" />
+      ) : hotels.length < 1 ? (
+        <div className="no-hotels-container">
+          <h1>
+            Welcome
+            {' '}
+            {user.name}
+          </h1>
+          <p className="text-dark"> There are no hotels yet</p>
+          <a href="/add-hotels" className=" btn btn-primary">
+            Add Hotel
+          </a>
+        </div>
+      ) : (
         <div className="delete-hotels">
           <div className="info">
             <img src={rectangle} alt="rectangle" />

@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import hotelsApi from '../../common/apis/hotels';
 import './Main.css';
 import rectangle from '../../Assets/rectangle.png';
 import Hotels from '../hotels/HotelListing';
 import { addHotel } from '../../features/hotels';
+import Dialog from '../Dialog/Dialog';
 
 export default function Main() {
   const dispatch = useDispatch();
-  const hotelLength = useSelector((state) => state.hotels.hotels.length);
+  const hotels = useSelector((state) => state.hotels.hotels);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,6 +18,7 @@ export default function Main() {
         // eslint-disable-next-line no-console
         console.log('Err: ', err);
       });
+      setLoading(false);
       dispatch(addHotel(resonse.data));
     };
     fetchData();
@@ -31,8 +33,11 @@ export default function Main() {
   }, []);
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
-      {hotelLength < 1 && (
+      {loading ? (
+        <Dialog message="Loading" />
+      ) : hotels.length < 1 ? (
         <div className="no-hotels-container">
           <h1>
             Welcome
@@ -43,9 +48,7 @@ export default function Main() {
             Add Hotel
           </a>
         </div>
-      )}
-
-      {hotelLength > 0 && (
+      ) : (
         <div className="container">
           <div className="intro">
             <h2>Hotels</h2>

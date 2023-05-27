@@ -6,12 +6,13 @@ import { addReservation, deleteReservation } from '../../features/reservation';
 import rectangle from '../../Assets/rectangle.png';
 import Reserved from '../Reserved/Reserved';
 import './ReservedHotel.css';
+import Dialog from '../Dialog/Dialog';
 
 function ReservedHotel() {
   const dispatch = useDispatch();
   const reservation = useSelector((state) => state.reservation.reservation);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const hotelLength = useSelector((state) => state.reservation.reservation.length);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState([]);
   const totalPrice = (reservation) => {
     let totalPrice = reservation.price;
@@ -48,6 +49,7 @@ function ReservedHotel() {
           ...reservation,
           totalPrice: totalPrice(reservation),
         }));
+        setLoading(false);
         dispatch(addReservation(reservationsWithTotalPrice));
       } catch (error) {
         // eslint-disable-next-line no-console
@@ -89,8 +91,11 @@ function ReservedHotel() {
   };
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
-      {hotelLength < 1 && (
+      {loading ? (
+        <Dialog message="Loading" />
+      ) : reservation.length < 1 ? (
         <div className="no-hotels-container">
           <h1>
             Hi
@@ -104,8 +109,7 @@ function ReservedHotel() {
             You have no reservations yet
           </p>
         </div>
-      )}
-      {hotelLength > 0 && (
+      ) : (
         <div className="container">
           <div className="intro">
             <h2 className="reserved-hotel">Reserved Hotels</h2>
